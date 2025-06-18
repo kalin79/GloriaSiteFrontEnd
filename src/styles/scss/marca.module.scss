@@ -1,0 +1,52 @@
+@use 'vars/variables' as *;
+
+.listadoCard {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin: 1.75rem 0;
+
+    @media screen and (min-width:992px) {
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        margin: 1rem 0;
+    }
+}
+
+.btnMarca {
+    width: 45%;
+    height: 150px;
+    display: block;
+    border: 1px solid rgba(#608999, .3);
+    border-radius: 30px;
+    transition: .5s ease-in-out all;
+    padding: 2rem;
+    box-sizing: border-box;
+    backdrop-filter: blur(10px);
+
+    /* Aplica el desenfoque */
+    -webkit-backdrop-filter: blur(10px);
+
+    @media screen and (min-width:768px) {
+        flex: 1;
+    }
+
+    @media screen and (min-width:992px) {
+        flex: initial;
+        width: 231px;
+        height: 180px;
+    }
+
+    &:hover {
+        transform: scale(1.05);
+        border: 1px solid white
+    }
+
+    img {
+        width: 100%;
+        object-fit: contain;
+        height: 100%;
+    }
+}

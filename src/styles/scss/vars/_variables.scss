@@ -1,0 +1,209 @@
+//Variables de Colores 
+$azulP: #1A172B;
+$azulC: #443D72;
+$rojoP: #DD1A20;
+$cremaP: #F7E6CD;
+$blancoGloriaP: #E8ECFA;
+$blancoP: #fff;
+$celesteP: #8FD2EA;
+$morado1S: #827CD8;
+$morado2S: #6152B0;
+$azulS: #4F7DD9;
+$verdeS: #38AB66;
+// Variables Colores de Marca
+
+$colorBonle: #4F7DD9;
+$colorActivio: #38AB66;
+$colorPro: #F73C42;
+$colorGloria: #443D72;
+$colorBattiMix: #F7E6CD;
+
+
+// Definimos los colores
+$colors: (
+    azul: $azulP,
+    rojo: $rojoP,
+    crema: $cremaP,
+    celeste: $celesteP,
+    blancoGloria: $blancoGloriaP,
+    blanco: $blancoP,
+    morado1: $morado1S,
+    morado2: $morado2S,
+    azul2: $azulS,
+    azulC: $azulC,
+    verdeS: $verdeS,
+);
+
+
+// Definimos los estilos para titulos y parrafos
+
+$tamanosTitulos: (
+    h1: (default: 2rem,
+        sm: 2.5rem,
+        md: 3rem,
+        lg: 4rem),
+    h2: (default: 2rem,
+        sm: 2.5rem,
+        md: 3rem,
+        lg: 4rem),
+);
+
+$titularPequeno: (
+    default: .85rem,
+    sm: .85rem,
+    md: 1rem,
+    lg: 1rem,
+);
+
+
+
+$titularMediano: (
+    default: 1.75rem,
+    sm: 1.5rem,
+    md: 1.75rem,
+    lg: 2rem,
+);
+
+$titularMedianoFooter: (
+    default: 1.25rem,
+    sm: 1.5rem,
+    md: 1.75rem,
+    lg: 2rem,
+);
+
+$titularGrande: (
+    default: 1.5rem,
+    sm: 1.5rem,
+    md: 1.75rem,
+    lg: 2rem,
+);
+
+$titularExtraGrande: (
+    default: 2rem,
+    sm: 2.85rem,
+    md: 3rem,
+    lg: 3.25rem,
+);
+
+$parrafoPequeno: (
+    default: 0.875rem,
+    sm: .8rem,
+    md: .8rem,
+    lg: 0.875rem,
+);
+
+$parrafo: (
+    default: 1rem,
+    sm: .85rem,
+    md: 1rem,
+    lg: 1rem,
+);
+
+$parrafoMediano2: (
+    default: 1.125rem,
+    sm: 1.1rem,
+    md: 1.1rem,
+    lg: 1.125rem,
+);
+
+
+$parrafoGrande: (
+    default: 1rem,
+    sm: 1rem,
+    md: 1.25rem,
+    lg: 1.5rem,
+);
+
+$interlineadoTituloGrande: (
+    default: 1.75rem,
+    sm: 1rem,
+    md: 1.5rem,
+    lg: 1.5rem,
+);
+
+$interlineadoTituloExtraGrande: (
+    default: 2.25rem,
+    sm: 2.85rem,
+    md: 2.85rem,
+    lg: 3.2rem,
+);
+
+$interlineadoTituloMediano: (
+    default: 1.75rem,
+    sm: 1.5rem,
+    md: 2rem,
+    lg: 2rem,
+);
+
+$interlineadoTituloPequeno: (
+    default: 1.5rem,
+    sm: 1.5rem,
+    md: 1.5rem,
+    lg: 1.5rem,
+);
+$interlineadoParrafo: (
+    default: 1.5rem,
+    sm: 1.25rem,
+    md: 1.25rem,
+    lg: 1.5rem,
+);
+$interlineadoParrafoGrande: (
+    default: 1.45rem,
+    sm: 1.25rem,
+    md: 1.5rem,
+    lg: 1.5rem,
+);
+$interlineadoParrafoMediano: (
+    default: 1.25rem,
+    sm: 1rem,
+    md: 1rem,
+    lg: 1.15rem,
+);
+
+
+// Definicion para titulos y parrafos de Banner
+
+$tituloBanner: (
+    default: 1.5rem,
+    sm: 2.5rem,
+    md: 3.75rem,
+    lg: 5.25rem,
+);
+
+
+$parrafoBanner: (
+    default: 1rem,
+    sm: 1rem,
+    md: 1.25rem,
+    lg: 1.375rem,
+);
+$interlineadoTituloBanner: (
+    default: 1.5rem,
+    sm: 2.5rem,
+    md: 3.5rem,
+    lg: 4.5rem,
+);
+$interlineadoParrafoBanner: (
+    default: 1.25,
+    sm: 1.25,
+    md: 1.25,
+    lg: 1.5rem,
+);
+
+
+// Puntos de quiebre
+$breakpoints: (
+    sm: 992px,
+    md: 1200px,
+    lg: 1600px
+);
+
+// Definimos los estilos para los botones 
+$sizes: (
+    small: (padding: 0.5rem 1rem,
+        font-size: 0.875rem),
+    medium: (padding: 0.75rem 1.5rem,
+        font-size: 1rem),
+    large: (padding: 1rem 2rem,
+        font-size: 1.25rem)
+);

@@ -1,0 +1,9 @@
+// Importa funciones primero
+@import "bootstrap/scss/functions";
+
+// Luego variables y mixins antes de usarlos
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+
+// Finalmente importa Bootstrap
+@import "bootstrap/scss/bootstrap";

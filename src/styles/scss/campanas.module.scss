@@ -1,0 +1,90 @@
+@use 'vars/variables' as *;
+
+.listadoComponentContainer {
+    margin-top: 4rem;
+
+    .titularHeader {
+        margin-bottom: 1rem;
+    }
+
+    .carruselCampanas {
+        .cardContainer {
+            position: relative;
+            overflow: hidden;
+            height: 260px;
+            border: 1px solid rgba($blancoP, .8);
+            border-radius: 10px;
+            cursor: pointer;
+
+            &::before {
+                content: '';
+                background: linear-gradient(to bottom, rgba(#101010, 0), rgba($azulP, .85));
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                position: absolute;
+                z-index: 10;
+            }
+
+            .cardBody {
+                width: 100%;
+                height: 100%;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-position: center;
+                    object-fit: cover;
+                    transition: .5s all ease-in;
+                }
+            }
+
+            .cardFooter {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 0 0rem 3rem 1rem;
+                z-index: 20;
+
+                img {
+                    width: 25px;
+                    height: 25px;
+                    object-position: center;
+                    margin-bottom: .5rem;
+                }
+
+                h2 {
+                    color: $celesteP;
+                    font-size: 0.75rem;
+                    font-family: var(--fuente-poppins), sans-serif;
+                    font-weight: 400;
+                    line-height: 1.5em;
+                }
+
+                h3 {
+                    color: $blancoP;
+                    font-size: 1.175rem;
+                    font-family: var(--fuente-misti), sans-serif;
+                    font-weight: 500;
+                    line-height: 1.15em;
+
+                    @media screen and (min-width: 1200px) {
+                        font-size: 1.375rem;
+                        line-height: 1.15em;
+                    }
+                }
+            }
+
+            &:hover {
+                .cardBody {
+                    img {
+                        transform: scale(1.15);
+                    }
+                }
+            }
+        }
+    }
+}

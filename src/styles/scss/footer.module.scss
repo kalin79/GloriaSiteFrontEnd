@@ -1,0 +1,146 @@
+@use 'vars/variables' as *;
+@use 'vars/mixins' as *;
+
+.footerContainer {
+    background: $azulP;
+    border-top: 6px solid $rojoP;
+    padding: 6rem 0 1rem;
+
+    @media screen and (min-width: 992px) {
+        padding: 3rem 0 1rem;
+    }
+
+    .cierreFooter {
+        border-top: 1px solid rgba($blancoP, .2);
+        margin-top: 3rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 0;
+
+        .redesBox {
+            display: flex;
+            justify-content: flex-start;
+            gap: .5rem;
+
+            @media screen and (min-width: 992px) {
+                gap: 1rem;
+            }
+
+            a {
+                width: 25px;
+                height: 25px;
+
+                @media screen and (min-width: 992px) {
+                    width: 32px;
+                    height: 32px;
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+
+    .gridContainer {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 1rem;
+
+        >div {
+            a {
+                text-decoration: none;
+            }
+
+            .navMenu {
+                display: flex;
+                flex-direction: column;
+                gap: .5rem;
+                padding-left: 1rem;
+                padding-top: 1rem;
+
+                a {
+                    position: relative;
+                    padding-left: .5rem;
+
+                    &:before {
+                        content: '';
+                        position: absolute;
+                        width: 3px;
+                        height: 3px;
+                        border-radius: 50%;
+                        background: $blancoP;
+                        top: 50%;
+                        left: 0;
+                        transform: translateY(-50%);
+                    }
+                }
+            }
+
+            &:nth-child(1) {
+                grid-column: 1 / -1;
+                margin-bottom: 2.5rem;
+            }
+
+            &:nth-child(2) {
+                grid-column: 1 / span 6;
+
+                @media screen and (min-width: 992px) {
+                    grid-column: 1 / span 2;
+                }
+            }
+
+            &:nth-child(3) {
+                grid-column: 7 / -1;
+
+                @media screen and (min-width: 992px) {
+                    grid-column: 3 / span 2;
+                }
+            }
+
+            &:nth-child(4) {
+                grid-column: 1 / span 6;
+
+                @media screen and (min-width: 992px) {
+                    grid-column: 5 / span 3;
+                }
+            }
+
+            &:nth-child(5) {
+                grid-column: 1 / -1;
+
+                @media screen and (min-width: 992px) {
+                    grid-column: 8 / -1;
+                }
+
+                >div {
+                    margin-bottom: 1.5rem;
+                    text-align: center;
+
+                    @media screen and (min-width: 992px) {
+                        text-align: left;
+                    }
+                }
+
+                h2,
+                a {
+                    line-height: 1.75em;
+                }
+
+                .eticaContainer {
+                    display: flex;
+                    justify-content: center;
+                    gap: 1rem;
+
+                    @media screen and (min-width: 992px) {
+                        justify-content: flex-start;
+                    }
+                }
+
+            }
+        }
+
+    }
+}

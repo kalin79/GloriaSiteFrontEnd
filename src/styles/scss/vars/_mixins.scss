@@ -1,0 +1,218 @@
+@use 'variables' as *;
+
+
+// _mixins.scss (continúa)
+
+/// Mixin para aplicar tema (color + peso)
+@mixin colorTexto($tema) {
+    $color: map-get($colors, $tema);
+
+    @if $color {
+        color: $color;
+    }
+
+    @else {
+        @warn "Tema `#{$tema}` no encontrado en $colors.";
+    }
+}
+
+/// Mixin para tamaño según nivel y punto de quiebre
+@mixin tamanoTitulo($level) {
+    $sizes: map-get($tamanosTitulos, $level);
+    @include propiedadResponsiva(font-size, $sizes);
+}
+
+/// Mixin genérico para responsive de una propiedad
+/// $prop: nombre de la propiedad
+/// $values: map con keys default, sm, md…
+@mixin propiedadResponsiva($prop, $values) {
+    // valor por defecto
+    #{$prop}: map-get($values, default);
+
+    @each $bp-name, $bp-value in $breakpoints {
+        @if map-has-key($values, $bp-name) {
+            @media (min-width: $bp-value) {
+                #{$prop}: map-get($values, $bp-name);
+            }
+        }
+    }
+}
+
+// Define propiedades comunes de títulos
+%tituloBaseExtraGrande {
+    font-family: var(--font-misti), sans-serif;
+    @include propiedadResponsiva(line-height, $interlineadoTituloExtraGrande);
+}
+
+%tituloBaseGrande {
+    font-family: var(--font-misti), sans-serif;
+    @include propiedadResponsiva(line-height, $interlineadoTituloGrande);
+}
+
+%tituloBaseMediano {
+    font-family: var(--font-misti), sans-serif;
+    @include propiedadResponsiva(line-height, $interlineadoTituloMediano);
+}
+
+%tituloBasePequeno {
+    font-family: var(--font-misti), sans-serif;
+    @include propiedadResponsiva(line-height, $interlineadoTituloPequeno);
+}
+
+
+
+%tituloBannerBase {
+    font-family: var(--font-misti), sans-serif;
+    @include propiedadResponsiva(line-height, $interlineadoTituloBanner);
+}
+
+%parrafoBannerBase {
+    font-family: var(--font-misti), sans-serif;
+    @include propiedadResponsiva(line-height, $interlineadoParrafoBanner);
+}
+
+
+
+
+%parrafoBse {
+    font-family: var(--font-misti), sans-serif;
+    @include propiedadResponsiva(line-height, $interlineadoParrafo);
+}
+
+%parrafoGrandeBse {
+    font-family: var(--font-misti), sans-serif;
+    @include propiedadResponsiva(line-height, $interlineadoParrafoGrande);
+}
+
+%parrafoMedianoBse {
+    font-family: var(--font-misti), sans-serif;
+    @include propiedadResponsiva(line-height, $interlineadoParrafoMediano);
+}
+
+@each $level, $_ in $tamanosTitulos {
+    @each $tema, $_ in $colors {
+        .#{$level}--#{$tema} {
+            @extend %tituloBaseGrande;
+            @include colorTexto($tema);
+            @include tamanoTitulo($level);
+        }
+    }
+}
+
+// definimos para los botones
+
+// Mixin base para botones
+@mixin button-base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    min-height: 43px;
+    border-radius: 50px;
+    padding: 0 2rem;
+    font-size: .9rem;
+
+    @media screen and (min-width: 992px) {
+        border-radius: 50px;
+        padding: 0 3rem;
+        min-height: 50px;
+        font-size: 1rem;
+    }
+
+    @media screen and (min-width: 1200px) {
+        border-radius: 50px;
+        padding: 0 3rem;
+        min-height: 55px;
+    }
+
+    @media screen and (min-width: 1600px) {
+        border-radius: 50px;
+        padding: 0 3rem;
+        min-height: 60px;
+    }
+
+    &:hover {
+        opacity: 0.9;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+    }
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+}
+
+// Mixin para estilos de botón
+@mixin button-style($bg-color, $text-color, $border-color: $bg-color) {
+
+    background-color: $bg-color;
+    color: $text-color;
+    border: 1px solid $border-color;
+
+    &:hover {
+        background-color: darken($bg-color, 10%);
+        border-color: darken($border-color, 10%);
+    }
+}
+
+@mixin button-gradiente($bg-color, $bg-color2, $text-color, $border-color: $bg-color2) {
+    background: linear-gradient(to bottom, $bg-color, $bg-color2);
+    color: $text-color;
+    border: 0px solid $border-color;
+    transition: all 0.5s ease-in-out;
+
+    &:hover {
+        background: linear-gradient(to bottom, rgba($bg-color, 0.85), rgba($bg-color2, 0.85));
+        // border-color: darken($border-color, 10%);
+    }
+}
+
+// Mixin para tamaños
+@mixin button-size($size) {
+    padding: map-get(map-get($sizes, $size), padding);
+    font-size: map-get(map-get($sizes, $size), font-size);
+}
+
+// Generación de clases para botones
+%btnBase {
+    @include button-base;
+}
+
+
+// Variantes de color
+@each $name, $color in $colors {
+    .btn-#{$name} {
+        @include button-style($color, map-get($colors, $name));
+    }
+
+    .btn-outline-#{$name} {
+        @include button-style(transparent, $color, $color);
+
+        &:hover {
+            background-color: $color;
+            color: map-get($colors, $name);
+        }
+    }
+}
+
+// Variantes de tamaño
+@each $size in map-keys($sizes) {
+    .btn-#{$size} {
+        @include button-size($size);
+    }
+}
+
+// Botón con ancho completo
+.btn-block {
+    display: block;
+    width: 100%;
+}
