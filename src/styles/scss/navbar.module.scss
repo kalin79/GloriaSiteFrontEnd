@@ -12,15 +12,40 @@
     overflow: hidden;
     transform: translateX(-100%);
 
+    .containerFluid {
+        position: relative;
+    }
+
+    .btnCloseContainer {
+        position: absolute;
+        top: 1.5rem;
+        right: 2vw;
+        cursor: pointer;
+        z-index: 11;
+
+        img {
+            width: 58px;
+            height: auto;
+            object-fit: contain;
+        }
+    }
+
     .gridContainer {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
         gap: 1rem;
         height: 100vh;
+        position: relative;
+
+
 
         >div {
             &:nth-child(1) {
-                grid-column: 1 / span 6;
+                grid-column: 1 / -1;
+
+                @media screen and (min-width: 768px) {
+                    grid-column: 1 / span 6;
+                }
 
                 a {
                     text-decoration: none;
@@ -213,8 +238,13 @@
             }
 
             &:nth-child(2) {
-                grid-column: 7 / -1;
+                display: none;
                 position: relative;
+
+                @media screen and (min-width: 768px) {
+                    grid-column: 7 / -1;
+                    display: block;
+                }
 
                 .bgContainer {
                     position: absolute;
@@ -234,19 +264,7 @@
                     }
                 }
 
-                .btnCloseContainer {
-                    position: absolute;
-                    top: 1.5rem;
-                    right: 0rem;
-                    cursor: pointer;
-                    z-index: 11;
 
-                    img {
-                        width: 58px;
-                        height: auto;
-                        object-fit: contain;
-                    }
-                }
             }
         }
     }
@@ -264,6 +282,7 @@
         display: grid;
         grid-template-columns: repeat(12, 1fr);
         gap: 1rem;
+
 
         >div {
             &:nth-child(1) {

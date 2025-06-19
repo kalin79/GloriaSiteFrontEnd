@@ -76,7 +76,10 @@ const NavBar = () => {
                 </div>
             </div>
             <div className={styles.openMenuContainer} ref={miDivRefMenu}>
-                <div className="containerFluid">
+                <div className={`containerFluid ${styles.containerFluid}`}>
+                    <div className={styles.btnCloseContainer} onClick={handleCloseMenu}>
+                        <Image src='/close.svg' width="58" height='54' alt='Gloria :: Cerrar Menu' />
+                    </div>
                     <div className={styles.gridContainer}>
                         <div>
                             <div className={styles.logoContainer}>
@@ -194,9 +197,6 @@ const NavBar = () => {
                             </div>
                         </div>
                         <div>
-                            <div className={styles.btnCloseContainer} onClick={handleCloseMenu}>
-                                <Image src='/close.svg' width="58" height='54' alt='Gloria :: Cerrar Menu' />
-                            </div>
                             <div className={styles.bgContainer}>
                                 <Image src='/bgMenu.webp' width="1796" height='2360' alt='¡Comienza un nuevo regreso a clases! :: Detrás de un niño volviendo al cole, hay una mamá y papá dándolo todo. Conoce la nueva campaña de Gloria.' />
                             </div>

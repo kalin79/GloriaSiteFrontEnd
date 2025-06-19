@@ -121,7 +121,7 @@ h4 {
 }
 
 .parrafoMediano2 {
-    @extend %parrafoBse;
+    @extend %parrafoMedianoBse2;
     @include colorTexto(azul);
     @include propiedadResponsiva(font-size, $parrafoMediano2);
     font-weight: 400;

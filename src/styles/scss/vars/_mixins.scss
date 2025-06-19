@@ -89,6 +89,11 @@
     @include propiedadResponsiva(line-height, $interlineadoParrafoMediano);
 }
 
+%parrafoMedianoBse2 {
+    font-family: var(--font-misti), sans-serif;
+    @include propiedadResponsiva(line-height, $interlineadoParrafoMediano2);
+}
+
 @each $level, $_ in $tamanosTitulos {
     @each $tema, $_ in $colors {
         .#{$level}--#{$tema} {
