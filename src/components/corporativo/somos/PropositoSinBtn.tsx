@@ -10,7 +10,7 @@ const PropositoSinBtn = () => {
                     <div>
                         <Image src="/nino.png" width={1136} height={1599} alt='Niña tomando leche Gloria' />
                     </div>
-                    <div>
+                    <div className={styles.separate}>
                         <div className={styles.headerContainer}>
                             <h3 className='titularPequeno rojoTxt'>ESTRATEGIA GLORIA</h3>
                             <h2 className='titularExtraGrande azulTxt'>

@@ -1,8 +1,99 @@
 @use 'vars/variables' as *;
 @use 'vars/mixins' as *;
 
+
+.plantaContainer {
+    background: $cremaP;
+
+    .gridContainer {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 1rem;
+        min-height: 560px;
+
+        @media screen and (min-width: 992px) {
+            min-height: 560px;
+        }
+
+        @media screen and (min-width: 1200px) {
+            min-height: 700px;
+        }
+
+        @media screen and (min-width: 1600px) {
+            min-height: 800px;
+        }
+
+        >div {
+            &:nth-child(2) {
+                grid-column: 1 / -1;
+                padding: 1rem 0 4.5rem;
+
+                @media screen and (min-width: 992px) {
+                    grid-column: 7 / -1;
+                    padding: 5rem 0 4.5rem;
+                }
+
+                .buttonContainer {
+                    margin-top: 2rem;
+                }
+
+                h2 {
+                    margin: 1rem 0;
+                }
+
+                h4 {
+                    margin: 1.75rem 0;
+                }
+
+                .ubicacionContainer {
+                    >div {
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        gap: .5rem;
+                        margin-bottom: .75rem;
+                    }
+                }
+            }
+
+            &:nth-child(1) {
+                position: relative;
+                grid-column: 1 / -1;
+                height: 300px;
+
+                @media screen and (min-width: 992px) {
+                    grid-column: 1 / span 6;
+                    height: auto;
+                }
+
+                .imgContainer {
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                    left: 0vw;
+
+                    @media screen and (min-width: 992px) {
+                        left: -2vw;
+                    }
+
+                    img {
+                        height: 100%;
+                        width: 100%;
+                        object-fit: cover;
+                        object-position: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
 .descripcionMainContainer {
-    padding: 8rem 0 8rem;
+    padding: 4rem 0 6rem;
+
+    @media screen and (min-width: 992px) {
+        padding: 8rem 0 8rem;
+    }
 
     .gridContainer {
         display: grid;
@@ -18,6 +109,11 @@
             @include colorTexto(blanco);
             @include propiedadResponsiva(font-size, $parrafoExtraGrande);
             font-weight: 300;
+            margin-bottom: 1rem;
+
+            @media screen and (min-width: 992px) {
+                margin-bottom: 0rem;
+            }
         }
     }
 }
