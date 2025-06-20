@@ -11,8 +11,14 @@ interface Props {
 const HtmlSafeRender: React.FC<Props> = ({ html, className }) => {
     const [safeHtml, setSafeHtml] = useState<string | null>(null);
 
+
+
     useEffect(() => {
         const DOMPurify = createDOMPurify(window);
+        // ✅ Habilita explícitamente el atributo `class`
+        DOMPurify.setConfig({
+            ALLOWED_ATTR: ['class', 'href', 'src', 'alt', 'style', 'title', 'id'], // puedes añadir más según necesites
+        });
         const clean = DOMPurify.sanitize(html);
         setSafeHtml(clean);
     }, [html]);

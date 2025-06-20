@@ -7,6 +7,11 @@ const Planta = () => {
     const dataBanner: BannerInterface = {
         imgMobile: '/biM.webp',
         imgPc: '/bi1.webp',
+        titulo: `Infraestructura que <br />
+                                impulsa <span class='boldRegular'>nutrición <br />
+                                    y calidad</span>`,
+        breadcrumb: 'NUESTRA PLANTA',
+        slugbread: '/corporativo/quienes-somos',
     };
     const dataDescripcion = `
         <p class='celesteTxt'>La empresa Leche Gloria S.A. se constituye como tal el 5 de febrero de 1941. </p>

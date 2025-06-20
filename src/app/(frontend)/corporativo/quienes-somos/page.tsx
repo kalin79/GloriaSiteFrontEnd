@@ -9,6 +9,11 @@ export default function Somos() {
     const dataBanner: BannerInterface = {
         imgMobile: '/biM.webp',
         imgPc: '/bi1.webp',
+        titulo: `Somos la empresa <br />
+                                líder en el <span class='boldRegular'>mercado <br />
+                                    lácteo peruano</span>`,
+        breadcrumb: 'QUIENES SOMOS',
+        slugbread: '/corporativo/quienes-somos',
     };
 
     const dataDescripcion = `<p>

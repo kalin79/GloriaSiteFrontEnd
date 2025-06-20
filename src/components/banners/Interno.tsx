@@ -5,15 +5,14 @@ import Link from 'next/link'
 import ArrowSvg from '@/svg/arrow.svg';
 import ArrowDownSvg from '@/svg/arrow2.svg';
 import styles from '@/styles/scss/banner.module.scss';
-interface BannerInterface {
-    imgMobile: string;
-    imgPc: string;
-}
+import { BannerInterface } from '@/interfaces/bannerInterno';
+import HtmlSafeRender from '@/components/HtmlSafeRender';
+
 interface Props {
     dataBanner: BannerInterface;
 }
 const Interno = ({ dataBanner }: Props) => {
-    const { imgPc, imgMobile } = dataBanner;
+    const { imgPc, imgMobile, breadcrumb, titulo, slugbread } = dataBanner;
     const [srcImagen, setSrcImagen] = useState(imgPc);
     useEffect(() => {
         const cambiarImagen = () => {
@@ -31,13 +30,11 @@ const Interno = ({ dataBanner }: Props) => {
                 <div className={styles.gridContainer}>
                     <div>
                         <div className={styles.breadcrumbContainer}>
-                            <p className='parrafoMediano celesteTxt boldMedium'>GLORIA</p> <ArrowSvg /> <Link className='parrafoMediano celesteTxt boldMedium' href="/corporativo/quienes-somos">QUIENES SOMOS</Link>
+                            <p className='parrafoMediano celesteTxt boldMedium'>GLORIA</p> <ArrowSvg /> <Link className='parrafoMediano celesteTxt boldMedium' href={slugbread}>{breadcrumb}</Link>
                         </div>
                         <div className={styles.titularContainer}>
                             <h1 className='bannerTitular fontLight'>
-                                Somos la empresa <br />
-                                líder en el <span className='boldRegular'>mercado <br />
-                                    lácteo peruano</span>
+                                <HtmlSafeRender html={titulo} />
                             </h1>
                         </div>
                         <div className={styles.btnContainer}>
@@ -47,7 +44,6 @@ const Interno = ({ dataBanner }: Props) => {
                     </div>
                     <div>
                         <div className={styles.imgContainer}>
-                            {srcImagen}
                             <Image
                                 src={srcImagen}
                                 fill
