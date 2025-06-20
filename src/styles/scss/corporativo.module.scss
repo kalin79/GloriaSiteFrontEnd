@@ -1,0 +1,23 @@
+@use 'vars/variables' as *;
+@use 'vars/mixins' as *;
+
+.descripcionMainContainer {
+    padding: 8rem 0 8rem;
+
+    .gridContainer {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 1rem;
+
+        >div {
+            grid-column: 2 / span 10;
+        }
+
+        p {
+            @extend %parrafoExtraGrandeBse;
+            @include colorTexto(blanco);
+            @include propiedadResponsiva(font-size, $parrafoExtraGrande);
+            font-weight: 300;
+        }
+    }
+}

@@ -94,6 +94,11 @@
     @include propiedadResponsiva(line-height, $interlineadoParrafoMediano2);
 }
 
+%parrafoExtraGrandeBse {
+    font-family: var(--font-misti), sans-serif;
+    @include propiedadResponsiva(line-height, $interlineadoParrafoExtraGrande);
+}
+
 @each $level, $_ in $tamanosTitulos {
     @each $tema, $_ in $colors {
         .#{$level}--#{$tema} {

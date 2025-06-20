@@ -176,7 +176,7 @@ const CarruselVideosHorizontal = ({ videosHorizontales, titularVideoH, subTitula
                     // autoplay={{ delay: 3000 }}
                     loop={true}
                     modules={[Navigation]}
-                    className={`swiperNetflix`}
+                    className={`swiperNetflix vertical`}
                     breakpoints={{
                         750: {
                             slidesPerView: 3

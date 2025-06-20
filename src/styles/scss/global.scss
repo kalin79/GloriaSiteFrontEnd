@@ -141,6 +141,13 @@ h4 {
     font-weight: 400;
 }
 
+.parrafoExtraGrande {
+    @extend %parrafoExtraGrandeBse;
+    @include colorTexto(blanco);
+    @include propiedadResponsiva(font-size, $parrafoExtraGrande);
+    font-weight: 300;
+}
+
 .h1--blanco {
     @extend %tituloBaseGrande;
     @include colorTexto(blanco);
@@ -421,6 +428,24 @@ body {
             @media screen and (min-width: 992px) {
                 opacity: 1;
 
+            }
+        }
+    }
+
+    &.vertical {
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            @media screen and (min-width: 992px) {
+                width: 9.5rem;
+            }
+
+            @media screen and (min-width: 1200px) {
+                width: 12.5rem;
+            }
+
+            @media screen and (min-width: 1600px) {
+                width: 24.5rem;
             }
         }
     }
