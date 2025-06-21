@@ -24,7 +24,7 @@ const NavBar = () => {
             x: '-100%',
             ease: "power2.out",
             duration: .5,
-        })
+        }, 1.5)
     }
     useEffect(() => {
         const handleScroll = () => {
@@ -83,13 +83,13 @@ const NavBar = () => {
                     <div className={styles.gridContainer}>
                         <div>
                             <div className={styles.logoContainer}>
-                                <Link href='/'>
+                                <Link href='/' onClick={handleCloseMenu}>
                                     <Image src='/logoCorp.svg' width="120" height='40' alt='Gloria' />
                                 </Link>
                             </div>
                             <div className={styles.listaMenuContainer}>
                                 <nav>
-                                    <Link href='/'>Home</Link>
+                                    <Link href='/' onClick={handleCloseMenu}>Home</Link>
                                     <div className={styles.menuMultiple}>
                                         <div className={`${styles.menuMultipleHeader} ${isMenuCooporativo ? `${styles.active}` : ''}`} onClick={() => {
                                             setIsMenuCoorporativo(prev => !prev)
@@ -99,26 +99,26 @@ const NavBar = () => {
                                             <Image src='/arrow2.svg' width="28" height='14' alt='Gloria' />
                                         </div>
                                         <div className={`${styles.menuMultipleListado} ${isMenuCooporativo ? `${styles.active}` : ''}`} >
-                                            <Link href='/quienes-somos'>Quienes Somos</Link>
-                                            <Link href='/nuestra-planta'>Nuestra Planta</Link>
-                                            <Link href='/ganaderos'>Ganaderos</Link>
-                                            {/* <Link href='/informacion-financiera'>Informaci&oacute;n financiera</Link> */}
-                                            <Link href='/sostenibilidad'>Sostenibilidad</Link>
+                                            <Link href='/corporativo/quienes-somos' onClick={handleCloseMenu}>Quienes Somos</Link>
+                                            <Link href='/corporativo/nuestra-planta' onClick={handleCloseMenu}>Nuestra Planta</Link>
+                                            <Link href='/corporativo/ganaderos' onClick={handleCloseMenu}>Ganaderos</Link>
+                                            {/* <Link href='/informacion-financiera' onClick={handleCloseMenu}>Informaci&oacute;n financiera</Link> */}
+                                            <Link href='/corporativo/sostenibilidad' onClick={handleCloseMenu}>Sostenibilidad</Link>
                                             <ul>
                                                 <li>
-                                                    <Link href='/sostenibilidad'>Sostenibilidad</Link>
+                                                    <Link href='/corporativo/sostenibilidad' onClick={handleCloseMenu}>Sostenibilidad</Link>
+                                                </li>
+                                                {/* <li>
+                                                    <Link href='/corporativo/sostenibilidad/ciclo-de-vida' onClick={handleCloseMenu}>Ciclo de Vida</Link>
+                                                </li> */}
+                                                <li>
+                                                    <Link href='/corporativo/sostenibilidad/las-latas' onClick={handleCloseMenu}>Las Latas</Link>
                                                 </li>
                                                 <li>
-                                                    <Link href='/sostenibilidad'>Ciclo de Vida</Link>
-                                                </li>
-                                                <li>
-                                                    <Link href='/sostenibilidad'>Las Latas</Link>
-                                                </li>
-                                                <li>
-                                                    <Link href='/sostenibilidad'>Lactea</Link>
+                                                    <Link href='/corporativo/sostenibilidad/lactea' onClick={handleCloseMenu}>Lactea</Link>
                                                 </li>
                                             </ul>
-                                            <Link href='/noticias'>Noticias</Link>
+                                            <Link href='/noticias' onClick={handleCloseMenu}>Noticias</Link>
                                         </div>
                                     </div>
                                     <div className={styles.menuMultiple}>
@@ -130,11 +130,11 @@ const NavBar = () => {
                                             <Image src='/arrow2.svg' className={styles.arrowBox} width="28" height='14' alt='Gloria' />
                                         </div>
                                         <div className={`${styles.menuMultipleListado} ${isMenuMarcas ? `${styles.active}` : ''}`} >
-                                            <Link href='/quienes-somos'>Gloria</Link>
-                                            <Link href='/bonle'>Bonl&eacute;</Link>
-                                            <Link href='/pro'>Pro</Link>
-                                            <Link href='/actibio'>ActiBio</Link>
-                                            <Link href='/batti-mix'>Batti mix</Link>
+                                            <Link href='/quienes-somos' onClick={handleCloseMenu}>Gloria</Link>
+                                            <Link href='/bonle' onClick={handleCloseMenu}>Bonl&eacute;</Link>
+                                            <Link href='/pro' onClick={handleCloseMenu}>Pro</Link>
+                                            <Link href='/actibio' onClick={handleCloseMenu}>ActiBio</Link>
+                                            <Link href='/batti-mix' onClick={handleCloseMenu}>Batti mix</Link>
                                         </div>
                                     </div>
                                     <Link href='/contacto'>Contacto</Link>

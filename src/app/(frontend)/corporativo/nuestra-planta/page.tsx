@@ -6,7 +6,7 @@ import PlantaComponent from '@/components/corporativo/planta/Planta';
 const Planta = () => {
     const dataBanner: BannerInterface = {
         imgMobile: '/biM.webp',
-        imgPc: '/bi1.webp',
+        imgPc: '/bi2.webp',
         titulo: `Infraestructura que <br />
                                 impulsa <span class='boldRegular'>nutrición <br />
                                     y calidad</span>`,

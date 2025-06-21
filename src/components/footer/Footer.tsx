@@ -16,11 +16,11 @@ const Footer = () => {
                     <div>
                         <h3 className='titularPequeno'>Leche Gloria</h3>
                         <div className={styles.navMenu}>
-                            <Link href="/quienes-somos" className='parrafoMediano fontLight'>Quienes Somos</Link>
-                            <Link href="/nuestro-compromiso" className='parrafoMediano fontLight'>Nuestro compromiso</Link>
-                            <Link href="/ganaderos" className='parrafoMediano fontLight'>Ganaderos</Link>
-                            <Link href="/informacion-financiera" className='parrafoMediano fontLight'>Información financiera</Link>
-                            <Link href="/sostenibilidad" className='parrafoMediano fontLight'>Sostenibilidad</Link>
+                            <Link href="/corporativo/quienes-somos" className='parrafoMediano fontLight'>Quienes Somos</Link>
+                            <Link href="/corporativo/nuestro-compromiso" className='parrafoMediano fontLight'>Nuestro compromiso</Link>
+                            <Link href="/corporativo/ganaderos" className='parrafoMediano fontLight'>Ganaderos</Link>
+                            <Link href="/corporativo/informacion-financiera" className='parrafoMediano fontLight'>Información financiera</Link>
+                            <Link href="/corporativo/sostenibilidad" className='parrafoMediano fontLight'>Sostenibilidad</Link>
                             <Link href="/noticias" className='parrafoMediano fontLight'>Noticias</Link>
                         </div>
                     </div>
@@ -84,7 +84,7 @@ const Footer = () => {
                         </a>
                     </div>
                     <div className={styles.CopyBox}>
-                        <h4 className='parrafoMediano celesteTxt fontLight'>© GLORIA. All Rights Reserved.</h4>
+                        <h4 className='parrafoMediano celesteTxt fontLight'>© GLORIA. Todos los derechos reservados.</h4>
                     </div>
                 </div>
             </div>

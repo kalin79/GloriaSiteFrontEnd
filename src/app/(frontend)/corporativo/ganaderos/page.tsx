@@ -6,7 +6,7 @@ import DatosComponent from '@/components/corporativo/ganaderos/Datos';
 const Ganaderos = () => {
     const dataBanner: BannerInterface = {
         imgMobile: '/biM.webp',
-        imgPc: '/bi1.webp',
+        imgPc: '/bi3.webp',
         titulo: `Día a día con <br />nuestros <br />
                                 <span class='boldRegular'>productores lecheros</span>`,
         breadcrumb: 'GANADEROS',

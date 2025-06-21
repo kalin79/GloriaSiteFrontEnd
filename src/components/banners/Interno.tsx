@@ -30,7 +30,18 @@ const Interno = ({ dataBanner }: Props) => {
                 <div className={styles.gridContainer}>
                     <div>
                         <div className={styles.breadcrumbContainer}>
-                            <p className='parrafoMediano celesteTxt boldMedium'>GLORIA</p> <ArrowSvg /> <Link className='parrafoMediano celesteTxt boldMedium' href={slugbread}>{breadcrumb}</Link>
+                            {
+                                (dataBanner.slugbreadHEADER) ? (
+                                    <>
+                                        <p className='parrafoMediano celesteTxt boldMedium'>GLORIA</p> <ArrowSvg /> <Link className='parrafoMediano celesteTxt boldMedium' href={dataBanner.slugbreadHEADER}>{dataBanner.breadHeader}</Link> <ArrowSvg /> <Link className='parrafoMediano celesteTxt boldMedium' href={slugbread}>{breadcrumb}</Link>
+                                    </>
+                                ) : (
+                                    <>
+                                        <p className='parrafoMediano celesteTxt boldMedium'>GLORIA</p> <ArrowSvg /> <Link className='parrafoMediano celesteTxt boldMedium' href={slugbread}>{breadcrumb}</Link>
+                                    </>
+                                )
+                            }
+
                         </div>
                         <div className={styles.titularContainer}>
                             <h1 className='bannerTitular fontLight'>

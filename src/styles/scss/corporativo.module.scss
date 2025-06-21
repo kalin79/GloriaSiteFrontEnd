@@ -92,6 +92,225 @@
     }
 }
 
+
+.ecologicoContainer {
+    background: $cremaP;
+    padding: 6rem 0 8rem;
+
+    .gridIcons {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 1rem;
+        margin-top: 3rem;
+
+        @media screen and (min-width: 992px) {
+            margin-top: 6rem;
+        }
+
+        >div {
+            margin-bottom: 2.5rem;
+
+            @media screen and (min-width: 992px) {
+                margin-bottom: 0;
+            }
+
+            &:nth-child(1) {
+                grid-column: 1 / -1;
+
+                @media screen and (min-width: 992px) {
+                    grid-column: 1 / span 4;
+                }
+
+                @media screen and (min-width: 1200px) {
+                    grid-column: 1 / span 3;
+                }
+
+
+            }
+
+            &:nth-child(2) {
+                grid-column: 1 / -1;
+
+                @media screen and (min-width: 992px) {
+                    grid-column: 5 / span 4;
+                }
+
+                @media screen and (min-width: 1200px) {
+                    grid-column: 5 / span 3;
+                }
+
+
+            }
+
+            &:nth-child(3) {
+                grid-column: 1 / -1;
+
+                @media screen and (min-width: 992px) {
+                    grid-column: 9 / span 4;
+                }
+
+                @media screen and (min-width: 1200px) {
+                    grid-column: 9 / span 3;
+                }
+
+
+            }
+
+            .iconContainer {
+                height: 86px;
+            }
+
+            h3 {
+                color: $azulC;
+                font-size: 1.625rem;
+                font-family: var(--fuente-misti), sans-serif;
+                font-weight: 400;
+                line-height: 1.15em;
+                margin: 1rem 0;
+            }
+
+            p {
+                color: $negro700;
+            }
+        }
+    }
+
+    .gridContainer {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 1rem;
+
+        >div {
+            &:nth-child(1) {
+                grid-column: 1 / -1;
+
+                @media screen and (min-width: 992px) {
+                    grid-column: 1 / span 5;
+                }
+            }
+
+            &:nth-child(2) {
+                grid-column: 1 / -1;
+                padding: 1rem 0 0;
+
+                @media screen and (min-width: 992px) {
+                    grid-column: 7 / -1;
+                }
+            }
+        }
+    }
+}
+
+.latasContainer {
+    padding: 6rem 0 8rem;
+
+    .gridContainer {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 1rem;
+
+        >div {
+            &:nth-child(2) {
+                grid-column: 1 / -1;
+                order: 1;
+
+                @media screen and (min-width: 992px) {
+                    grid-column: 7 / -1;
+                    order: 2;
+                }
+
+                .AccordionContainer {
+                    margin-top: 2rem;
+
+                    .itemBox {
+                        border-top: 1px solid #969DE3;
+                        padding: 1.5rem 1rem;
+
+                        &:last-child {
+                            border-bottom: 1px solid #969DE3;
+                        }
+
+                        .headerContainer {
+                            width: 100%;
+
+                            button {
+                                border: 0;
+                                background: transparent;
+                                width: 100%;
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                padding: 0;
+                                margin: 0;
+
+                                img {
+                                    transition: .5s ease-in all;
+                                }
+                            }
+
+                        }
+
+                        .viewContent {
+                            @extend %parrafoMedianoBse;
+                            @include colorTexto(blanco);
+                            @include propiedadResponsiva(font-size, $parrafo);
+                            font-weight: 400;
+                            display: none;
+                            padding: 0;
+                        }
+
+                        &.active {
+                            .viewContent {
+                                display: block;
+                                padding: 1rem 0 0;
+                            }
+
+                            .headerContainer {
+                                button {
+                                    img {
+                                        transform: scaleY(-1);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &:nth-child(1) {
+                grid-column: 1 / -1;
+                order: 2;
+
+                @media screen and (min-width: 992px) {
+                    grid-column: 2 / span 4;
+                    order: 1;
+                }
+
+                .imgContainer {
+                    width: 100%;
+                    height: 100%;
+                    padding: 3rem 0 0;
+
+                    img {
+                        width: 100%;
+                        height: 350px;
+                        object-fit: contain;
+                        object-position: center;
+
+                        @media screen and (min-width: 992px) {
+                            height: 100%;
+                        }
+
+                        @media screen and (min-width: 1400px) {
+                            height: 750px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 .datosGanaderosContainer {
     background: $cremaP;
     padding: 5rem 0 4rem;
