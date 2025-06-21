@@ -7,8 +7,8 @@ import { BannerInterface } from '@/interfaces/bannerInterno';
 
 export default function Somos() {
     const dataBanner: BannerInterface = {
-        imgMobile: '/biM.webp',
-        imgPc: '/bi1.webp',
+        imgMobile: '/mama.webp',
+        imgPc: '/mamapc.webp',
         titulo: `Somos la empresa <br />
                                 líder en el <span class='boldRegular'>mercado <br />
                                     lácteo peruano</span>`,

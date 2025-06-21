@@ -4,7 +4,7 @@ import BeneficiosComponent from '@/components/corporativo/sostenibilidad/LatasBe
 import EcologicoComponent from '@/components/corporativo/sostenibilidad/Ecologicos';
 const LasLatas = () => {
     const dataBanner: BannerInterface = {
-        imgMobile: '/biM.webp',
+        imgMobile: '/bi5.webp',
         imgPc: '/bi5.webp',
         titulo: `El envase que lo  <br />hace posible:<br />
                 <span class='boldRegular'>resistente, seguro <br />y sostenible</span>`,

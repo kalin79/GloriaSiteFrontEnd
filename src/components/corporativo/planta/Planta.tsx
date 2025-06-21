@@ -11,6 +11,9 @@ const Planta = () => {
                         <div className={styles.imgContainer}>
                             <Image src='/huachipa.png' width={1099} height={1290} alt='' />
                         </div>
+                        <div className={styles.curvaImg}>
+                            <Image src='/curvaCremaPC.svg' width={145} height={860} alt="" />
+                        </div>
                     </div>
                     <div>
                         <div>

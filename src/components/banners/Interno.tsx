@@ -54,6 +54,12 @@ const Interno = ({ dataBanner }: Props) => {
                         </div>
                     </div>
                     <div>
+                        <div className={styles.curvaImg}>
+                            <Image src='/curvaPC.svg' width={156} height={880} alt="" />
+                        </div>
+                        <div className={styles.curvaImgM}>
+                            <Image src='/curvaM.svg' width={440} height={120} alt="" />
+                        </div>
                         <div className={styles.imgContainer}>
                             <Image
                                 src={srcImagen}

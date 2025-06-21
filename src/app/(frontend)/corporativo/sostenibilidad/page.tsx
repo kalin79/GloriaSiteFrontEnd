@@ -4,7 +4,7 @@ import DescripcionComponent from '@/components/corporativo/Descripcion';
 import ComprometidosComponent from '@/components/corporativo/sostenibilidad/Comprometidos';
 const Sostenibilidad = () => {
     const dataBanner: BannerInterface = {
-        imgMobile: '/biM.webp',
+        imgMobile: '/bi4.webp',
         imgPc: '/bi4.webp',
         titulo: `Comprometidos <br />con el impacto de <br />
                 <span class='boldRegular'>nuestras acciones</span>`,

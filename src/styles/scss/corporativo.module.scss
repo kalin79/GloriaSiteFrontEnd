@@ -37,6 +37,16 @@
 
                 }
 
+                >div {
+
+                    @media screen and (min-width: 992px) {
+                        position: relative;
+                        z-index: 30;
+                        margin-left: -6rem;
+                        padding-right: 3rem;
+                    }
+                }
+
                 .buttonContainer {
                     margin-top: 2rem;
                 }
@@ -70,6 +80,25 @@
                     height: auto;
                 }
 
+                .curvaImg {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    height: 100%;
+                    z-index: 10;
+                    display: none;
+
+                    @media screen and (min-width: 992px) {
+                        display: block;
+                    }
+
+                    img {
+                        width: 145px;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+
                 .imgContainer {
                     position: absolute;
                     height: 100%;
@@ -95,7 +124,11 @@
 
 .ecologicoContainer {
     background: $cremaP;
-    padding: 6rem 0 8rem;
+    padding: 6rem 0 4rem;
+
+    @media screen and (min-width: 992px) {
+        padding: 6rem 0 8rem;
+    }
 
     .gridIcons {
         display: grid;
@@ -117,7 +150,7 @@
             &:nth-child(1) {
                 grid-column: 1 / -1;
 
-                @media screen and (min-width: 992px) {
+                @media screen and (min-width: 768px) {
                     grid-column: 1 / span 4;
                 }
 
@@ -131,7 +164,7 @@
             &:nth-child(2) {
                 grid-column: 1 / -1;
 
-                @media screen and (min-width: 992px) {
+                @media screen and (min-width: 768px) {
                     grid-column: 5 / span 4;
                 }
 
@@ -145,7 +178,7 @@
             &:nth-child(3) {
                 grid-column: 1 / -1;
 
-                @media screen and (min-width: 992px) {
+                @media screen and (min-width: 768px) {
                     grid-column: 9 / span 4;
                 }
 
@@ -212,11 +245,9 @@
         >div {
             &:nth-child(2) {
                 grid-column: 1 / -1;
-                order: 1;
 
                 @media screen and (min-width: 992px) {
                     grid-column: 7 / -1;
-                    order: 2;
                 }
 
                 .AccordionContainer {
@@ -279,11 +310,9 @@
 
             &:nth-child(1) {
                 grid-column: 1 / -1;
-                order: 2;
 
                 @media screen and (min-width: 992px) {
                     grid-column: 2 / span 4;
-                    order: 1;
                 }
 
                 .imgContainer {
@@ -317,7 +346,7 @@
 
     .gridContainer {
         display: grid;
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         gap: 1rem;
 
         @media screen and (min-width: 992px) {
@@ -325,6 +354,16 @@
         }
 
         >div {
+            grid-column: 1 / -1;
+
+            @media screen and (min-width: 768px) {
+                grid-column: 2 / span 2;
+            }
+
+            @media screen and (min-width: 992px) {
+                grid-column: auto;
+            }
+
             .infoContainer {
                 display: flex;
                 justify-content: flex-start;
@@ -348,12 +387,25 @@
 
                     h3 {
                         font-family: var(--fuente-misti), sans-serif;
-                        font-size: 1.75rem;
+                        font-size: 1.5rem;
                         color: #443D72;
                         line-height: 1em;
                         margin: .75rem 0 1.25rem;
                         text-align: center;
                         font-weight: 400;
+
+                        @media screen and (min-width: 992px) {
+                            font-size: 1.75rem;
+                            line-height: 1em;
+                        }
+
+                        br {
+                            display: none;
+
+                            @media screen and (min-width: 992px) {
+                                display: block;
+                            }
+                        }
                     }
 
                     p {
@@ -363,6 +415,11 @@
                         line-height: 1.25em;
                         text-align: center;
                         font-weight: 400;
+
+                        @media screen and (min-width: 992px) {
+                            font-size: 1.125rem;
+                            ine-height: 1.25em;
+                        }
                     }
                 }
             }
@@ -383,7 +440,11 @@
         gap: 1rem;
 
         >div {
-            grid-column: 2 / span 10;
+            grid-column: 1 / -1;
+
+            @media screen and (min-width: 992px) {
+                grid-column: 2 / span 10;
+            }
         }
 
         p {

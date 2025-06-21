@@ -5,7 +5,7 @@
 .comportamosContainer {
     .bgContainerData {
         background: $azulP;
-        margin-top: -6rem;
+        top: -6rem;
         position: relative;
         z-index: 10;
         padding: 4rem 0 6rem;
@@ -64,7 +64,12 @@
 
         >div {
             &:nth-child(1) {
-                grid-column: 2 / 10;
+                grid-column: 1 / -1;
+
+                @media screen and (min-width: 992px) {
+                    grid-column: 2 / span 10;
+                    margin-bottom: 1rem;
+                }
             }
 
             &:nth-child(2) {
@@ -203,6 +208,10 @@
                 }
 
                 &.separate {
+                    @media screen and (min-width: 992px) {
+                        padding-bottom: 12rem;
+                    }
+
                     @media screen and (min-width: 1400px) {
                         grid-column: 6 / span 6;
                         order: 2;
@@ -240,8 +249,18 @@
                     >div {
                         display: flex;
                         justify-content: flex-start;
-                        align-items: flex-start;
-                        gap: 1rem;
+                        align-items: center;
+                        flex-direction: column;
+                        gap: 0rem;
+                        margin-bottom: 1.5rem;
+
+                        @media screen and (min-width: 768px) {
+                            justify-content: flex-start;
+                            align-items: flex-start;
+                            flex-direction: row;
+                            gap: 1rem;
+                            margin-bottom: 0;
+                        }
 
                         .iconBox {
                             width: 80px;
@@ -257,7 +276,13 @@
 
                         .infoBox {
                             flex: 1;
-                            padding-top: .75rem;
+                            padding: 0rem 1rem 0;
+                            text-align: center;
+
+                            @media screen and (min-width: 768px) {
+                                padding: .75rem 0rem 0;
+                                text-align: left;
+                            }
                         }
 
                         &:nth-child(1) {
@@ -276,6 +301,14 @@
                                 img {
                                     width: 36px;
                                     height: 74px;
+                                }
+                            }
+
+                            .infoBox {
+                                margin-top: 1rem;
+
+                                @media screen and (min-width: 768px) {
+                                    margin-top: 0;
                                 }
                             }
 

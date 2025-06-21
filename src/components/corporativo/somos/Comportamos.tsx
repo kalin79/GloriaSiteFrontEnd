@@ -3,7 +3,7 @@ import styles from '@/styles/scss/somos.module.scss';
 
 const Comportamos = () => {
     return (
-        <div className={styles.comportamosContainer}>
+        <div className={`${styles.comportamosContainer} bgCeleste`}>
             <div className='containerFluid'>
                 <div className={styles.bgContainerData}>
                     <div className={styles.gridContainer}>
