@@ -32,7 +32,7 @@ const CarruselProductos = () => {
             idMarca: 1,
             marca: 'Gloria',
             slug: 'leche-gloria-uht-entera',
-            imagen: '/p4.png',
+            imagen: '/pO1.png',
             receta: true
         },
         {
@@ -41,7 +41,7 @@ const CarruselProductos = () => {
             idMarca: 1,
             marca: 'Gloria',
             slug: 'leche-en-polvo-instantanea',
-            imagen: '/p5.png',
+            imagen: '/pO1M.png',
             receta: false
         },
         {
@@ -50,7 +50,7 @@ const CarruselProductos = () => {
             idMarca: 2,
             marca: 'BONLE',
             slug: 'bonle-uht-sin-lactosa',
-            imagen: '/p6.png',
+            imagen: '/pO2.png',
             receta: true
         },
         {
@@ -68,7 +68,7 @@ const CarruselProductos = () => {
             idMarca: 1,
             marca: 'Gloria',
             slug: 'leche-en-polvo-instantanea',
-            imagen: '/p5.png',
+            imagen: '/pO1.png',
             receta: false
         },
         {

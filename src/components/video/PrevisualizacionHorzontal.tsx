@@ -9,17 +9,17 @@ interface Props {
     index: number,
     videosContents: VideoInterface,
     onClick: (event: React.MouseEvent<HTMLDivElement>) => void,
-    onMouseEnter: (event: React.MouseEvent<HTMLDivElement>) => void,
-    onMouseMove: (event: React.MouseEvent<HTMLDivElement>) => void
+    // onMouseEnter: (event: React.MouseEvent<HTMLDivElement>) => void,
+    // onMouseMove: (event: React.MouseEvent<HTMLDivElement>) => void
 }
-const PrevisualizacionHorizontal = forwardRef<HTMLDivElement, Props>(({ index, videosContents, onMouseEnter, onMouseMove, onClick }, ref) => {
+const PrevisualizacionHorizontal = forwardRef<HTMLDivElement, Props>(({ index, videosContents, onClick }, ref) => {
 
     return (
         <div
             ref={ref}
-            onMouseEnter={onMouseEnter}
+            // onMouseEnter={onMouseEnter}
             onClick={onClick}
-            onMouseMove={onMouseMove}
+            // onMouseMove={onMouseMove}
             className={`${styles.slideVideoCard} `}
         >
             <div className={styles.cardBody}>
