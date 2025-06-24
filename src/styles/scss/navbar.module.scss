@@ -14,6 +14,9 @@
 
     .containerFluid {
         position: relative;
+        overflow-y: scroll;
+        scrollbar-width: thin;
+        scrollbar-color: #888 #eee;
     }
 
     .btnCloseContainer {
@@ -70,14 +73,24 @@
                             font-weight: 300;
                             color: $blancoP;
                             text-decoration: none;
+                            border-top: 1px solid #443D72;
+                            display: block;
+                            padding: .5rem 0 .5rem 2rem;
+
+                            &:last-child {
+                                border-bottom: 1px solid #443D72;
+                            }
                         }
 
                         .menuMultiple {
+                            border-top: 1px solid #443D72;
+
                             .menuMultipleHeader {
                                 display: flex;
-                                justify-content: flex-start;
+                                justify-content: space-between;
                                 gap: 2rem;
                                 cursor: pointer;
+                                padding: .5rem 1rem 0 2rem;
 
                                 h2 {
                                     font-size: 2rem;
@@ -98,33 +111,116 @@
 
                             .menuMultipleListado {
                                 height: 0;
-                                overflow-y: scroll;
+                                overflow: hidden;
                                 border: 0px solid #ccc;
                                 /* Scroll personalizado (Firefox) */
-                                scrollbar-width: thin;
-                                scrollbar-color: #888 #eee;
+                                // scrollbar-width: thin;
+                                // scrollbar-color: #888 #eee;
                                 display: flex;
                                 justify-content: flex-start;
                                 align-items: flex-start;
                                 flex-direction: column;
-                                gap: .3rem;
-                                padding-left: 2rem;
+                                gap: 0rem;
                                 transition: height .5s ease-in;
 
-                                ul {
-                                    margin: 0;
+                                .subMenuContainer {
+                                    width: 100%;
 
-                                    li {
-                                        color: $blancoP;
+                                    .headerSubMenu {
+                                        display: flex;
+                                        border-top: 1px solid #443D72;
+                                        width: 100%;
+                                        background: rgba(#443D72, .20);
+                                        padding: 1rem 1rem 1rem 4rem;
+                                        justify-content: space-between;
+                                        cursor: pointer;
+
+                                        h2 {
+                                            font-size: 1rem;
+                                            font-family: var(--fuente-misti), sans-serif;
+                                            font-weight: 300;
+                                            color: white;
+                                        }
+
+                                        p {
+                                            width: 20px;
+                                            text-align: center;
+                                            font-size: 1rem;
+                                            font-family: var(--fuente-misti), sans-serif;
+                                            color: white;
+
+                                            &:after {
+                                                content: '+';
+                                            }
+
+
+                                        }
+
+                                        ul {
+                                            margin: 0;
+                                            list-style: none;
+                                            width: 100%;
+                                            padding: 0;
+                                            display: none;
+
+                                            li {
+                                                color: $blancoP;
+
+                                                a {
+                                                    padding-left: 6rem;
+                                                }
+
+                                            }
+                                        }
+
+                                        &.active {
+                                            &+ul {
+                                                display: block;
+                                            }
+
+                                            p {
+                                                &:after {
+                                                    content: '-';
+                                                }
+                                            }
+                                        }
+                                    }
+
+
+                                    ul {
+                                        margin: 0;
+                                        list-style: none;
+                                        width: 100%;
+                                        padding: 0;
+                                        display: none;
+
+                                        li {
+                                            color: $blancoP;
+
+                                            a {
+                                                padding-left: 6rem;
+                                            }
+
+                                        }
                                     }
                                 }
 
+
+
                                 &.active {
-                                    height: 166px;
+                                    height: auto;
                                 }
 
                                 a {
                                     font-size: 1rem;
+                                    display: flex;
+                                    border-top: 1px solid #443D72;
+                                    width: 100%;
+                                    background: rgba(#443D72, .20);
+                                    padding: 1rem 2rem 1rem 4rem;
+                                    justify-content: space-between;
+
+
                                 }
 
                                 &::-webkit-scrollbar {
@@ -147,16 +243,20 @@
                     }
 
                     .footerContainer {
-                        padding-bottom: 2rem;
+                        margin-top: 2rem;
 
                         .cierreFooter {
-                            margin-top: 2rem;
+                            margin-top: 0rem;
+
 
                             .LegalBox {
                                 display: flex;
                                 justify-content: space-between;
                                 align-items: flex-start;
                                 margin-top: 1rem;
+                                flex-direction: column;
+                                padding-left: 2rem;
+                                margin-bottom: 1rem;
 
                                 a {
                                     font-size: .85rem;
@@ -164,23 +264,53 @@
                                     font-weight: 300;
                                     color: $blancoP;
                                     text-decoration: none;
+                                    line-height: 1.75em;
                                 }
                             }
 
                             .redesBox {
                                 display: flex;
-                                justify-content: flex-start;
+                                justify-content: center;
                                 align-items: flex-start;
-                                gap: 1rem;
+                                gap: 2rem;
+                                border-bottom: 1px solid #443D72;
+                                padding: 1rem 0 1rem;
+
+                                img {
+                                    width: 45px;
+                                    height: 45px;
+
+                                }
                             }
 
                         }
 
                         .eticaContainer {
                             display: flex;
-                            justify-content: flex-start;
+                            justify-content: center;
                             align-items: flex-start;
                             gap: 1rem;
+                            border: 1px solid $celesteP;
+                            padding: 1rem .5rem;
+                            width: 294px;
+                            border-radius: 50px;
+                            margin-left: 2rem;
+
+                            a {
+                                h4 {
+                                    font-size: .85rem;
+                                    color: $celesteP;
+                                    font-family: var(--fuente-misti), sans-serif;
+                                    font-weight: 400;
+                                }
+
+                                h5 {
+                                    font-size: 1.15rem;
+                                    color: white;
+                                    font-family: var(--fuente-misti), sans-serif;
+                                    font-weight: 300;
+                                }
+                            }
                         }
 
                         >div {
@@ -196,6 +326,24 @@
                                 align-items: flex-start;
                                 gap: .5rem;
                                 margin-bottom: 1rem;
+                                padding-left: 2rem;
+
+                                h2,
+                                a {
+                                    font-size: 1.35rem;
+                                    color: white;
+                                    font-family: var(--fuente-misti), sans-serif;
+                                    font-weight: 300;
+                                    letter-spacing: -.05em;
+                                }
+
+                                p {
+                                    font-size: 1rem;
+                                    color: $celesteP;
+                                    font-family: var(--fuente-misti), sans-serif;
+                                    font-weight: 300;
+                                    letter-spacing: -.05em;
+                                }
 
                                 .iconPhone {
                                     margin-top: .25rem;
@@ -221,7 +369,7 @@
                     flex-direction: column;
                     align-content: center;
                     justify-content: center;
-
+                    padding-left: 2rem;
 
                     a {
                         text-decoration: none;
@@ -246,6 +394,22 @@
                     display: block;
                 }
 
+                .bgCurva {
+                    position: absolute;
+                    z-index: 11;
+                    top: 0;
+                    left: 0;
+                    width: 155px;
+                    height: 100%;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+
+                    }
+                }
+
                 .bgContainer {
                     position: absolute;
                     top: 0;
@@ -260,7 +424,7 @@
                         object-fit: cover;
                         object-position: center;
                         // clip-path: ellipse(87.64% 161.4% at 87.93% 47.50%);
-                        clip-path: ellipse(88.64% 100.4% at 89.37% 52.15%);
+                        // clip-path: ellipse(88.64% 100.4% at 89.37% 52.15%);
                     }
                 }
 

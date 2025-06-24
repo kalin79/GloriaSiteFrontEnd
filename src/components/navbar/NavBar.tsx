@@ -10,6 +10,10 @@ const NavBar = () => {
     const [isMenuMarcas, setIsMenuMarcas] = useState(false);
     const miDivRefMenu = useRef(null);
     const { data: session } = useSession();
+    const [activeIndex, setActiveIndex] = useState<number | null>(null);
+    const handleClick = (index: number) => {
+        setActiveIndex(index === activeIndex ? null : index); // Toggle
+    };
     const handleViewMenu = () => {
         const tlMenu = gsap.timeline();
         tlMenu.to(miDivRefMenu.current, {
@@ -24,7 +28,7 @@ const NavBar = () => {
             x: '-100%',
             ease: "power2.out",
             duration: .5,
-        }, 1.5)
+        }, .85)
     }
     useEffect(() => {
         const handleScroll = () => {
@@ -76,7 +80,7 @@ const NavBar = () => {
                 </div>
             </div>
             <div className={styles.openMenuContainer} ref={miDivRefMenu}>
-                <div className={`containerFluid ${styles.containerFluid}`}>
+                <div className={`${styles.containerFluid}`}>
                     <div className={styles.btnCloseContainer} onClick={handleCloseMenu}>
                         <Image src='/close.svg' width="58" height='54' alt='Gloria :: Cerrar Menu' />
                     </div>
@@ -103,21 +107,26 @@ const NavBar = () => {
                                             <Link href='/corporativo/nuestra-planta' onClick={handleCloseMenu}>Nuestra Planta</Link>
                                             <Link href='/corporativo/ganaderos' onClick={handleCloseMenu}>Ganaderos</Link>
                                             {/* <Link href='/informacion-financiera' onClick={handleCloseMenu}>Informaci&oacute;n financiera</Link> */}
-                                            <Link href='/corporativo/sostenibilidad' onClick={handleCloseMenu}>Sostenibilidad</Link>
-                                            <ul>
-                                                <li>
-                                                    <Link href='/corporativo/sostenibilidad' onClick={handleCloseMenu}>Sostenibilidad</Link>
-                                                </li>
-                                                {/* <li>
+                                            <div className={styles.subMenuContainer}>
+                                                <div className={`${styles.headerSubMenu} ${activeIndex === 1 ? styles.active : ''}`} onClick={() => handleClick(1)}>
+                                                    <h2>Sostenibilidad</h2>
+                                                    <p className="boldMedium"></p>
+                                                </div>
+                                                <ul>
+                                                    <li>
+                                                        <Link href='/corporativo/sostenibilidad' onClick={handleCloseMenu}>Sostenibilidad</Link>
+                                                    </li>
+                                                    {/* <li>
                                                     <Link href='/corporativo/sostenibilidad/ciclo-de-vida' onClick={handleCloseMenu}>Ciclo de Vida</Link>
                                                 </li> */}
-                                                <li>
-                                                    <Link href='/corporativo/sostenibilidad/las-latas' onClick={handleCloseMenu}>Las Latas</Link>
-                                                </li>
-                                                <li>
-                                                    <Link href='/corporativo/sostenibilidad/lactea' onClick={handleCloseMenu}>Lactea</Link>
-                                                </li>
-                                            </ul>
+                                                    <li>
+                                                        <Link href='/corporativo/sostenibilidad/las-latas' onClick={handleCloseMenu}>Las Latas</Link>
+                                                    </li>
+                                                    <li>
+                                                        <Link href='/corporativo/sostenibilidad/lactea' onClick={handleCloseMenu}>Lactea</Link>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                             <Link href='/noticias' onClick={handleCloseMenu}>Noticias</Link>
                                         </div>
                                     </div>
@@ -141,12 +150,11 @@ const NavBar = () => {
                                 </nav>
                                 <div className={styles.footerContainer}>
                                     <div>
-                                        <h3 className='titularMedianoFooter fontLight'>Contáctanos</h3>
                                         <div className={styles.item}>
                                             <Image src='/call.svg' className={styles.iconPhone} width="23" height='20' alt='0800-1-84441' />
                                             <div>
-                                                <h2 className='titularMedianoFooter fontLight'>0800-1-4441</h2>
-                                                <p className='parrafoMediano celesteTxt'>De lunes a viernes de 8:00 am a 6:00 pm, sábado de 8:00 am a 12:00 pm</p>
+                                                <h2>0800-1-4441</h2>
+                                                <p>De lunes a viernes de 8:00 am a 6:00 pm, sábado de 8:00 am a 12:00 pm</p>
                                             </div>
                                         </div>
                                     </div>
@@ -154,12 +162,12 @@ const NavBar = () => {
                                         <div className={styles.item}>
                                             <Image src='/mail.svg' className={styles.iconMail} width="20" height='16' alt='contactcenterinforma@gloria.com.pe' />
                                             <div>
-                                                <a href="mailto:contactcenterinforma@gloria.com.pe" className='titularMedianoFooter fontLight'>contactcenterinforma@gloria.com.pe</a>
-                                                <p className='parrafoMediano celesteTxt'>De lunes a viernes de 8:00 am a 4:00 pm, sábado de 8:00 am a 11:00 am</p>
+                                                <a href="mailto:contactcenterinforma@gloria.com.pe">contactcenterinforma@gloria.com.pe</a>
+                                                <p>De lunes a viernes de 8:00 am a 4:00 pm, sábado de 8:00 am a 11:00 am</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className={styles.eticaContainer}>
+                                    {/* <div className={styles.eticaContainer}>
                                         <div>
                                             <a href="https://www.gloriateescucha.com/" target='_blank'>
                                                 <Image src="/etica.svg" width={54} height={44} alt='Gloria' />
@@ -167,11 +175,11 @@ const NavBar = () => {
                                         </div>
                                         <div>
                                             <a href="https://www.gloriateescucha.com/" target='_blank'>
-                                                <h4 className='parrafoPequeno celesteTxt'>LÍNEA ÉTICA</h4>
-                                                <h5 className='bannerParrafo'>Gloria te escucha</h5>
+                                                <h4>LÍNEA ÉTICA</h4>
+                                                <h5>Gloria te escucha</h5>
                                             </a>
                                         </div>
-                                    </div>
+                                    </div> */}
                                     <div className={`${styles.cierreFooter}`}>
                                         <div className={styles.redesBox}>
                                             <a href="/" target='_blank'>
@@ -188,8 +196,8 @@ const NavBar = () => {
                                             </a>
                                         </div>
                                         <div className={styles.LegalBox}>
-                                            <Link href='/terminos-y-condiciones' className="bannerParrafo">Términos y condiciones</Link>
-                                            <Link href='/politica-de-tratamiento-de-datos' className="bannerParrafo">Política de tratamiento de datos</Link>
+                                            <Link href='/terminos-y-condiciones' >Términos y condiciones</Link>
+                                            <Link href='/politica-de-tratamiento-de-datos'>Política de tratamiento de datos</Link>
 
                                         </div>
                                     </div>
@@ -197,6 +205,9 @@ const NavBar = () => {
                             </div>
                         </div>
                         <div>
+                            <div className={styles.bgCurva}>
+                                <Image src='/curvaPC.svg' width="155" height='880' alt='' />
+                            </div>
                             <div className={styles.bgContainer}>
                                 <Image src='/bgMenu.webp' width="1796" height='2360' alt='¡Comienza un nuevo regreso a clases! :: Detrás de un niño volviendo al cole, hay una mamá y papá dándolo todo. Conoce la nueva campaña de Gloria.' />
                             </div>
