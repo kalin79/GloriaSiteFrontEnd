@@ -1,7 +1,4 @@
-import { BannerInterface } from '@/interfaces/banner';
-import { VideoInterface } from '@/interfaces/video';
-import { VideoCampanaInterface } from '@/interfaces/campana';
-import { NoticiaInterface } from '@/interfaces/noticia';
+
 
 import CarruselBannerFullComponent from "@/components/carrusel/FullPage"
 
@@ -15,6 +12,11 @@ import PropositoComponet from "@/components/corporativo/somos/Proposito";
 
 import CarruselNoticiasComponent from "@/components/carrusel/CaruselNoticias";
 import LecherosComponet from "@/components/banners/Lecheros";
+
+import { BannerInterface } from '@/interfaces/banner';
+import { VideoInterface } from '@/interfaces/video';
+import { VideoCampanaInterface } from '@/interfaces/campana';
+import { NoticiaInterface } from '@/interfaces/noticia';
 
 export default function Home() {
     const videos: VideoInterface[] = [
@@ -300,9 +302,8 @@ export default function Home() {
             <CarruselBannerFullComponent multimediaContents={banners} />
             <div className="containerHomeMain">
                 <MarcasComponent />
-                <CarruselVideosComponent videos={videos} titularVideo="Gloria Contigo: " />
+                <CarruselVideosComponent videos={videos} titularVideo="Gloria Contigo: " colorTxt='' listFiltro={null} />
                 <CarruselCampanasComponent videosCampana={videosCampana} titularCampana="Campañas Gloria:" subtitularCampana="" />
-
                 <CarruselVideosHorizontalComponent videosHorizontales={videosHorizontales} titularVideoH="Tendencia en la" subTitularVideoH="comunidad Gloria Contigo" />
                 <CarruselProductsComponent />
                 <PropositoComponet />

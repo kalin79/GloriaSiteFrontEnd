@@ -1,7 +1,7 @@
 export interface BannerInterface {
     title: string;
     subTitle: string;
-    descripcionCorta: string;
+    descripcionCorta?: string;
     idMarca: number;
     marca: string;
     slugMarca: string;

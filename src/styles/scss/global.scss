@@ -322,13 +322,16 @@ body {
             background: $azulP;
 
             @media screen and (min-width: 992px) {
-                height: 290px;
+                height: auto;
             }
 
             .cardFooter {
                 background: $azulP;
                 padding: 1rem 2rem;
-                height: 111px;
+                height: 140px;
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
 
                 .dataVideoContent {
                     display: flex;

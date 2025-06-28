@@ -1,6 +1,6 @@
 'use client';
-import { useRef, useEffect } from "react";
-import { VideoInterface } from '@/interfaces/video';
+import { useRef, useEffect, useState } from "react";
+import { VideoInterface, FiltroVideosInterface } from '@/interfaces/video';
 
 import { useRouter } from "next/navigation";
 import { gsap } from "gsap"; // Importar GSAP
@@ -9,6 +9,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 // import VideoBanner from "@/components/videos/Banner"
 import PrevisualizacionComponent from "@/components/video/Previsualizacion";
+import styles from '@/styles/scss/video.module.scss';
 
 // Estilos swiper
 import 'swiper/css';
@@ -16,10 +17,13 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 interface Props {
     videos: VideoInterface[],
-    titularVideo: string
+    titularVideo: string,
+    colorTxt: string,
+    listFiltro: FiltroVideosInterface[] | null;
 }
-const CarruselVideos = ({ videos, titularVideo }: Props) => {
-
+const CarruselVideos = ({ videos, titularVideo, colorTxt, listFiltro }: Props) => {
+    const [videosData, setVideosData] = useState<VideoInterface[]>(videos);
+    const [filtroActivo, setFiltroActivo] = useState<string | null>(null);
     let isAnimating = false;
     const tlCard = gsap.timeline({ paused: false });
     // let animatingElement = null; // elemento actualmente animado
@@ -151,14 +155,38 @@ const CarruselVideos = ({ videos, titularVideo }: Props) => {
         return () => {
             // if (hoverTimeout.current) clearTimeout(hoverTimeout.current);
             document.querySelectorAll(".popupVideo").forEach(el => el.remove());
+            setVideosData(videos); // Reinicia videosData cuando cambian las props
         };
-    }, []);
+    }, [videos]);
+    // Manejar cambio de filtro
+    const handleFilter = (filtro: string | null) => {
+        setFiltroActivo(filtro);
+    };
     return (
         <div className={`videoPrevisualizacionContent`}>
             <div className={`containerFluid`}>
                 <div className={`headerContainer`}>
-                    <h2 className="titularGrande">{titularVideo}</h2>
+                    <h2 className={`titularGrande ${colorTxt != '' ? 'blancoTxt' : ''}`} >{titularVideo}</h2>
                 </div>
+                {
+                    listFiltro && listFiltro.length > 0 &&
+                    (
+                        <div className={styles.filtroContainer}>
+                            <button
+                                className={`parrafoMediano ${filtroActivo === null ? styles.active : ''}`}
+                                onClick={() => handleFilter(null)}
+                            >Ver todos</button>
+                            {
+                                listFiltro.map((item, index) => (
+                                    <button
+                                        className={`parrafoMediano ${filtroActivo === item.slug && item.slug !== '' ? styles.active : ''}`}
+                                        key={index}
+                                        onClick={() => handleFilter(item.slug)}>{item.nombre}</button>
+                                ))
+                            }
+                        </div>
+                    )
+                }
             </div>
             <div className={`listaReproduccionContainer`}>
                 <div>
@@ -186,7 +214,7 @@ const CarruselVideos = ({ videos, titularVideo }: Props) => {
                         }}
 
                     >
-                        {videos.map((item, index) => (
+                        {videosData.map((item, index) => (
                             <SwiperSlide
                                 key={index}
                                 className={`slideNetflix`}

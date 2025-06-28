@@ -7,3 +7,8 @@ export interface VideoInterface {
     video: string;
     colorMarca: string;
 }
+
+export interface FiltroVideosInterface {
+    nombre: string;
+    slug: string;
+}

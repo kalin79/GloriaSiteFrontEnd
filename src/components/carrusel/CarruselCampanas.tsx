@@ -21,9 +21,19 @@ const CarruselCampanas = ({ titularCampana, subtitularCampana, videosCampana }: 
     return (
         <div className={styles.listadoComponentContainer}>
             <div className={`containerFluid`}>
-                <div className={`${styles.titularHeader}`}>
-                    <h2 className="titularGrande">{titularCampana} <span className="blancoTxt">{subtitularCampana}</span></h2>
-                </div>
+                {
+                    subtitularCampana === '' ? (
+                        <div className={`${styles.titularHeader}`}>
+                            <h2 className="titularGrande">{titularCampana} <span className="blancoTxt">{subtitularCampana}</span></h2>
+                        </div>
+                    ) : (
+                        <div className={`${styles.titularHeader2}`}>
+                            <h3 className="titularPequeno">{titularCampana} </h3>
+                            <h2 className="titularGrande blancoTxt">{subtitularCampana}</h2>
+                        </div>
+                    )
+                }
+
             </div>
 
             <div className={`${styles.carruselCampanas}`}>

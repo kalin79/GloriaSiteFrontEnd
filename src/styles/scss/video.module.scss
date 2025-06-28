@@ -166,3 +166,29 @@
         z-index: 1; // Asegura que el ::before esté por encima del video
     }
 }
+
+.filtroContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+    padding-bottom: 1rem;
+
+    button {
+        background: transparent;
+        border: 1px solid rgba($celesteP, 1);
+        text-align: center;
+        border-radius: 30px;
+        padding: .5rem 1rem;
+        color: $celesteP;
+        transition: .5s ease-out all;
+
+        &:hover,
+        &.active {
+            background: rgba($celesteP, 1);
+            color: $azulP;
+        }
+    }
+}
