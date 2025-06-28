@@ -1,0 +1,451 @@
+@use 'vars/variables' as *;
+@use 'vars/mixins' as *;
+
+.containerLogin {
+    padding: 10rem 0 8rem 0;
+    background: url('/bgLogin.webp');
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+
+    .forgotContainer {
+        display: flex;
+        justify-content: flex-end;
+        padding-top: .5rem;
+
+        a {
+            text-decoration: none;
+            font-size: 0.875rem;
+            color: $celesteP;
+            font-weight: 400;
+        }
+    }
+
+    .gridContainer {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 1rem;
+
+        >div {
+            &:nth-of-type(1) {
+                &.bannerLogin {
+                    grid-column: 1 / -1;
+                    margin-top: 1.5rem;
+
+                    @media screen and (min-width: 768px) {
+                        grid-column: 1 / span 5;
+                    }
+
+                    .buttonBtn {
+                        font-size: 0.875rem;
+                        color: white;
+                        font-family: var(--fuente-poppins), sans-serif;
+                        font-weight: 500;
+                        margin-top: 1rem;
+                        display: inline-block;
+                        padding: .65rem 2rem .75rem;
+                        border-radius: 30px;
+                        text-decoration: none;
+                        border: 1px solid rgba(white, .10);
+                        background: rgba(white, .20);
+                        transition: .5s all ease-in;
+
+                        @media screen and (min-width: 992px) {
+                            margin-top: 3rem;
+                        }
+
+                        &:hover {
+                            background: rgba(white, .40);
+                        }
+                    }
+
+                    ul {
+                        margin-top: 1.5rem;
+
+                        li {
+                            color: white;
+                        }
+                    }
+
+                    h2 {
+                        color: $celesteP;
+                        font-size: 1.375rem;
+                    }
+
+                    p {
+                        font-size: 1rem;
+                        color: white;
+                        font-family: var(--fuente-poppins), sans-serif;
+                        font-weight: normal;
+
+                    }
+                }
+            }
+
+            &:nth-child(2) {
+                display: none;
+
+                @media screen and (min-width: 992px) {
+                    grid-column: 7 / span 1;
+                    border-left: 1px solid rgba(white, .20);
+                    display: block;
+                }
+            }
+
+            &:nth-of-type(3) {
+                grid-column: 1 / -1;
+                padding-left: 0rem;
+                margin-top: 2rem;
+
+                @media screen and (min-width: 768px) {
+                    grid-column: 7 / span 6;
+                    margin-top: 0;
+                }
+
+                @media screen and (min-width: 992px) {
+                    grid-column: 8 / span 4;
+                }
+
+                .formLoginContainer {
+                    h2 {
+                        color: $celesteP;
+                        font-size: 1.375rem;
+                        text-align: left;
+                    }
+
+
+                    form {
+                        margin-top: 1rem;
+
+                        >div {
+                            position: relative;
+                            margin-bottom: 1rem;
+
+                            input[type="text"],
+                            input[type="email"],
+                            input[type="password"] {
+                                background: transparent;
+                                width: 100%;
+                                height: 54px;
+                                border-radius: 30px;
+                                border: 1px solid rgba(white, .30);
+                                font-size: .85rem;
+                                color: white;
+                                font-family: var(--fuente-poppins), sans-serif;
+                                font-weight: normal;
+                                padding-left: 1.5rem;
+                                padding-right: 1.5rem;
+
+                                // @media screen and (min-width: 992px) {
+                                //     width: 400px;
+                                // }
+                            }
+
+                            input::placeholder {
+                                color: white;
+                            }
+
+                            &.buttonContainer {
+                                margin-top: 1rem;
+
+                                .buttonBtnForm {
+                                    width: 100%;
+                                }
+                            }
+
+
+
+                            .checkboxLabel {
+                                font-size: .75rem;
+                                color: white;
+                                font-family: var(--fuente-poppins), sans-serif;
+                                font-weight: normal;
+                                text-align: left;
+                                flex: 1;
+
+                                a {
+                                    font-size: .75rem;
+                                    color: white;
+                                    font-family: var(--fuente-poppins), sans-serif;
+                                    font-weight: normal;
+                                    text-align: left;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.headerTitleLogin {
+    h1 {
+        color: white;
+        font-size: 3.5rem;
+        line-height: .95em;
+        font-weight: 400;
+
+        @media screen and (min-width: 992px) {
+            font-size: 4rem;
+        }
+
+        @media screen and (min-width: 1200px) {
+            font-size: 4.25rem;
+        }
+
+        @media screen and (min-width: 1600px) {
+            font-size: 4.5rem;
+        }
+    }
+}
+
+.containerCreate {
+    padding: 10rem 0 8rem 0;
+    background: url('/bglogin.webp');
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+
+
+
+    .checkboxLabel {
+        font-size: .75rem;
+        color: white;
+        font-family: var(--fuente-poppins), sans-serif;
+        font-weight: normal;
+        text-align: left;
+        flex: 1;
+
+        a {
+            font-size: .75rem;
+            color: white;
+            font-family: var(--fuente-poppins), sans-serif;
+            font-weight: normal;
+            text-align: left;
+        }
+    }
+
+    .infoGracias {
+        margin-top: 1.5rem;
+
+        p {
+            color: white;
+            font-size: 1rem;
+            line-height: 1.75em;
+            margin: 0;
+        }
+
+
+    }
+
+    form {
+        .linkContainer {
+            .buttonBtn {
+                font-size: 0.875rem;
+                color: white;
+                font-family: var(--fuente-poppins), sans-serif;
+                font-weight: 500;
+                display: inline-block;
+                padding: .65rem 2rem .75rem;
+                border-radius: 30px;
+                text-decoration: none;
+                border: 1px solid rgba(white, .10);
+                background: rgba(white, .20);
+                transition: .5s all ease-in;
+                width: 100%;
+
+                &:hover {
+                    background: rgba(white, .40);
+                }
+            }
+        }
+
+
+
+        .centerContent {
+            p {
+                color: $celesteP;
+                font-size: .75rem;
+                line-height: 1.5em;
+                margin: 0;
+            }
+        }
+
+
+        h2 {
+            color: $celesteP;
+            font-size: 1.375rem;
+            line-height: 1.35em;
+
+            @media screen and (min-width: 992px) {
+                line-height: 2em;
+            }
+        }
+
+        >div {
+            position: relative;
+
+            input[type="text"],
+            input[type="email"],
+            input[type="date"],
+            input[type="password"] {
+                background: transparent;
+                width: 100%;
+                height: 54px;
+                border-radius: 30px;
+                border: 1px solid rgba(white, .30);
+                font-size: .85rem;
+                color: white;
+                font-family: var(--fuente-poppins), sans-serif;
+                font-weight: normal;
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+
+            input:hover,
+            input:focus {
+                outline: none;
+                box-shadow: none;
+                border: 1px solid rgba(white, .30);
+                /* O el estilo de borde que tú prefieras */
+            }
+
+            input::placeholder {
+                color: white;
+            }
+
+            .select {
+                background: transparent;
+                width: 100%;
+                height: 54px;
+                border-radius: 30px;
+                border: 1px solid rgba(white, .30);
+                font-size: .85rem;
+                color: white;
+                font-family: var(--fuente-poppins), sans-serif;
+                font-weight: normal;
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+
+            .buttonContainer {
+                margin-top: 1rem;
+
+                .buttonBtnForm {
+                    width: 100%;
+                }
+
+            }
+
+
+
+            .checkboxLabel {
+                font-size: .75rem;
+                color: white;
+                font-family: var(--fuente-poppins), sans-serif;
+                font-weight: normal;
+                text-align: left;
+                flex: 1;
+
+                a {
+                    font-size: .75rem;
+                    color: white;
+                    font-family: var(--fuente-poppins), sans-serif;
+                    font-weight: normal;
+                    text-align: left;
+                }
+            }
+        }
+    }
+
+    .gridContainer {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 1rem;
+        margin-bottom: 2rem;
+        margin-top: 1rem;
+
+
+
+
+
+        >div {
+            grid-column: 1 / -1;
+
+            &:first-child {
+                grid-column: 1 / -1;
+                margin-bottom: 1rem;
+
+            }
+
+            &:nth-child(2),
+            &:nth-child(4),
+            &:nth-child(6),
+            &:nth-child(8) {
+                @media screen and (min-width: 992px) {
+                    grid-column: 1 / span 4;
+                }
+            }
+
+            &:nth-child(3),
+            &:nth-child(5),
+            &:nth-child(7) {
+                @media screen and (min-width: 992px) {
+                    grid-column: 5 / span 4;
+                }
+            }
+
+
+            /* Ocupa 4 de las 12 columnas */
+        }
+    }
+
+    .gridContainer2 {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 1rem;
+        margin-bottom: 2rem;
+        margin-top: 1rem;
+
+        .centerContent {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        >div {
+            grid-column: 1 / -1;
+
+            &:nth-child(1) {
+                grid-column: 1 / -1;
+            }
+
+            &:nth-child(2),
+            &:nth-child(4),
+            &:nth-child(6),
+            &:nth-child(7),
+            &:nth-child(9),
+            &:nth-child(10),
+            &:nth-child(8),
+            &:nth-child(12) {
+                @media screen and (min-width: 992px) {
+                    grid-column: 1 / span 4;
+                }
+            }
+
+            &:nth-child(3),
+            &:nth-child(5),
+            &:nth-child(7),
+            &:nth-child(9),
+            &:nth-child(11) {
+                @media screen and (min-width: 992px) {
+                    grid-column: 5 / span 5;
+                }
+            }
+
+
+        }
+    }
+}

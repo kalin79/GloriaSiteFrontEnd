@@ -2,6 +2,285 @@
 @use 'vars/mixins' as *;
 
 
+.faseContainer {
+    margin-bottom: 8rem;
+
+    .gridContainer {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 1rem;
+
+        >div {
+            grid-column: 2 / span 10;
+
+            .gridContainer2 {
+                display: grid;
+                grid-template-columns: repeat(10, 1fr);
+                gap: 1rem;
+
+                >div {
+                    &:nth-child(2) {
+                        padding-top: 1rem;
+
+                        @media screen and (min-width: 768px) {
+                            padding-top: 3rem;
+                        }
+
+                        &.panelInfo {
+                            position: relative;
+
+                            .infoPopup {
+                                position: absolute;
+                                width: 100%;
+                                padding: 2rem 1rem;
+                                background: #D1D8F4;
+                                border-radius: 20px;
+                                z-index: 10;
+                                overflow: hidden;
+                                transition: background 0.3s ease;
+                                display: none;
+
+                                @media screen and (min-width: 768px) {
+                                    width: 610px;
+                                    padding: 2rem 2.5rem;
+                                    left: -10rem;
+                                }
+
+                                @media screen and (min-width: 992px) {
+                                    left: auto;
+                                }
+
+                                .contentInfo {
+                                    font-family: var(--fuente-misti), sans-serif;
+                                    font-size: 1rem;
+                                    font-weight: 400;
+                                    color: #5D5D5D;
+                                    margin-top: .75rem;
+
+                                    p {
+                                        font-family: var(--fuente-misti), sans-serif;
+                                        font-size: 1rem;
+                                        font-weight: 400;
+                                        color: #5D5D5D;
+                                        margin-top: .75rem;
+                                    }
+                                }
+
+                                .closePopup {
+                                    display: flex;
+                                    justify-content: flex-end;
+                                    cursor: pointer;
+                                }
+                            }
+                        }
+                    }
+
+                    .iconFase {
+                        width: 100%;
+                        height: auto;
+                        object-fit: contain;
+                    }
+
+                    h2 {
+                        font-size: 4.5rem;
+                        font-family: var(--fuente-misti), sans-serif;
+                        font-weight: 300;
+                        line-height: 1em;
+                        color: $celesteP;
+                    }
+
+                    button {
+                        border: 1px solid #D1D8F4;
+                        width: 120px;
+                        height: 38px;
+                        border-radius: 30px;
+                        background: transparent;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        gap: .5rem;
+                        margin-top: 1rem;
+
+                        span {
+                            font-size: 1rem;
+                            font-family: var(--fuente-misti), sans-serif;
+                            font-weight: 300;
+                            line-height: 1em;
+                            color: #D1D8F4;
+                        }
+                    }
+
+                    p {
+                        font-size: 1.75rem;
+                        font-family: var(--fuente-misti), sans-serif;
+                        font-weight: 400;
+                        line-height: 1.15em;
+                        color: $celesteP;
+
+                        @media screen and (min-width: 992px) {
+                            font-size: 1.5rem;
+                            line-height: 1.15em;
+                        }
+
+                        @media screen and (min-width: 1400px) {
+                            font-size: 1.65rem;
+                            line-height: 1.15em;
+                        }
+
+                        @media screen and (min-width: 1600px) {
+                            font-size: 1.75rem;
+                            line-height: 1.15em;
+                        }
+                    }
+                }
+            }
+
+            &:nth-child(odd) {
+                .gridContainer2 {
+                    >div {
+                        &:nth-child(1) {
+                            grid-column: 1 / -1;
+
+                            @media screen and (min-width: 768px) {
+                                grid-column: 1 / span 3;
+                            }
+
+                        }
+
+                        &:nth-child(2) {
+                            grid-column: 1 / -1;
+
+                            @media screen and (min-width: 768px) {
+                                grid-column: 4 / span 2;
+                            }
+                        }
+
+                        &:nth-child(3) {
+                            grid-column: 1 / -1;
+                            position: relative;
+                            display: flex;
+                            justify-content: center;
+
+                            @media screen and (min-width: 768px) {
+                                grid-column: 6 / span 3;
+                            }
+
+                            .flechaBox {
+                                width: 100%;
+                                height: auto;
+                                position: absolute;
+                                left: 0;
+                                bottom: 1rem;
+                                display: none;
+
+                                @media screen and (min-width: 768px) {
+                                    display: block;
+                                }
+
+                                @media screen and (min-width: 1400px) {
+                                    bottom: 4rem;
+                                }
+
+                                @media screen and (min-width: 1600px) {
+                                    bottom: 8rem;
+                                }
+                            }
+
+                            .flechaBoxM {
+                                width: auto;
+                                height: 80px;
+                                display: block;
+
+                                @media screen and (min-width: 768px) {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &:nth-child(even) {
+                .gridContainer2 {
+                    >div {
+                        &:nth-child(1) {
+                            grid-column: 1 / -1;
+                            position: relative;
+                            display: flex;
+                            justify-content: center;
+                            order: 3;
+
+                            @media screen and (min-width: 768px) {
+                                grid-column: 3 / span 3;
+                                order: 1;
+                            }
+
+                            .flechaBox {
+                                width: 100%;
+                                height: auto;
+                                position: absolute;
+                                left: 0;
+                                bottom: 1rem;
+                                display: none;
+
+                                @media screen and (min-width: 1400px) {
+                                    bottom: 4rem;
+                                    display: block;
+                                }
+
+                                @media screen and (min-width: 1600px) {
+                                    bottom: 8rem;
+                                }
+                            }
+
+                            .flechaBoxM {
+                                width: auto;
+                                height: 80px;
+                                display: block;
+
+                                @media screen and (min-width: 768px) {
+                                    display: none;
+                                }
+                            }
+                        }
+
+                        &:nth-child(2) {
+                            grid-column: 1 / -1;
+                            order: 2;
+
+                            @media screen and (min-width: 768px) {
+                                grid-column: 6 / span 2;
+                                order: 2;
+                            }
+
+                            &.panelInfo {
+                                position: relative;
+
+                                .infoPopup {
+                                    right: 0;
+                                }
+                            }
+                        }
+
+                        &:nth-child(3) {
+                            grid-column: 1 / -1;
+                            order: 1;
+
+                            @media screen and (min-width: 768px) {
+                                grid-column: 8 / span 3;
+                                order: 3;
+                            }
+
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+
 .plantaContainer {
     background: $cremaP;
 

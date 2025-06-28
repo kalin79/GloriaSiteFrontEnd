@@ -1,0 +1,39 @@
+@use 'vars/variables' as *;
+@use 'vars/mixins' as *;
+
+.legalContentContainer {
+    margin-top: -6rem;
+    padding-bottom: 8rem;
+
+    .gridContainer {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 1rem;
+
+        >div {
+            grid-column: 1/ -1;
+            font-family: var(--fuente-misti), sans-serif;
+            font-size: 1rem;
+            color: white;
+            font-weight: 400;
+
+            @media screen and (min-width: 992px) {
+                grid-column: 1/ span 9;
+            }
+
+            p,
+            li,
+            h2 {
+                font-family: var(--fuente-misti), sans-serif;
+                font-size: 1rem;
+                color: white;
+                font-weight: 400;
+            }
+
+            h2 {
+                margin: 1rem 0;
+                color: $celesteP;
+            }
+        }
+    }
+}

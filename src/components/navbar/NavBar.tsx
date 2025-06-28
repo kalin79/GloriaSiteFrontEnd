@@ -116,9 +116,9 @@ const NavBar = () => {
                                                     <li>
                                                         <Link href='/corporativo/sostenibilidad' onClick={handleCloseMenu}>Sostenibilidad</Link>
                                                     </li>
-                                                    {/* <li>
-                                                    <Link href='/corporativo/sostenibilidad/ciclo-de-vida' onClick={handleCloseMenu}>Ciclo de Vida</Link>
-                                                </li> */}
+                                                    <li>
+                                                        <Link href='/corporativo/sostenibilidad/ciclo-de-vida' onClick={handleCloseMenu}>Ciclo de Vida</Link>
+                                                    </li>
                                                     <li>
                                                         <Link href='/corporativo/sostenibilidad/las-latas' onClick={handleCloseMenu}>Las Latas</Link>
                                                     </li>
