@@ -20,7 +20,6 @@ const Footer = () => {
                                 <Link href="/corporativo/quienes-somos" className='parrafoMediano fontLight'>Quienes Somos</Link>
                                 <Link href="/corporativo/nuestro-compromiso" className='parrafoMediano fontLight'>Nuestro compromiso</Link>
                                 <Link href="/corporativo/ganaderos" className='parrafoMediano fontLight'>Ganaderos</Link>
-                                <Link href="/corporativo/informacion-financiera" className='parrafoMediano fontLight'>Información financiera</Link>
                                 <Link href="/corporativo/sostenibilidad" className='parrafoMediano fontLight'>Sostenibilidad</Link>
                                 <Link href="/noticias" className='parrafoMediano fontLight'>Noticias</Link>
                             </div>
@@ -44,12 +43,15 @@ const Footer = () => {
                         </div>
                         <div className={styles.gloriaAyudaContainer}>
                             <div>
-                                <h3 className='bannerParrafo'>Línea telefónica gratuita:</h3>
+                                <h3 className='titularPequeno celesteTxt'>Contáctanos:</h3>
+                            </div>
+                            <div>
+                                {/* <h3 className='bannerParrafo'>Línea telefónica gratuita:</h3> */}
                                 <h2 className='titularMedianoFooter fontLight'>0800-1-4441</h2>
                                 <p className='parrafoMediano celesteTxt'>De lunes a viernes de 8:00 am a 6:00 pm, sábado de 8:00 am a 12:00 pm</p>
                             </div>
                             <div>
-                                <h3 className='bannerParrafo'>Línea telefónica gratuita:</h3>
+                                {/* <h3 className='bannerParrafo'>Línea telefónica gratuita:</h3> */}
                                 <a href="mailto:contactcenterinforma@gloria.com.pe" className='titularMedianoFooter fontLight'>contactcenterinforma@gloria.com.pe</a>
                                 <p className='parrafoMediano celesteTxt'>De lunes a viernes de 8:00 am a 4:00 pm, sábado de 8:00 am a 11:00 am</p>
                             </div>

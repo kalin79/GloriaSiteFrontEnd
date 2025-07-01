@@ -40,7 +40,7 @@ export default function Marca() {
         {
             title: 'Loncheras divertidas y nutritivas para tus pequeños',
             idMarca: 1,
-            marca: 'Bonle',
+            marca: 'Bonlé',
             slug: 'lonceras-divertidas-y-nutricionales-para-tus-pequenos',
             imagen: '/videoimg.png',
             video: '/videocorto.mp4',
@@ -76,7 +76,7 @@ export default function Marca() {
         {
             title: 'Loncheras divertidas y nutritivas para tus pequeños',
             idMarca: 5,
-            marca: 'Bonle',
+            marca: 'Bonlé',
             slug: 'loncheras-divertidas-y-nutritivas-para-tus-pequenos',
             imagen: '/videoimg3.png',
             video: '/videocorto.mp4',
@@ -85,7 +85,7 @@ export default function Marca() {
         {
             title: 'Loncheras divertidas y nutritivas para tus pequeños',
             idMarca: 1,
-            marca: 'Bonle',
+            marca: 'Bonlé',
             slug: 'lonceras-divertidas-y-nutricionales-para-tus-pequenos',
             imagen: '/videoimg.png',
             video: '/videocorto.mp4',
@@ -121,7 +121,7 @@ export default function Marca() {
         {
             title: 'Loncheras divertidas y nutritivas para tus pequeños',
             idMarca: 5,
-            marca: 'Bonle',
+            marca: 'Bonlé',
             slug: 'loncheras-divertidas-y-nutritivas-para-tus-pequenos',
             imagen: '/videoimg2.png',
             video: '/videocorto.mp4',

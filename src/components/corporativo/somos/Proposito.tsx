@@ -15,8 +15,8 @@ const Proposito = () => {
                         <div className={styles.headerContainer}>
                             <h3 className='titularPequeno rojoTxt'>ESTRATEGIA GLORIA</h3>
                             <h2 className='titularExtraGrande azulTxt'>
-                                Construyendo un <br />
-                                <span className='boldMedium'>Perú nutritivo</span>
+                                Alimentando el progreso <br />
+                                <span className='boldMedium'>de los peruanos</span>
                             </h2>
                         </div>
                         <p className='parrafoMediano2'>

@@ -23,7 +23,7 @@ export default function Home() {
         {
             title: 'Loncheras divertidas y nutritivas para tus pequeños',
             idMarca: 1,
-            marca: 'Bonle',
+            marca: 'Bonlé',
             slug: 'lonceras-divertidas-y-nutricionales-para-tus-pequenos',
             imagen: '/videoimg.png',
             video: '/videocorto.mp4',
@@ -59,7 +59,7 @@ export default function Home() {
         {
             title: 'Loncheras divertidas y nutritivas para tus pequeños',
             idMarca: 5,
-            marca: 'Bonle',
+            marca: 'Bonlé',
             slug: 'loncheras-divertidas-y-nutritivas-para-tus-pequenos',
             imagen: '/videoimg3.png',
             video: '/videocorto.mp4',
@@ -68,7 +68,7 @@ export default function Home() {
         {
             title: 'Loncheras divertidas y nutritivas para tus pequeños',
             idMarca: 1,
-            marca: 'Bonle',
+            marca: 'Bonlé',
             slug: 'lonceras-divertidas-y-nutricionales-para-tus-pequenos',
             imagen: '/videoimg.png',
             video: '/videocorto.mp4',
@@ -104,7 +104,7 @@ export default function Home() {
         {
             title: 'Loncheras divertidas y nutritivas para tus pequeños',
             idMarca: 5,
-            marca: 'Bonle',
+            marca: 'Bonlé',
             slug: 'loncheras-divertidas-y-nutritivas-para-tus-pequenos',
             imagen: '/videoimg2.png',
             video: '/videocorto.mp4',
@@ -303,7 +303,7 @@ export default function Home() {
             <div className="containerHomeMain">
                 <MarcasComponent />
                 <CarruselVideosComponent videos={videos} titularVideo="Gloria Contigo: " colorTxt='' listFiltro={null} />
-                <CarruselCampanasComponent videosCampana={videosCampana} titularCampana="Campañas Gloria:" subtitularCampana="" />
+                <CarruselCampanasComponent videosCampana={videosCampana} titularCampana="Nuestras campañas:" subtitularCampana="" />
                 <CarruselVideosHorizontalComponent videosHorizontales={videosHorizontales} titularVideoH="Tendencia en la" subTitularVideoH="comunidad Gloria Contigo" />
                 <CarruselProductsComponent />
                 <PropositoComponet />

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Image from 'next/image'
 import Link from 'next/link'
 import ArrowSvg from '@/svg/arrow.svg';
-import ArrowDownSvg from '@/svg/arrow2.svg';
+// import ArrowDownSvg from '@/svg/arrow2.svg';
 import styles from '@/styles/scss/banner.module.scss';
 import { BannerInterface } from '@/interfaces/bannerInterno';
 import HtmlSafeRender from '@/components/HtmlSafeRender';
@@ -48,10 +48,10 @@ const Interno = ({ dataBanner }: Props) => {
                                 <HtmlSafeRender html={titulo} />
                             </h1>
                         </div>
-                        <div className={styles.btnContainer}>
+                        {/* <div className={styles.btnContainer}>
                             <p className='parrafoMediano2 rojoTxt boldMedium'>Más información</p>
                             <ArrowDownSvg className={styles.iconArrow} />
-                        </div>
+                        </div> */}
                     </div>
                     <div>
                         <div className={styles.curvaImg}>
