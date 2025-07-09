@@ -79,6 +79,11 @@
     @include propiedadResponsiva(line-height, $interlineadoParrafo);
 }
 
+%parrafoPequenoBse {
+    font-family: var(--font-misti), sans-serif;
+    @include propiedadResponsiva(line-height, $interlineadoParrafoPequeno);
+}
+
 %parrafoGrandeBse {
     font-family: var(--font-misti), sans-serif;
     @include propiedadResponsiva(line-height, $interlineadoParrafoGrande);
@@ -87,6 +92,11 @@
 %parrafoMedianoBse {
     font-family: var(--font-misti), sans-serif;
     @include propiedadResponsiva(line-height, $interlineadoParrafoMediano);
+}
+
+%parrafoMedianoBsePop {
+    font-family: var(--font-poppins), sans-serif;
+    @include propiedadResponsiva(line-height, $interlineadoParrafoMediano3);
 }
 
 %parrafoMedianoBse2 {

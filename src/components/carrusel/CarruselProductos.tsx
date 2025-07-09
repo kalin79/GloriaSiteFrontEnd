@@ -28,7 +28,7 @@ const CarruselProductos = () => {
     const products: ProductInterface[] = [
         {
             title: 'Leche Gloria UHT Entera',
-            presentacion: 'Presentación caja de 1 L',
+            descirpcionCorta: 'Presentación caja de 1 L',
             idMarca: 1,
             marca: 'Gloria',
             slug: 'leche-gloria-uht-entera',
@@ -37,7 +37,7 @@ const CarruselProductos = () => {
         },
         {
             title: 'LECHE EN POLVO INSTANTÁNEA',
-            presentacion: 'Presentación botella de 946 mL',
+            descirpcionCorta: 'Presentación botella de 946 mL',
             idMarca: 1,
             marca: 'Gloria',
             slug: 'leche-en-polvo-instantanea',
@@ -46,7 +46,7 @@ const CarruselProductos = () => {
         },
         {
             title: 'Yogurt Gloria Durazno',
-            presentacion: 'Presentación botella de 1 kg',
+            descirpcionCorta: 'Presentación botella de 1 kg',
             idMarca: 2,
             marca: 'BONLE',
             slug: 'bonle-uht-sin-lactosa',
@@ -55,7 +55,7 @@ const CarruselProductos = () => {
         },
         {
             title: 'Leche Gloria UHT Entera',
-            presentacion: 'Presentación caja de 1 L',
+            descirpcionCorta: 'Presentación caja de 1 L',
             idMarca: 1,
             marca: 'Gloria',
             slug: 'leche-gloria-uht-entera',
@@ -64,7 +64,7 @@ const CarruselProductos = () => {
         },
         {
             title: 'LECHE EN POLVO INSTANTÁNEA',
-            presentacion: 'Presentación botella de 946 mL',
+            descirpcionCorta: 'Presentación botella de 946 mL',
             idMarca: 1,
             marca: 'Gloria',
             slug: 'leche-en-polvo-instantanea',
@@ -73,7 +73,7 @@ const CarruselProductos = () => {
         },
         {
             title: 'Yogurt Gloria Durazno',
-            presentacion: 'Presentación botella de 1 kg',
+            descirpcionCorta: 'Presentación botella de 1 kg',
             idMarca: 2,
             marca: 'BONLE',
             slug: 'bonle-uht-sin-lactosa',
@@ -112,7 +112,7 @@ const CarruselProductos = () => {
                         favoritos.
                     </p>
                     <div className={`${styles.chefContent}`}>
-                        <Image src="/iconChef.svg" width={42} height={47} alt='Receta' />
+                        <Image src="/iconChef.svg" width={42} height={37} alt='Receta' />
                         <p className='parrafoMediano celesteTxt'>
                             Producto <br />con receta
                         </p>
@@ -122,7 +122,7 @@ const CarruselProductos = () => {
                     <div className={`${styles.headerContainer}`}>
                         <div>
                             <p className='parrafoMediano'>
-                                Filtrar productos por marca:
+                                Filtrar productos por tag:
                             </p>
                             <Select
                                 inputId="searchableProductHome"
@@ -154,7 +154,7 @@ const CarruselProductos = () => {
                                 >
                                     <CardComponent
                                         productContents={item}
-                                        onClick={() => handleClickViewVideo(item.slug, item.marca)}
+                                        onClick={() => { if (item.slug && item.marca) { handleClickViewVideo(item.slug, item.marca) } }}
                                     />
                                 </SwiperSlide>
                             ))}

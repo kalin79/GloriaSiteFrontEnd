@@ -131,7 +131,7 @@ $parrafoExtraGrande: (
 
 $interlineadoTituloGrande: (
     default: 1.75rem,
-    sm: 1rem,
+    sm: 1.5rem,
     md: 1.5rem,
     lg: 1.5rem,
 );
@@ -168,6 +168,12 @@ $interlineadoParrafoGrande: (
     md: 1.5rem,
     lg: 1.5rem,
 );
+$interlineadoParrafoPequeno: (
+    default: 1rem,
+    sm: 1rem,
+    md: 1rem,
+    lg: 1rem
+);
 $interlineadoParrafoExtraGrande: (
     default: 1.45rem,
     sm: 2rem,
@@ -175,10 +181,10 @@ $interlineadoParrafoExtraGrande: (
     lg: 3rem,
 );
 $interlineadoParrafoMediano: (
-    default: 1.5rem,
-    sm: 1.5rem,
-    md: 1.5rem,
-    lg: 1.5rem,
+    default: 1rem,
+    sm: 1rem,
+    md: 1rem,
+    lg: 1rem,
 );
 
 $interlineadoParrafoMediano2: (
@@ -186,6 +192,13 @@ $interlineadoParrafoMediano2: (
     sm: 1.35rem,
     md: 1.5rem,
     lg: 1.5rem,
+);
+
+$interlineadoParrafoMediano3: (
+    default: 2rem,
+    sm: 1.85rem,
+    md: 2rem,
+    lg: 2rem,
 );
 
 

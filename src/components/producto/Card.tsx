@@ -17,17 +17,17 @@ const Card = ({ productContents, onClick }: productParameters) => {
             {
                 (productContents.receta) && (
                     <div className={styles.recetacontent}>
-                        <Image src="/iconChef2.svg" width={60} height={68} alt='' />
+                        <Image src="/iconChef2.svg" width={42} height={40} alt='' />
                     </div>
                 )
             }
 
             <div className={styles.bodyCardBox}>
-                <Image src={productContents.imagen} width={656} height={858} alt='' />
+                <Image src={productContents.imagen || ''} width={656} height={858} alt='' />
             </div>
             <div className={styles.footerCardBox}>
                 <h4 className=''>{productContents.title}</h4>
-                <h2 className='parrafoMediano celesteTxt'>{productContents.presentacion}</h2>
+                <h2 className='parrafoMediano celesteTxt'>{productContents.descirpcionCorta || ''}</h2>
             </div>
         </div>
     )

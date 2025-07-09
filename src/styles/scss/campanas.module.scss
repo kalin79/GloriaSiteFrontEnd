@@ -96,3 +96,68 @@
         }
     }
 }
+
+.campanaContainerPage {
+    padding: 8rem 0;
+
+    .descriptionCampanaContainer {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 1rem;
+        padding-bottom: 8rem;
+        border-bottom: 1px solid rgba($celesteP, .2);
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: $celesteP;
+            cursor: pointer;
+        }
+
+        >div {
+            &:nth-of-type(1) {
+                grid-column: 2 / span 4;
+
+                .boxImagen {
+                    width: 100%;
+
+                    img {
+                        width: 100%;
+                        height: auto;
+                        object-fit: contain;
+                    }
+                }
+            }
+
+            &:nth-of-type(2) {
+                grid-column: 6 / span 6;
+                padding-top: 3rem;
+                padding-left: 1rem;
+
+                .legalesBox {
+                    display: flex;
+                    flex-direction: column;
+
+                    >a {
+                        position: relative;
+                        padding-left: .5rem;
+
+                        &:before {
+                            content: '';
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            width: 3px;
+                            height: 3px;
+                            border-radius: 50%;
+                            background: $celesteP;
+                            left: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

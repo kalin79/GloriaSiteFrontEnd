@@ -105,7 +105,7 @@ const LineaTiempo = () => {
                             <Image
                                 ref={imageRef}
                                 className={styles.imageBox}
-                                src="/lineatiempo.webp"
+                                src="/linea.svg"
                                 alt="Imagen grande"
                                 width={4096}
                                 height={857}

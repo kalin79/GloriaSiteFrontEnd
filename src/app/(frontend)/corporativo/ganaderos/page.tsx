@@ -13,10 +13,10 @@ const Ganaderos = () => {
         slugbread: '/corporativo/ganaderos',
     };
     const dataDescripcion = `
-        <p class='celesteTxt'>Desde 1942, Gloria viene acompañando a los ganaderos peruanos con el recojo de la leche de sus vacas, los 365 días del año.
+        <p class=''>Desde 1942, Gloria viene acompañando a los ganaderos peruanos con el recojo de la leche de sus vacas, los 365 días del año.
 La empresa Leche Gloria S.A. se constituye como tal el 5 de febrero de 1941. </p>
         <p>El apoyo constante a nuestros ganaderos peruanos va desde el crecimiento, desarrollo y modernización de sus unidades productivas a través de la implementación de equipos, infraestructura, servicios diversos, etc., complementado con asesorías técnicas especializadas en forma grupal e individual; así como herramientas para el cuidado y bienestar de sus animales.</p>
-        <span class='legalContent'>Gloria, a la vanguardia en el sector ganadero, viene trabajando en sinergia con el productor lechero peruano de la zona norte, centro y sur del país, lo cual redunda en un ecosistema sólido y responsable para alcanzar mejores fuentes de ingresos y calidad de vida para miles de familias ganaderas peruanas.</span>`;
+        <span class='legalContent azulTxt'>Gloria, a la vanguardia en el sector ganadero, viene trabajando en sinergia con el productor lechero peruano de la zona norte, centro y sur del país, lo cual redunda en un ecosistema sólido y responsable para alcanzar mejores fuentes de ingresos y calidad de vida para miles de familias ganaderas peruanas.</span>`;
     return (
         <div className='bgAzul'>
             <InternoBannerComponent dataBanner={dataBanner} />

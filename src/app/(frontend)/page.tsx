@@ -10,13 +10,13 @@ import CarruselVideosHorizontalComponent from "@/components/carrusel/CarruselVid
 import CarruselProductsComponent from "@/components/carrusel/CarruselProductos";
 import PropositoComponet from "@/components/corporativo/somos/Proposito";
 
-import CarruselNoticiasComponent from "@/components/carrusel/CaruselNoticias";
+// import CarruselNoticiasComponent from "@/components/carrusel/CaruselNoticias";
 import LecherosComponet from "@/components/banners/Lecheros";
 
 import { BannerInterface } from '@/interfaces/banner';
 import { VideoInterface } from '@/interfaces/video';
 import { VideoCampanaInterface } from '@/interfaces/campana';
-import { NoticiaInterface } from '@/interfaces/noticia';
+// import { NoticiaInterface } from '@/interfaces/noticia';
 
 export default function Home() {
     const videos: VideoInterface[] = [
@@ -264,39 +264,39 @@ export default function Home() {
         },
 
     ]
-    const noticias: NoticiaInterface[] = [
-        {
-            title: 'Ganadería: orgullo y unidad familiar que perdura en el tiempo.',
-            slug: 'ganaderia-orgullo-y-unidad-familiar-que-perdura-en-el-tiempo',
-            imagen: '/n1.png',
-        },
-        {
-            title: 'Renuevan certificaciones BASC y OEA',
-            slug: 'renuevan-certificaciones-basc-y-oea',
-            imagen: '/n2.png',
-        },
-        {
-            title: 'Leche Gloria regstra incremento de ventas en 32.9% en el 2024',
-            slug: 'leche-gloria-regstra-incremento-de-ventas-en-329-en-el-2024',
-            imagen: '/n3.png',
-        },
-        {
-            title: 'Ganadería: orgullo y unidad familiar que perdura en el tiempo.',
-            slug: 'ganaderia-orgullo-y-unidad-familiar-que-perdura-en-el-tiempo',
-            imagen: '/n4.png',
-        },
-        {
-            title: 'Renuevan certificaciones BASC y OEA',
-            slug: 'renuevan-certificaciones-basc-y-oea',
-            imagen: '/n2.png',
-        },
-        {
-            title: 'Leche Gloria regstra incremento de ventas en 32.9% en el 2024',
-            slug: 'leche-gloria-regstra-incremento-de-ventas-en-329-en-el-2024',
-            imagen: '/n3.png',
-        },
+    // const noticias: NoticiaInterface[] = [
+    //     {
+    //         title: 'Ganadería: orgullo y unidad familiar que perdura en el tiempo.',
+    //         slug: 'ganaderia-orgullo-y-unidad-familiar-que-perdura-en-el-tiempo',
+    //         imagen: '/n1.png',
+    //     },
+    //     {
+    //         title: 'Renuevan certificaciones BASC y OEA',
+    //         slug: 'renuevan-certificaciones-basc-y-oea',
+    //         imagen: '/n2.png',
+    //     },
+    //     {
+    //         title: 'Leche Gloria regstra incremento de ventas en 32.9% en el 2024',
+    //         slug: 'leche-gloria-regstra-incremento-de-ventas-en-329-en-el-2024',
+    //         imagen: '/n3.png',
+    //     },
+    //     {
+    //         title: 'Ganadería: orgullo y unidad familiar que perdura en el tiempo.',
+    //         slug: 'ganaderia-orgullo-y-unidad-familiar-que-perdura-en-el-tiempo',
+    //         imagen: '/n4.png',
+    //     },
+    //     {
+    //         title: 'Renuevan certificaciones BASC y OEA',
+    //         slug: 'renuevan-certificaciones-basc-y-oea',
+    //         imagen: '/n2.png',
+    //     },
+    //     {
+    //         title: 'Leche Gloria regstra incremento de ventas en 32.9% en el 2024',
+    //         slug: 'leche-gloria-regstra-incremento-de-ventas-en-329-en-el-2024',
+    //         imagen: '/n3.png',
+    //     },
 
-    ]
+    // ]
     return (
         <div className='bgBody'>
             <CarruselBannerFullComponent multimediaContents={banners} />
@@ -308,7 +308,7 @@ export default function Home() {
                 <CarruselProductsComponent />
                 <PropositoComponet />
                 <LecherosComponet />
-                <CarruselNoticiasComponent noticias={noticias} />
+                {/* <CarruselNoticiasComponent noticias={noticias} /> */}
 
             </div>
 

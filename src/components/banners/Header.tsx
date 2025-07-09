@@ -19,6 +19,14 @@ const Header = ({ multimediaContents }: multimediaParameters) => {
     }
     return (
         <>
+            {
+                multimediaContents.logoMarca?.trim() && (
+                    <div className='LogoProductoHeader'>
+                        <Image src={(multimediaContents.logoMarca ?? '/gloria.svg') as string} width={121} height={84} alt='' />
+                    </div>
+                )
+            }
+
             <div className={styles.bannerContainer}>
                 {
                     multimediaContents.type === 'image' ? (

@@ -265,6 +265,20 @@
                     padding: 3rem 5rem 4rem;
                 }
 
+                .logoGanadero {
+                    margin-bottom: 1rem;
+
+                    img {
+                        width: 120px;
+                        height: auto;
+                        object-fit: cover;
+
+                        @media screen and (min-width: 1400px) {
+                            width: 140px;
+                        }
+                    }
+                }
+
                 .footerContainer {
                     margin-top: 2rem;
                     display: flex;
@@ -291,6 +305,87 @@
                     }
                 }
             }
+
+        }
+    }
+
+    .bgFullPage {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: -900px 0;
+
+            @media screen and (min-width: 768px) {
+                object-position: center;
+            }
+        }
+    }
+}
+
+.BannerProductoContainer {
+    position: relative;
+    height: 700px;
+    padding-bottom: 4rem;
+
+
+    @media screen and (min-width: 768px) {
+        height: 620px;
+        padding-bottom: 0rem;
+    }
+
+    @media screen and (min-width: 992px) {
+        height: 620px;
+    }
+
+    @media screen and (min-width: 1200px) {
+        height: 600px;
+    }
+
+    @media screen and (min-width: 1400px) {
+        height: 700px;
+    }
+
+    @media screen and (min-width: 1600px) {
+        height: 780px;
+    }
+
+
+
+    .containerFluid {
+        height: 100%;
+    }
+
+    .gridContainer {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        position: relative;
+        z-index: 10;
+        height: 100%;
+
+        >div {
+            grid-column: 1 / -1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            height: 100%;
+
+            @media screen and (min-width: 768px) {
+                grid-column: 1 / span 6;
+                justify-content: center;
+            }
+
+            @media screen and (min-width: 1600px) {
+                grid-column: 1 / span 5;
+            }
+
+
 
         }
     }

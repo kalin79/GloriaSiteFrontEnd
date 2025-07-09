@@ -3,7 +3,7 @@
 
 
 .faseContainer {
-    margin-bottom: 8rem;
+    padding: 6rem 0 8rem;
 
     .gridContainer {
         display: grid;
@@ -30,7 +30,7 @@
                             position: relative;
 
                             .infoPopup {
-                                position: absolute;
+                                position: fixed;
                                 width: 100%;
                                 padding: 2rem 1rem;
                                 background: #D1D8F4;
@@ -39,11 +39,16 @@
                                 overflow: hidden;
                                 transition: background 0.3s ease;
                                 display: none;
+                                bottom: 0;
+                                left: 0;
 
                                 @media screen and (min-width: 768px) {
+                                    position: absolute;
                                     width: 610px;
                                     padding: 2rem 2.5rem;
                                     left: -10rem;
+                                    bottom: auto;
+                                    top: auto;
                                 }
 
                                 @media screen and (min-width: 992px) {
@@ -223,9 +228,12 @@
                                 bottom: 1rem;
                                 display: none;
 
+                                @media screen and (min-width: 768px) {
+                                    display: block;
+                                }
+
                                 @media screen and (min-width: 1400px) {
                                     bottom: 4rem;
-                                    display: block;
                                 }
 
                                 @media screen and (min-width: 1600px) {
@@ -282,7 +290,7 @@
 
 
 .plantaContainer {
-    background: $cremaP;
+    background: $celesteP;
 
     .gridContainer {
         display: grid;
@@ -620,7 +628,7 @@
 }
 
 .datosGanaderosContainer {
-    background: $cremaP;
+    background: $celesteP;
     padding: 5rem 0 4rem;
 
     .gridContainer {
@@ -708,9 +716,10 @@
 
 .descripcionMainContainer {
     padding: 4rem 0 6rem;
+    background: $cremaP;
 
     @media screen and (min-width: 992px) {
-        padding: 8rem 0 8rem;
+        padding: 4rem 0 5rem;
     }
 
     .gridContainer {
@@ -777,7 +786,7 @@
 
         p {
             @extend %parrafoExtraGrandeBse;
-            @include colorTexto(blanco);
+            @include colorTexto(azul);
             @include propiedadResponsiva(font-size, $parrafoExtraGrande);
             font-weight: 300;
             margin-bottom: 1rem;

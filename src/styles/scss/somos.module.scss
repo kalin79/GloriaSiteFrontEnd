@@ -49,10 +49,10 @@
 }
 
 .LineaContainer {
-    padding-bottom: 4rem;
+    padding: 4rem 0;
 
     @media screen and (min-width: 992px) {
-        padding-bottom: 10rem;
+        padding: 8rem 0 10rem;
     }
 
     .gridContainer {

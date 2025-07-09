@@ -11,6 +11,9 @@ const Lecheros = () => {
                 <div className={styles.gridContainer}>
                     <div>
                         <div className={styles.mantoContainer}>
+                            <div className={styles.logoGanadero}>
+                                <Image src="/logoLecheros2.svg" width={142} height={136} alt='Desarrollo Ganadero' />
+                            </div>
                             <div className={styles.titularContainer}>
                                 <h2 className='titularExtraGrande fontLight'>
                                     Día a dia con nuestros <span className='boldRegular celesteTxt'>productores lecheros</span>
@@ -22,9 +25,6 @@ const Lecheros = () => {
                             <div className={styles.footerContainer}>
                                 <div className={styles.btnContainer}>
                                     <a href="https://www.portalganaderogloria.com.pe/" className='btnStandart' target='_blank'>Ingresa aquí</a>
-                                </div>
-                                <div className={styles.logoGanadero}>
-                                    <Image src="/logoGanadero.svg" width={112} height={107} alt='Desarrollo Ganadero' />
                                 </div>
                             </div>
                         </div>

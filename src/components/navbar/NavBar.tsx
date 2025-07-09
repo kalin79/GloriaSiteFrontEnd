@@ -114,7 +114,7 @@ const NavBar = () => {
                                                 </div>
                                                 <ul>
                                                     <li>
-                                                        <Link href='/corporativo/sostenibilidad' onClick={handleCloseMenu}>Sostenibilidad</Link>
+                                                        <Link href='/corporativo/sostenibilidad' onClick={handleCloseMenu}>Nuestra Sostenibilidad</Link>
                                                     </li>
                                                     <li>
                                                         <Link href='/corporativo/sostenibilidad/ciclo-de-vida' onClick={handleCloseMenu}>Ciclo de Vida</Link>
@@ -123,11 +123,11 @@ const NavBar = () => {
                                                         <Link href='/corporativo/sostenibilidad/las-latas' onClick={handleCloseMenu}>Las Latas</Link>
                                                     </li>
                                                     <li>
-                                                        <Link href='/corporativo/sostenibilidad/lactea' onClick={handleCloseMenu}>Lactea</Link>
+                                                        <Link href='/corporativo/sostenibilidad/lactea' onClick={handleCloseMenu}>L&aacute;ctea</Link>
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <Link href='/noticias' onClick={handleCloseMenu}>Noticias</Link>
+                                            {/* <Link href='/noticias' onClick={handleCloseMenu}>Noticias</Link> */}
                                         </div>
                                     </div>
                                     <div className={styles.menuMultiple}>
@@ -154,7 +154,7 @@ const NavBar = () => {
                                             <Image src='/call.svg' className={styles.iconPhone} width="23" height='20' alt='0800-1-84441' />
                                             <div>
                                                 <h2>0800-1-4441</h2>
-                                                <p>De lunes a viernes de 8:00 am a 6:00 pm, sábado de 8:00 am a 12:00 pm</p>
+                                                <p className="blancoTxt">De lunes a viernes de 8:00 am a 6:00 pm, sábado de 8:00 am a 12:00 pm</p>
                                             </div>
                                         </div>
                                     </div>
@@ -163,7 +163,7 @@ const NavBar = () => {
                                             <Image src='/mail.svg' className={styles.iconMail} width="20" height='16' alt='contactcenterinforma@gloria.com.pe' />
                                             <div>
                                                 <a href="mailto:contactcenterinforma@gloria.com.pe">contactcenterinforma@gloria.com.pe</a>
-                                                <p>De lunes a viernes de 8:00 am a 4:00 pm, sábado de 8:00 am a 11:00 am</p>
+                                                <p className="blancoTxt">De lunes a viernes de 8:00 am a 4:00 pm, sábado de 8:00 am a 11:00 am</p>
                                             </div>
                                         </div>
                                     </div>
@@ -181,7 +181,7 @@ const NavBar = () => {
                                         </div>
                                     </div> */}
                                     <div className={`${styles.cierreFooter}`}>
-                                        <div className={styles.redesBox}>
+                                        {/* <div className={styles.redesBox}>
                                             <a href="/" target='_blank'>
                                                 <Image src="/facebook.svg" width={32} height={32} alt='Facebook' />
                                             </a>
@@ -194,7 +194,7 @@ const NavBar = () => {
                                             <a href="/" target='_blank'>
                                                 <Image src="/linkedin.svg" width={32} height={32} alt='Linkedin' />
                                             </a>
-                                        </div>
+                                        </div> */}
                                         <div className={styles.LegalBox}>
                                             <Link href='/terminos-y-condiciones' >Términos y condiciones</Link>
                                             <Link href='/politica-de-tratamiento-de-datos'>Política de tratamiento de datos</Link>

@@ -24,7 +24,7 @@ const LatasBeneficios = ({ items }: AccordionProps) => {
                         </div>
                     </div>
                     <div>
-                        <h2 className='titularMediano celesteTxt fontLight'>Estos son sus principales beneficios</h2>
+                        <h2 className='titularExtraGrande celesteTxt fontLight'>Estos son sus principales beneficios</h2>
                         <div className={styles.AccordionContainer}>
                             {items.map((item, index) => (
                                 <div key={index} className={`${styles.itemBox} ${openIndex === index ? styles.active : ''}`}>
