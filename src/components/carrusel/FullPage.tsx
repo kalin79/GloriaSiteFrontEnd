@@ -14,8 +14,9 @@ import 'swiper/css/pagination';
 
 interface multimediaParameters {
     multimediaContents: BannerInterface[];
+    viewLogo?: boolean;
 }
-const FullPage = ({ multimediaContents }: multimediaParameters) => {
+const FullPage = ({ multimediaContents, viewLogo = true }: multimediaParameters) => {
     return (
         <>
             <Swiper
@@ -32,7 +33,7 @@ const FullPage = ({ multimediaContents }: multimediaParameters) => {
                     <SwiperSlide
                         key={index}
                     >
-                        <BannerPrincipalComponent multimediaContents={item} />
+                        <BannerPrincipalComponent multimediaContents={item} viewLogo={viewLogo} />
                     </SwiperSlide>
                 ))}
 

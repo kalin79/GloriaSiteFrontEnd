@@ -9,12 +9,13 @@ import dynamic from 'next/dynamic';
 import styles from '@/styles/scss/banner.module.scss';
 interface multimediaParameters {
     multimediaContents: BannerInterface;
+    viewLogo?: boolean;
 }
 const Lightbox = dynamic(() => import('@/components/popup/Video'), {
     ssr: false, // importante si el video usa APIs del navegador
-    loading: () => <p>Cargando video...</p>,
+    loading: () => <p>Cargando video...</p>
 })
-const Header = ({ multimediaContents }: multimediaParameters) => {
+const Header = ({ multimediaContents, viewLogo = true }: multimediaParameters) => {
     const [showVideo, setShowVideo] = useState(false);
     const router = useRouter();
     // const [isOpen, setIsOpen] = useState(false);
@@ -27,7 +28,7 @@ const Header = ({ multimediaContents }: multimediaParameters) => {
     return (
         <>
             {
-                multimediaContents.logoMarca?.trim() && (
+                (multimediaContents.logoMarca?.trim() && viewLogo) && (
                     <div className='LogoProductoHeader'>
                         <Image src={(multimediaContents.logoMarca ?? '/gloria.svg') as string} width={121} height={84} alt='' />
                     </div>

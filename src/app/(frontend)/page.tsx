@@ -138,7 +138,7 @@ export default function Home() {
             multimedia: '/videocorto.mp4',
             like: '',
             duracion: '',
-            logoMarca: 'gloria.svg',
+            logoMarca: '/gloria.svg',
         },
 
     ]
@@ -299,7 +299,7 @@ export default function Home() {
     // ]
     return (
         <div className='bgBody'>
-            <CarruselBannerFullComponent multimediaContents={banners} />
+            <CarruselBannerFullComponent multimediaContents={banners} viewLogo={false} />
             <div className="containerHomeMain">
                 <MarcasComponent />
                 <CarruselVideosComponent videos={videos} titularVideo="Gloria Contigo: " colorTxt='' listFiltro={null} />
