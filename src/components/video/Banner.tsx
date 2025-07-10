@@ -7,7 +7,6 @@ const Banner = () => {
             <div className={styles.videoFullPage}>
                 <video width="100%" height="100%"
                     autoPlay // Reproducir automáticamente
-                    muted   // Silenciar el video
                     loop    // (Opcional) Repetir el video en bucle
                     controls={false} // Ocultar controles
                 >

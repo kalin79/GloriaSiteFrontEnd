@@ -58,6 +58,7 @@ export default function RootLayout({
           {/* <SuscribeteComponent /> */}
           <FooterComponent />
         </SessionAuthProvider>
+        <div id="modal-root" />
       </body>
     </html>
   );

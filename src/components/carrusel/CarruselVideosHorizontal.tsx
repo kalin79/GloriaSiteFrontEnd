@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import { VideoInterface } from '@/interfaces/video';
 
-import PrevisualizacionHorizontalComponent from "@/components/video/PrevisualizacionHorzontal";
+import PrevisualizacionHorizontalComponent from "@/components/video/PrevisualizacionHorizontalV";
 
 // Estilos swiper 
 import 'swiper/css';

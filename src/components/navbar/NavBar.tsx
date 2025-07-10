@@ -139,7 +139,7 @@ const NavBar = () => {
                                             <Image src='/arrow2.svg' className={styles.arrowBox} width="28" height='14' alt='Gloria' />
                                         </div>
                                         <div className={`${styles.menuMultipleListado} ${isMenuMarcas ? `${styles.active}` : ''}`} >
-                                            <Link href='/quienes-somos' onClick={handleCloseMenu}>Gloria</Link>
+                                            <Link href='/gloria' onClick={handleCloseMenu}>Gloria</Link>
                                             <Link href='/bonle' onClick={handleCloseMenu}>Bonl&eacute;</Link>
                                             <Link href='/pro' onClick={handleCloseMenu}>Pro</Link>
                                             <Link href='/actibio' onClick={handleCloseMenu}>ActiBio</Link>

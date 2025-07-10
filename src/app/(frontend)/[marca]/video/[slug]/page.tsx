@@ -15,7 +15,7 @@ const Video = () => {
         slugMarca: '',
         slug: '/corporativo/quienes-somos',
         type: 'video',
-        multimedia: '/bhome.webp',
+        multimedia: '/videocorto.mp4',
         like: '',
         duracion: '',
     };

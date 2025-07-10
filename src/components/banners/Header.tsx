@@ -1,14 +1,21 @@
 'use client';
+import { useState } from 'react';
 import { useRouter } from "next/navigation";
 import Image from 'next/image';
-import VideoBanner from "@/components/video/Banner"
+import VideoBanner from "@/components/video/Banner";
+import Portal from '@/components/Portal';
 import { BannerInterface } from '@/interfaces/banner';
-
+import dynamic from 'next/dynamic';
 import styles from '@/styles/scss/banner.module.scss';
 interface multimediaParameters {
     multimediaContents: BannerInterface;
 }
+const Lightbox = dynamic(() => import('@/components/popup/Video'), {
+    ssr: false, // importante si el video usa APIs del navegador
+    loading: () => <p>Cargando video...</p>,
+})
 const Header = ({ multimediaContents }: multimediaParameters) => {
+    const [showVideo, setShowVideo] = useState(false);
     const router = useRouter();
     // const [isOpen, setIsOpen] = useState(false);
     // const irVerVideo = (items: BannerInterface) => {
@@ -26,7 +33,14 @@ const Header = ({ multimediaContents }: multimediaParameters) => {
                     </div>
                 )
             }
-
+            {showVideo && (
+                <Portal>
+                    <Lightbox
+                        videoData={multimediaContents}
+                        onClose={() => setShowVideo(false)}
+                    />
+                </Portal>
+            )}
             <div className={styles.bannerContainer}>
                 {
                     multimediaContents.type === 'image' ? (
@@ -84,7 +98,7 @@ const Header = ({ multimediaContents }: multimediaParameters) => {
                                                             <p className="bannerParrafo">Duración: 23 seg</p>
                                                         </div>
                                                     </div>
-                                                    <button className={`btnStandart ${styles.btnStandart}`} onClick={() => irVerContenido(multimediaContents)}>
+                                                    <button className={`btnStandart ${styles.btnStandart}`} onClick={() => setShowVideo(true)}>
                                                         <span>Reproducir</span>
                                                         <Image src='/play4.svg' width={14} height={16} alt="" />
                                                     </button>
