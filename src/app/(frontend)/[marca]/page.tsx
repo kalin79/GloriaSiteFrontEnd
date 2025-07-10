@@ -138,7 +138,7 @@ export default function Marca() {
         slugMarca: '/gloria/',
         slug: '/gloria/',
         type: 'video',
-        multimedia: '/bhome.webp',
+        multimedia: '/videocorto.mp4',
         like: '32',
         duracion: '23 seg',
         logoMarca: '/gloriaMarca.svg',
