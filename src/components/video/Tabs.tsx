@@ -1,7 +1,10 @@
 'use client';
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import VideoComponent from "@/components/video/CardVideo";
 import Image from 'next/image';
+import gsap from 'gsap';
+import Draggable from 'gsap/Draggable';
+gsap.registerPlugin(Draggable);
 import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from '@/styles/scss/tabs.module.scss';
 import { Navigation } from 'swiper/modules';
@@ -20,6 +23,8 @@ interface VideoContent {
     like: number;
 }
 const Tabs = () => {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const wrapperRef = useRef<HTMLDivElement>(null);
     const videos: VideoContent[] = [
         {
             title: 'Loncheras divertidas y nutritivas para tus pequeños',
@@ -133,9 +138,39 @@ const Tabs = () => {
         },
     ]
     const [activeTab, setActiveTab] = useState(0);
+    useEffect(() => {
+        if (containerRef.current && wrapperRef.current) {
+            const tabElements = Array.from(containerRef.current.children) as HTMLElement[];
+            // Calcular ancho total dinámico
+            const totalWidth = tabElements.reduce((acc, el) => acc + el.offsetWidth + 30, 0); // 12 = gap
+            containerRef.current.style.width = `${totalWidth}px`; // ⬅️ asignamos el ancho real
+
+            Draggable.create(containerRef.current, {
+                type: 'x',
+                edgeResistance: 0.85,
+                bounds: wrapperRef.current,
+                inertia: true,
+                dragClickables: true,
+            })
+        }
+    }, [])
     return (
         <>
             <div className={styles.tabsContainer}>
+                <div className={styles.headerContainerMovil} ref={wrapperRef}>
+                    <div className={styles.listTabs} ref={containerRef}>
+                        <div
+                            className={`parrafoMediano ${0 === activeTab ? styles.active : ''}`}
+                            onClick={() => setActiveTab(0)}
+                        >
+                            SUGERENCIAS
+                        </div>
+                        <div
+                            className={`parrafoMediano ${1 === activeTab ? styles.active : ''}`}
+                            onClick={() => setActiveTab(1)}
+                        >DETALLES</div>
+                    </div>
+                </div>
                 <div className={styles.headerContainer}>
                     <div
                         className={`parrafoMediano celesteTxt ${0 === activeTab ? styles.active : ''}`}

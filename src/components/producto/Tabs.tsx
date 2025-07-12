@@ -10,7 +10,7 @@ const Tabs = () => {
     // const pathname = usePathname(); // Obtiene la ruta actual (ej: "/productos")
     // const searchParams = useSearchParams(); // Obtiene los query params (ej: "?id=123")
     const containerRef = useRef<HTMLDivElement>(null);
-    const wrapperRef = useRef<HTMLDivElement>(null)
+    const wrapperRef = useRef<HTMLDivElement>(null);
     const fullURL = typeof window !== "undefined" ? window.location.href : "";
 
     const [activeTab, setActiveTab] = useState(0);

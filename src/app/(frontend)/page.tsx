@@ -135,7 +135,7 @@ export default function Home() {
             slugMarca: 'gloria',
             slug: 'como-potenciar-el-aprendizaje-de-tus-hijos-desde-casa',
             type: 'video',
-            multimedia: '/videocorto.mp4',
+            multimedia: '/videoPrueba.mp4',
             like: '',
             duracion: '',
             logoMarca: '/gloria.svg',

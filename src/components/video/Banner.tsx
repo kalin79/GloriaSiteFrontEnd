@@ -9,6 +9,8 @@ const Banner = () => {
                     autoPlay // Reproducir automáticamente
                     loop    // (Opcional) Repetir el video en bucle
                     controls={false} // Ocultar controles
+                    muted
+                    playsInline
                 >
                     <source src="/videocorto.mp4" type="video/mp4" />
                     Tu navegador no soporta la etiqueta de video.
