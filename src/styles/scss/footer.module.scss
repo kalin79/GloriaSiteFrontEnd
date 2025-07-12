@@ -21,6 +21,10 @@
             text-decoration: none;
         }
 
+        .eticaContainer {
+            margin-top: 2rem;
+        }
+
         .gloriaAyudaContainer {
             >div {
                 margin-bottom: 1rem;
@@ -35,8 +39,10 @@
         }
 
         .legalesContainer {
+
             a {
-                display: inline-block;
+                display: block;
+                line-height: 1.5em;
             }
         }
 
@@ -70,6 +76,7 @@
         .logoContainer {
             display: flex;
             justify-content: center;
+            margin-bottom: 2rem;
         }
     }
 

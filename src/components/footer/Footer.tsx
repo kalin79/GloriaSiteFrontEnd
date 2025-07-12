@@ -100,7 +100,7 @@ const Footer = () => {
                             <Image src="/logoCorp.svg" width={120} height={40} alt='Gloria' />
                         </Link>
                     </div>
-                    <div className={styles.redesBox}>
+                    {/* <div className={styles.redesBox}>
                         <a href="/" target='_blank'>
                             <Image src="/facebook.svg" width={32} height={32} alt='Facebook' />
                         </a>
@@ -113,17 +113,16 @@ const Footer = () => {
                         <a href="/" target='_blank'>
                             <Image src="/linkedin.svg" width={32} height={32} alt='Linkedin' />
                         </a>
-                    </div>
+                    </div> */}
                     <div className={styles.gloriaAyudaContainer}>
                         <div>
-                            <h3 className='bannerParrafo'>Línea telefónica gratuita:</h3>
+                            <h3 className='bannerParrafo celesteTxt boldMedium'>Atención al cliente:</h3>
                             <h2 className='titularMedianoFooter fontLight'>0800-1-4441</h2>
-                            <p className='parrafoMediano celesteTxt'>De lunes a viernes de 8:00 am a 6:00 pm, sábado de 8:00 am a 12:00 pm</p>
+                            <p className='parrafoMediano'>De lunes a viernes de 8:00 am a 6:00 pm, sábado de 8:00 am a 12:00 pm</p>
                         </div>
                         <div>
-                            <h3 className='bannerParrafo'>Línea telefónica gratuita:</h3>
                             <a href="mailto:contactcenterinforma@gloria.com.pe" className='titularMedianoFooter fontLight'>contactcenterinforma@gloria.com.pe</a>
-                            <p className='parrafoMediano celesteTxt'>De lunes a viernes de 8:00 am a 4:00 pm, sábado de 8:00 am a 11:00 am</p>
+                            <p className='parrafoMediano'>De lunes a viernes de 8:00 am a 4:00 pm, sábado de 8:00 am a 11:00 am</p>
                         </div>
                         <div className={styles.eticaContainer}>
                             <div>

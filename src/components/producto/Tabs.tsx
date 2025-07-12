@@ -112,7 +112,7 @@ const Tabs = () => {
                                                 <Image src='/photo.png' fill alt="" />
                                             </div>
                                             <div className={styles.curvaV}>
-                                                <Image src='/curvaM.svg' width={440} height={120} alt="" />
+                                                <Image src='/curvaM2.svg' width={440} height={120} alt="" />
                                             </div>
                                         </div>
                                         <div className={styles.spaceColumn}>
@@ -205,7 +205,7 @@ const Tabs = () => {
                                                 <Image src='/receta.png' fill alt="" />
                                             </div>
                                             <div className={styles.curvaV}>
-                                                <Image src='/curvaM.svg' width={440} height={120} alt="" />
+                                                <Image src='/curvaM2.svg' width={440} height={120} alt="" />
                                             </div>
                                         </div>
                                         <div className={styles.spaceColumn}>

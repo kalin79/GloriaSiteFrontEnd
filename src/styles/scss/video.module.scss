@@ -198,6 +198,7 @@
                     position: absolute;
                     top: -2rem;
                     left: 0rem;
+                    width: 100%;
 
                     img {
                         width: 100%;
@@ -312,28 +313,34 @@
     }
 }
 
-.filtroContainer {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 1.5rem;
-    flex-wrap: wrap;
-    padding-bottom: 1rem;
+.ScrollContainerFiltro {
+    overflow: hidden;
 
-    button {
-        background: transparent;
-        border: 1px solid rgba($celesteP, 1);
-        text-align: center;
-        border-radius: 30px;
-        padding: .5rem 1rem;
-        color: $celesteP;
-        transition: .5s ease-out all;
+    .filtroContainer {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 1.5rem;
+        flex-wrap: wrap;
+        padding-bottom: 1rem;
+        overflow: hidden;
+        min-width: 100%;
 
-        &:hover,
-        &.active {
-            background: rgba($celesteP, 1);
-            color: $azulP;
+        button {
+            background: transparent;
+            border: 1px solid rgba($celesteP, 1);
+            text-align: center;
+            border-radius: 30px;
+            padding: .5rem 1rem;
+            color: $celesteP;
+            transition: .5s ease-out all;
+
+            &:hover,
+            &.active {
+                background: rgba($celesteP, 1);
+                color: $azulP;
+            }
         }
     }
 }

@@ -4,7 +4,8 @@ import { VideoInterface, FiltroVideosInterface } from '@/interfaces/video';
 
 import { useRouter } from "next/navigation";
 import { gsap } from "gsap"; // Importar GSAP
-
+import Draggable from 'gsap/Draggable';
+gsap.registerPlugin(Draggable);
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 // import VideoBanner from "@/components/videos/Banner"
@@ -24,6 +25,8 @@ interface Props {
 const CarruselVideos = ({ videos, titularVideo, colorTxt, listFiltro }: Props) => {
     const [videosData, setVideosData] = useState<VideoInterface[]>(videos);
     const [filtroActivo, setFiltroActivo] = useState<string | null>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const wrapperRef = useRef<HTMLDivElement>(null)
     let isAnimating = false;
     const tlCard = gsap.timeline({ paused: false });
     // let animatingElement = null; // elemento actualmente animado
@@ -158,6 +161,22 @@ const CarruselVideos = ({ videos, titularVideo, colorTxt, listFiltro }: Props) =
             setVideosData(videos); // Reinicia videosData cuando cambian las props
         };
     }, [videos]);
+    useEffect(() => {
+        if (containerRef.current && wrapperRef.current) {
+            const tabElements = Array.from(containerRef.current.children) as HTMLElement[];
+            // Calcular ancho total dinámico
+            const totalWidth = tabElements.reduce((acc, el) => acc + el.offsetWidth + 30, 0); // 12 = gap
+            containerRef.current.style.width = `${totalWidth}px`; // ⬅️ asignamos el ancho real
+
+            Draggable.create(containerRef.current, {
+                type: 'x',
+                edgeResistance: 0.85,
+                bounds: wrapperRef.current,
+                inertia: true,
+                dragClickables: true,
+            })
+        }
+    }, [])
     // Manejar cambio de filtro
     const handleFilter = (filtro: string | null) => {
         setFiltroActivo(filtro);
@@ -168,22 +187,25 @@ const CarruselVideos = ({ videos, titularVideo, colorTxt, listFiltro }: Props) =
                 <div className={`headerContainer`}>
                     <h2 className={`titularGrande ${colorTxt != '' ? 'blancoTxt' : ''}`} >{titularVideo}</h2>
                 </div>
+
                 {
                     listFiltro && listFiltro.length > 0 &&
                     (
-                        <div className={styles.filtroContainer}>
-                            <button
-                                className={`parrafoMediano ${filtroActivo === null ? styles.active : ''}`}
-                                onClick={() => handleFilter(null)}
-                            >Ver todos</button>
-                            {
-                                listFiltro.map((item, index) => (
-                                    <button
-                                        className={`parrafoMediano ${filtroActivo === item.slug && item.slug !== '' ? styles.active : ''}`}
-                                        key={index}
-                                        onClick={() => handleFilter(item.slug)}>{item.nombre}</button>
-                                ))
-                            }
+                        <div className={styles.ScrollContainerFiltro} ref={wrapperRef}>
+                            <div className={styles.filtroContainer} ref={containerRef}>
+                                <button
+                                    className={`parrafoMediano ${filtroActivo === null ? styles.active : ''}`}
+                                    onClick={() => handleFilter(null)}
+                                >Ver todos</button>
+                                {
+                                    listFiltro.map((item, index) => (
+                                        <button
+                                            className={`parrafoMediano ${filtroActivo === item.slug && item.slug !== '' ? styles.active : ''}`}
+                                            key={index}
+                                            onClick={() => handleFilter(item.slug)}>{item.nombre}</button>
+                                    ))
+                                }
+                            </div>
                         </div>
                     )
                 }
