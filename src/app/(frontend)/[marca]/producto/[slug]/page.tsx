@@ -70,11 +70,9 @@ export default function Producto() {
             <div className="bgGloria">
                 <BannerPrincipalComponent multimediaContents={banners} />
                 <div className={`${styles.productoContainerPage}`}>
-                    <div className="containerFluid">
-                        <DetallePrincipalComponent productoData={producto} />
-                        <TabsComponent />
-                        <CarruselProductsRelacionadosComponent />
-                    </div>
+                    <DetallePrincipalComponent productoData={producto} />
+                    <TabsComponent />
+                    {/* <CarruselProductsRelacionadosComponent /> */}
                 </div>
             </div>
         </>

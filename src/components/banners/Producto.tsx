@@ -8,6 +8,7 @@ interface Props {
     multimediaContents: BannerInterface;
 }
 const Producto = ({ multimediaContents }: Props) => {
+
     return (
         <>
             <div className='LogoProductoHeader'>

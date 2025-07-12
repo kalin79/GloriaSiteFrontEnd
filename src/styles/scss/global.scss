@@ -256,9 +256,13 @@ h4 {
     z-index: 6000;
 
     img {
-        width: 121px;
+        width: 80px;
         height: auto;
         object-fit: cover;
+
+        @media screen and (min-width: 768px) {
+            width: 121px;
+        }
     }
 }
 
@@ -447,6 +451,49 @@ h4 {
         }
 
 
+    }
+}
+
+.bannerCarruselProducto {
+    .swiper-pagination {
+        .swiper-pagination-bullet {
+            width: 16px;
+            height: 16px;
+            border: 1px solid rgba($celesteP, 1);
+        }
+
+        .swiper-pagination-bullet-active {
+            background: $celesteP;
+        }
+    }
+
+    .swiper-button-next {
+        background: $azulC;
+        border-radius: 10px;
+        width: 42px;
+        height: 42px;
+        box-sizing: border-box;
+        right: 0rem;
+
+        &::after {
+            color: white;
+            z-index: 1;
+            font-size: 1.5rem;
+        }
+    }
+
+    .swiper-button-prev {
+        background: $azulC;
+        border-radius: 10px;
+        width: 42px;
+        height: 42px;
+        box-sizing: border-box;
+        left: 0rem;
+
+        &::after {
+            color: white;
+            font-size: 1.5rem;
+        }
     }
 }
 

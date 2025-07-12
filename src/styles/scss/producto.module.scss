@@ -309,7 +309,7 @@
 }
 
 .productoContainerPage {
-    margin-top: 0rem;
+    margin-top: -8rem;
     position: relative;
     z-index: 30;
 
@@ -320,7 +320,13 @@
     .detailHeaderContainer {
         background: rgba($azulP, .6);
         border-radius: 20px;
-        padding: 8rem 0 3rem;
+        padding: 4rem 0 3rem;
+        margin: 0rem;
+
+        @media screen and (min-width: 768px) {
+            padding: 8rem 0 3rem;
+            margin: 0 1rem;
+        }
 
         .gridContainer {
             display: grid;
@@ -329,11 +335,47 @@
 
             >div {
                 &:nth-of-type(1) {
-                    grid-column: 2 / span 2;
+                    grid-column: 1 / -1;
                     display: flex;
                     justify-content: center;
                     align-items: flex-start;
                     flex-direction: column;
+
+                    @media screen and (min-width: 768px) {
+                        grid-column: 2 / span 2;
+                    }
+
+                    .viewPC {
+                        display: none;
+
+                        @media screen and (min-width: 768px) {
+                            display: block;
+                        }
+                    }
+
+                    .viewMobil {
+                        display: block;
+                        width: 100%;
+
+                        @media screen and (min-width: 768px) {
+                            display: none;
+                        }
+
+                        .bannerCarruselProducto {
+                            padding-bottom: 2rem;
+
+                            .itemProducto {
+                                display: flex;
+                                justify-content: center;
+
+                                img {
+                                    height: auto;
+                                    width: auto;
+                                    object-fit: contain;
+                                }
+                            }
+                        }
+                    }
 
                     .miniProducto {
                         border: 1px solid rgba(#153743, .60);
@@ -356,7 +398,12 @@
                 }
 
                 &:nth-of-type(2) {
+                    display: none;
                     grid-column: 4 /span 4;
+
+                    @media screen and (min-width: 768px) {
+                        display: block;
+                    }
 
                     .imageViewContainer {
                         width: 100%;
@@ -372,8 +419,13 @@
                 }
 
                 &:nth-of-type(3) {
-                    grid-column: 8 /span 4;
-                    padding-top: 5rem;
+                    grid-column: 1 / -1;
+                    padding-top: 3rem;
+
+                    @media screen and (min-width: 768px) {
+                        grid-column: 8 /span 4;
+                        padding-top: 5rem;
+                    }
 
                     .bodyContainer {
                         .stickerContainer {
@@ -433,15 +485,24 @@
                 }
 
                 &:nth-of-type(4) {
-                    grid-column: 2 / span 10;
+                    grid-column: 1 / -1;
                     display: grid;
                     grid-template-columns: repeat(10, 1fr);
                     gap: 1rem;
-                    margin-top: 8rem;
+                    margin-top: 3rem;
+
+                    @media screen and (min-width: 768px) {
+                        grid-column: 2 / span 10;
+                        margin-top: 8rem;
+                    }
 
                     >div {
                         &:nth-of-type(1) {
-                            grid-column: 1 / span 4;
+                            grid-column: 1 / -1;
+
+                            @media screen and (min-width: 768px) {
+                                grid-column: 1 / span 4;
+                            }
 
                             h3 {
                                 font-size: .9rem;
@@ -490,13 +551,21 @@
                         }
 
                         &:nth-of-type(2) {
-                            grid-column: 5 / -1;
+                            grid-column: 1 / -1;
                             display: flex;
-                            justify-content: flex-end;
+                            justify-content: space-between;
                             gap: 1rem;
+                            flex-wrap: wrap;
+                            margin-top: 1rem;
+
+                            @media screen and (min-width: 768px) {
+                                grid-column: 5 / -1;
+                                justify-content: flex-end;
+                                margin-top: 0rem;
+                            }
 
                             .item {
-                                width: 100%;
+                                width: 45%;
                                 height: 120px;
                                 border-radius: 30px;
                                 border: 1px solid $celesteP;
@@ -506,6 +575,11 @@
                                 justify-content: center;
                                 align-items: center;
                                 padding: 0 .5rem;
+                                // flex: 1 auto;
+
+                                @media screen and (min-width: 768px) {
+                                    flex: 1;
+                                }
 
                                 h4 {
                                     text-align: center;

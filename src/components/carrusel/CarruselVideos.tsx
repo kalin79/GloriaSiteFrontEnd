@@ -198,6 +198,7 @@ const CarruselVideos = ({ videos, titularVideo, colorTxt, listFiltro }: Props) =
                         grabCursor={true}
                         pagination={{ clickable: true }}
                         // autoplay={{ delay: 3000 }}
+
                         loop={true}
                         modules={[Navigation]}
                         className={`swiperNetflix`}

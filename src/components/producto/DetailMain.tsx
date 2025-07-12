@@ -1,9 +1,15 @@
 'use client';
 import { useState, useEffect } from "react";
-import Image from 'next/image'
+import Image from 'next/image';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules';
 import { ProductInterface } from '@/interfaces/producto';
 import HtmlSafeRender from '@/components/HtmlSafeRender';
 import styles from '@/styles/scss/producto.module.scss';
+// Estilos swiper
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 interface Props {
     productoData: ProductInterface;
 }
@@ -20,17 +26,56 @@ const DetailMain = ({ productoData }: Props) => {
                 <div className={styles.gridContainer}>
                     <div>
                         {/* <pre>{JSON.stringify(productoData.imagenes, null, 2)}</pre>saddas */}
-                        {
-                            productoData.imagenes?.map((item, index) => (
-                                <div
-                                    className={styles.miniProducto}
-                                    key={index}
-                                    onClick={() => setImageActive(item.imagen)}
-                                >
-                                    <Image src={item.imagen} width={82} height={107} alt='' />
-                                </div>
-                            ))
-                        }
+                        <div className={styles.viewPC}>
+                            {
+                                productoData.imagenes?.map((item, index) => (
+                                    <div
+                                        className={styles.miniProducto}
+                                        key={index}
+                                        onClick={() => setImageActive(item.imagen)}
+                                    >
+                                        <Image src={item.imagen} width={82} height={107} alt='' />
+                                    </div>
+                                ))
+                            }
+                        </div>
+                        <div className={styles.viewMobil}>
+                            <Swiper
+                                spaceBetween={10}
+                                slidesPerView={1} // Muestra 5 películas a la vez
+                                navigation
+                                grabCursor={true}
+                                pagination={{ clickable: true }}
+                                // autoplay={{ delay: 3000 }}
+                                loop={true}
+                                modules={[Navigation, Pagination]}
+                                className={`${styles.bannerCarruselProducto} bannerCarruselProducto`}
+                                breakpoints={{
+                                    750: {
+                                        slidesPerView: 1
+                                    },
+                                    992: {
+                                        slidesPerView: 1
+                                    },
+                                    1600: {
+                                        slidesPerView: 1
+                                    }
+                                }}
+
+                            >
+                                {
+                                    productoData.imagenes?.map((item, index) => (
+                                        <SwiperSlide
+                                            key={index}
+                                            className={styles.itemProducto}
+                                        >
+                                            <Image src={item.imagen} width={675} height={884} alt='' />
+                                        </SwiperSlide>
+                                    ))
+                                }
+
+                            </Swiper>
+                        </div>
 
                     </div>
                     <div>
