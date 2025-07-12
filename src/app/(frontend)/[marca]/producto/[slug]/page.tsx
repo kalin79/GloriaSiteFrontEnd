@@ -72,7 +72,7 @@ export default function Producto() {
                 <div className={`${styles.productoContainerPage}`}>
                     <DetallePrincipalComponent productoData={producto} />
                     <TabsComponent />
-                    {/* <CarruselProductsRelacionadosComponent /> */}
+                    <CarruselProductsRelacionadosComponent />
                 </div>
             </div>
         </>
