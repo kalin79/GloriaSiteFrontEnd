@@ -1,6 +1,7 @@
 
 import type { Metadata, Viewport } from "next";
-
+import { GTM, GTMNoScript } from '@/components/GTM';
+import CookieBanner from '@/components/CookieBanner';
 import SessionAuthProvider from '@/context/SessionAuthProvider'
 import 'bootstrap/dist/css/bootstrap.min.css'; // Importa el CSS de Bootstrap
 import "@/styles/scss/global.scss";
@@ -52,6 +53,8 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${poppins.variable} ${misti.variable}`}>
       <body>
+        <GTM />
+        <GTMNoScript />
         <SessionAuthProvider>
           <NavBarComponent />
           {children}
@@ -59,6 +62,7 @@ export default function RootLayout({
           <FooterComponent />
         </SessionAuthProvider>
         <div id="modal-root" />
+        <CookieBanner />
       </body>
     </html>
   );

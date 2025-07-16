@@ -13,6 +13,7 @@ interface videoParameters {
     onMouseMove: (event: React.MouseEvent<HTMLDivElement>) => void
 }
 const Previsualizacion = forwardRef<HTMLDivElement, videoParameters>(({ videosContents, onMouseEnter, onMouseMove, onClick }, ref) => {
+
     return (
         <div
             ref={ref}

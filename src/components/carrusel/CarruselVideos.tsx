@@ -5,7 +5,6 @@ import { VideoInterface, FiltroVideosInterface } from '@/interfaces/video';
 import { useRouter } from "next/navigation";
 import { gsap } from "gsap"; // Importar GSAP
 import Draggable from 'gsap/Draggable';
-gsap.registerPlugin(Draggable);
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 // import VideoBanner from "@/components/videos/Banner"
@@ -16,6 +15,9 @@ import styles from '@/styles/scss/video.module.scss';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+
+gsap.registerPlugin(Draggable);
+
 interface Props {
     videos: VideoInterface[],
     titularVideo: string,
@@ -26,7 +28,8 @@ const CarruselVideos = ({ videos, titularVideo, colorTxt, listFiltro }: Props) =
     const [videosData, setVideosData] = useState<VideoInterface[]>(videos);
     const [filtroActivo, setFiltroActivo] = useState<string | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
-    const wrapperRef = useRef<HTMLDivElement>(null)
+    const wrapperRef = useRef<HTMLDivElement>(null);
+
     let isAnimating = false;
     const tlCard = gsap.timeline({ paused: false });
     // let animatingElement = null; // elemento actualmente animado
@@ -161,6 +164,7 @@ const CarruselVideos = ({ videos, titularVideo, colorTxt, listFiltro }: Props) =
             setVideosData(videos); // Reinicia videosData cuando cambian las props
         };
     }, [videos]);
+
     useEffect(() => {
         if (containerRef.current && wrapperRef.current) {
             const tabElements = Array.from(containerRef.current.children) as HTMLElement[];
@@ -176,7 +180,7 @@ const CarruselVideos = ({ videos, titularVideo, colorTxt, listFiltro }: Props) =
                 dragClickables: true,
             })
         }
-    }, [])
+    }, []);
     // Manejar cambio de filtro
     const handleFilter = (filtro: string | null) => {
         setFiltroActivo(filtro);
