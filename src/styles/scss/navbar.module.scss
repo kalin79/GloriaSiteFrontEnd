@@ -47,7 +47,7 @@
                 grid-column: 1 / -1;
 
                 @media screen and (min-width: 768px) {
-                    grid-column: 1 / span 6;
+                    grid-column: 1 / span 5;
                 }
 
                 a {
@@ -77,6 +77,10 @@
                             display: block;
                             padding: .5rem 0 .5rem 2rem;
 
+
+                        }
+
+                        >a {
                             &:last-child {
                                 border-bottom: 1px solid #443D72;
                             }
@@ -128,12 +132,12 @@
 
                                     .headerSubMenu {
                                         display: flex;
-                                        border-top: 1px solid #443D72;
                                         width: 100%;
-                                        background: rgba(#443D72, .20);
-                                        padding: 1rem 1rem 1rem 4rem;
+                                        padding: 1rem 1rem 1rem 3.75rem;
                                         justify-content: space-between;
                                         cursor: pointer;
+                                        border-top: 1px solid #443D72;
+                                        background: rgba(#443D72, .20);
 
                                         h2 {
                                             font-size: 1rem;
@@ -167,7 +171,7 @@
                                                 color: $blancoP;
 
                                                 a {
-                                                    padding-left: 6rem;
+                                                    padding-left: 4.5rem;
                                                 }
 
                                             }
@@ -193,12 +197,13 @@
                                         width: 100%;
                                         padding: 0;
                                         display: none;
+                                        background: rgba(#443D72, .25);
 
                                         li {
                                             color: $blancoP;
 
                                             a {
-                                                padding-left: 6rem;
+                                                padding-left: 4.5rem;
                                             }
 
                                         }
@@ -217,7 +222,7 @@
                                     border-top: 1px solid #443D72;
                                     width: 100%;
                                     background: rgba(#443D72, .20);
-                                    padding: 1rem 2rem 1rem 4rem;
+                                    padding: 1rem 2rem 1rem 3.75rem;
                                     justify-content: space-between;
 
 
@@ -285,16 +290,24 @@
 
                         }
 
-                        .eticaContainer {
+                        .redesContainer {
                             display: flex;
-                            justify-content: center;
+                            justify-content: flex-start;
                             align-items: flex-start;
                             gap: 1rem;
-                            border: 1px solid $celesteP;
-                            padding: 1rem .5rem;
                             width: 294px;
-                            border-radius: 50px;
                             margin-left: 2rem;
+                            margin-top: 1rem;
+                        }
+
+                        .eticaContainer {
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: flex-start;
+                            gap: 1rem;
+                            width: 294px;
+                            margin-left: 2rem;
+                            margin-top: 2rem;
 
                             a {
                                 h4 {
@@ -320,6 +333,15 @@
                                 }
                             }
 
+                            .item2 {
+                                display: flex;
+                                justify-content: flex-start;
+                                align-items: flex-start;
+                                gap: .5rem;
+                                margin-bottom: 0rem;
+                                padding-left: 2rem;
+                            }
+
                             .item {
                                 display: flex;
                                 justify-content: flex-start;
@@ -332,14 +354,6 @@
                                 a {
                                     font-size: 1.35rem;
                                     color: white;
-                                    font-family: var(--fuente-misti), sans-serif;
-                                    font-weight: 300;
-                                    letter-spacing: -.05em;
-                                }
-
-                                p {
-                                    font-size: 1rem;
-                                    color: $celesteP;
                                     font-family: var(--fuente-misti), sans-serif;
                                     font-weight: 300;
                                     letter-spacing: -.05em;
@@ -390,7 +404,7 @@
                 position: relative;
 
                 @media screen and (min-width: 768px) {
-                    grid-column: 7 / -1;
+                    grid-column: 6 / -1;
                     display: block;
                 }
 

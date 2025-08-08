@@ -3,11 +3,11 @@ import { forwardRef } from 'react';
 import Image from 'next/image'
 import LikeIcon from '@/svg/like2.svg';
 import ClockIcon from '@/svg/clock.svg';
-import { VideoInterface } from '@/interfaces/video';
-
+import { VideosHomeInterface } from '@/interfaces/marca';
+import SanitizedHtml from '@/components/SanitizedHtml';
 interface videoParameters {
     index: number,
-    videosContents: VideoInterface,
+    videosContents: VideosHomeInterface,
     onClick: (event: React.MouseEvent<HTMLDivElement>) => void,
     onMouseEnter: (event: React.MouseEvent<HTMLDivElement>) => void,
     onMouseMove: (event: React.MouseEvent<HTMLDivElement>) => void
@@ -24,14 +24,20 @@ const Previsualizacion = forwardRef<HTMLDivElement, videoParameters>(({ videosCo
         >
             <div className={`cardBody`}>
                 <div className={`etiquetaCard ${videosContents.colorMarca}`}>
-                    {videosContents.marca}
+                    <SanitizedHtml html={videosContents.marca ?? ''} />
                 </div>
-                <Image src='/play3.svg' className={`playIcon`} width={52} height={52} alt='Bonle :: Reproducir el video' />
-                <Image src={videosContents.imagen} className={`imgContainer`} width={443} height={246} alt='Bonle :: Loncheras divertidas y nutritivas para tus pequeños' />
+                <Image src='/play3.svg' className={`playIcon`} width={52} height={52} alt={videosContents.title ?? ''} />
+                {
+                    (videosContents.image && videosContents.image.trim() !== '') && (
+                        // <Image src={videosContents.image ?? ''} className={`imgContainer`} width={443} height={246} alt={videosContents.title ?? ''} />
+                        <Image src='/play3.svg' className={`imgContainer`} width={443} height={246} alt={videosContents.title ?? ''} />
+                    )
+                }
+
             </div>
             <div className={`cardFooter`}>
-                <h3 className='parrafoMediano'>
-                    {videosContents.title}
+                <h3 className='parrafoMediano notBr'>
+                    <SanitizedHtml html={videosContents.title ?? ''} />
                 </h3>
                 <div className={`dataVideoContent`}>
                     <div>

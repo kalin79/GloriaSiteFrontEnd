@@ -58,9 +58,9 @@ $titularPequeno: (
 
 $titularPequeno2: (
     default: 1rem,
-    sm: 1rem,
-    md: 1.1rem,
-    lg: 1.25rem,
+    sm: 1.25rem,
+    md: 1.25rem,
+    lg: 1.45rem,
 );
 
 
@@ -70,6 +70,20 @@ $titularMediano: (
     sm: 1.5rem,
     md: 1.75rem,
     lg: 2rem,
+);
+
+$titularMediano2: (
+    default: 1.5rem,
+    sm: 1.5rem,
+    md: 1.5rem,
+    lg: 1.5rem,
+);
+
+$interlineadoTituloMediano2: (
+    default: 1.5rem,
+    sm: 1.65rem,
+    md: 1.65rem,
+    lg: 1.65rem,
 );
 
 $titularMedianoFooter: (
@@ -144,17 +158,24 @@ $interlineadoTituloExtraGrande: (
 );
 
 $interlineadoTituloMediano: (
-    default: 1.75rem,
-    sm: 1.5rem,
-    md: 2rem,
-    lg: 2rem,
+    default: 2.25rem,
+    sm: 2.25rem,
+    md: 2.75rem,
+    lg: 3rem,
 );
 
 $interlineadoTituloPequeno: (
-    default: 1.5rem,
-    sm: 1.5rem,
-    md: 1.5rem,
-    lg: 1.5rem,
+    default: 1.25rem,
+    sm: 1.25rem,
+    md: 1.25rem,
+    lg: 1.25rem,
+);
+
+$interlineadoTituloPequeno2: (
+    default: 1.35rem,
+    sm: 1.75rem,
+    md: 1.85rem,
+    lg: 2rem,
 );
 $interlineadoParrafo: (
     default: 1.5rem,
@@ -206,7 +227,7 @@ $interlineadoParrafoMediano3: (
 
 $tituloBanner: (
     default: 2.35rem,
-    sm: 2.5rem,
+    sm: 3rem,
     md: 3.75rem,
     lg: 5.25rem,
 );
@@ -220,7 +241,7 @@ $parrafoBanner: (
 );
 $interlineadoTituloBanner: (
     default: 2.75rem,
-    sm: 2.5rem,
+    sm: 2.95rem,
     md: 3.5rem,
     lg: 4.5rem,
 );

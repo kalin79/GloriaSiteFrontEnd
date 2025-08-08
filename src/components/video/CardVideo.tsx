@@ -3,19 +3,10 @@ import { useRouter } from "next/navigation";
 import Image from 'next/image';
 import LikeIcon from '@/svg/like2.svg';
 import ClockIcon from '@/svg/clock.svg';
-interface VideoContent {
-    title: string;
-    idMarca: number;
-    marca: string;
-    slug: string;
-    imagen: string;
-    video: string;
-    colorMarca: string; // colorGloria
-    duracion: string;
-    like: number;
-}
+import { VideoInterface } from "@/interfaces/video";
+
 interface videoParameters {
-    videosContents: VideoContent,
+    videosContents: VideoInterface,
 }
 const CardVideo = ({ videosContents }: videoParameters) => {
     const router = useRouter();
@@ -26,17 +17,17 @@ const CardVideo = ({ videosContents }: videoParameters) => {
         <div
 
             className={`slideVideoCard `}
-            onClick={() => handleClickViewVideo(videosContents.slug, videosContents.marca)}
+            onClick={() => handleClickViewVideo(videosContents.slug ?? '', videosContents.marca?.nombre ?? '')}
         >
             <div className={`cardBody`}>
 
                 <Image src='/play3.svg' className={`playIcon`} width={52} height={52} alt='Bonle :: Reproducir el video' />
-                <Image src={videosContents.imagen} className={`imgContainer`} width={443} height={246} alt='Bonle :: Loncheras divertidas y nutritivas para tus pequeños' />
+                <Image src={videosContents.image ?? '/camp.png'} className={`imgContainer`} width={443} height={246} alt={`${videosContents.marca?.nombre} ${videosContents.title_large}`} />
             </div>
 
             <div className={`cardFooter`}>
                 <h3 className='parrafoMediano'>
-                    {videosContents.title}
+                    {videosContents.title_large}
                 </h3>
                 <div className={`dataVideoContent`}>
                     <div>
@@ -45,7 +36,7 @@ const CardVideo = ({ videosContents }: videoParameters) => {
                     </div>
                     <div>
                         <ClockIcon />
-                        <p className='parrafoPequeno'>01:24</p>
+                        <p className='parrafoPequeno'>{videosContents.duracion}</p>
                     </div>
                 </div>
             </div>

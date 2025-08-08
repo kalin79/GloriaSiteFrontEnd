@@ -96,74 +96,76 @@ const CarruselProductos = () => {
         router.push(`/${marca}/producto/${slug}`)
     }
     return (
-        <div className={`containerFluidLeft`}>
-            <div className={`${styles.productoCarruselContainer}`}>
-                <div>
-                    <h3 className='titularPequeno boldMedium'>NUESTROS PRODUCTOS</h3>
-                    <h2 className='titularExtraGrande'>
-                        Explora nuestra <br />
-                        selección de <br />
-                        productos:
-                    </h2>
-                    <p className='parrafoGrande'>
-                        Nutritivos, deliciosos y <br />
-                        perfectos para toda la familia. <br />
-                        Desliza y encuentra tus <br />
-                        favoritos.
-                    </p>
-                    <div className={`${styles.chefContent}`}>
-                        <Image src="/iconChef.svg" width={42} height={37} alt='Receta' />
-                        <p className='parrafoMediano celesteTxt'>
-                            Producto <br />con receta
+        <div className={`${styles.sectionHomeProductos}`}>
+            <div className={`containerFluidLeft`}>
+                <div className={`${styles.productoCarruselContainer}`}>
+                    <div>
+                        <h3 className='titularPequeno boldMedium'>NUESTROS PRODUCTOS</h3>
+                        <h2 className='titularExtraGrande'>
+                            Explora nuestra <br />
+                            selección de <br />
+                            productos:
+                        </h2>
+                        <p className='parrafoGrande'>
+                            Nutritivos, deliciosos y <br />
+                            perfectos para toda la familia. <br />
+                            Desliza y encuentra tus <br />
+                            favoritos.
                         </p>
-                    </div>
-                </div>
-                <div>
-                    <div className={`${styles.headerContainer}`}>
-                        <div>
-                            <p className='parrafoMediano'>
-                                Filtrar productos por tag:
+                        <div className={`${styles.chefContent}`}>
+                            <Image src="/iconChef.svg" width={42} height={37} alt='Receta' />
+                            <p className='parrafoMediano celesteTxt'>
+                                Producto <br />con receta
                             </p>
-                            <Select
-                                inputId="searchableProductHome"
-                                options={options}
-                                onChange={(newValue) => handleChange(newValue as OptionType | null)}
-                                isSearchable={true}
-                                placeholder="Buscar..."
-                                classNamePrefix="customSelectHomeProducts"
-                            />
                         </div>
-                        {/* <div>
+                    </div>
+                    <div>
+                        <div className={`${styles.headerContainer}`}>
+                            <div>
+                                <p className='parrafoMediano'>
+                                    Filtrar productos por tag:
+                                </p>
+                                <Select
+                                    inputId="searchableProductHome"
+                                    options={options}
+                                    onChange={(newValue) => handleChange(newValue as OptionType | null)}
+                                    isSearchable={true}
+                                    placeholder="Buscar..."
+                                    classNamePrefix="customSelectHomeProducts"
+                                />
+                            </div>
+                            {/* <div>
                             <Link href={`/marca/producto/gloria`} className='buttonBtn' title='Ir a productos'>Ver todos los productos</Link>
                         </div> */}
+                        </div>
+                        <div className={`${styles.bodyContainer}`}>
+                            <Swiper
+                                spaceBetween={10}
+                                slidesPerView={"auto"} // Permite ajustar el tamaño según el contenido
+                                freeMode={true} // Activa el desplazamiento libre
+                                grabCursor={true} // Muestra el cursor tipo "agarre"
+                                style={{ overflowX: "auto" }} // Permite el scroll horizontal
+                                className={`swiperScrollHorizontal`}
+                            >
+                                {products.map((item, index) => (
+                                    <SwiperSlide
+                                        // style={{ width: "auto" }}
+                                        key={index}
+                                        className={styles.slide}
+                                    >
+                                        <CardComponent
+                                            productContents={item}
+                                            onClick={() => { if (item.slug && item.marca) { handleClickViewVideo(item.slug, item.marca) } }}
+                                        />
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        </div>
                     </div>
-                    <div className={`${styles.bodyContainer}`}>
-                        <Swiper
-                            spaceBetween={10}
-                            slidesPerView={"auto"} // Permite ajustar el tamaño según el contenido
-                            freeMode={true} // Activa el desplazamiento libre
-                            grabCursor={true} // Muestra el cursor tipo "agarre"
-                            style={{ overflowX: "auto" }} // Permite el scroll horizontal
-                            className={`swiperScrollHorizontal`}
-                        >
-                            {products.map((item, index) => (
-                                <SwiperSlide
-                                    // style={{ width: "auto" }}
-                                    key={index}
-                                    className={styles.slide}
-                                >
-                                    <CardComponent
-                                        productContents={item}
-                                        onClick={() => { if (item.slug && item.marca) { handleClickViewVideo(item.slug, item.marca) } }}
-                                    />
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
-                    </div>
-                </div>
 
-            </div>
-        </div >
+                </div>
+            </div >
+        </div>
     )
 }
 

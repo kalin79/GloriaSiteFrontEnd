@@ -4,7 +4,6 @@ import styles from '@/styles/scss/somos.module.scss';
 const PropositoSinBtn = () => {
     return (
         <div className={`${styles.propositoContainer}`}>
-
             <div className='containerFluid'>
                 <div className={`${styles.gridContainer}`}>
                     <div>
@@ -12,17 +11,16 @@ const PropositoSinBtn = () => {
                     </div>
                     <div className={styles.separate}>
                         <div className={styles.headerContainer}>
-                            <h3 className='titularPequeno rojoTxt'>ESTRATEGIA GLORIA</h3>
+                            <h3 className='titularPequeno rojoTxt'>NUESTRO PROPÓSITO</h3>
                             <h2 className='titularExtraGrande azulTxt'>
-                                Alimentando el progreso <br />
-                                <span className='boldMedium'>de los peruanos</span>
+                                Alimentamos el progreso, el bienestar y los <span className='boldMedium'>sueños de todos los peruanos</span>
                             </h2>
                         </div>
-                        <p className='parrafoMediano2'>
+                        {/* <p className='parrafoMediano2'>
                             En Gloria, trabajamos con pasión para llevar nutrición y bienestar a cada hogar peruano. Con integridad y calidad, impulsamos el desarrollo del país a través de nuestros productos.
-                        </p>
+                        </p> */}
                         <div className={styles.listadoBox}>
-                            <div>
+                            {/* <div>
                                 <div className={styles.iconBox}>
                                     <Image src="/pro1.svg" width={100} height={100} alt='PROPÓSITO' />
                                 </div>
@@ -34,13 +32,13 @@ const PropositoSinBtn = () => {
                                         peruanos.
                                     </p>
                                 </div>
-                            </div>
+                            </div> */}
                             <div>
-                                <div className={styles.iconBox}>
+                                {/* <div className={styles.iconBox}>
                                     <Image src="/pro2.svg" width={100} height={100} alt='PROPÓSITO' />
-                                </div>
+                                </div> */}
                                 <div className={styles.infoBox}>
-                                    <h4 className='parrafoGrande azulCTxt boldMedium'>VISIÓN</h4>
+                                    <h4 className='parrafoGrande rojoTxt boldMedium'>VISIÓN</h4>
                                     <p className='parrafoMediano2 azulTxt'>
                                         Aspiramos a que la alimentación sea un eje central para el
                                         desarrollo del país.
@@ -48,11 +46,11 @@ const PropositoSinBtn = () => {
                                 </div>
                             </div>
                             <div>
-                                <div className={styles.iconBox}>
+                                {/* <div className={styles.iconBox}>
                                     <Image src="/pro3.svg" width={100} height={100} alt='PROPÓSITO' />
-                                </div>
+                                </div> */}
                                 <div className={styles.infoBox}>
-                                    <h4 className='parrafoGrande azulCTxt boldMedium'>MISIÓN</h4>
+                                    <h4 className='parrafoGrande rojoTxt boldMedium'>MISIÓN</h4>
                                     <p className='parrafoMediano2 azulTxt'>
                                         Garantizamos el acceso a alimentos ricos, nutritivos y de calidad para todos los peruanos mediante nuestras marcas, capacidad industrial y estrategia go to market.
                                     </p>

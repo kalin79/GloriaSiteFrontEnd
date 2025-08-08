@@ -11,132 +11,18 @@ import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-interface VideoContent {
-    title: string;
-    idMarca: number;
-    marca: string;
-    slug: string;
-    imagen: string;
-    video: string;
-    colorMarca: string;
-    duracion: string;
-    like: number;
+import SanitizedHtml from '@/components/SanitizedHtml';
+import HtmlSafeRender from "@/components/HtmlSafeRender";
+import { VideoInterface } from "@/interfaces/video";
+
+interface Props {
+    video: VideoInterface;
+    relatedVideo: VideoInterface[];
 }
-const Tabs = () => {
+const Tabs = ({ video, relatedVideo }: Props) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const wrapperRef = useRef<HTMLDivElement>(null);
-    const videos: VideoContent[] = [
-        {
-            title: 'Loncheras divertidas y nutritivas para tus pequeños',
-            idMarca: 1,
-            marca: 'Bonle',
-            slug: 'lonceras-divertidas-y-nutricionales-para-tus-pequenos',
-            imagen: '/videoimg.png',
-            video: '/videocorto.mp4',
-            colorMarca: 'color1',
-            duracion: '11:34',
-            like: 245
-        },
-        {
-            title: 'Cómo potenciar el aprendizaje de tus hijos desde casa',
-            idMarca: 2,
-            marca: 'ActiBio',
-            slug: 'como-potenciar-el-aprendizaje-de-tus-hijos-desde-casa',
-            imagen: '/videoimg2.png',
-            video: '/videocorto.mp4',
-            colorMarca: 'color2',
-            duracion: '01:05',
-            like: 245
-        },
-        {
-            title: 'Potencia tu actividad física con estos consejos PRO',
-            idMarca: 3,
-            marca: 'PRO',
-            slug: 'potencia-tu-actividad-fisica-con-estos-consejos-pro',
-            imagen: '/videoimg3.png',
-            video: '/videocorto.mp4',
-            colorMarca: 'color3',
-            duracion: '01:05',
-            like: 245
-        },
-        {
-            title: 'Loncheras divertidas y nutritivas para tus pequeños',
-            idMarca: 4,
-            marca: 'PRO',
-            slug: 'loncheras-divertidas-y-nutritivas-para-tus-pequenos',
-            imagen: '/videoimg.png',
-            video: '/videocorto.mp4',
-            colorMarca: 'color3',
-            duracion: '01:05',
-            like: 245
-        },
-        {
-            title: 'Loncheras divertidas y nutritivas para tus pequeños',
-            idMarca: 5,
-            marca: 'Bonle',
-            slug: 'loncheras-divertidas-y-nutritivas-para-tus-pequenos',
-            imagen: '/videoimg3.png',
-            video: '/videocorto.mp4',
-            colorMarca: 'color1',
-            duracion: '01:05',
-            like: 245
-        },
-        {
-            title: 'Loncheras divertidas y nutritivas para tus pequeños',
-            idMarca: 1,
-            marca: 'Bonle',
-            slug: 'lonceras-divertidas-y-nutricionales-para-tus-pequenos',
-            imagen: '/videoimg.png',
-            video: '/videocorto.mp4',
-            colorMarca: 'color1',
-            duracion: '01:05',
-            like: 245
-        },
-        {
-            title: 'Cómo potenciar el aprendizaje de tus hijos desde casa',
-            idMarca: 2,
-            marca: 'ActiBio',
-            slug: 'como-potenciar-el-aprendizaje-de-tus-hijos-desde-casa',
-            imagen: '/videoimg2.png',
-            video: '/videocorto.mp4',
-            colorMarca: 'color2',
-            duracion: '01:05',
-            like: 245
-        },
-        {
-            title: 'Potencia tu actividad física con estos consejos PRO',
-            idMarca: 3,
-            marca: 'PRO',
-            slug: 'potencia-tu-actividad-fisica-con-estos-consejos-pro',
-            imagen: '/videoimg3.png',
-            video: '/videocorto.mp4',
-            colorMarca: 'color3',
-            duracion: '00:35',
-            like: 245
-        },
-        {
-            title: 'Loncheras divertidas y nutritivas para tus pequeños',
-            idMarca: 4,
-            marca: 'PRO',
-            slug: 'loncheras-divertidas-y-nutritivas-para-tus-pequenos',
-            imagen: '/videoimg.png',
-            video: '/videocorto.mp4',
-            colorMarca: 'color3',
-            duracion: '00:05',
-            like: 245
-        },
-        {
-            title: 'Loncheras divertidas y nutritivas para tus pequeños',
-            idMarca: 5,
-            marca: 'Bonle',
-            slug: 'loncheras-divertidas-y-nutritivas-para-tus-pequenos',
-            imagen: '/videoimg2.png',
-            video: '/videocorto.mp4',
-            colorMarca: 'color1',
-            duracion: '01:05',
-            like: 245
-        },
-    ]
+
     const [activeTab, setActiveTab] = useState(0);
     useEffect(() => {
         if (containerRef.current && wrapperRef.current) {
@@ -209,7 +95,7 @@ const Tabs = () => {
                                     }
                                 }}
                             >
-                                {videos.map((item, index) => (
+                                {relatedVideo.map((item, index) => (
                                     <SwiperSlide
                                         style={{ width: "auto" }}
                                         key={index}
@@ -223,32 +109,27 @@ const Tabs = () => {
                     <div className={`${1 === activeTab ? styles.activeContent : ''}`}>
                         <div className={`${styles.infoBox} ${styles.gridContainer}`}>
                             <div>
-                                <h1 className="titularGrande mbot0_5">Cómo potenciar el aprendizaje de tus hijos desde casa</h1>
-                                <div className={`${styles.descriptionBox} parrafoMedianoPop`}>
-                                    <p>
-                                        Descubre estrategias efectivas para mejorar el aprendizaje de tus hijos desde casa. En este video, te brindamos herramientas prácticas, consejos pedagógicos y técnicas para fomentar su autonomía, concentración y motivación en el estudio.
-                                    </p>
+                                <h1 className="titularGrande mbot0_5 notBr"><SanitizedHtml html={video.title_large ?? ''} /></h1>
+                                <div className={`parrafoMedianoPop`}>
+                                    <HtmlSafeRender html={video.descripcion ?? ''} />
                                 </div>
                             </div>
                             <div>
-                                <h3 className="parrafoMedianoPop celesteTxt fontLight">DURACIÓN: <span className="parrafoMedianoPop blancoTxt boldRegular">02 min 23 seg</span></h3>
-                                <h3 className="parrafoMedianoPop celesteTxt fontLight">FECHA DE ESTRENO: <span className="parrafoMedianoPop blancoTxt boldRegular">MAY 2024</span></h3>
-                                <h3 className="parrafoMedianoPop celesteTxt fontLight">MARCA AUSPICIADORA: <span className="parrafoMedianoPop blancoTxt boldRegular">GLORIA</span></h3>
-                                <h3 className="parrafoMedianoPop celesteTxt fontLight">CLASIFICACIÓN: <span className="parrafoMedianoPop blancoTxt boldRegular">+18</span></h3>
+                                <h3 className="parrafoMedianoPop celesteTxt fontLight">DURACIÓN: <span className="parrafoMedianoPop blancoTxt boldRegular"><SanitizedHtml html={video.duracion ?? ''} /></span></h3>
+                                <h3 className="parrafoMedianoPop celesteTxt fontLight">FECHA DE ESTRENO: <span className="parrafoMedianoPop blancoTxt boldRegular"><SanitizedHtml html={video.fecha_estreno ?? ''} /></span></h3>
+                                <h3 className="parrafoMedianoPop celesteTxt fontLight">MARCA AUSPICIADORA: <span className="parrafoMedianoPop blancoTxt boldRegular"><SanitizedHtml html={video.marca?.nombre ?? ''} /></span></h3>
+                                <h3 className="parrafoMedianoPop celesteTxt fontLight">CLASIFICACIÓN: <span className="parrafoMedianoPop blancoTxt boldRegular"><SanitizedHtml html={video.clasificacion ?? ''} /></span></h3>
                                 <div className={styles.elencoContainer}>
                                     <h3 className="parrafoMedianoPop celesteTxt fontLight">ELENCO:</h3>
-                                    <p className="parrafoMedianoPop blancoTxt boldRegular">Mario Mendez</p>
-                                    <p className="parrafoMedianoPop blancoTxt boldRegular">Lucia Pérez</p>
-                                    <p className="parrafoMedianoPop blancoTxt boldRegular">Gabriel Bueno </p>
-                                    <p className="parrafoMedianoPop blancoTxt boldRegular">Luisa Reyes</p>
+                                    <HtmlSafeRender html={video.elenco ?? ''} />
                                 </div>
                                 <div className={styles.autorBox}>
                                     <h3 className="parrafoMedianoPop celesteTxt fontLight">AUTOR:</h3>
                                     <div className={styles.autorList}>
-                                        <Image src='/autor.png' width={58} height={58} alt="" />
+                                        <Image src={video.autor_imagen ?? '/autor.png'} width={58} height={58} alt="" />
                                         <div>
-                                            <h2 className="parrafoMedianoPop blancoTxt boldRegular">Diego Beltrán Rojas</h2>
-                                            <h4 className="parrafoMedianoPop celesteTxt boldRegular">PSICÓLOGO DE FAMILIA</h4>
+                                            <h2 className="parrafoMedianoPop blancoTxt boldRegular"><SanitizedHtml html={video.autor_nombre ?? ''} /></h2>
+                                            <h4 className="parrafoMedianoPop celesteTxt boldRegular"><SanitizedHtml html={video.autor_profesion ?? ''} /></h4>
                                         </div>
                                     </div>
                                 </div>

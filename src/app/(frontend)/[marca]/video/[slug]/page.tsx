@@ -1,32 +1,32 @@
+import { getVideoBySlug } from '@/actions/marca/video/getVideoBySlug';
 import BannerPrincipalComponent from "@/components/banners/Header";
-
 import TabsComponent from "@/components/video/Tabs";
+import { VideoInterface } from "@/interfaces/video";
+import { SlugInterface } from '@/interfaces/slug';
 
-import { BannerInterface } from '@/interfaces/banner';
 import styles from '@/styles/scss/producto.module.scss';
-const Video = () => {
-    const banner: BannerInterface = {
-        title: 'Cómo potenciar <br />el aprendizaje de <br />nuestros hijos',
-        subTitle: '',
-        descripcionCorta: 'Una campaña que celebra el amor y la nutrición que solo una mamá puede dar, con la calidad de Leche Gloria.',
-        idMarca: 1,
-        marca: 'Gloria',
-        logoMarca: '/gloriaMarca.svg',
-        slugMarca: '',
-        slug: '/corporativo/quienes-somos',
-        type: 'video',
-        multimedia: '/videoPrueba.mp4',
-        like: '',
-        duracion: '',
-    };
+
+export default async function VideoPage(props: SlugInterface) {
+    // ✅ Desestructurar antes, sin anidamiento
+    const params = await Promise.resolve(props.params); // ✅ workaround válido
+    const { slug, marca } = params;
+
+    console.log(`Marca recibida: ${marca}`);
+    if (!slug) {
+        throw new Error('Slug no disponible');
+    }
+
+    const response = await getVideoBySlug(slug);
+    const { video, related_video }: { video: VideoInterface, related_video: VideoInterface[] } = response.data;
+
 
     return (
         <>
             <div className="bgGloria">
-                <BannerPrincipalComponent multimediaContents={banner} />
+                <BannerPrincipalComponent multimediaContents={video} />
                 <div className={`${styles.productoContainerPage}`}>
                     <div className="containerFluid">
-                        <TabsComponent />
+                        <TabsComponent video={video} relatedVideo={related_video} />
                     </div>
                 </div>
             </div>
@@ -34,4 +34,4 @@ const Video = () => {
     )
 }
 
-export default Video
+

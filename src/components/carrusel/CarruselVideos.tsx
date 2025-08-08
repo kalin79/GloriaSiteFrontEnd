@@ -1,6 +1,6 @@
 'use client';
 import { useRef, useEffect, useState } from "react";
-import { VideoInterface, FiltroVideosInterface } from '@/interfaces/video';
+import { CategoriaVideosHomeInterface, VideosHomeInterface } from '@/interfaces/marca';
 
 import { useRouter } from "next/navigation";
 import { gsap } from "gsap"; // Importar GSAP
@@ -19,13 +19,13 @@ import 'swiper/css/pagination';
 gsap.registerPlugin(Draggable);
 
 interface Props {
-    videos: VideoInterface[],
+    videos: VideosHomeInterface[],
     titularVideo: string,
     colorTxt: string,
-    listFiltro: FiltroVideosInterface[] | null;
+    listFiltro: CategoriaVideosHomeInterface[] | null;
 }
 const CarruselVideos = ({ videos, titularVideo, colorTxt, listFiltro }: Props) => {
-    const [videosData, setVideosData] = useState<VideoInterface[]>(videos);
+    const [videosData, setVideosData] = useState<VideosHomeInterface[]>(videos);
     const [filtroActivo, setFiltroActivo] = useState<string | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const wrapperRef = useRef<HTMLDivElement>(null);
@@ -189,7 +189,8 @@ const CarruselVideos = ({ videos, titularVideo, colorTxt, listFiltro }: Props) =
         <div className={`videoPrevisualizacionContent`}>
             <div className={`containerFluid`}>
                 <div className={`headerContainer`}>
-                    <h2 className={`titularGrande ${colorTxt != '' ? 'blancoTxt' : ''}`} >{titularVideo}</h2>
+                    <h2 className={`titularMediano ${colorTxt != '' ? colorTxt : 'blancoTxt'}`} >{titularVideo}</h2>
+                    <p className="titularPequeno2 fontLight blancoTxt">Descubre lo que cada marca tiene para ofrecerte</p>
                 </div>
 
                 {
@@ -206,7 +207,7 @@ const CarruselVideos = ({ videos, titularVideo, colorTxt, listFiltro }: Props) =
                                         <button
                                             className={`parrafoMediano ${filtroActivo === item.slug && item.slug !== '' ? styles.active : ''}`}
                                             key={index}
-                                            onClick={() => handleFilter(item.slug)}>{item.nombre}</button>
+                                            onClick={() => handleFilter(item.slug ?? '')}>{item.name}</button>
                                     ))
                                 }
                             </div>
@@ -250,9 +251,9 @@ const CarruselVideos = ({ videos, titularVideo, colorTxt, listFiltro }: Props) =
                                     ref={(el) => { cardRefs.current[index] = el }}
                                     index={index}
                                     videosContents={item}
-                                    onMouseEnter={() => handleMouseEnter(index, item.slug, item.marca, item.title, item.video)}
-                                    onMouseMove={() => handleMouseEnter(index, item.slug, item.marca, item.title, item.video)}
-                                    onClick={() => handleClickViewVideo(item.slug, item.marca)}
+                                    onMouseEnter={() => handleMouseEnter(index, item.slug ?? '', item.marca ?? '', item.title ?? '', item.video ?? '')}
+                                    onMouseMove={() => handleMouseEnter(index, item.slug ?? '', item.marca ?? '', item.title ?? '', item.video ?? '')}
+                                    onClick={() => handleClickViewVideo(item.slug ?? '', item.marca ?? '')}
 
                                 />
                             </SwiperSlide>

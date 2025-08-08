@@ -3,78 +3,67 @@ import { useEffect, useRef } from 'react';
 import Player from '@vimeo/player';
 
 import Image from 'next/image';
-import { BannerInterface } from '@/interfaces/banner';
+import { VideoInterface } from "@/interfaces/video";
+
 import styles from '@/styles/scss/popup.module.scss';
 
 interface Props {
-    videoData: BannerInterface,
-    onClose: () => void
+    videoData: VideoInterface,
+    onClose: () => void,
+    isOpen: boolean,
 }
-const Video = ({ videoData, onClose }: Props) => {
-    const playerRefs = useRef<Map<string, Player>>(new Map());
-
+const Video = ({ videoData, onClose, isOpen }: Props) => {
+    const videoRefPopUp = useRef<HTMLDivElement>(null);
+    const playerRefPopUp = useRef<Player | null>(null);
+    const hasTriggeredApi = useRef(false);
     useEffect(() => {
-        const videoId = videoData.multimedia;
-        const containerId = `vimeo-${videoId}`;
-        const container = document.getElementById(containerId);
-        if (!container || playerRefs.current.has(videoId)) return;
-        const player = new Player(container, {
-            url: `https://vimeo.com/${videoId}`,
-            responsive: true,
-            autoplay: true, // opcional
-            muted: false      // opcional, ayuda a autoplay
-        });
-        player.ready().then(() => {
-            console.log(`✅ Player ${videoId} listo`);
+        if (isOpen && videoRefPopUp.current) {
 
-            let triggered = false;
+            if (playerRefPopUp.current) {
+                playerRefPopUp.current.unload().catch(console.error);
+            }
 
-            player.on('play', () => {
-                console.log(`▶️ Video ${videoId} reproduciéndose`);
+            const playerPopUp = new Player(videoRefPopUp.current, {
+                id: Number(videoData.link_video),
+                autoplay: true,
+                controls: true,
+                responsive: true,
             });
 
-            player.on('timeupdate', (data) => {
+            playerRefPopUp.current = playerPopUp;
+
+            // Escucha el progreso del video
+
+            playerPopUp.on('timeupdate', async (data) => {
                 const percent = (data.percent || 0) * 100;
-                console.log(`⏱️ ${percent.toFixed(2)}% visto del video ${videoId}`);
-
-                if (percent >= 60 && !triggered) {
-                    triggered = true;
-                    console.log(`🎯 Usuario vio más del 60% del video ${videoId}`);
-                    // fetch("/api/registrar-vista", { method: "POST", body: JSON.stringify({ id: videoId }) })
+                console.log(`Porcentaje de avance es: ${percent}`);
+                if (!hasTriggeredApi.current && percent >= 60) {
+                    hasTriggeredApi.current = true;
+                    // Aplicamos nuestro Api
+                    console.log('llegamos :)')
                 }
-            });
-        });
 
-        playerRefs.current.set(videoId, player);
+            })
+
+        }
+
         return () => {
-            const currentPlayer = playerRefs.current.get(videoId);
-            if (currentPlayer) {
-                currentPlayer.destroy();
-                playerRefs.current.delete(videoId);
-                console.log(`🧹 Player ${videoId} destruido`);
+            if (playerRefPopUp.current) {
+                playerRefPopUp.current.off('timeupdate');
+                playerRefPopUp.current.pause();
             }
         };
-    }, [videoData.multimedia]);
+    }, [isOpen, videoData.link_video]);
+
+    if (!isOpen) return null;
     return (
+
         <div className={styles.popUpContainer}>
-            <div className='containerFluid'>
-                <div className={styles.viewContainerVideo}>
-                    <button
-                        onClick={onClose}
-                        className={styles.buttonCloseContainer}
-                        aria-label="Cerrar"
-                    >
-                        <Image src="/close.svg" width={58} height={54} alt='' />
-                    </button>
-                    {/* <video width="100%" height="100%"
-                        autoPlay // Reproducir automáticamente
-                        controls={true} // Ocultar controles
-                    >
-                        <source src={videoData.multimedia} type="video/mp4" />
-                        Tu navegador no soporta la etiqueta de video.
-                    </video> */}
-                    <div id={`vimeo-${videoData.multimedia}`} />
-                </div>
+            <div className={styles.lightbox}>
+                <button onClick={onClose} className={styles.closeBtn}>
+                    <Image src="/close.svg" width={58} height={54} alt='' />
+                </button>
+                <div ref={videoRefPopUp} className={styles.playerPopUp} />
             </div>
         </div>
     )

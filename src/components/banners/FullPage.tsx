@@ -1,5 +1,5 @@
 'use client';
-import Image from 'next/image'
+import Image from 'next/image';
 import HtmlSafeRender from '@/components/HtmlSafeRender';
 
 import styles from '@/styles/scss/banner.module.scss';

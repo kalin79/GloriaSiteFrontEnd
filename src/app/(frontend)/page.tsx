@@ -1,7 +1,7 @@
 
 
 import CarruselBannerFullComponent from "@/components/carrusel/FullPage"
-
+import Image from 'next/image';
 import MarcasComponent from "@/components/marcas/Listado";
 import CarruselVideosComponent from "@/components/carrusel/CarruselVideos";
 import CarruselCampanasComponent from "@/components/carrusel/CarruselCampanas";
@@ -298,16 +298,19 @@ export default function Home() {
 
     // ]
     return (
-        <div className='bgBody'>
+        <div className='bodyContainerMain'>
+            <div className="bg">
+                <Image src='/bg.png' alt="" width={3280} height={3840} />
+            </div>
             <CarruselBannerFullComponent multimediaContents={banners} viewLogo={false} />
             <div className="containerHomeMain">
                 <MarcasComponent />
-                <CarruselVideosComponent videos={videos} titularVideo="Gloria Contigo: " colorTxt='' listFiltro={null} />
+                <CarruselVideosComponent videos={videos} titularVideo="Encuentra contenido pensados en ti: " colorTxt='celesteTxt' listFiltro={null} />
                 <CarruselCampanasComponent videosCampana={videosCampana} titularCampana="Nuestras campañas:" subtitularCampana="" />
-                <CarruselVideosHorizontalComponent videosHorizontales={videosHorizontales} titularVideoH="Tendencia en la" subTitularVideoH="comunidad Gloria Contigo" />
+                {/* <CarruselVideosHorizontalComponent videosHorizontales={videosHorizontales} titularVideoH="Tendencia en la" subTitularVideoH="comunidad Gloria Contigo" /> */}
                 <CarruselProductsComponent />
-                <PropositoComponet />
-                <LecherosComponet />
+                {/* <PropositoComponet /> */}
+                {/* <LecherosComponet /> */}
                 {/* <CarruselNoticiasComponent noticias={noticias} /> */}
 
             </div>

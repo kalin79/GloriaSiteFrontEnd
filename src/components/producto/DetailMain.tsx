@@ -4,7 +4,8 @@ import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import { ProductInterface } from '@/interfaces/producto';
-import HtmlSafeRender from '@/components/HtmlSafeRender';
+// import HtmlSafeRender from '@/components/HtmlSafeRender';
+import SanitizedHtml from '@/components/SanitizedHtml';
 import styles from '@/styles/scss/producto.module.scss';
 // Estilos swiper
 import 'swiper/css';
@@ -16,8 +17,8 @@ interface Props {
 const DetailMain = ({ productoData }: Props) => {
     const [imageActive, setImageActive] = useState<string | undefined>();
     useEffect(() => {
-        if (productoData.imagenes && productoData.imagenes.length > 0) {
-            setImageActive(productoData.imagenes[0].imagen);
+        if (productoData.gallery && productoData.gallery.length > 0) {
+            setImageActive(productoData.gallery[0]);
         }
     }, [productoData]);
     return (
@@ -28,13 +29,13 @@ const DetailMain = ({ productoData }: Props) => {
                         {/* <pre>{JSON.stringify(productoData.imagenes, null, 2)}</pre>saddas */}
                         <div className={styles.viewPC}>
                             {
-                                productoData.imagenes?.map((item, index) => (
+                                productoData.gallery?.map((item, index) => (
                                     <div
                                         className={styles.miniProducto}
                                         key={index}
-                                        onClick={() => setImageActive(item.imagen)}
+                                        onClick={() => setImageActive(item)}
                                     >
-                                        <Image src={item.imagen} width={82} height={107} alt='' />
+                                        <Image src={item} width={82} height={107} alt='' />
                                     </div>
                                 ))
                             }
@@ -64,12 +65,12 @@ const DetailMain = ({ productoData }: Props) => {
 
                             >
                                 {
-                                    productoData.imagenes?.map((item, index) => (
+                                    productoData.gallery?.map((item, index) => (
                                         <SwiperSlide
                                             key={index}
                                             className={styles.itemProducto}
                                         >
-                                            <Image src={item.imagen} width={675} height={884} alt='' />
+                                            <Image src={item} width={675} height={884} alt='' />
                                         </SwiperSlide>
                                     ))
                                 }
@@ -88,11 +89,11 @@ const DetailMain = ({ productoData }: Props) => {
                     <div>
                         <div className={styles.bodyContainer}>
                             <div className={styles.stickerContainer}>
-                                <p className="celesteTxt">Mundo Gloria</p>
+                                <p className="celesteTxt">Mundo <SanitizedHtml html={productoData.marca?.name ?? ''} /> </p>
                             </div>
-                            <h2 className={`titularGrande ${styles.titularHeader}`}>Leche Entera UHT Gloria</h2>
+                            <h2 className={`titularGrande ${styles.titularHeader} notBr`}><SanitizedHtml html={productoData.titulo ?? ''} /></h2>
                             <p className="parrafoMedianoPop">
-                                Es un producto elaborado a partir de la leche entera de vaca enriquecido con vitaminas A y D. Por su naturaleza aporta proteínas de alta calidad y minerales como el calcio y el fósforo.
+                                <SanitizedHtml html={productoData.descripcion_corta ?? ''} />
                             </p>
                             <div className={styles.presentacionesContainer}>
                                 <h3 className="celesteTxt parrafoMediano ">PRESENTACIONES</h3>
@@ -104,7 +105,7 @@ const DetailMain = ({ productoData }: Props) => {
                                                     <Image src={item.imagen || ''} width={25} height={52} alt="" />
                                                 </div>
                                                 <div className="parrafoPequeno blancoTxt centerTxt">
-                                                    <HtmlSafeRender html={item.descripcion} />
+                                                    <SanitizedHtml html={item.nombre} />
                                                 </div>
                                             </div>
                                         ))
@@ -122,7 +123,7 @@ const DetailMain = ({ productoData }: Props) => {
                         </div>
                         <div>
                             {
-                                productoData.caracteristicas?.map((item, index) => (
+                                productoData.caracteristica?.map((item, index) => (
                                     <div className={styles.item} key={index}>
                                         <div>
                                             <h4 className="titularMediano fontLight">{item.valor}</h4>

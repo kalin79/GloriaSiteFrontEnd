@@ -7,25 +7,28 @@ import { BannerInterface } from '@/interfaces/bannerInterno';
 
 export default function Somos() {
     const dataBanner: BannerInterface = {
-        imgMobile: '/mama.webp',
-        imgPc: '/mamapc.webp',
-        titulo: `Somos la empresa <br />
-                                líder en el <span class='boldRegular'>mercado <br />
-                                    lácteo peruano</span>`,
+        imgMobile: '/bgSomos.webp',
+        imgPc: '/bgSomos.webp',
+        titulo: `Somos una empresa <br />de alimentos que <br/>
+        <span class='boldRegular'>crece contigo</span>`,
+        descripcion: `Conoce nuestra historia, nuestra forma de trabajar y el propósito que nos impulsa a seguir acompañando a más peruanos con marcas de calidad que nutren, inspiran y conectan. `,
         breadcrumb: 'QUIENES SOMOS',
         slugbread: '/corporativo/quienes-somos',
     };
 
     const dataDescripcion = `<p>
-                            Nuestro trabajo sostenido y esforzado a lo largo de casi ochenta años, nos ha ubicado entre las organizaciones más admiradas y nos ha permitido ser poseedores de la marca peruana más valiosa y de mayor recordación en nuestro país.
+                            Cada planta es parte de nuestro compromiso con la nutrición y el progreso del país. <br />
+Conoce dos de los espacios donde todo comienza
                         </p>`;
     return (
         <div className='bgAzul'>
             <InternoBannerComponent dataBanner={dataBanner} />
-            <DescripcionComponent dataDescripcion={dataDescripcion} />
-            <LineaTiempoComponent />
             <PropositoComponent />
             <ComportamosComponent />
+            <LineaTiempoComponent />
+            <DescripcionComponent dataDescripcion={dataDescripcion} />
+
+
         </div>
     );
 }

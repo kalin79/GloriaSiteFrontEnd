@@ -10,10 +10,10 @@ const NavBar = () => {
     const [isMenuMarcas, setIsMenuMarcas] = useState(false);
     const miDivRefMenu = useRef(null);
     const { data: session } = useSession();
-    const [activeIndex, setActiveIndex] = useState<number | null>(null);
-    const handleClick = (index: number) => {
-        setActiveIndex(index === activeIndex ? null : index); // Toggle
-    };
+    // const [activeIndex, setActiveIndex] = useState<number | null>(null);
+    // const handleClick = (index: number) => {
+    //     setActiveIndex(index === activeIndex ? null : index); // Toggle
+    // };
     const handleViewMenu = () => {
         const tlMenu = gsap.timeline();
         tlMenu.to(miDivRefMenu.current, {
@@ -93,21 +93,21 @@ const NavBar = () => {
                             </div>
                             <div className={styles.listaMenuContainer}>
                                 <nav>
-                                    <Link href='/' onClick={handleCloseMenu}>Home</Link>
+                                    <Link href='/' onClick={handleCloseMenu}>Inicio</Link>
                                     <div className={styles.menuMultiple}>
                                         <div className={`${styles.menuMultipleHeader} ${isMenuCooporativo ? `${styles.active}` : ''}`} onClick={() => {
                                             setIsMenuCoorporativo(prev => !prev)
                                             setIsMenuMarcas(false)
                                         }}>
-                                            <h2>Gloria</h2>
+                                            <h2>Nosotros</h2>
                                             <Image src='/arrow2.svg' width="28" height='14' alt='Gloria' />
                                         </div>
                                         <div className={`${styles.menuMultipleListado} ${isMenuCooporativo ? `${styles.active}` : ''}`} >
                                             <Link href='/corporativo/quienes-somos' onClick={handleCloseMenu}>Quienes Somos</Link>
-                                            <Link href='/corporativo/nuestra-planta' onClick={handleCloseMenu}>Nuestra Planta</Link>
-                                            <Link href='/corporativo/ganaderos' onClick={handleCloseMenu}>Ganaderos</Link>
+
+                                            <Link href='/corporativo/sostenibilidad' onClick={handleCloseMenu}>Nuestra Sostenibilidad</Link>
                                             {/* <Link href='/informacion-financiera' onClick={handleCloseMenu}>Informaci&oacute;n financiera</Link> */}
-                                            <div className={styles.subMenuContainer}>
+                                            {/* <div className={styles.subMenuContainer}>
                                                 <div className={`${styles.headerSubMenu} ${activeIndex === 1 ? styles.active : ''}`} onClick={() => handleClick(1)}>
                                                     <h2>Sostenibilidad</h2>
                                                     <p className="boldMedium"></p>
@@ -116,6 +116,7 @@ const NavBar = () => {
                                                     <li>
                                                         <Link href='/corporativo/sostenibilidad' onClick={handleCloseMenu}>Nuestra Sostenibilidad</Link>
                                                     </li>
+
                                                     <li>
                                                         <Link href='/corporativo/sostenibilidad/ciclo-de-vida' onClick={handleCloseMenu}>Ciclo de Vida</Link>
                                                     </li>
@@ -126,7 +127,8 @@ const NavBar = () => {
                                                         <Link href='/corporativo/sostenibilidad/lactea' onClick={handleCloseMenu}>L&aacute;ctea</Link>
                                                     </li>
                                                 </ul>
-                                            </div>
+                                            </div> */}
+                                            <Link href='/corporativo/ganaderos' onClick={handleCloseMenu}>Ganaderos</Link>
                                             {/* <Link href='/noticias' onClick={handleCloseMenu}>Noticias</Link> */}
                                         </div>
                                     </div>
@@ -141,20 +143,25 @@ const NavBar = () => {
                                         <div className={`${styles.menuMultipleListado} ${isMenuMarcas ? `${styles.active}` : ''}`} >
                                             <Link href='/gloria' onClick={handleCloseMenu}>Gloria</Link>
                                             <Link href='/bonle' onClick={handleCloseMenu}>Bonl&eacute;</Link>
-                                            <Link href='/pro' onClick={handleCloseMenu}>Pro</Link>
+                                            <Link href='/pro' onClick={handleCloseMenu}>PRO</Link>
                                             <Link href='/actibio' onClick={handleCloseMenu}>ActiBio</Link>
-                                            <Link href='/batti-mix' onClick={handleCloseMenu}>Batti mix</Link>
+                                            <Link href='/batti-mix' onClick={handleCloseMenu}>Battimix</Link>
                                         </div>
                                     </div>
                                     <Link href='/contacto'>Contacto</Link>
                                 </nav>
                                 <div className={styles.footerContainer}>
                                     <div>
+                                        <div className={styles.item2}>
+                                            <h3 className='titularPequeno celesteTxt'>Gloria responde</h3>
+                                        </div>
+                                    </div>
+                                    <div>
                                         <div className={styles.item}>
                                             <Image src='/call.svg' className={styles.iconPhone} width="23" height='20' alt='0800-1-84441' />
                                             <div>
                                                 <h2>0800-1-4441</h2>
-                                                <p className="blancoTxt">De lunes a viernes de 8:00 am a 6:00 pm, sábado de 8:00 am a 12:00 pm</p>
+                                                <p className="celesteTxt titularPequeno">De lunes a viernes de 8:00 am a 6:00 pm, sábado de 8:00 am a 12:00 pm</p>
                                             </div>
                                         </div>
                                     </div>
@@ -163,44 +170,33 @@ const NavBar = () => {
                                             <Image src='/mail.svg' className={styles.iconMail} width="20" height='16' alt='contactcenterinforma@gloria.com.pe' />
                                             <div>
                                                 <a href="mailto:contactcenterinforma@gloria.com.pe">contactcenterinforma@gloria.com.pe</a>
-                                                <p className="blancoTxt">De lunes a viernes de 8:00 am a 4:00 pm, sábado de 8:00 am a 11:00 am</p>
+                                                <p className="celesteTxt titularPequeno">De lunes a viernes de 8:00 am a 4:00 pm, sábado de 8:00 am a 11:00 am</p>
                                             </div>
                                         </div>
                                     </div>
-                                    {/* <div className={styles.eticaContainer}>
+                                    <div className={styles.eticaContainer}>
                                         <div>
                                             <a href="https://www.gloriateescucha.com/" target='_blank'>
-                                                <Image src="/etica.svg" width={54} height={44} alt='Gloria' />
+                                                <Image src="/call2.svg" width={42} height={42} alt='Gloria' />
                                             </a>
                                         </div>
                                         <div>
                                             <a href="https://www.gloriateescucha.com/" target='_blank'>
-                                                <h4>LÍNEA ÉTICA</h4>
-                                                <h5>Gloria te escucha</h5>
+                                                <h4 className='parrafoPequeno celesteTxt'>LÍNEA ÉTICA</h4>
+                                                <h5 className='bannerParrafo'>Gloria te escucha</h5>
                                             </a>
-                                        </div>
-                                    </div> */}
-                                    <div className={`${styles.cierreFooter}`}>
-                                        {/* <div className={styles.redesBox}>
-                                            <a href="/" target='_blank'>
-                                                <Image src="/facebook.svg" width={32} height={32} alt='Facebook' />
-                                            </a>
-                                            <a href="/" target='_blank'>
-                                                <Image src="/instagram.svg" width={32} height={32} alt='Instagram' />
-                                            </a>
-                                            <a href="/" target='_blank'>
-                                                <Image src="/youtube.svg" width={32} height={32} alt='Youtube' />
-                                            </a>
-                                            <a href="/" target='_blank'>
-                                                <Image src="/linkedin.svg" width={32} height={32} alt='Linkedin' />
-                                            </a>
-                                        </div> */}
-                                        <div className={styles.LegalBox}>
-                                            <Link href='/terminos-y-condiciones' >Términos y condiciones</Link>
-                                            <Link href='/politica-de-tratamiento-de-datos'>Política de tratamiento de datos</Link>
-
                                         </div>
                                     </div>
+                                    <div className={styles.redesContainer}>
+                                        <a href="https://www.gloriateescucha.com/" target='_blank'>
+                                            <Image src="/ln.svg" width={42} height={42} alt='Gloria' />
+                                        </a>
+                                        <p className='parrafoMediano celesteTxt'>
+                                            Entérate de nuestras <br />
+                                            noticias, logros y cultura.
+                                        </p>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>

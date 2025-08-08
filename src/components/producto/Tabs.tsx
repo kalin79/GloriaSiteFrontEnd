@@ -1,12 +1,18 @@
 'use client'
 import { useState, useRef, useEffect } from "react";
 import Image from 'next/image';
+import { ProductInterface } from '@/interfaces/producto';
+import SanitizedHtml from "@/components/SanitizedHtml";
+import HtmlSafeRender from "@/components/HtmlSafeRender";
 import gsap from 'gsap';
 import Draggable from 'gsap/Draggable';
 gsap.registerPlugin(Draggable);
 import styles from '@/styles/scss/tabs.module.scss';
 
-const Tabs = () => {
+interface Props {
+    productoData: ProductInterface;
+}
+const Tabs = ({ productoData }: Props) => {
     // const pathname = usePathname(); // Obtiene la ruta actual (ej: "/productos")
     // const searchParams = useSearchParams(); // Obtiene los query params (ej: "?id=123")
     const containerRef = useRef<HTMLDivElement>(null);
@@ -116,14 +122,7 @@ const Tabs = () => {
                                             </div>
                                         </div>
                                         <div className={styles.spaceColumn}>
-                                            <h2 className="titularGrande mbot0_5">La leche que prefiere el Perú</h2>
-                                            <p className="parrafoMedianoPop">
-                                                Las innovaciones que han sido aplicadas en la empresa, le han permitido lograr grandes ventajas y oportunidades convirtiéndose en un mercado muy grande con un compromiso muy grande. Todo gracias a la inverción en tecnología e infraestructura adecuadas. El esfuerzo de sus trabajadores, la cultura y los valores compartidos son los que les permiten integrar nociones de calidad, servicio y conservación para sus consumidores.
-                                            </p>
-                                            <h2 className="titularGrande mtop1_5 mbot0_5">Enriquecida con nutrientes</h2>
-                                            <p className="parrafoMedianoPop">
-                                                ¡Lista para tomar! No es necasario mezclar esta leche con agua, lo que hará que aproveches mejor las vitaminas A, C y D que contiene. También es una de las fuentes de calcio más destacadas por lo que te ayuda a mantener la masa ósea.
-                                            </p>
+                                            <HtmlSafeRender html={productoData.descripcion ?? ''} className="parrafoMedianoPop" />
                                         </div>
                                     </div>
                                 </div>
@@ -136,12 +135,7 @@ const Tabs = () => {
                                     <div className={styles.infoBox3}>
                                         <div>
                                             <h2 className="titularGrande mbot0_5">Ingredientes</h2>
-                                            <p className="parrafoMedianoPop">
-                                                Leche cruda, Estabilizador hidrogenofosfato disódico (sin 339 ii), Vitamina A, Vitamina D.
-                                            </p>
-                                            <p className="parrafoMedianoPop">
-                                                Elaborado en instalaciones donde se procesan productos a base de: gluten (avena) y soya.
-                                            </p>
+                                            <HtmlSafeRender html={productoData.ingredientes ?? ''} className="parrafoMedianoPop" />
                                         </div>
                                     </div>
                                 </div>
@@ -152,45 +146,7 @@ const Tabs = () => {
                             (2 === activeTab) && (
                                 <div className={`${2 === activeTab ? styles.activeContent : ''}`}>
                                     <div className={`${styles.infoBox3} ${styles.full}`}>
-                                        <div>
-                                            <h2 className="titularGrande">
-                                                Porción: 200 ml : <br />
-                                                Porciones por envase:
-                                            </h2>
-                                            <div className="table-responsive tableResponsiveNutricional">
-                                                <table className="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">Valores medios </th>
-                                                            <th scope="col">Por cada 100 mg/ml</th>
-                                                            <th scope="col">Por cada 1 porción</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>Energía (Kcal)</td>
-                                                            <td>118</td>
-                                                            <td>238</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Proteínas (g)</td>
-                                                            <td>2.9</td>
-                                                            <td>5.8</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Grasas totales (g)</td>
-                                                            <td>3.1</td>
-                                                            <td>6.2</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Hidratos de carbono disponibles (g)</td>
-                                                            <td>4.8</td>
-                                                            <td>9.6</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
+                                        <HtmlSafeRender html={productoData.informacion_nutricional ?? ''} className="parrafoMedianoPop" />
                                     </div>
                                 </div>
                             )
@@ -211,10 +167,10 @@ const Tabs = () => {
                                         <div className={styles.spaceColumn}>
                                             <div className={styles.autorBox}>
                                                 <div>
-                                                    <h2 className="titularGrande">Arroz con leche</h2>
+                                                    <h2 className="titularGrande"><SanitizedHtml html={productoData.receta_nombre ?? ''} /></h2>
                                                     <div className={styles.autorData}>
-                                                        <Image src='/chef.png' width={52} height={52} alt="" />
-                                                        <h5 className="parrafoMedianoPop">Por Chef Elena Torres</h5>
+                                                        <Image src={productoData.receta_foto_autor ?? '/chef.png'} width={52} height={52} alt="" />
+                                                        <h5 className="parrafoMedianoPop"><SanitizedHtml html={productoData.receta_autor ?? ''} /></h5>
                                                     </div>
                                                 </div>
                                                 <div>
@@ -230,72 +186,23 @@ const Tabs = () => {
 
                                             </div>
                                             <h3 className="parrafoGrande celesteTxt">Ingredientes</h3>
-                                            <ul>
-                                                <li className="parrafoMedianoPop">
-                                                    3 1/2 Tazas de Agua
-                                                </li>
-                                                <li className="parrafoMedianoPop">
-                                                    1 Bastón de Canela
-                                                </li>
-                                                <li className="parrafoMedianoPop">
-                                                    2 Clavos de Olor
-                                                </li>
-                                                <li className="parrafoMedianoPop">
-                                                    1 Taza de Arroz Largo
-                                                </li>
-                                                <li className="parrafoMedianoPop">
-                                                    1/2 Cucharadita de Esencia de Vainilla
-                                                </li>
-                                                <li className="parrafoMedianoPop">
-                                                    1 Lata de leche gloria
-                                                </li>
-                                                <li className="parrafoMedianoPop">
-                                                    1 Lata de leche condensada gloria
-                                                </li>
-                                                <li className="parrafoMedianoPop">
-                                                    1/3 Taza de Pasas
-                                                </li>
-                                                <li className="parrafoMedianoPop">
-                                                    1 Cucharadita de Canela en polvo
-                                                </li>
-                                            </ul>
-
+                                            <HtmlSafeRender html={productoData.receta_ingredientes ?? ''} className="parrafoMedianoPop" />
                                             <h3 className="parrafoGrande celesteTxt">Instrucciones</h3>
-                                            <ul className={styles.vinetasNumber}>
-                                                <li className="parrafoMedianoPop">
-                                                    Colocar en una olla el agua, luego agregar la canela y el clavo de olor. Una vez el agua empiece a hervir, retirar la canela, el clavo de olor y añadir el arroz, previamente lavado. Dejar cocinando a fuego medio para que se cocine.
-                                                </li>
-                                                <li className="parrafoMedianoPop">
-                                                    Mover con la ayuda de un tenedor para evitar romper los granos de arroz. Cuando esté cocido y el agua se haya consumido, retirar la canela y el clavo de olor.
-                                                </li>
-                                                <li className="parrafoMedianoPop">
-                                                    Echar la esencia de vainilla, la lata de leche GLORIA y la leche condensada GLORIA.
-                                                </li>
-                                                <li className="parrafoMedianoPop">
-                                                    Cocinar a fuego medio entre a 5 a 8 minutos. Hasta que veamos que ya no está tan ligera la consistencia.
-                                                </li>
-                                                <li className="parrafoMedianoPop">
-                                                    Colocar pasas, decorar con canela al gusto y servir.
-                                                </li>
-                                            </ul>
+                                            <HtmlSafeRender html={productoData.receta_instrucciones ?? ''} className="parrafoMedianoPop" />
                                             <h3 className="parrafoGrande celesteTxt">Información nutricional</h3>
                                             <div className={styles.nutricionalInfocontainer}>
-                                                <div>
-                                                    <h2 className="titularMediano fontLight centerTxt">225.6 kcal</h2>
-                                                    <p className="parrafoMediano celesteTxt centerTxt">Calorias</p>
-                                                </div>
-                                                <div>
-                                                    <h2 className="titularMediano fontLight centerTxt">39.2 g</h2>
-                                                    <p className="parrafoMediano celesteTxt centerTxt">Carboidratos</p>
-                                                </div>
-                                                <div>
-                                                    <h2 className="titularMediano fontLight centerTxt">4.9 g</h2>
-                                                    <p className="parrafoMediano celesteTxt centerTxt">Grasas</p>
-                                                </div>
-                                                <div>
-                                                    <h2 className="titularMediano fontLight centerTxt">1.2 g</h2>
-                                                    <p className="parrafoMediano celesteTxt centerTxt">Fibras</p>
-                                                </div>
+                                                {
+                                                    Array.isArray(productoData.receta_informacion_nutricional) &&
+                                                    productoData.receta_informacion_nutricional?.map((item, index) => {
+                                                        const info = item as { nutriente: string; valor: number };
+                                                        return (
+                                                            <div key={index}>
+                                                                <h2 className="titularMediano fontLight centerTxt">{info.valor}</h2>
+                                                                <p className="parrafoMediano celesteTxt centerTxt">{info.nutriente}</p>
+                                                            </div>
+                                                        )
+                                                    })
+                                                }
                                             </div>
                                         </div>
                                     </div>

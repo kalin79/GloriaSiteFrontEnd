@@ -5,7 +5,7 @@
 .bannerInternoContainer {
     background: $azulP;
     // height: 550px;
-    border-bottom: 6px solid $rojoP;
+    border-bottom: 0px solid $rojoP;
     overflow: hidden;
 
     @media screen and (min-width: 992px) {
@@ -145,6 +145,10 @@
 
                 .titularContainer {
                     margin: 1rem 0;
+
+                    p {
+                        margin-top: 1rem;
+                    }
                 }
 
                 .btnContainer {

@@ -31,12 +31,30 @@ h4 {
     }
 }
 
-.bgGloria {
-    background-image: url('/bgGloria1.png'); // Ruta relativa en `public/`
-    background-size: cover; // Ajusta la imagen al tamaño de la pantalla
-    background-position: center; // Centra la imagen
-    background-repeat: no-repeat; // Evita que se repita
-    background-attachment: fixed;
+.bodyContainerMain {
+    // background-image: url('/bgGloria1.png'); // Ruta relativa en `public/`
+    // background-size: cover; // Ajusta la imagen al tamaño de la pantalla
+    // background-position: center; // Centra la imagen
+    // background-repeat: no-repeat; // Evita que se repita
+    // background-attachment: fixed;
+    position: relative;
+    // background-color: #2A2361;
+    background: linear-gradient(to right, #2A2361, #1A172B);
+
+    .bg {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: top;
+        }
+    }
 }
 
 .marginTop30 {
@@ -105,6 +123,12 @@ h4 {
     font-weight: 500 !important;
 }
 
+.notBr {
+    br {
+        display: none !important;
+    }
+}
+
 .boldRegular {
     font-weight: 400 !important;
 }
@@ -135,7 +159,7 @@ h4 {
 }
 
 .titularPequeno2 {
-    @extend %tituloBasePequeno;
+    @extend %tituloBasePequeno2;
     @include colorTexto(azul);
     @include propiedadResponsiva(font-size, $titularPequeno2);
     font-weight: 400;
@@ -145,6 +169,13 @@ h4 {
     @extend %tituloBaseMediano;
     @include colorTexto(blanco);
     @include propiedadResponsiva(font-size, $titularMediano);
+    font-weight: 400;
+}
+
+.tituloMediano2 {
+    @extend %tituloBaseMediano2;
+    @include colorTexto(blanco);
+    @include propiedadResponsiva(font-size, $titularMediano2);
     font-weight: 400;
 }
 
@@ -372,6 +403,7 @@ h4 {
             overflow: hidden;
             border-radius: 10px;
             background: $azulP;
+            cursor: pointer;
 
             @media screen and (min-width: 992px) {
                 height: auto;

@@ -4,10 +4,24 @@ import CarruselCampanasComponent from "@/components/carrusel/CarruselCampanas";
 
 import { BannerInterface } from '@/interfaces/banner';
 import { VideoCampanaInterface } from '@/interfaces/campana';
-
+import { SlugInterface } from '@/interfaces/slug';
 import styles from '@/styles/scss/campanas.module.scss';
 
-const page = () => {
+export default async function CampanaPage(props: SlugInterface) {
+
+    // ✅ Desestructurar antes, sin anidamiento
+    const params = await Promise.resolve(props.params); // ✅ workaround válido
+    const { slug, marca } = params;
+
+    console.log(`Marca recibida: ${marca}`);
+    if (!slug) {
+        throw new Error('Slug no disponible');
+    }
+
+    const response = await getVideoBySlug(slug);
+    const { video, related_video }: { video: VideoInterface, related_video: VideoInterface[] } = response.data;
+
+
     const banner: BannerInterface = {
         title: '¡Comienza un <br />nuevo regreso <br />a clases!',
         subTitle: '',
@@ -83,5 +97,3 @@ const page = () => {
         </>
     )
 }
-
-export default page

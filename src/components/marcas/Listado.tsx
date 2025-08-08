@@ -5,8 +5,8 @@ const Listado = () => {
     return (
         <div className="containerFluid">
             <div className="headerTitle">
-                <h3 className="titularPequeno">NUESTROS MUNDOS</h3>
-                <h2 className="titularMediano">Cuidamos tu mundo, <span className="celesteTxt">alimentamos tu vida.</span></h2>
+                <h3 className="titularMediano celesteTxt">Nuestras Marcas</h3>
+                <h2 className="titularPequeno2 fontLight blancoTxt">Descubre lo que cada marca tiene para ofrecerte</h2>
             </div>
             <div className={styles.listadoCard}>
                 <CardComponent logosrc="/gloria.svg" slug="gloria" />

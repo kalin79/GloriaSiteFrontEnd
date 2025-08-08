@@ -54,9 +54,19 @@
     @include propiedadResponsiva(line-height, $interlineadoTituloMediano);
 }
 
+%tituloBaseMediano2 {
+    font-family: var(--font-misti), sans-serif;
+    @include propiedadResponsiva(line-height, $interlineadoTituloMediano2);
+}
+
 %tituloBasePequeno {
     font-family: var(--font-misti), sans-serif;
     @include propiedadResponsiva(line-height, $interlineadoTituloPequeno);
+}
+
+%tituloBasePequeno2 {
+    font-family: var(--font-misti), sans-serif;
+    @include propiedadResponsiva(line-height, $interlineadoTituloPequeno2);
 }
 
 

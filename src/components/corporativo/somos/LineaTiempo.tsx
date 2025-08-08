@@ -96,8 +96,14 @@ const LineaTiempo = () => {
             <div className='containerFluid'>
                 <div className={styles.gridContainer}>
                     <div>
-                        <h2 className='parrafoMediano rojoTxt boldMedium'>NUESTRA HISTORIA</h2>
-                        <h3 className='titularExtraGrande celesteTxt fontLight'>Línea de tiempo</h3>
+                        <h2 className='parrafoMediano celesteTxt boldMedium'>LÍNEA DE TIEMPO</h2>
+                        <h3 className='titularExtraGrande celesteTxt fontLight'>
+                            Más de 83 años de <br />
+                            <span className='boldRegular'>historia y compromiso</span>
+                        </h3>
+                        <p className='titularPequeno blancoTxt fontLight'>
+                            Explora nuestra línea de tiempo y conoce los momentos que han marcado nuestro camino.
+                        </p>
                     </div>
                     <div>
                         <div className={styles.carruselLineaContainer} ref={containerRef}>

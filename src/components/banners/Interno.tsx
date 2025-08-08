@@ -12,7 +12,7 @@ interface Props {
     dataBanner: BannerInterface;
 }
 const Interno = ({ dataBanner }: Props) => {
-    const { imgPc, imgMobile, breadcrumb, titulo, slugbread } = dataBanner;
+    const { imgPc, imgMobile, breadcrumb, titulo, slugbread, descripcion } = dataBanner;
     const [srcImagen, setSrcImagen] = useState(imgPc);
     useEffect(() => {
         const cambiarImagen = () => {
@@ -47,6 +47,14 @@ const Interno = ({ dataBanner }: Props) => {
                             <h1 className='bannerTitular fontLight'>
                                 <HtmlSafeRender html={titulo} />
                             </h1>
+                            {
+                                descripcion && (
+                                    <p className="blancoTxt titularPequeno2 fontLight">
+                                        <HtmlSafeRender html={descripcion} />
+                                    </p>
+                                )
+                            }
+
                         </div>
                         {/* <div className={styles.btnContainer}>
                             <p className='parrafoMediano2 rojoTxt boldMedium'>Más información</p>

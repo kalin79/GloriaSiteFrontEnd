@@ -1,20 +1,36 @@
 "use client";
+import { useEffect, useRef } from 'react';
+import Player from '@vimeo/player';
+import { VideoInterface } from "@/interfaces/video";
+
 import styles from '@/styles/scss/video.module.scss';
 
-const Banner = () => {
+interface Props {
+    videoData: VideoInterface;
+}
+
+const Banner = ({ videoData }: Props) => {
+    const videoRef = useRef<HTMLDivElement>(null);
+    useEffect(() => {
+        if (videoRef.current && videoData.link_video) {
+            const player = new Player(videoRef.current, {
+                id: Number(1102244290),
+                autoplay: true,
+                muted: true,
+                loop: true,
+                background: true,
+                responsive: true,
+            });
+
+            return () => {
+                player.unload().catch(console.error);
+            };
+        }
+    }, [videoData.link_video]);
     return (
         <>
             <div className={styles.videoFullPage}>
-                <video width="100%" height="100%"
-                    autoPlay // Reproducir automáticamente
-                    loop    // (Opcional) Repetir el video en bucle
-                    controls={false} // Ocultar controles
-                    muted
-                    playsInline
-                >
-                    <source src="/videocorto.mp4" type="video/mp4" />
-                    Tu navegador no soporta la etiqueta de video.
-                </video>
+                <div ref={videoRef} />
             </div>
         </>
     );

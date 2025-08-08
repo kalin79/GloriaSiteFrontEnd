@@ -15,7 +15,7 @@ const Card = ({ productContents, onClick }: productParameters) => {
             onClick={onClick}
         >
             {
-                (productContents.receta) && (
+                (productContents.receta_nombre) && (
                     <div className={styles.recetacontent}>
                         <Image src="/iconChef2.svg" width={42} height={40} alt='' />
                     </div>
@@ -23,11 +23,11 @@ const Card = ({ productContents, onClick }: productParameters) => {
             }
 
             <div className={styles.bodyCardBox}>
-                <Image src={productContents.imagen || ''} width={656} height={858} alt='' />
+                <Image src={productContents.imagemobile ?? '/pO1M.png'} width={656} height={858} alt={productContents.titulo ?? ''} />
             </div>
             <div className={styles.footerCardBox}>
-                <h4 className=''>{productContents.title}</h4>
-                <h2 className='parrafoMediano celesteTxt'>{productContents.descirpcionCorta || ''}</h2>
+                <h4 className=''>{productContents.titulo ?? ''}</h4>
+                <h2 className='parrafoMediano celesteTxt'>{productContents.subtitulo ?? ''}</h2>
             </div>
         </div>
     )

@@ -10,9 +10,15 @@ const Footer = () => {
                 <div className="containerFluid">
                     <div className={styles.gridContainer}>
                         <div>
-                            <Link href="/">
-                                <Image src="/logoCorp.svg" width={120} height={40} alt='Gloria' />
-                            </Link>
+                            <div className={`${styles.flexContent}`}>
+                                <Link href="/">
+                                    <Image src="/logoCorp.svg" width={120} height={40} alt='Gloria' />
+                                </Link>
+                                <p className='parrafoMediano2 blancoTxt boldRegular'>
+                                    Alimentamos el progreso, el bienestar y los sueños de todos los peruanos.
+                                </p>
+                            </div>
+
                         </div>
                         <div>
                             <h3 className='titularPequeno'>Leche Gloria</h3>
@@ -43,32 +49,48 @@ const Footer = () => {
                         </div>
                         <div className={styles.gloriaAyudaContainer}>
                             <div>
-                                <h3 className='titularPequeno celesteTxt'>Atención al cliente:</h3>
+                                <h3 className='titularPequeno celesteTxt'>Gloria responde:</h3>
                             </div>
-                            <div>
-                                {/* <h3 className='bannerParrafo'>Línea telefónica gratuita:</h3> */}
-                                <h2 className='titularMedianoFooter fontLight'>0800-1-4441</h2>
-                                <p className='parrafoPequeno'>De lunes a viernes de 8:00 am a 6:00 pm, sábado de 8:00 am a 12:00 pm</p>
-                            </div>
-                            <div>
-                                {/* <h3 className='bannerParrafo'>Línea telefónica gratuita:</h3> */}
-                                <a href="mailto:contactcenterinforma@gloria.com.pe" className='titularMedianoFooter fontLight'>contactcenterinforma@gloria.com.pe</a>
-                                <p className='parrafoPequeno'>De lunes a viernes de 8:00 am a 4:00 pm, sábado de 8:00 am a 11:00 am</p>
-                            </div>
-                            <div className={styles.eticaContainer}>
-                                <div>
-                                    <a href="https://www.gloriateescucha.com/" target='_blank'>
-                                        <Image src="/etica.svg" width={54} height={44} alt='Gloria' />
-                                    </a>
+                            <div className={styles.iconFlexContainer}>
+                                <div className={styles.iconContainer}>
+                                    <Image src="/phone.svg" width={23} height={20} alt='' />
                                 </div>
                                 <div>
-                                    <a href="https://www.gloriateescucha.com/" target='_blank'>
-                                        <h4 className='parrafoPequeno celesteTxt'>LÍNEA ÉTICA</h4>
-                                        <h5 className='bannerParrafo'>Gloria te escucha</h5>
-                                    </a>
+                                    <h2 className='titularMedianoFooter fontLight'>0800-1-4441</h2>
+                                    <p className='parrafoPequeno'>De lunes a viernes de 8:00 am a 6:00 pm, sábado de 8:00 am a 12:00 pm</p>
                                 </div>
                             </div>
-
+                            <div className={styles.iconFlexContainer}>
+                                <div className={styles.iconContainer}>
+                                    <Image src="/email.svg" width={20} height={16} alt='' />
+                                </div>
+                                <div>
+                                    <a href="mailto:contactcenterinforma@gloria.com.pe" className='titularMedianoFooter fontLight'>contactcenterinforma@gloria.com.pe</a>
+                                    <p className='parrafoPequeno'>De lunes a viernes de 8:00 am a 4:00 pm, sábado de 8:00 am a 11:00 am</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={styles.redesContainer}>
+                            <a href="https://www.gloriateescucha.com/" target='_blank'>
+                                <Image src="/ln.svg" width={42} height={42} alt='Gloria' />
+                            </a>
+                            <p className='parrafoMediano celesteTxt'>
+                                Entérate de nuestras <br />
+                                noticias, logros y cultura.
+                            </p>
+                        </div>
+                        <div className={styles.eticaContainer}>
+                            <div>
+                                <a href="https://www.gloriateescucha.com/" target='_blank'>
+                                    <Image src="/call2.svg" width={42} height={42} alt='Gloria' />
+                                </a>
+                            </div>
+                            <div>
+                                <a href="https://www.gloriateescucha.com/" target='_blank'>
+                                    <h4 className='parrafoPequeno celesteTxt'>LÍNEA ÉTICA</h4>
+                                    <h5 className='bannerParrafo'>Gloria te escucha</h5>
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div className={`${styles.cierreFooter}`}>
@@ -88,7 +110,7 @@ const Footer = () => {
                             </a>
                         </div> */}
                         <div className={styles.CopyBox}>
-                            <h4 className='parrafoMediano celesteTxt fontLight'>© GLORIA. Todos los derechos reservados.</h4>
+                            <h4 className='parrafoMediano celesteTxt fontLight'>© GLORIA, Todos los Derechos Reservados - 2025</h4>
                         </div>
                     </div>
                 </div>
