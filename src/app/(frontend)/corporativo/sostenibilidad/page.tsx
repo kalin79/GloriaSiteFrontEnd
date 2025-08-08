@@ -4,6 +4,8 @@ import DescripcionComponent from '@/components/corporativo/sostenibilidad/Descri
 import ComprometidosComponent from '@/components/corporativo/sostenibilidad/Comprometidos';
 import ImgComponent from '@/components/corporativo/sostenibilidad/Imagen';
 import LataComponent from '@/components/corporativo/sostenibilidad/nuestraLata';
+import MensajeComponent from '@/components/corporativo/sostenibilidad/Mensaje';
+import LecheComponent from '@/components/corporativo/sostenibilidad/Leche';
 const Sostenibilidad = () => {
     const dataBanner: BannerInterface = {
         imgMobile: '/bi4.webp',
@@ -22,6 +24,8 @@ Descubre y explora nuestras prácticas sostenibles`,
             <DescripcionComponent />
             <ImgComponent />
             <LataComponent />
+            <MensajeComponent />
+            <LecheComponent />
         </div>
     )
 }

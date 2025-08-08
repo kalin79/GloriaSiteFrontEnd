@@ -3,6 +3,7 @@ export interface BannerInterface {
     imgPc: string;
     titulo: string;
     descripcion?: string;
+    url?: string;
     breadHeader?: string;
     slugbreadHEADER?: string;
     breadcrumb: string;

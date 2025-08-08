@@ -2,6 +2,164 @@
 @use 'vars/mixins' as *;
 
 
+.lecheContainerSeccion {
+    background: $azulP;
+    padding: 4rem 0 12rem;
+
+    .gridContainer {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 1rem;
+
+        >div {
+            &:nth-of-type(3) {
+                grid-column: 1 / -1;
+                display: grid;
+                grid-template-columns: repeat(1, 1fr);
+                /* 3 columnas iguales */
+                gap: 3rem;
+                padding: 4rem 0 0;
+
+                @media screen and (min-width: 768px) {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+
+                @media screen and (min-width: 992px) {
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 1rem;
+                }
+
+                /* espacio entre columnas y filas (opcional) */
+                .itemLata {
+                    background: $celesteP;
+                    padding: 1.5rem 0rem 3rem;
+                    border-radius: 30px;
+
+                    .infoContainer {
+                        display: flex;
+                        justify-content: center;
+                        flex-direction: column;
+                        align-items: center;
+
+                        h3 {
+                            text-align: center;
+                            height: 50px;
+                        }
+
+                        .panelInfo {
+                            text-align: center;
+
+                            button {
+                                background: transparent;
+                                border: 1px solid $azulP;
+                                margin-top: 2.5rem;
+                                transition: .5s all ease-in-out;
+                                margin-left: auto;
+                                margin-right: auto;
+                                opacity: 0;
+                                display: none;
+
+                                @media screen and (min-width: 992px) {
+                                    opacity: 1;
+                                    display: block;
+                                }
+                            }
+
+                            .detalleLecheBox {
+                                padding: 1rem 2rem;
+                                text-align: center;
+                                opacity: 1;
+                                transition: .5s all ease-in-out;
+                                height: auto;
+                                overflow: hidden;
+
+                                @media screen and (min-width: 992px) {
+                                    opacity: 0;
+                                    height: 0;
+                                }
+                            }
+
+                            &:hover {
+                                @media screen and (min-width: 992px) {
+                                    button {
+                                        opacity: 0;
+                                        display: none;
+                                    }
+
+                                    .detalleLecheBox {
+                                        opacity: 1;
+                                        height: auto;
+                                        min-height: 180px;
+                                    }
+                                }
+                            }
+                        }
+
+
+                    }
+
+
+
+                    .imgContainer {
+                        display: flex;
+                        justify-content: center;
+                        height: 180px;
+                        border: 0px solid red;
+                        padding: 1rem 0;
+
+                        img {
+                            width: auto;
+                            height: 100%;
+                            object-fit: contain;
+                        }
+                    }
+
+
+                }
+            }
+
+            &:nth-of-type(2) {
+                grid-column: 1 / -1;
+                padding-top: 0rem;
+
+                @media screen and (min-width: 992px) {
+                    grid-column: 7 / -1;
+                    padding-top: 3rem;
+                }
+            }
+
+            &:nth-of-type(1) {
+                grid-column: 1 / -1;
+
+                @media screen and (min-width: 992px) {
+                    grid-column: 1 / span 6;
+                }
+
+                h2 {
+                    margin-top: 1rem;
+
+                }
+            }
+        }
+    }
+}
+
+
+.mensajeContainerSeccion {
+    background: $azulP;
+    padding: 8rem 0;
+
+    .gridContainer {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 1rem;
+
+        >div {
+            grid-column: 2 / span 10;
+        }
+    }
+}
+
 .nuestraLataContainer {
     background: $cremaP;
     padding: 4rem 0 10rem;
@@ -15,16 +173,29 @@
             &:nth-of-type(3) {
                 grid-column: 1 / -1;
                 display: grid;
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(1, 1fr);
                 /* 3 columnas iguales */
                 gap: 1rem;
-                padding: 4rem 0 0;
+                padding: 3rem 0 0;
+
+                @media screen and (min-width: 768px) {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+
+                @media screen and (min-width: 992px) {
+                    padding: 4rem 0 0;
+                    grid-template-columns: repeat(3, 1fr);
+                }
 
                 /* espacio entre columnas y filas (opcional) */
                 .itemLata {
                     background: $celesteP;
-                    padding: 1.5rem 3rem 3rem;
+                    padding: 4rem 3rem 6rem;
                     border-radius: 30px;
+
+                    @media screen and (min-width: 992px) {
+                        padding: 1.5rem 3rem 3rem;
+                    }
 
                     .infoContainer {
 
@@ -61,12 +232,21 @@
             }
 
             &:nth-of-type(2) {
-                grid-column: 7 / -1;
-                padding-top: 3rem;
+                grid-column: 1 / -1;
+                padding-top: 1rem;
+
+                @media screen and (min-width: 992px) {
+                    grid-column: 7 / -1;
+                    padding-top: 3rem;
+                }
             }
 
             &:nth-of-type(1) {
-                grid-column: 1 / span 6;
+                grid-column: 1 / -1;
+
+                @media screen and (min-width: 992px) {
+                    grid-column: 1 / span 6;
+                }
 
                 h2 {
                     margin-top: 1rem;
@@ -591,6 +771,11 @@
 
 .plantaContainer {
     background: $celesteP;
+    padding: 8rem 0 4rem;
+
+    @media screen and (min-width: 992px) {
+        padding: 4rem 0 8rem;
+    }
 
     .gridContainer {
         display: grid;
@@ -909,13 +1094,28 @@
 }
 
 .datosGanaderosContainer {
-    background: $celesteP;
-    padding: 5rem 0 4rem;
+    background: $cremaP;
+    padding: 6rem 0 12rem;
+
+    .gridContainerHeader {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 1rem;
+
+        >div {
+            grid-column: 2 / span 10;
+        }
+    }
 
     .gridContainer {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 1rem;
+        margin-top: 4.5rem;
+
+        @media screen and (min-width: 768px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
 
         @media screen and (min-width: 992px) {
             grid-template-columns: repeat(3, 1fr);
@@ -925,7 +1125,7 @@
             grid-column: 1 / -1;
 
             @media screen and (min-width: 768px) {
-                grid-column: 2 / span 2;
+                grid-column: auto;
             }
 
             @media screen and (min-width: 992px) {
@@ -935,6 +1135,17 @@
             .infoContainer {
                 display: flex;
                 justify-content: flex-start;
+                background: $celesteP;
+                padding: 2rem 2.5rem;
+                border-radius: 30px;
+
+                @media screen and (min-width: 992px) {
+                    min-height: 420px;
+                }
+
+                @media screen and (min-width: 1600px) {
+                    padding: 3.5rem 5.5rem;
+                }
 
                 >div {
                     text-align: center;
@@ -954,40 +1165,8 @@
                     }
 
                     h3 {
-                        font-family: var(--fuente-misti), sans-serif;
-                        font-size: 1.5rem;
-                        color: #443D72;
-                        line-height: 1em;
-                        margin: .75rem 0 1.25rem;
-                        text-align: center;
-                        font-weight: 400;
-
-                        @media screen and (min-width: 992px) {
-                            font-size: 1.75rem;
-                            line-height: 1em;
-                        }
-
-                        br {
-                            display: none;
-
-                            @media screen and (min-width: 992px) {
-                                display: block;
-                            }
-                        }
-                    }
-
-                    p {
-                        font-family: var(--fuente-misti), sans-serif;
-                        font-size: 1.125rem;
-                        color: #5D5D5D;
-                        line-height: 1.25em;
-                        text-align: center;
-                        font-weight: 400;
-
-                        @media screen and (min-width: 992px) {
-                            font-size: 1.125rem;
-                            ine-height: 1.25em;
-                        }
+                        margin-bottom: 1rem;
+                        margin-top: 1rem;
                     }
                 }
             }

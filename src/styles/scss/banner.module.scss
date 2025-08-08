@@ -7,12 +7,24 @@
     // height: 550px;
     border-bottom: 0px solid $rojoP;
     overflow: hidden;
+    padding-bottom: 4rem;
+
+    @media screen and (min-width: 768px) {
+        padding-bottom: 0rem;
+    }
 
     @media screen and (min-width: 992px) {
         height: 100vh;
     }
 
 
+    .btnExternoContainer {
+        margin-top: 1.5rem;
+        display: flex;
+        justify-content: flex-start;
+        gap: 1rem;
+        align-items: center;
+    }
 
     .containerFluid {
         padding: 0;

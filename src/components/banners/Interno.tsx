@@ -12,7 +12,7 @@ interface Props {
     dataBanner: BannerInterface;
 }
 const Interno = ({ dataBanner }: Props) => {
-    const { imgPc, imgMobile, breadcrumb, titulo, slugbread, descripcion } = dataBanner;
+    const { imgPc, imgMobile, breadcrumb, titulo, slugbread, descripcion, url } = dataBanner;
     const [srcImagen, setSrcImagen] = useState(imgPc);
     useEffect(() => {
         const cambiarImagen = () => {
@@ -52,6 +52,17 @@ const Interno = ({ dataBanner }: Props) => {
                                     <p className="blancoTxt titularPequeno2 fontLight">
                                         <HtmlSafeRender html={descripcion} />
                                     </p>
+                                )
+                            }
+
+                            {
+                                url && (
+                                    <>
+                                        <div className={styles.btnExternoContainer}>
+                                            <a href={url} className="btnStandart" target="_blank">Ingresa aquí</a>
+                                            <Image src="/logoGanadero.svg" width={85} height={82} alt="Ganaderos" />
+                                        </div>
+                                    </>
                                 )
                             }
 
