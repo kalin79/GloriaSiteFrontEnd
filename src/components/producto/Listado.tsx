@@ -18,6 +18,7 @@ const Listado = ({ products }: Props) => {
     const router = useRouter();
 
     const handleClickViewVideo = (slug: string, marca: string) => {
+        alert(1)
         router.push(`/${marca}/producto/${slug}`)
     }
     const handleSiguiente = () => {
@@ -45,20 +46,20 @@ const Listado = ({ products }: Props) => {
                 <div className={styles.headerContainer}>
                     <div className={styles.gridContiner}>
                         <div>
-                            <h2 className='titularExtraGrande'>
+                            <h2 className={styles.titularMain}>
                                 Explora nuestra <br />
                                 selección de <br />
-                                <span className='boldRegular'>productos:</span>
+                                <span>productos:</span>
                             </h2>
                         </div>
                         <div>
-                            <p className='parrafoGrande'>
+                            <p className={styles.parrafoTitProductos}>
                                 Nutritivos, deliciosos y perfectos para toda la familia. <br />Desliza y encuentra tus favoritos.
                             </p>
-                            <div className={styles.recetaContainer}>
+                            {/* <div className={styles.recetaContainer}>
                                 <Image src="/iconChef.svg" width={42} height={37} alt='Recetas de Producto' />
                                 <h3 className='parrafoMediano celesteTxt'>Producto <br />con receta</h3>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
@@ -77,7 +78,7 @@ const Listado = ({ products }: Props) => {
                                 <CardComponent
                                     key={index}
                                     productContents={item}
-                                    onClick={() => { if (item.slug && item.marca) { handleClickViewVideo(item.slug, item.marca) } }}
+                                    onClick={() => { console.log(productos); if (item.slug && item.marca) { handleClickViewVideo(item.slug, item.marca.name) } }}
                                 />
                             ))}
                         </div>

@@ -14,12 +14,17 @@ const Banner = ({ videoData }: Props) => {
     useEffect(() => {
         if (videoRef.current && videoData.link_video) {
             const player = new Player(videoRef.current, {
-                id: Number(1102244290),
-                autoplay: true,
-                muted: true,
-                loop: true,
-                background: true,
+                id: Number(videoData.link_video),
+                autoplay: false, // ✅ No inicia automáticamente
+                muted: false,
+                loop: false,
+                controls: true, // ✅ Muestra los controles
                 responsive: true,
+            });
+
+            // Opcional: ajustar a fullscreen por CSS
+            player.ready().then(() => {
+                player.pause(); // ✅ Asegura que empiece pausado
             });
 
             return () => {
@@ -29,7 +34,7 @@ const Banner = ({ videoData }: Props) => {
     }, [videoData.link_video]);
     return (
         <>
-            <div className={styles.videoFullPage}>
+            <div className={`${styles.videoFullPage} ${styles.sinDegradado}`}>
                 <div ref={videoRef} />
             </div>
         </>

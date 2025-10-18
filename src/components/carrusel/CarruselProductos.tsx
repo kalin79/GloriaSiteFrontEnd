@@ -1,15 +1,26 @@
 'use client';
+import { useCallback, useEffect, useRef, useState } from "react";
+import { getListadoProductos } from '@/actions/marca/producto/getListadoProductos';
 import Image from 'next/image'
 import { useRouter } from "next/navigation";
-
+import { ProductoHomeInterface, PaginationHomeInterface, TagsAux } from '@/interfaces/producto';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import type { SwiperRef } from "swiper/react";
 // import { Navigation } from 'swiper/modules';
 // import VideoBanner from "@/components/videos/Banner"
-import CardComponent from "@/components/producto/Card";
+import CardComponent from "@/components/producto/CardHome";
 import dynamic from "next/dynamic";
-import { ProductInterface } from '@/interfaces/producto';
+import type { SingleValue } from "react-select";
 // Carga react-select sin SSR
-const Select = dynamic(() => import("react-select"), { ssr: false });
+const Select = dynamic(() => import("react-select"), {
+    ssr: false,
+}) as unknown as React.FC<import("react-select").Props<OptionType, false>>;
+
+// 👇 Tipamos la opción
+interface OptionType {
+    value: number;
+    label: string;
+}
 
 // Estilos swiper
 import 'swiper/css';
@@ -17,90 +28,93 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 import styles from '@/styles/scss/producto.module.scss';
-type OptionType = {
-    value: string;
-    label: string;
-};
 
 
-const CarruselProductos = () => {
+interface Props {
+    productosData: ProductoHomeInterface[];
+    paginationData: PaginationHomeInterface;
+    tagsData: TagsAux[];
+}
+
+const CarruselProductos = ({ productosData, paginationData, tagsData }: Props) => {
     const router = useRouter();
-    const products: ProductInterface[] = [
-        {
-            title: 'Leche Gloria UHT Entera',
-            descirpcionCorta: 'Presentación caja de 1 L',
-            idMarca: 1,
-            marca: 'Gloria',
-            slug: 'leche-gloria-uht-entera',
-            imagen: '/pO1.png',
-            receta: true
-        },
-        {
-            title: 'LECHE EN POLVO INSTANTÁNEA',
-            descirpcionCorta: 'Presentación botella de 946 mL',
-            idMarca: 1,
-            marca: 'Gloria',
-            slug: 'leche-en-polvo-instantanea',
-            imagen: '/pO1M.png',
-            receta: false
-        },
-        {
-            title: 'Yogurt Gloria Durazno',
-            descirpcionCorta: 'Presentación botella de 1 kg',
-            idMarca: 2,
-            marca: 'BONLE',
-            slug: 'bonle-uht-sin-lactosa',
-            imagen: '/pO2.png',
-            receta: true
-        },
-        {
-            title: 'Leche Gloria UHT Entera',
-            descirpcionCorta: 'Presentación caja de 1 L',
-            idMarca: 1,
-            marca: 'Gloria',
-            slug: 'leche-gloria-uht-entera',
-            imagen: '/p4.png',
-            receta: true
-        },
-        {
-            title: 'LECHE EN POLVO INSTANTÁNEA',
-            descirpcionCorta: 'Presentación botella de 946 mL',
-            idMarca: 1,
-            marca: 'Gloria',
-            slug: 'leche-en-polvo-instantanea',
-            imagen: '/pO1.png',
-            receta: false
-        },
-        {
-            title: 'Yogurt Gloria Durazno',
-            descirpcionCorta: 'Presentación botella de 1 kg',
-            idMarca: 2,
-            marca: 'BONLE',
-            slug: 'bonle-uht-sin-lactosa',
-            imagen: '/p6.png',
-            receta: true
-        },
-
-    ]
+    const [productos, setProductos] = useState<ProductoHomeInterface[]>(productosData);
+    const [pagination, setPagination] = useState<PaginationHomeInterface>(paginationData);
+    const [optionSelect, setOptionSelect] = useState<SingleValue<OptionType>>(null);
+    const [isLoading, setIsLoading] = useState(false);
+    // Convertimos el arreglo en opciones que entienda react-select
     const options: OptionType[] = [
-        { value: "Gloria", label: "Gloria" },
-        { value: "Pro", label: "Pro" },
-        { value: "ActiBio", label: "ActiBio" },
-        { value: "Bonle", label: "Bonle" },
-        { value: "Battimix", label: "Battimix" },
+        { value: 0, label: 'Ver todos' }, // 👈 opción adicional
+        ...tagsData.map(tag => ({
+            value: tag.id,
+            label: tag.name
+        }))
     ];
-    const handleChange = (selectedOption: OptionType | null) => {
-        console.log("Selected:", selectedOption);
+    const swiperRef = useRef<SwiperRef | null>(null);
+    const handleChange = async (newValue: SingleValue<OptionType>) => {
+        setOptionSelect(newValue);
+        const response = await getListadoProductos(1, newValue?.value);
+        const { productos, pagination } = response;
+
+        setProductos(productos);
+        setPagination(pagination);
+        // setOptions(selectedOption);
     };
     const handleClickViewVideo = (slug: string, marca: string) => {
         router.push(`/${marca}/producto/${slug}`)
     }
+    // 🔹 Llamada a la API con paginación
+    // 🔹 1. handlePagination siempre usa valores actualizados
+    const handlePagination = useCallback(async () => {
+        if (isLoading) return;
+        if (!pagination || pagination.current_page >= pagination.last_page) return;
+
+        setIsLoading(true);
+        try {
+            let response = await getListadoProductos(pagination.current_page + 1);
+            if (optionSelect && optionSelect.value > 0) {
+                response = await getListadoProductos(pagination.current_page + 1, optionSelect.value);
+            }
+
+            const { productos: nuevos, pagination: nuevaPaginacion } = response;
+
+            setProductos(prev => [...prev, ...nuevos]);
+            setPagination(nuevaPaginacion);
+        } finally {
+            setIsLoading(false);
+        }
+    }, [isLoading, pagination, optionSelect]);
+
+
+    // 🔹 2. Scroll handler con debounce simple
+    const handleScroll = useCallback(() => {
+        const swiperInstance = swiperRef.current?.swiper;
+        const swiperEl = swiperInstance?.el;
+        if (!swiperEl || isLoading) return;
+
+        const { scrollLeft, scrollWidth, clientWidth } = swiperEl;
+        if (scrollLeft + clientWidth >= scrollWidth - 80) {
+            handlePagination();
+        }
+    }, [isLoading, handlePagination]);
+
+    // 🔹 3. Agregar / quitar el listener correctamente
+    useEffect(() => {
+        const swiperInstance = swiperRef.current?.swiper;
+        const swiperEl = swiperInstance?.el;
+        if (!swiperEl) return;
+
+        swiperEl.addEventListener("scroll", handleScroll);
+        return () => {
+            swiperEl.removeEventListener("scroll", handleScroll);
+        };
+    }, [handleScroll]);
     return (
         <div className={`${styles.sectionHomeProductos}`}>
             <div className={`containerFluidLeft`}>
                 <div className={`${styles.productoCarruselContainer}`}>
                     <div>
-                        <h3 className='titularPequeno boldMedium'>NUESTROS PRODUCTOS</h3>
+                        <h3 className='titularPequeno boldMedium'>NUESTROS PRODUCTOS {isLoading}</h3>
                         <h2 className='titularExtraGrande'>
                             Explora nuestra <br />
                             selección de <br />
@@ -128,7 +142,8 @@ const CarruselProductos = () => {
                                 <Select
                                     inputId="searchableProductHome"
                                     options={options}
-                                    onChange={(newValue) => handleChange(newValue as OptionType | null)}
+                                    onChange={handleChange}
+                                    value={optionSelect} // 👈 clave para que quede marcada
                                     isSearchable={true}
                                     placeholder="Buscar..."
                                     classNamePrefix="customSelectHomeProducts"
@@ -139,15 +154,21 @@ const CarruselProductos = () => {
                         </div> */}
                         </div>
                         <div className={`${styles.bodyContainer}`}>
+                            {/* <pre>{JSON.stringify(productos)}</pre> */}
                             <Swiper
+                                ref={swiperRef}
                                 spaceBetween={10}
                                 slidesPerView={"auto"} // Permite ajustar el tamaño según el contenido
                                 freeMode={true} // Activa el desplazamiento libre
                                 grabCursor={true} // Muestra el cursor tipo "agarre"
                                 style={{ overflowX: "auto" }} // Permite el scroll horizontal
                                 className={`swiperScrollHorizontal`}
+                            // onReachEnd={() => {
+                            //     console.log(1)
+                            //     handlePagination()
+                            // }}
                             >
-                                {products.map((item, index) => (
+                                {productos.map((item, index) => (
                                     <SwiperSlide
                                         // style={{ width: "auto" }}
                                         key={index}
@@ -155,7 +176,7 @@ const CarruselProductos = () => {
                                     >
                                         <CardComponent
                                             productContents={item}
-                                            onClick={() => { if (item.slug && item.marca) { handleClickViewVideo(item.slug, item.marca) } }}
+                                            onClick={() => { if (item.slug && item.marca_slug) { handleClickViewVideo(item.slug, item.marca_slug) } }}
                                         />
                                     </SwiperSlide>
                                 ))}

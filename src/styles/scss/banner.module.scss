@@ -1,6 +1,166 @@
 @use 'vars/variables' as *;
 @use 'vars/mixins' as *;
 
+.bannerHomeMain {
+    position: relative;
+    height: 480px;
+    margin-top: 3rem;
+
+    // 1️⃣ Si el ancho es mayor a 992px y el alto es menor a 780px
+    @media (min-width: 992px) and (max-height: 680px) {
+        height: 680px;
+    }
+
+    // @media (min-width: 992px) and (min-height: 585px) {
+    @media (min-width: 992px) and (min-height: 681px) {
+        margin-top: 4rem;
+        height: calc(100vh - 4rem);
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom,
+                rgba($azulP, 0),
+                /* parte superior (negro con opacidad .35) */
+                rgba($azulP, .7)
+                /* parte inferior (transparente) */
+            );
+        z-index: 2;
+    }
+
+    .imageFull {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    .titularBanner {
+        font-family: var(--font-poppins), sans-serif;
+        line-height: 1.5rem;
+        font-size: 1.25em;
+        color: white;
+        font-weight: 400;
+
+        @media screen and (min-width: 992px) {
+            line-height: 1.15em;
+            font-size: 2.85rem;
+        }
+
+        @media screen and (min-width: 1200px) {
+            line-height: 1.25em;
+            font-size: 3rem;
+        }
+
+        @media screen and (min-width: 1600px) {
+            line-height: 1.15em;
+            font-size: 4.35rem;
+        }
+    }
+
+    .descripcionBanner {
+        font-family: var(--font-poppins), sans-serif;
+        line-height: 1rem;
+        font-size: .85em;
+        color: #F7E6CD;
+        font-weight: 400;
+        margin: 1rem 0;
+
+        @media screen and (min-width: 992px) {
+            line-height: 1.35em;
+            font-size: 1rem;
+        }
+
+        @media screen and (min-width: 1200px) {
+            line-height: 1.35em;
+            font-size: 1.25rem;
+        }
+
+        @media screen and (min-width: 1600px) {
+            line-height: 1.35em;
+            font-size: 1.5rem;
+        }
+    }
+
+    .infoContainer {
+        position: relative;
+        z-index: 20;
+        border: 0px solid red;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+
+        >div {
+            width: 100%;
+        }
+
+        .gridContainer {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1rem;
+
+            >div {
+                grid-column: 1 / span 10;
+                padding-left: 0rem;
+
+                @media screen and (min-width: 768px) {
+                    grid-column: 1 / span 7;
+                    padding-left: 2rem;
+                }
+
+                @media screen and (min-width: 992px) {
+                    grid-column: 1 / span 6;
+                }
+
+                @media screen and (min-width: 1400px) {
+                    grid-column: 1 / span 5;
+                }
+
+                @media screen and (min-width: 1600px) {
+                    grid-column: 1 / span 6;
+                }
+
+                .btnStandart {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 1rem;
+                }
+
+                .infoVideo {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    gap: 2.5rem;
+                    margin-bottom: .5rem;
+                    margin-top: -1rem;
+
+                    >div {
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        gap: .65rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
 
 .bannerInternoContainer {
     background: $azulP;
@@ -428,12 +588,75 @@
 
 .bannerContainer {
     position: relative;
-    height: 680px;
+    height: 480px;
+    margin-top: 3rem;
 
-    @media (min-width: 992px) and (min-height: 585px) {
-        height: 100vh;
+    // 1️⃣ Si el ancho es mayor a 992px y el alto es menor a 780px
+    @media (min-width: 992px) and (max-height: 680px) {
+        height: 680px;
     }
 
+    // @media (min-width: 992px) and (min-height: 585px) {
+    @media (min-width: 992px) and (min-height: 681px) {
+        margin-top: 6rem;
+        height: calc(100vh - 6rem);
+    }
+
+
+    .titularBanner {
+        font-family: var(--font-poppins), sans-serif;
+        line-height: 1.5rem;
+        font-size: 1.25em;
+        color: #E8ECFA;
+        font-weight: 400;
+
+        @media screen and (min-width: 992px) {
+            line-height: 1.15em;
+            font-size: 2.85rem;
+        }
+
+        @media screen and (min-width: 1200px) {
+            line-height: 1.18em;
+            font-size: 3.75rem;
+        }
+
+        @media screen and (min-width: 1600px) {
+            line-height: 1.15em;
+            font-size: 5.35rem;
+        }
+    }
+
+    .descripcionBanner {
+        margin-top: .25rem;
+        margin-bottom: 1rem;
+
+        @media screen and (min-width: 992px) {
+            margin-top: .75rem;
+        }
+
+        p {
+            font-family: var(--font-poppins), sans-serif;
+            line-height: 1rem;
+            font-size: .85em;
+            color: #F7E6CD;
+            font-weight: 400;
+
+            @media screen and (min-width: 992px) {
+                line-height: 1.35em;
+                font-size: 1rem;
+            }
+
+            @media screen and (min-width: 1200px) {
+                line-height: 1.35em;
+                font-size: 1.25rem;
+            }
+
+            @media screen and (min-width: 1600px) {
+                line-height: 1.35em;
+                font-size: 1.5rem;
+            }
+        }
+    }
 
     .infoCenter {
         position: relative;
@@ -456,18 +679,23 @@
 
             >div {
                 grid-column: 1 / span 10;
-                padding-left: 2rem;
+                padding-left: 0rem;
 
                 @media screen and (min-width: 768px) {
                     grid-column: 1 / span 7;
+                    padding-left: 2rem;
                 }
 
                 @media screen and (min-width: 992px) {
+                    grid-column: 1 / span 7;
+                }
+
+                @media screen and (min-width: 1200px) {
                     grid-column: 1 / span 6;
                 }
 
-                p {
-                    margin: 1rem 0;
+                @media screen and (min-width: 1600px) {
+                    grid-column: 1 / span 8;
                 }
 
                 .btnStandart {

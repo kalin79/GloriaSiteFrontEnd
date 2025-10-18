@@ -2,15 +2,14 @@
 import { useRef, useEffect, useState } from "react";
 import { CategoriaVideosHomeInterface, VideosHomeInterface } from '@/interfaces/marca';
 
-import { useRouter } from "next/navigation";
 import { gsap } from "gsap"; // Importar GSAP
 import Draggable from 'gsap/Draggable';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-// import VideoBanner from "@/components/videos/Banner"
+import PreviewVideo from "@/components/popup/PreviewVideo"
 import PrevisualizacionComponent from "@/components/video/Previsualizacion";
 import styles from '@/styles/scss/video.module.scss';
-
+import { getVideoByCatgories } from '@/actions/marca/video/getVideoBySlug';
 // Estilos swiper
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -21,176 +20,97 @@ gsap.registerPlugin(Draggable);
 interface Props {
     videos: VideosHomeInterface[],
     titularVideo: string,
-    colorTxt: string,
     listFiltro: CategoriaVideosHomeInterface[] | null;
+    tipo: string,
 }
-const CarruselVideos = ({ videos, titularVideo, colorTxt, listFiltro }: Props) => {
+const CarruselVideos = ({ videos, titularVideo, listFiltro, tipo }: Props) => {
     const [videosData, setVideosData] = useState<VideosHomeInterface[]>(videos);
     const [filtroActivo, setFiltroActivo] = useState<string | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const wrapperRef = useRef<HTMLDivElement>(null);
 
-    let isAnimating = false;
-    const tlCard = gsap.timeline({ paused: false });
-    // let animatingElement = null; // elemento actualmente animado
-    const router = useRouter();
     // Referencia al div  que contiene la informacion.
     const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+    const [hoverIndex, setHoverIndex] = useState<number | null>(null);
 
-    const handleMouseEnter = (index: number, slug: string, marca: string, title: string, video: string) => {
-        const card = cardRefs.current[index];
+    const [visibleIndexes, setVisibleIndexes] = useState<number[]>([]);
 
-        // solo animamos sino existe otra animacion activa 
-        if (!tlCard.isActive() && !isAnimating) {
-            isAnimating = true; //bloqueamos nuevas animaciones
-            tlCard.clear(); // limpiar animaciones previas
-            if (card) {
-                const rect = card.getBoundingClientRect();
-                document.querySelectorAll(".popupVideo").forEach(el => el.remove());
-                mostrarPopUp(rect.top + window.scrollY, rect.left + window.scrollX, rect.width, rect.height, slug, marca, title, video);
-            } else {
-                isAnimating = false;
-            }
-
-        } else {
-            if ((document.querySelector(".popupVideo")) && !tlCard.isActive()) {
-                isAnimating = false;
-                document.querySelectorAll(".popupVideo").forEach(el => el.remove());
-            }
-        }
-
-    }
-
-    const handleMouseLeave = () => {
-
-        const divRemove = document.querySelector(".popupVideo");
-        if (divRemove) {
-            if (!tlCard.isActive() && isAnimating) {
-                tlCard.clear();
-                tlCard.to(divRemove, {
-                    scale: 0, // Escala inicial (0 = completamente pequeño)
-                    opacity: 0, // Opacidad inicial (0 = completamente transparente)
-                    duration: 0.5, // Duración de la animación
-                    ease: "power2.out", // Curva de easing
-                    onComplete: () => {
-                        divRemove.remove();
-                        isAnimating = false;
+    // Detectar elementos visibles con IntersectionObserver
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    const index = Number(entry.target.getAttribute('data-index'));
+                    if (entry.isIntersecting) {
+                        setVisibleIndexes((prev) => [...new Set([...prev, index])]);
+                    } else {
+                        setVisibleIndexes((prev) => prev.filter((i) => i !== index));
                     }
                 });
-                tlCard.play();
-            };
-        }
+            },
+            { threshold: 0.5 }
+        );
 
-
-    }
-
-    const handleClickViewVideo = (slug: string, marca: string) => {
-        router.push(`/${marca}/video/${slug}`)
-    }
-
-    const mostrarPopUp = (top: number, left: number, width: number, height: number, slug: string, marca: string, title: string, video: string) => {
-
-        const divContenedorVideo = document.createElement("div");
-        const divVideo = document.createElement("div");
-        const divControles = document.createElement("div");
-        const videoElement = document.createElement("video");
-        const divTitular = document.createElement("div");
-        const altoContenido = 80;
-        const divFlexControlador = document.createElement("div");
-        const imagenPlay = document.createElement('img');
-        // Div para contenedor del video
-
-        videoElement.src = video;
-        videoElement.controls = false;
-        videoElement.autoplay = true;
-        videoElement.muted = true;
-
-        divTitular.textContent = title;
-        divTitular.classList.add("titularDiv");
-
-
-        divVideo.classList.add("videoPlayView");
-        divVideo.appendChild(videoElement);
-        divVideo.appendChild(divTitular);
-        divVideo.style.height = (height - altoContenido) + "px";
-        divContenedorVideo.classList.add("popupVideo");
-        divContenedorVideo.appendChild(divVideo);
-
-
-        // Div para el contenedor del controlador de video
-
-        divControles.style.height = altoContenido + "px";
-        divControles.classList.add("videoControladorPopup");
-        divContenedorVideo.appendChild(divControles);
-
-        divFlexControlador.classList.add("controladorFlex");
-        divControles.appendChild(divFlexControlador);
-
-        imagenPlay.src = "/play.svg";
-        imagenPlay.alt = 'Ir al Video'; // Texto alternativo
-        imagenPlay.width = 42; // Ancho de la imagen
-        imagenPlay.height = 42; // Altura de la imagen
-
-        divFlexControlador.appendChild(imagenPlay);
-
-        divContenedorVideo.style.top = (top - 10) + "px";
-        divContenedorVideo.style.left = left + "px";
-        divContenedorVideo.style.width = width + "px";
-        divContenedorVideo.style.height = height + "px";
-
-        divContenedorVideo.addEventListener("mouseleave", handleMouseLeave);
-
-        divContenedorVideo.addEventListener("click", () => { handleClickViewVideo(slug, marca) });
-
-        document.body.appendChild(divContenedorVideo);
-
-        // Animación con GSAP
-
-        tlCard.from(divContenedorVideo, {
-            scale: 0, // Escala inicial (0 = completamente pequeño)
-            opacity: 0, // Opacidad inicial (0 = completamente transparente)
-            duration: 0.5, // Duración de la animación
-            ease: "power2.out", // Curva de easing
-            // onComplete: () => setActivePopupVideo(true)
+        cardRefs.current.forEach((el, idx) => {
+            if (el) {
+                el.setAttribute('data-index', idx.toString());
+                observer.observe(el);
+            }
         });
-        tlCard.play();
-    }
+
+        return () => observer.disconnect();
+    }, []);
 
     // Limpiar event listeners y timeouts al desmontar el componente
     useEffect(() => {
         return () => {
-            // if (hoverTimeout.current) clearTimeout(hoverTimeout.current);
-            document.querySelectorAll(".popupVideo").forEach(el => el.remove());
             setVideosData(videos); // Reinicia videosData cuando cambian las props
         };
     }, [videos]);
 
-    useEffect(() => {
-        if (containerRef.current && wrapperRef.current) {
-            const tabElements = Array.from(containerRef.current.children) as HTMLElement[];
-            // Calcular ancho total dinámico
-            const totalWidth = tabElements.reduce((acc, el) => acc + el.offsetWidth + 30, 0); // 12 = gap
-            containerRef.current.style.width = `${totalWidth}px`; // ⬅️ asignamos el ancho real
 
-            Draggable.create(containerRef.current, {
-                type: 'x',
-                edgeResistance: 0.85,
-                bounds: wrapperRef.current,
-                inertia: true,
-                dragClickables: true,
-            })
-        }
-    }, []);
     // Manejar cambio de filtro
     const handleFilter = (filtro: string | null) => {
         setFiltroActivo(filtro);
     };
+
+    useEffect(() => {
+        console.log(`aqui: ${filtroActivo}`);
+
+        if (!filtroActivo) {
+            setVideosData(videos);
+            return
+        }
+
+        const fetchData = async () => {
+            try {
+                // setLoading(true);
+                const response = await getVideoByCatgories(filtroActivo);
+
+                if (response?.status != 1) {
+                    console.error("Error en la API:", response);
+                    setVideosData([]);
+                    return;
+                }
+                const videosCategories: VideosHomeInterface[] = response.data;
+                setVideosData(videosCategories);
+
+            } catch (error) {
+                console.error("Error en fetchData:", error);
+            } finally {
+                // setLoading(false);
+            }
+        };
+
+        fetchData();
+    }, [videos, filtroActivo])
+
     return (
-        <div className={`videoPrevisualizacionContent`}>
+        <div className={`videoPrevisualizacionContent ${styles.carruselVideos}`}>
             <div className={`containerFluid`}>
                 <div className={`headerContainer`}>
-                    <h2 className={`titularMediano ${colorTxt != '' ? colorTxt : 'blancoTxt'}`} >{titularVideo}</h2>
-                    <p className="titularPequeno2 fontLight blancoTxt">Descubre lo que cada marca tiene para ofrecerte</p>
+                    <h2 className={styles.titularMini} >{titularVideo}</h2>
+                    <p className={styles.parrafoMini}>Descubre lo que cada marca tiene para ofrecerte</p>
                 </div>
 
                 {
@@ -219,14 +139,14 @@ const CarruselVideos = ({ videos, titularVideo, colorTxt, listFiltro }: Props) =
                 <div>
                     <Swiper
                         spaceBetween={10}
-                        centeredSlides={true}
+                        centeredSlides={false}
                         slidesPerView={1} // Muestra 5 películas a la vez
                         navigation
                         grabCursor={true}
                         pagination={{ clickable: true }}
                         // autoplay={{ delay: 3000 }}
 
-                        loop={true}
+                        loop={false}
                         modules={[Navigation]}
                         className={`swiperNetflix`}
                         breakpoints={{
@@ -237,7 +157,7 @@ const CarruselVideos = ({ videos, titularVideo, colorTxt, listFiltro }: Props) =
                                 slidesPerView: 4
                             },
                             1600: {
-                                slidesPerView: 6
+                                slidesPerView: 5
                             }
                         }}
 
@@ -246,16 +166,32 @@ const CarruselVideos = ({ videos, titularVideo, colorTxt, listFiltro }: Props) =
                             <SwiperSlide
                                 key={index}
                                 className={`slideNetflix`}
-                            >
-                                <PrevisualizacionComponent
-                                    ref={(el) => { cardRefs.current[index] = el }}
-                                    index={index}
-                                    videosContents={item}
-                                    onMouseEnter={() => handleMouseEnter(index, item.slug ?? '', item.marca ?? '', item.title ?? '', item.video ?? '')}
-                                    onMouseMove={() => handleMouseEnter(index, item.slug ?? '', item.marca ?? '', item.title ?? '', item.video ?? '')}
-                                    onClick={() => handleClickViewVideo(item.slug ?? '', item.marca ?? '')}
 
-                                />
+                            >
+                                <div className="slideContentVideoPrevio"
+                                    onMouseEnter={() => { console.log(index); setHoverIndex(index) }}
+                                    onMouseLeave={() => { console.log(index); setHoverIndex(null) }}
+                                >
+                                    <PrevisualizacionComponent
+                                        ref={(el) => { cardRefs.current[index] = el }}
+                                        index={index}
+                                        videosContents={item}
+
+                                    // onMouseEnter={() => handleMouseEnter(index, item.slug ?? '', item.marca ?? '', item.title ?? '', item.video ?? '')}
+                                    // onMouseMove={() => handleMouseEnter(index, item.slug ?? '', item.marca ?? '', item.title ?? '', item.video ?? '')}
+
+                                    // onClick={() => handleClickViewVideo(item.slug ?? '', item.marca ?? '')}
+
+                                    />
+                                    <div className={`videoPreview ${hoverIndex === index ? 'show' : ''}`}>
+                                        <PreviewVideo
+                                            videoData={item}
+                                            isVisible={visibleIndexes.includes(index)}
+                                            isHovered={hoverIndex === index}
+                                            tipo={tipo}
+                                        />
+                                    </div>
+                                </div>
                             </SwiperSlide>
                         ))}
 

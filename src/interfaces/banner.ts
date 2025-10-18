@@ -12,3 +12,21 @@ export interface BannerInterface {
     duracion?: string;
     logoMarca?: string;
 }
+
+export interface BannerInterfaceAux {
+    id: number;
+    title: string;
+    subTitle: string;
+    idMarca: number;
+    marca: string;
+    slugMarca: string;
+    type: string; // tipo de contenido, ejemplo: "imagen" o "video"
+    multimedia: string; // URL principal del recurso multimedia
+    image: string; // imagen de escritorio
+    imagemobile: string; // imagen para móvil
+    link: string; // enlace al hacer clic
+    like: string | null;
+    duracion: number | null;
+    abrir_en_otra_ventana: boolean; // si abre en una nueva pestaña
+    accion: string;
+}

@@ -1,19 +1,24 @@
 import CardComponent from "@/components/marcas/Card";
+import { MarcaInterface } from '@/interfaces/marca';
+
 import styles from '@/styles/scss/marca.module.scss';
 
-const Listado = () => {
+interface multimediaParameters {
+    marcas: MarcaInterface[];
+}
+const Listado = ({ marcas }: multimediaParameters) => {
     return (
         <div className="containerFluid">
             <div className="headerTitle">
-                <h3 className="titularMediano celesteTxt">Nuestras Marcas</h3>
-                <h2 className="titularPequeno2 fontLight blancoTxt">Descubre lo que cada marca tiene para ofrecerte</h2>
+                <h3 className={styles.titularMarcaHome}>Nuestras Marcas</h3>
+                <h2 className={styles.descripcionMarcaHome}>Descubre lo que cada marca tiene para ofrecerte</h2>
             </div>
             <div className={styles.listadoCard}>
-                <CardComponent logosrc="/gloria.svg" slug="gloria" />
-                <CardComponent logosrc="/Bonle.png" slug="gloria-bonle" />
-                <CardComponent logosrc="/logoPro.svg" slug="pro" />
-                <CardComponent logosrc="/Actibio.png" slug="actibio" />
-                <CardComponent logosrc="/Battimix.png" slug="batti-mix" />
+                {
+                    marcas.map((item, index) => (
+                        <CardComponent key={index} logosrc={item.icon} slug={item.slug} />
+                    ))
+                }
             </div>
         </div>
     )

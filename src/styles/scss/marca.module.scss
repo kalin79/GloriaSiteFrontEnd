@@ -4,12 +4,57 @@
     margin-top: 0rem;
     position: relative;
     z-index: 30;
+    overflow: hidden;
 
     @media screen and (min-width: 768px) {
         margin-top: -8rem;
     }
+
+    @media screen and (min-width: 992px) {
+        margin-top: -4.5rem;
+    }
+
+    .fondoBg {
+        position: absolute;
+        bottom: -10rem;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
 }
 
+.titularMarcaHome {
+    font-family: var(--font-poppins), sans-serif;
+    font-size: 1.225rem;
+    line-height: 1.5em;
+    color: rgba($celesteP, 1);
+    font-weight: 400;
+
+    @media screen and (min-width: 992px) {
+        font-size: 1.625rem;
+        line-height: 1.75em;
+    }
+}
+
+.descripcionMarcaHome {
+    font-family: var(--font-poppins), sans-serif;
+    font-size: .85rem;
+    line-height: 1.5em;
+    color: rgba(white, 1);
+    font-weight: 400;
+
+    @media screen and (min-width: 992px) {
+        font-size: 1.125rem;
+        line-height: 1.75em;
+    }
+}
 
 .listadoCard {
     display: flex;
@@ -17,12 +62,12 @@
     align-items: flex-start;
     flex-wrap: wrap;
     gap: 1.5rem;
-    margin: 1.75rem 0;
+    padding: 1rem 0 4rem;
 
     @media screen and (min-width:992px) {
         justify-content: flex-start;
         flex-wrap: nowrap;
-        margin: 1rem 0;
+        padding: 1rem 0 4rem;
     }
 }
 

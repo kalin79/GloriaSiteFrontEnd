@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
 import { useSession } from "next-auth/react";
 import Image from 'next/image'
 import Link from 'next/link'
@@ -30,18 +30,18 @@ const NavBar = () => {
             duration: .5,
         }, .85)
     }
-    useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > 150) {
-                gsap.to(".navContainer", { backgroundColor: "rgba(26, 23, 43,0.85) ", duration: 0.3 });
-            } else {
-                gsap.to(".navContainer", { backgroundColor: "transparent", duration: 0.3 });
-            }
-        };
+    // useEffect(() => {
+    //     const handleScroll = () => {
+    //         if (window.scrollY > 150) {
+    //             gsap.to(".navContainer", { backgroundColor: "rgba(26, 23, 43,0.85) ", duration: 0.3 });
+    //         } else {
+    //             gsap.to(".navContainer", { backgroundColor: "transparent", duration: 0.3 });
+    //         }
+    //     };
 
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    //     window.addEventListener("scroll", handleScroll);
+    //     return () => window.removeEventListener("scroll", handleScroll);
+    // }, []);
     return (
         <>
             <div className={`${styles.navContainer} navContainer`}>

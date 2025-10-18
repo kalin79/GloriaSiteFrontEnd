@@ -17,12 +17,13 @@ const Video = ({ videoData, onClose, isOpen }: Props) => {
     const playerRefPopUp = useRef<Player | null>(null);
     const hasTriggeredApi = useRef(false);
     useEffect(() => {
-        if (isOpen && videoRefPopUp.current) {
 
+        if (isOpen && videoRefPopUp.current) {
+            if (typeof window === 'undefined') return;
             if (playerRefPopUp.current) {
                 playerRefPopUp.current.unload().catch(console.error);
             }
-
+            console.log(`Verifica video: ${videoData.link_video}`)
             const playerPopUp = new Player(videoRefPopUp.current, {
                 id: Number(videoData.link_video),
                 autoplay: true,

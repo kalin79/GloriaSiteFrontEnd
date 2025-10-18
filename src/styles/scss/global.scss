@@ -29,6 +29,12 @@ h4 {
     @media screen and (min-width: 992px) {
         padding: 0 2vw;
     }
+
+    @media screen and (min-width: 1600px) {
+        padding: 0 2vw;
+        width: 1600px;
+        margin: auto;
+    }
 }
 
 .bodyContainerMain {
@@ -303,15 +309,15 @@ h4 {
     z-index: 30;
 
     @media screen and (min-width: 768px) {
-        margin-top: -5rem;
+        margin-top: -3rem;
     }
 
     @media screen and (min-width: 992px) {
-        margin-top: -8rem;
+        margin-top: -5rem;
     }
 
     @media screen and (min-width: 1200px) {
-        margin-top: -6.5rem;
+        margin-top: -6rem;
     }
 }
 
@@ -328,7 +334,7 @@ h4 {
 // Esto es para el banner principal del HOME
 
 .bannerCarruselHome {
-    mask-image: linear-gradient(to top, transparent 0%, $azulP 30%);
+    mask-image: linear-gradient(to top, transparent 0%, $azulP 10%);
 
     .swiper-button-next,
     .swiper-button-prev {
@@ -336,6 +342,12 @@ h4 {
 
         @media screen and (min-width: 992px) {
             top: var(--swiper-navigation-top-offset, 50%);
+        }
+
+        svg {
+            path {
+                fill: white;
+            }
         }
     }
 
@@ -386,17 +398,141 @@ h4 {
 }
 
 .videoPrevisualizacionContent {
-    margin-top: 3rem;
-
     .listaReproduccionContainer {
         margin-top: 1.75rem;
+        padding: 0 2vw;
 
         @media screen and (min-width: 992px) {
             margin-top: 1rem;
+            padding: 0;
         }
     }
 
     .swiperNetflix {
+        padding-bottom: 6rem;
+
+        .slideContentVideoPrevio {
+            position: relative;
+            /* Necesario para que el preview se posicione encima */
+            width: 100%;
+            height: 100%;
+        }
+
+        .videoPreview {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 200;
+            background: rgba($azulP, 1);
+            transform: scale(0);
+            opacity: 0;
+            border-radius: 0px 0 10px 10px;
+            /* inicialmente invisible */
+            transition: all 0.3s ease-in-out;
+
+            .previewVideoContent {
+                .footerVideoContent {
+                    border: 0px solid red;
+                    border-radius: 0 0 10px 10px;
+                    padding: .5rem 1rem;
+                    background: rgba($azulP, 1);
+                }
+
+                .bodyVideoContent {
+                    width: 100%;
+                    height: 230px;
+                    position: relative;
+                    border: 0px solid yellow;
+                    background: black;
+                    border-radius: 10px;
+                    overflow: hidden;
+
+                    .titularVideoPopup {
+                        font-family: var(--font-misti), sans-serif;
+                        font-weight: 400;
+                        font-size: 1rem;
+                        line-height: 1em;
+                        letter-spacing: -.05em;
+                        color: white;
+
+                        @media screen and (min-width: 992px) {
+                            font-size: 1em;
+                            line-height: 1.25em;
+                        }
+                    }
+
+                    .imgVideoPreivew {
+                        position: absolute;
+                        top: 0rem;
+                        left: 0rem;
+                        width: 100%;
+                        height: 100%;
+                        z-index: 100;
+
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            background: linear-gradient(to bottom, rgba(#101010, 0), rgba($azulP, 1));
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            z-index: 10;
+                        }
+                    }
+
+                    img {
+                        position: relative;
+                        object-fit: cover;
+                        width: 100%;
+                        height: 100%;
+
+
+                    }
+
+                    h3 {
+                        position: absolute;
+                        bottom: 1rem;
+                        left: 0;
+                        padding: 0 1rem;
+                        z-index: 200;
+
+                        br {
+                            display: none;
+                        }
+                    }
+
+                    .playerPopUp {
+                        position: relative;
+                        width: 100%;
+                        height: 100%;
+                        overflow: hidden;
+
+                        iframe {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            // width: 100%;
+                            // height: 230px;
+                            // border: 0px solid green;
+                        }
+                    }
+                }
+
+            }
+
+            /* suavidad */
+            &.show {
+                transform: scale(1);
+                opacity: 1;
+                /* visible */
+            }
+        }
 
         .slideVideoCard {
             height: 300px;
@@ -404,18 +540,53 @@ h4 {
             border-radius: 10px;
             background: $azulP;
             cursor: pointer;
+            position: relative;
 
             @media screen and (min-width: 992px) {
                 height: auto;
             }
 
+            .cardLogoMarga {
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+                width: 3rem;
+                height: 3rem;
+                border: 0px solid red;
+                z-index: 10;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                    object-fit: cover;
+                }
+            }
+
             .cardFooter {
                 background: $azulP;
-                padding: 1rem 2rem;
-                height: 140px;
+                padding: 1rem 1em;
+                // height: 140px;
                 display: flex;
                 justify-content: space-between;
                 flex-direction: column;
+
+                h3 {
+                    font-family: var(--font-poppins), sans-serif;
+                    font-size: .85rem;
+                    line-height: 1.5em;
+                    color: rgba(white, 1);
+                    font-weight: 400;
+
+                    @media screen and (min-width: 992px) {
+                        font-size: .85rem;
+                        line-height: 1.5em;
+                    }
+
+                    @media screen and (min-width: 1600px) {
+                        font-size: 1rem;
+                        line-height: 1.25em;
+                    }
+                }
 
                 .dataVideoContent {
                     display: flex;
@@ -428,7 +599,16 @@ h4 {
                         gap: .5rem;
 
                         p {
-                            color: $celesteP;
+                            font-family: var(--font-poppins), sans-serif;
+                            font-size: 0.875rem;
+                            line-height: 1.5em;
+                            color: rgba($celesteP, 1);
+                            font-weight: 400;
+
+                            @media screen and (min-width: 992px) {
+                                font-size: 0.875rem;
+                                line-height: 1.5em;
+                            }
                         }
                     }
                 }
@@ -530,67 +710,83 @@ h4 {
 }
 
 .swiperNetflix {
+    &.vertical {
+        padding-bottom: 6rem;
+    }
 
     .swiper-button-next {
-        width: 5.5rem;
-        height: 100%;
-        right: 0;
-        top: 1rem;
+        width: 52px;
+        height: 52px;
+        right: 8rem !important;
+        bottom: 1rem !important;
+        top: auto !important;
+        border: 1px solid rgba($celesteP, 1);
+        border-radius: 10px;
+        padding: .65rem;
+        background: rgba(#8FD2EA, .20);
 
-        @media screen and (min-width: 992px) {
-            width: 11.5rem;
-        }
-
-        &::after {
-            color: white;
-            z-index: 1;
-        }
-
-        &::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 106%;
-            background: linear-gradient(to right, transparent, rgba($azulP, 1) 100%);
-            opacity: .65;
-
-            @media screen and (min-width: 992px) {
-                opacity: 1;
-
+        svg {
+            path {
+                fill: white;
             }
         }
+
+        // &::after {
+        //     color: white;
+        //     z-index: 1;
+        // }
+
+        // &::before {
+        //     content: '';
+        //     position: absolute;
+        //     width: 100%;
+        //     height: 106%;
+        //     background: linear-gradient(to right, transparent, rgba($azulP, 1) 100%);
+        //     opacity: .65;
+
+        //     @media screen and (min-width: 992px) {
+        //         opacity: 1;
+
+        //     }
+        // }
     }
 
     .swiper-button-prev {
-        width: 5.5rem;
-        height: 100%;
-        left: 0;
-        top: 1rem;
+        width: 52px;
+        height: 52px;
+        right: 12.25rem !important;
+        left: auto !important;
+        bottom: 1rem !important;
+        top: auto !important;
+        border: 1px solid rgba($celesteP, 1);
+        border-radius: 10px;
+        padding: .65rem;
+        background: rgba(#8FD2EA, .20);
+        // @media screen and (min-width: 992px) {
+        //     width: 11.5rem;
+        //     top: 1rem;
+        // }
 
-        @media screen and (min-width: 992px) {
-            width: 11.5rem;
-            top: 1rem;
-        }
 
-
-        &::after {
-            color: white;
-            z-index: 1;
-        }
-
-        &::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 106%;
-            background: linear-gradient(to left, transparent, rgba($azulP, 1) 100%);
-            opacity: .65;
-
-            @media screen and (min-width: 992px) {
-                opacity: 1;
-
+        svg {
+            path {
+                fill: white;
             }
         }
+
+        // &::before {
+        //     content: '';
+        //     position: absolute;
+        //     width: 100%;
+        //     height: 106%;
+        //     background: linear-gradient(to left, transparent, rgba($azulP, 1) 100%);
+        //     opacity: .65;
+
+        //     @media screen and (min-width: 992px) {
+        //         opacity: 1;
+
+        //     }
+        // }
     }
 
     &.vertical {
@@ -822,8 +1018,41 @@ h4 {
     font-size: 14px;
 }
 
+
+// definicion de contenido Dinamico
+
+.contenidoHTML {
+    h2 {
+        font-family: var(--font-misti), sans-serif;
+        font-size: 1.375rem;
+        line-height: 1.5em;
+        color: $celesteP;
+        font-weight: 400;
+
+        @media screen and (min-width: 992px) {
+            font-size: 1.375rem;
+            line-height: 1.75em;
+        }
+    }
+
+    li,
+    p {
+        font-family: var(--font-poppins), sans-serif;
+        font-size: 1rem;
+        line-height: 1.5em;
+        color: #E8ECFA;
+        font-weight: 400;
+
+        @media screen and (min-width: 992px) {
+            font-size: 1rem;
+            line-height: 1.75em;
+        }
+    }
+}
+
+
 .tableResponsiveNutricional {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
 
     .table> :not(caption)>*>* {
         background: transparent;
@@ -832,30 +1061,44 @@ h4 {
     .table {
         thead {
             tr {
+                border: 1px solid $celesteP;
+
                 th {
-                    border-bottom: 1px solid $celesteP;
+                    border: 0;
                     font-size: 1rem;
                     font-family: var(--fuente-poppins), sans-serif;
                     font-weight: 400;
                     color: $celesteP;
                     text-align: left;
-                    padding: 1rem 1rem 0 0;
+                    padding: 1rem 1rem;
+
+                    span {
+                        color: white;
+                    }
                 }
             }
         }
 
         tbody {
             tr {
+                border: 1px solid rgba($celesteP, 1);
+
                 td {
-                    border-bottom: 1px solid rgba($celesteP, .2);
+                    border: 0;
                     font-size: 0.875rem;
                     font-family: var(--fuente-poppins), sans-serif;
                     font-weight: 400;
                     color: #D9D9D9;
-                    padding: 1rem 1rem 1rem 0;
+                    padding: 1rem 1rem;
+
+                    h3 {
+                        font-size: 1rem;
+                        font-family: var(--fuente-poppins), sans-serif;
+                        font-weight: 400;
+                        color: $celesteP;
+                    }
                 }
             }
         }
     }
-
 }

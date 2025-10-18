@@ -1,16 +1,61 @@
-export interface MarcaInterface {
-    logosrc: string;
+export interface BannerInterface {
+    id: number;
+    title_large: string;
+    sub_title: string;
+    marca: {
+        id: number;
+        name: string;
+        slug: string;
+        logo: string;
+    };
+    categoria: {
+        id: number;
+        titulo: string;
+        slug: string;
+    }
+    categoria_nombre: string;
+    descripcion: string;
+    image: null;
+    imagemobile: string;
     slug: string;
+    link_video: string;
+    previsualizacion_video: string;
+    elenco: string;
+    cantidad_like: number;
+    duracion: string;
+}
+
+export interface MarcaInterface {
+    logosrc?: string;
+    slug?: string;
+    id?: number;
+    name?: string;
+    icon?: string;
+    color_marca?: string;
 }
 export interface VideosHomeInterface {
-    title?: string;
-    idMarca?: number;
-    marca?: string;
+    id?: number;
+    title_large?: string;
+    sub_title?: string;
     slug?: string;
+    marca: {
+        id: number;
+        name: string;
+        slug: string;
+        logo: string;
+    };
+    categoria: {
+        id: number;
+        titulo: string;
+        slug: string;
+    };
+    categoria_nombre?: string;
     image?: string;
     imagemobile?: string;
-    video?: string;
-    colorMarca?: string;
+    link_video?: string;
+    previsualizacion_video?: string;
+    cantidad_like?: number;
+    duracion?: string;
 }
 
 export interface ProductosHomeInterface {

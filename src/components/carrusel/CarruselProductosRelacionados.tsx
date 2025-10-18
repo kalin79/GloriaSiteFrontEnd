@@ -1,6 +1,7 @@
 'use client';
 import { useRouter } from "next/navigation";
 import { ProductInterface } from '@/interfaces/producto';
+// import SanitizedHtml from '@/components/SanitizedHtml';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import CardComponent from "@/components/producto/Card";
@@ -12,6 +13,7 @@ import styles from '@/styles/scss/producto.module.scss';
 
 interface Props {
     productosRelacionados: ProductInterface[];
+    // productoData: ProductInterface;
 }
 
 const CarruselProductosRelacionados = ({ productosRelacionados }: Props) => {
@@ -25,13 +27,10 @@ const CarruselProductosRelacionados = ({ productosRelacionados }: Props) => {
         <div className={`containerFluid`}>
             <div className={`${styles.productoCarruselRelacionadosContainer}`}>
                 <div>
-                    <h2 className='titularExtraGrande blancoTxt fontLight'>
-                        Otros productos que podrían <br />
-                        interesarte
+                    <h2 className={styles.titularRelacionados}>
+                        Otros productos que  <br />
+                        podrían interesarte
                     </h2>
-                    <p className='parrafoMediano celesteTxt'>
-                        200 ml de producto contiene:
-                    </p>
                 </div>
                 <div>
                     <div className={`${styles.bodyContainer}`}>

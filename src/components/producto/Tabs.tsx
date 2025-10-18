@@ -1,11 +1,12 @@
 'use client'
 import { useState, useRef, useEffect } from "react";
-import Image from 'next/image';
 import { ProductInterface } from '@/interfaces/producto';
 import SanitizedHtml from "@/components/SanitizedHtml";
 import HtmlSafeRender from "@/components/HtmlSafeRender";
 import gsap from 'gsap';
 import Draggable from 'gsap/Draggable';
+import Player from '@vimeo/player';
+
 gsap.registerPlugin(Draggable);
 import styles from '@/styles/scss/tabs.module.scss';
 
@@ -17,32 +18,10 @@ const Tabs = ({ productoData }: Props) => {
     // const searchParams = useSearchParams(); // Obtiene los query params (ej: "?id=123")
     const containerRef = useRef<HTMLDivElement>(null);
     const wrapperRef = useRef<HTMLDivElement>(null);
-    const fullURL = typeof window !== "undefined" ? window.location.href : "";
-
+    const videoRef = useRef<HTMLDivElement | null>(null);
     const [activeTab, setActiveTab] = useState(0);
-    const handleShare = (socialMedia: string) => {
-        let shareUrl = "";
 
-        switch (socialMedia) {
-            case "facebook":
-                shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(fullURL)}`;
-                break;
-            // case "twitter":
-            //     shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
-            //     break;
-            case "tiktok":
-                shareUrl = "https://www.tiktok.com/@tuusuario"; // Cambia por tu perfil o contenido
-                break;
 
-            default:
-                return;
-        }
-
-        window.open(shareUrl, "_blank", "width=600,height=400");
-    };
-    const handlePrint = () => {
-        window.print();
-    };
     useEffect(() => {
         if (containerRef.current && wrapperRef.current) {
             const tabElements = Array.from(containerRef.current.children) as HTMLElement[];
@@ -59,6 +38,26 @@ const Tabs = ({ productoData }: Props) => {
             })
         }
     }, [])
+
+
+    useEffect(() => {
+        if (activeTab !== 3) return;
+        if (!videoRef.current || !productoData?.receta_autor) return;
+
+        const player = new Player(videoRef.current, {
+            id: Number(productoData.receta_autor),
+            autoplay: false,     // (opcional)
+            muted: false,        // (opcional)
+            loop: false,         // (opcional)
+            responsive: true,
+            controls: true,      // ✅ Muestra los controles de Vimeo
+        });
+
+        // Limpieza
+        return () => {
+            player.unload().catch(console.error);
+        };
+    }, [activeTab, productoData?.receta_autor]);
     return (
         <>
             <div className={styles.tabsContainer}>
@@ -103,10 +102,15 @@ const Tabs = ({ productoData }: Props) => {
                             className={`parrafoMediano celesteTxt ${2 === activeTab ? styles.active : ''}`}
                             onClick={() => setActiveTab(2)}
                         >INFORMACIÓN NUTRICIONAL</div>
-                        <div
-                            className={`parrafoMediano celesteTxt ${3 === activeTab ? styles.active : ''}`}
-                            onClick={() => setActiveTab(3)}
-                        >PRODUCTO CON RECETA</div>
+                        {
+                            productoData.receta_nombre && productoData.receta_nombre != '' && (
+                                <div
+                                    className={`parrafoMediano celesteTxt ${3 === activeTab ? styles.active : ''}`}
+                                    onClick={() => setActiveTab(3)}
+                                >PRODUCTO CON RECETA</div>
+                            )
+                        }
+
                     </div>
                     <div className={styles.bodyContainer}>
                         {
@@ -114,15 +118,7 @@ const Tabs = ({ productoData }: Props) => {
                                 <div className={`${0 === activeTab ? styles.activeContent : ''}`}>
                                     <div className={styles.infoBox2}>
                                         <div>
-                                            <div className={styles.imageBox}>
-                                                <Image src='/photo.png' fill alt="" />
-                                            </div>
-                                            <div className={styles.curvaV}>
-                                                <Image src='/curvaM2.svg' width={440} height={120} alt="" />
-                                            </div>
-                                        </div>
-                                        <div className={styles.spaceColumn}>
-                                            <HtmlSafeRender html={productoData.descripcion ?? ''} className="parrafoMedianoPop" />
+                                            <HtmlSafeRender html={productoData.descripcion ?? ''} className="contenidoHTML" />
                                         </div>
                                     </div>
                                 </div>
@@ -132,10 +128,9 @@ const Tabs = ({ productoData }: Props) => {
                         {
                             (1 === activeTab) && (
                                 <div className={`${1 === activeTab ? styles.activeContent : ''}`}>
-                                    <div className={styles.infoBox3}>
+                                    <div className={styles.infoBox2}>
                                         <div>
-                                            <h2 className="titularGrande mbot0_5">Ingredientes</h2>
-                                            <HtmlSafeRender html={productoData.ingredientes ?? ''} className="parrafoMedianoPop" />
+                                            <HtmlSafeRender html={productoData.ingredientes ?? ''} className="contenidoHTML" />
                                         </div>
                                     </div>
                                 </div>
@@ -145,8 +140,8 @@ const Tabs = ({ productoData }: Props) => {
                         {
                             (2 === activeTab) && (
                                 <div className={`${2 === activeTab ? styles.activeContent : ''}`}>
-                                    <div className={`${styles.infoBox3} ${styles.full}`}>
-                                        <HtmlSafeRender html={productoData.informacion_nutricional ?? ''} className="parrafoMedianoPop" />
+                                    <div className={`${styles.infoBox2}`}>
+                                        <HtmlSafeRender html={productoData.informacion_nutricional ?? ''} className="contenidoHTML" />
                                     </div>
                                 </div>
                             )
@@ -155,41 +150,18 @@ const Tabs = ({ productoData }: Props) => {
                         {
                             (3 === activeTab) && (
                                 <div className={`${3 === activeTab ? styles.activeContent : ''}`}>
-                                    <div className={styles.infoBox4}>
-                                        <div>
-                                            <div className={styles.imageBox}>
-                                                <Image src='/receta.png' fill alt="" />
+                                    <div className={styles.infoBox2}>
+                                        <div className={styles.recetasContainer}>
+                                            <div className={styles.videoFullPage}>
+                                                <div ref={videoRef} />
                                             </div>
-                                            <div className={styles.curvaV}>
-                                                <Image src='/curvaM2.svg' width={440} height={120} alt="" />
+                                            <h2 className={styles.titularReceta}><SanitizedHtml html={productoData.receta_nombre ?? ''} /></h2>
+                                            <div className={styles.viewRecetaPanel}>
+                                                <HtmlSafeRender html={productoData.receta_ingredientes ?? ''} className="contenidoHTML" />
+                                                <HtmlSafeRender html={productoData.receta_instrucciones ?? ''} className="contenidoHTML" />
                                             </div>
-                                        </div>
-                                        <div className={styles.spaceColumn}>
-                                            <div className={styles.autorBox}>
-                                                <div>
-                                                    <h2 className="titularGrande"><SanitizedHtml html={productoData.receta_nombre ?? ''} /></h2>
-                                                    <div className={styles.autorData}>
-                                                        <Image src={productoData.receta_foto_autor ?? '/chef.png'} width={52} height={52} alt="" />
-                                                        <h5 className="parrafoMedianoPop"><SanitizedHtml html={productoData.receta_autor ?? ''} /></h5>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <div onClick={() => handleShare("facebook")}>
-                                                        <Image src='/share.svg' width={82} height={82} alt="" />
-                                                        <h4 className="parrafoMedianoPop celesteTxt centerTxt">Compartir</h4>
-                                                    </div>
-                                                    <div onClick={handlePrint}>
-                                                        <Image src='/print.svg' width={82} height={82} alt="" />
-                                                        <h4 className="parrafoMedianoPop celesteTxt centerTxt">Imprimir</h4>
-                                                    </div>
-                                                </div>
 
-                                            </div>
-                                            <h3 className="parrafoGrande celesteTxt">Ingredientes</h3>
-                                            <HtmlSafeRender html={productoData.receta_ingredientes ?? ''} className="parrafoMedianoPop" />
-                                            <h3 className="parrafoGrande celesteTxt">Instrucciones</h3>
-                                            <HtmlSafeRender html={productoData.receta_instrucciones ?? ''} className="parrafoMedianoPop" />
-                                            <h3 className="parrafoGrande celesteTxt">Información nutricional</h3>
+                                            <h3 className={styles.subtituloReceta}>Información nutricional</h3>
                                             <div className={styles.nutricionalInfocontainer}>
                                                 {
                                                     Array.isArray(productoData.receta_informacion_nutricional) &&
@@ -197,8 +169,8 @@ const Tabs = ({ productoData }: Props) => {
                                                         const info = item as { nutriente: string; valor: number };
                                                         return (
                                                             <div key={index}>
-                                                                <h2 className="titularMediano fontLight centerTxt">{info.valor}</h2>
-                                                                <p className="parrafoMediano celesteTxt centerTxt">{info.nutriente}</p>
+                                                                <h2>{info.valor}</h2>
+                                                                <p>{info.nutriente}</p>
                                                             </div>
                                                         )
                                                     })

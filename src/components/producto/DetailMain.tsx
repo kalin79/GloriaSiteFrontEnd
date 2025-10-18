@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { ProductInterface } from '@/interfaces/producto';
 // import HtmlSafeRender from '@/components/HtmlSafeRender';
 import SanitizedHtml from '@/components/SanitizedHtml';
@@ -44,12 +44,15 @@ const DetailMain = ({ productoData }: Props) => {
                             <Swiper
                                 spaceBetween={10}
                                 slidesPerView={1} // Muestra 5 películas a la vez
-                                navigation
+                                // navigation
                                 grabCursor={true}
                                 pagination={{ clickable: true }}
-                                // autoplay={{ delay: 3000 }}
+                                autoplay={{
+                                    delay: 5000,       // ⏱️ cada 3 segundos
+                                    disableOnInteraction: false, // sigue el autoplay aunque el usuario interactúe
+                                }}
                                 loop={true}
-                                modules={[Navigation, Pagination]}
+                                modules={[Navigation, Pagination, Autoplay]}
                                 className={`${styles.bannerCarruselProducto} bannerCarruselProducto`}
                                 breakpoints={{
                                     750: {
@@ -88,15 +91,15 @@ const DetailMain = ({ productoData }: Props) => {
                     </div>
                     <div>
                         <div className={styles.bodyContainer}>
-                            <div className={styles.stickerContainer}>
+                            {/* <div className={styles.stickerContainer}>
                                 <p className="celesteTxt">Mundo <SanitizedHtml html={productoData.marca?.name ?? ''} /> </p>
-                            </div>
-                            <h2 className={`titularGrande ${styles.titularHeader} notBr`}><SanitizedHtml html={productoData.titulo ?? ''} /></h2>
-                            <p className="parrafoMedianoPop">
+                            </div> */}
+                            <h2 className={`${styles.titularHeader}`}><SanitizedHtml html={productoData.titulo ?? ''} /></h2>
+                            <p className={styles.parrafoInfo}>
                                 <SanitizedHtml html={productoData.descripcion_corta ?? ''} />
                             </p>
                             <div className={styles.presentacionesContainer}>
-                                <h3 className="celesteTxt parrafoMediano ">PRESENTACIONES</h3>
+                                <h3 className={styles.subTitulo}>PRESENTACIONES</h3>
                                 <div className={styles.listadoContainer}>
                                     {
                                         productoData.presentaciones?.map((item, index) => (
@@ -104,7 +107,7 @@ const DetailMain = ({ productoData }: Props) => {
                                                 <div className={styles.imageContainer}>
                                                     <Image src={item.imagen || ''} width={25} height={52} alt="" />
                                                 </div>
-                                                <div className="parrafoPequeno blancoTxt centerTxt">
+                                                <div className={styles.titularIcon}>
                                                     <SanitizedHtml html={item.nombre} />
                                                 </div>
                                             </div>
@@ -113,28 +116,32 @@ const DetailMain = ({ productoData }: Props) => {
 
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            <h2 className="misti">Un vaso de bienestar en
-                                cada momento</h2>
-                            <h3>200 ml de producto contiene:</h3>
-                        </div>
-                        <div>
-                            {
-                                productoData.caracteristica?.map((item, index) => (
-                                    <div className={styles.item} key={index}>
-                                        <div>
-                                            <h4 className="titularMediano fontLight">{item.valor}</h4>
-                                            <p className="parrafoMediano celesteTxt">{item.descripcion}</p>
-                                        </div>
-                                    </div>
-                                ))
-                            }
+                            <div className={styles.presentacionesContainer2}>
+                                <div>
+                                    <h2 className={styles.subTitulo2}>
+                                        <SanitizedHtml html={productoData.titulo_caracteristica ?? ''} />
+                                    </h2>
+                                    <h3 className={styles.subTitulo}>
+                                        <SanitizedHtml html={productoData.sub_titulo_caracteristica ?? ''} />
+                                    </h3>
+                                </div>
+                                <div className={styles.listadoItem}>
+                                    {
+                                        productoData.caracteristica?.map((item, index) => (
+                                            <div className={styles.item} key={index}>
+                                                <div>
+                                                    <h4><SanitizedHtml html={item.valor} /></h4>
+                                                </div>
+                                                <p><SanitizedHtml html={item.descripcion} /></p>
+                                            </div>
+                                        ))
+                                    }
 
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

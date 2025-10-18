@@ -1,8 +1,44 @@
+export interface TagsAux {
+    id: number;
+    name: string;
+}
+
+export interface ProductoHomeInterface {
+    title: string;
+    subtitulo: string;
+    idMarca: number;
+    marca: string;
+    marca_slug: string;
+    slug: string;
+    image: string;
+    imagemobile: string;
+    presentacion: string;
+    receta: boolean;
+}
+
+export interface PaginationHomeInterface {
+    current_page: number;
+    last_page: number;
+    per_page: number;
+    total: number;
+    next_page_url: string | null;
+    prev_page_url: string | null;
+    has_more_pages: boolean;
+}
+
+export interface ProductosResponseAux {
+    productos: {
+        productos: ProductoHomeInterface;
+        pagination: PaginationHomeInterface;
+    };
+}
+
 export interface ProductInterface {
     id?: number;
     titulo?: string;
     subtitulo?: string;
     marca?: Marca;
+    slug?: string;
     categoria?: Categoria;
     sub_categoria?: Subcategoria;
     descripcion_corta?: string;
@@ -21,7 +57,11 @@ export interface ProductInterface {
     receta_informacion_nutricional?: unknown[];
     image?: string;
     imagemobile?: string;
+    imagen_banner?: string;
+    image_producto?: string;
     gallery?: string[];
+    titulo_caracteristica?: string;
+    sub_titulo_caracteristica?: string;
 }
 
 interface Presentacione {

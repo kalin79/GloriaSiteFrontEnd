@@ -23,11 +23,11 @@ const Card = ({ productContents, onClick }: productParameters) => {
             }
 
             <div className={styles.bodyCardBox}>
-                <Image src={productContents.imagemobile ?? '/pO1M.png'} width={656} height={858} alt={productContents.titulo ?? ''} />
+                <Image src={productContents.image_producto || '/pO1M.png'} width={656} height={858} alt={productContents.titulo || 'producto'} />
             </div>
             <div className={styles.footerCardBox}>
                 <h4 className=''>{productContents.titulo ?? ''}</h4>
-                <h2 className='parrafoMediano celesteTxt'>{productContents.subtitulo ?? ''}</h2>
+                <h2 className=''>{productContents.subtitulo ?? ''}</h2>
             </div>
         </div>
     )

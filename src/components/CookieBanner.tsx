@@ -2,10 +2,32 @@
 
 import CookieConsent from 'react-cookie-consent';
 import Script from 'next/script';
+import { useState, useEffect } from 'react';
 
-const GTM_ID = 'GTM-M5NWGNMS'; // 👈 Reemplaza con tu ID real
+const GTM_ID = 'GTM-M5NWGNMS';
 
 export default function CookieBanner() {
+    const [consentGiven, setConsentGiven] = useState(false);
+
+    useEffect(() => {
+        if (consentGiven) {
+            // Inyectar GTM después de la hidratación y aceptación
+            const script = document.createElement('script');
+            script.src = `https://www.googletagmanager.com/gtag/js?id=${GTM_ID}`;
+            script.async = true;
+            document.head.appendChild(script);
+
+            script.onload = () => {
+                window.dataLayer = window.dataLayer || [];
+                function gtag(...args: unknown[]) {
+                    window.dataLayer.push(args);
+                }
+                gtag('js', new Date());
+                gtag('config', GTM_ID, { anonymize_ip: true });
+            };
+        }
+    }, [consentGiven]);
+
     const gtagConsentUpdate = (consentObj: Record<string, string>) => {
         if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
             window.gtag('consent', 'update', consentObj);
@@ -15,8 +37,9 @@ export default function CookieBanner() {
     const acceptAnalytics = () => {
         gtagConsentUpdate({
             analytics_storage: 'granted',
-            ad_storage: 'denied', // Solo activamos analytics, no publicidad
+            ad_storage: 'denied',
         });
+        setConsentGiven(true);
     };
 
     const rejectAll = () => {
@@ -28,25 +51,22 @@ export default function CookieBanner() {
 
     return (
         <>
-            {/* Inicializa el Consent Mode por defecto en "denied" */}
+            {/* Consent Mode por defecto */}
             <Script
-                id="gtag-init"
+                id="consent-default"
                 strategy="afterInteractive"
                 dangerouslySetInnerHTML={{
                     __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('consent', 'default', {
-              'ad_storage': 'denied',
-              'analytics_storage': 'denied'
-            });
-            gtag('js', new Date());
-            gtag('config', '${GTM_ID}');
-          `,
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('consent', 'default', {
+                          'ad_storage': 'denied',
+                          'analytics_storage': 'denied'
+                        });
+                    `,
                 }}
             />
 
-            {/* Cookie Banner */}
             <CookieConsent
                 location="bottom"
                 buttonText="Aceptar"

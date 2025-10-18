@@ -1,3 +1,19 @@
+export interface VideoInterfaceAux {
+    title?: string;
+    idMarca?: number;
+    marca?: string;
+    marca_slug?: string;
+    marca_logo?: string;
+    slug?: string;
+    image?: string; // imagen para desktop
+    imagemobile?: string; // imagen para mobile
+    video?: string; // id de video (ej. Vimeo)
+    colorMarca?: string; // nombre de color/identificador de marca
+    duracion?: string;
+    cantidad_like?: number;
+    previsualizacion_video?: string;
+}
+
 export interface VideoInterface {
     id?: number;
     title_large?: string;
@@ -10,6 +26,7 @@ export interface VideoInterface {
     image?: string;
     imagemobile?: string;
     link_video?: string;
+    previsualizacion_video?: string;
     fecha_estreno?: string;
     duracion?: string;
     elenco?: string;
@@ -18,13 +35,7 @@ export interface VideoInterface {
     autor_profesion?: string;
     autor_imagen?: string;
     gallery?: unknown[];
-
-    // temporales
-    // title: string;
-    // idMarca: number;
-    // imagen: string;
-    // video: string;
-    // colorMarca: string;
+    cantidad_like?: number;
 }
 
 interface Categoria {

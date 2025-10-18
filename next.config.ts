@@ -8,6 +8,12 @@ const nextConfig: NextConfig = {
         hostname: 'img.qa.gloria.com.pe.s3-website-us-east-1.amazonaws.com',
         pathname: '**',
       },
+
+      {
+        protocol: 'https',
+        hostname: 's3.us-east-1.amazonaws.com',
+        pathname: '/img.qa.gloria.com.pe/**',
+      },
     ],
   },
   /* config options here */

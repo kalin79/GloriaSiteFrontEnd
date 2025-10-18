@@ -6,6 +6,10 @@
 export async function getProductoBySlug(slug: string) {
     const API_TOKEN = process.env.NEXT_PUBLIC_AUTHORIZATION_FORM; // Acceso a variable de entorno
     const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+    const username = process.env.BASIC_AUTH_USER;
+    const password = process.env.BASIC_AUTH_PASS;
+    // Codificar credenciales en Base64
+    const auth = Buffer.from(`${username}:${password}`).toString('base64');
     if (!API_TOKEN) {
         throw new Error('API_TOKEN no está definido');
     }
@@ -15,6 +19,7 @@ export async function getProductoBySlug(slug: string) {
         method: 'GET',
         cache: 'no-store', // evita cachear si necesitas siempre lo último
         headers: {
+            "Authorization": `Basic ${auth}`,  // 👈 Aquí va la autenticación básica
             "Authorization-secret": `${API_TOKEN}`,
             "Content-Type": 'application/json',
             "Accept": 'application/json',
