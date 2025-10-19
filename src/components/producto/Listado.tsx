@@ -9,17 +9,17 @@ import { ProductInterface } from '@/interfaces/producto';
 
 interface Props {
     products: ProductInterface[];
+    slugMarca: string;
 }
-const Listado = ({ products }: Props) => {
+const Listado = ({ products, slugMarca }: Props) => {
     const [productos, setProductos] = useState<ProductInterface[]>(products);
     const [pagina, setPagina] = useState(1);
     const [totalPaginas, setTotalPaginas] = useState(4); // Puedes ajustarlo luego desde API
 
     const router = useRouter();
 
-    const handleClickViewVideo = (slug: string, marca: string) => {
-        alert(1)
-        router.push(`/${marca}/producto/${slug}`)
+    const handleClickViewVideo = (slug: string) => {
+        router.push(`/${slugMarca}/producto/${slug}`)
     }
     const handleSiguiente = () => {
         if (pagina < totalPaginas) setPagina(pagina + 1);
@@ -78,7 +78,7 @@ const Listado = ({ products }: Props) => {
                                 <CardComponent
                                     key={index}
                                     productContents={item}
-                                    onClick={() => { console.log(productos); if (item.slug && item.marca) { handleClickViewVideo(item.slug, item.marca.name) } }}
+                                    onClick={() => { handleClickViewVideo(item.slug || '') }}
                                 />
                             ))}
                         </div>

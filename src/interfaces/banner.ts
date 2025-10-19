@@ -29,4 +29,6 @@ export interface BannerInterfaceAux {
     duracion: number | null;
     abrir_en_otra_ventana: boolean; // si abre en una nueva pestaña
     accion: string;
+    es_video: string;
+    es_campana: string;
 }

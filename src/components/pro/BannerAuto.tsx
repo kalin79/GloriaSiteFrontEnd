@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 import Player from '@vimeo/player';
 import { VideoInterface } from "@/interfaces/video";
 import Image from 'next/image';
-import styles from '@/styles/scss/video.module.scss';
+import styles from '@/styles/scss/marcapro.module.scss';
 
 interface Props {
     videoData: VideoInterface;

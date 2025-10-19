@@ -114,21 +114,22 @@ const CarruselProductos = ({ productosData, paginationData, tagsData }: Props) =
             <div className={`containerFluidLeft`}>
                 <div className={`${styles.productoCarruselContainer}`}>
                     <div>
-                        <h3 className='titularPequeno boldMedium'>NUESTROS PRODUCTOS {isLoading}</h3>
-                        <h2 className='titularExtraGrande'>
-                            Explora nuestra <br />
-                            selección de <br />
-                            productos:
+                        <h3 className={styles.subTitularProductoHome}>NUESTROS PRODUCTOS</h3>
+                        <h2 className={styles.titularProductoHome}>
+                            Descubre lo<br />
+                            mejor para<br />
+                            <span>tu día a día.</span>
                         </h2>
-                        <p className='parrafoGrande'>
-                            Nutritivos, deliciosos y <br />
-                            perfectos para toda la familia. <br />
-                            Desliza y encuentra tus <br />
-                            favoritos.
+                        <p className={styles.parrafoHome}>
+                            Deliciosos, nutritivos y <br />
+                            perfectos para toda la <br />
+                            familia. Desliza y descubre <br />
+                            tus favoritos junto a <br />
+                            novedades pensadas para ti.
                         </p>
                         <div className={`${styles.chefContent}`}>
                             <Image src="/iconChef.svg" width={42} height={37} alt='Receta' />
-                            <p className='parrafoMediano celesteTxt'>
+                            <p className={styles.parrafoPequeHome}>
                                 Producto <br />con receta
                             </p>
                         </div>
@@ -136,7 +137,7 @@ const CarruselProductos = ({ productosData, paginationData, tagsData }: Props) =
                     <div>
                         <div className={`${styles.headerContainer}`}>
                             <div>
-                                <p className='parrafoMediano'>
+                                <p className={styles.parrofoTagHome}>
                                     Filtrar productos por tag:
                                 </p>
                                 <Select

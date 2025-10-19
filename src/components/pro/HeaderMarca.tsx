@@ -2,13 +2,13 @@
 import { useState } from 'react';
 // import { useRouter } from "next/navigation";
 import Image from 'next/image';
-import VideoBanner from "@/components/video/BannerAuto";
+import VideoBanner from "@/components/pro/BannerAuto";
 import Portal from '@/components/Portal';
 import { VideoInterface } from "@/interfaces/video";
 import SantizedHtml from '@/components/SanitizedHtml';
 import HtmlSafeRender from '@/components/HtmlSafeRender';
 import dynamic from 'next/dynamic';
-import styles from '@/styles/scss/banner.module.scss';
+import styles from '@/styles/scss/marcapro.module.scss';
 interface multimediaParameters {
     multimediaContents: VideoInterface;
     viewLogo?: boolean;

@@ -806,6 +806,18 @@ h4 {
             }
         }
     }
+
+    &.swiperNetflixPro {
+        .swiper-button-next {
+            border: 1px solid #DD1A20 !important;
+            background: rgba(#DD1A20, 0.2) !important;
+        }
+
+        .swiper-button-prev {
+            border: 1px solid #DD1A20 !important;
+            background: rgba(#DD1A20, 0.2) !important;
+        }
+    }
 }
 
 

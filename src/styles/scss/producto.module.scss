@@ -229,6 +229,91 @@
     background: $azulP;
     padding: 8rem 0 0;
 
+    .subTitularProductoHome {
+        font-family: var(--font-misti), sans-serif;
+        font-size: 1rem;
+        line-height: 1.5em;
+        color: $celesteP;
+        font-weight: 500;
+
+        @media screen and (min-width: 992px) {
+            font-size: 1rem;
+            line-height: 1.75em;
+        }
+    }
+
+    .titularProductoHome {
+        font-family: var(--font-misti), sans-serif;
+        font-size: 2.25rem;
+        line-height: 1.15em;
+        color: $celesteP;
+        font-weight: 300;
+
+        @media screen and (min-width: 992px) {
+            font-size: 3.25rem;
+            line-height: 1em;
+        }
+
+        span {
+            font-weight: 400;
+        }
+
+        br {
+            display: none;
+
+            @media screen and (min-width: 992px) {
+                display: block;
+            }
+        }
+    }
+
+    .parrafoHome {
+        font-family: var(--font-misti), sans-serif;
+        font-size: 1.15rem;
+        line-height: 1.35em;
+        color: white;
+        font-weight: 300;
+
+        @media screen and (min-width: 992px) {
+            font-size: 1.5rem;
+            line-height: 1.5em;
+        }
+
+        br {
+            display: none;
+
+            @media screen and (min-width: 992px) {
+                display: block;
+            }
+        }
+    }
+
+    .parrafoPequeHome {
+        font-family: var(--font-misti), sans-serif;
+        font-size: .85rem;
+        line-height: 1.15em;
+        color: rgba($celesteP, 1);
+        font-weight: 300;
+
+        @media screen and (min-width: 992px) {
+            font-size: 1rem;
+            line-height: 1em;
+        }
+    }
+
+    .parrofoTagHome {
+        font-family: var(--font-poppins), sans-serif;
+        font-size: .85rem;
+        line-height: 1.15em;
+        color: rgba(white, 1);
+        font-weight: 300;
+
+        @media screen and (min-width: 992px) {
+            font-size: 1rem;
+            line-height: 1em;
+        }
+    }
+
     .productoCarruselContainer {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
@@ -276,9 +361,13 @@
                 }
 
                 .headerContainer {
-                    grid-column: 1 / span 3;
+                    grid-column: 1 / -1;
                     position: relative;
                     z-index: 20;
+
+                    @media screen and (min-width: 992px) {
+                        grid-column: 1 / span 3;
+                    }
 
                     p {
                         margin-bottom: 1rem;

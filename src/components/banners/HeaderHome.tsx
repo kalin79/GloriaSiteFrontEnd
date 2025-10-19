@@ -32,10 +32,19 @@ const HeaderHome = ({ multimediaContents }: multimediaParameters) => {
                                             {/* <Image src='/play4.svg' width={14} height={16} alt="" /> */}
                                         </Link>
                                     ) : (
-                                        <Link href={`/${multimediaContents.slugMarca}/${multimediaContents.link}`} className={`btnStandart`} >
-                                            <span>Ver video</span>
-                                            {/* <Image src='/play4.svg' width={14} height={16} alt="" /> */}
-                                        </Link>
+                                        <>
+                                            {(multimediaContents.es_video) ? (
+                                                <Link href={`/${multimediaContents.slugMarca}/video/${multimediaContents.link}`} className={`btnStandart`} >
+                                                    <span>Ver video</span>
+                                                    {/* <Image src='/play4.svg' width={14} height={16} alt="" /> */}
+                                                </Link>
+                                            ) : (
+                                                <Link href={`/${multimediaContents.slugMarca}/campana/${multimediaContents.link}`} className={`btnStandart`} >
+                                                    <span>Ver video</span>
+                                                    {/* <Image src='/play4.svg' width={14} height={16} alt="" /> */}
+                                                </Link>
+                                            )}
+                                        </>
                                     )
                                 }
 
