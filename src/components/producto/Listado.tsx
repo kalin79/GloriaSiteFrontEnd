@@ -1,47 +1,76 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { getListadoMarcaProductos } from '@/actions/marca/producto/getListadoProductos';
 import Image from 'next/image';
 import { useRouter } from "next/navigation";
 
 import styles from '@/styles/scss/producto.module.scss';
-import CardComponent from "@/components/producto/Card";
-import { ProductInterface } from '@/interfaces/producto';
-
+import CardComponent from "@/components/producto/CardProductoListado";
+import { ProductListadoInterface } from '@/interfaces/producto';
+import gsap from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+gsap.registerPlugin(ScrollToPlugin);
 interface Props {
-    products: ProductInterface[];
+    // products: ProductListadoInterface[];
     slugMarca: string;
+    // paginationData: PaginationHomeInterface;
 }
-const Listado = ({ products, slugMarca }: Props) => {
-    const [productos, setProductos] = useState<ProductInterface[]>(products);
+const Listado = ({ slugMarca }: Props) => {
+    const [productos, setProductos] = useState<ProductListadoInterface[]>([]);
     const [pagina, setPagina] = useState(1);
-    const [totalPaginas, setTotalPaginas] = useState(4); // Puedes ajustarlo luego desde API
-
+    const [totalPaginas, setTotalPaginas] = useState(1); // Puedes ajustarlo luego desde API
+    const contenedorIniProdRef = useRef<HTMLDivElement>(null);
     const router = useRouter();
+
+    const [isInit, setIsInit] = useState(false); // Puedes ajustarlo luego desde API
 
     const handleClickViewVideo = (slug: string) => {
         router.push(`/${slugMarca}/producto/${slug}`)
     }
     const handleSiguiente = () => {
+        if (!isInit) setIsInit((prev) => !prev);
+
         if (pagina < totalPaginas) setPagina(pagina + 1);
     };
 
+    const handlePagina = (num: number) => {
+        if (!isInit) setIsInit((prev) => !prev);
+        setPagina(num)
+    }
+
     const handleAnterior = () => {
+        if (!isInit) setIsInit((prev) => !prev);
         if (pagina > 1) setPagina(pagina - 1);
     };
     useEffect(() => {
         const fetchProductos = async () => {
-            if (pagina != 0) {
-                const res = await fetch(`/api/productos?page=${pagina}`);
-                const data = await res.json();
-                setProductos(data.items);
-                setTotalPaginas(data.totalPaginas); // Si lo devuelve la API
+            if (pagina !== 0) {
+                const response = await getListadoMarcaProductos(pagina, slugMarca);
+                const { productos: tempP, pagination: tempPP } = response.data.productos;
+
+                setProductos(tempP);
+                setTotalPaginas(tempPP.last_page);
+
+                if (isInit) {
+                    setTimeout(() => {
+                        if (contenedorIniProdRef.current) {
+                            gsap.to(window, {
+                                duration: 1,
+                                scrollTo: { y: contenedorIniProdRef.current, offsetY: 80 },
+                                ease: "power2.out",
+                            });
+                        }
+                    }, 500);
+                }
+
             }
         };
 
-        fetchProductos();
-    }, [pagina]);
+        fetchProductos(); // ✅ no olvides ejecutarla
+    }, [pagina, slugMarca, isInit]);
+
     return (
-        <div className={styles.listadoProductoContainer}>
+        <div className={styles.listadoProductoContainer} ref={contenedorIniProdRef}>
             <div className='containerFluid'>
                 <div className={styles.headerContainer}>
                     <div className={styles.gridContiner}>
@@ -84,22 +113,39 @@ const Listado = ({ products, slugMarca }: Props) => {
                         </div>
                         <div className={styles.paginadoContainer}>
 
-                            <button onClick={handleAnterior} disabled={pagina === 1}>
-                                <Image src="/arrowPagi.svg" width={18} height={9} alt='' />
+                            <button
+                                onClick={handleAnterior}
+                                disabled={pagina === 1}
+                                className={styles.arrowButton}
+                            >
+                                <Image src="/arrowPagi.svg"
+                                    width={18}
+                                    height={9}
+                                    alt='anterior'
+                                    className={styles.arrowLeft}
+                                />
                             </button>
-
                             {Array.from({ length: totalPaginas }, (_, i) => i + 1).map((num) => (
                                 <button
                                     key={num}
-                                    onClick={() => setPagina(num)}
+                                    onClick={() => handlePagina(num)}
                                     className={`parrafoPequeno ${pagina === num ? styles.active : ''}`}
                                 >
                                     {num}
                                 </button>
                             ))}
 
-                            <button onClick={handleSiguiente} disabled={pagina === totalPaginas}>
-                                <Image src="/arrowPagi.svg" width={18} height={9} alt='' />
+                            <button
+                                onClick={handleSiguiente}
+                                disabled={pagina === totalPaginas}
+                                className={styles.arrowButton}
+                            >
+                                <Image
+                                    src="/arrowPagi.svg"
+                                    width={18}
+                                    height={9}
+                                    alt="Siguiente"
+                                />
                             </button>
                         </div>
 

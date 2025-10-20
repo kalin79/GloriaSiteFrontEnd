@@ -3,6 +3,19 @@ export interface TagsAux {
     name: string;
 }
 
+export interface ProductListadoInterface {
+    title: string;
+    subtitulo: string;
+    idMarca: number;
+    marca: string;
+    marca_slug: string;
+    slug: string;
+    image: string;
+    imagemobile: string;
+    presentacion: string;
+    receta: boolean;
+}
+
 export interface ProductoHomeInterface {
     title: string;
     subtitulo: string;

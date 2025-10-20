@@ -6,7 +6,7 @@ import BannerPrincipalComponent from "@/components/banners/HeaderMarca";
 import CarruselVideosComponent from "@/components/carrusel/CarruselVideos";
 import CarruselCampanasComponent from "@/components/carrusel/CarruselCampanas";
 import ListadoProductosComponent from "@/components/producto/Listado";
-import { ProductInterface } from '@/interfaces/producto';
+// import { ProductInterface } from '@/interfaces/producto';
 import Image from 'next/image';
 
 import styles from '@/styles/scss/marca.module.scss';
@@ -15,8 +15,8 @@ import styles from '@/styles/scss/marca.module.scss';
 export default async function MarcaPage() {
 
     const response = await getMarcaBySlug('gloria');
-    const { videos, productos, campanas, banner, slug: slugMarca }: { videos: VideosHomeInterface[], productos: ProductInterface[], campanas: CampanaInterface[], banner: VideoInterface, slug: string } = response.data;
-
+    const { videos, campanas, banner, slug: slugMarca }: { videos: VideosHomeInterface[], campanas: CampanaInterface[], banner: VideoInterface, slug: string } = response.data;
+    // const { productos, pagination } = response.data.productos;
 
     return (
         <>
@@ -31,7 +31,7 @@ export default async function MarcaPage() {
                 <CarruselCampanasComponent videosCampana={campanas} titularCampana="Nuestras Campañas" subtitularCampana="Ser mamá o papá es una aventura que se vive con el corazón. Por eso, celebramos y reconocemos ese esfuerzo diario que construye un futuro lleno de amor y esperanza." />
 
             </div>
-            <ListadoProductosComponent products={productos} slugMarca={slugMarca} />
+            <ListadoProductosComponent slugMarca={slugMarca} />
 
         </>
     );
