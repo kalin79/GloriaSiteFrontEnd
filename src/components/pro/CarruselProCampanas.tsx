@@ -7,15 +7,15 @@ import { CampanaInterface } from '@/interfaces/campana';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import CardCampanaComponent from "@/components/campanas/Card";
-import styles from '@/styles/scss/campanas.module.scss';
+import CardCampanaComponent from "@/components/pro/CardPro";
 
+import styles from '@/styles/scss/marcapro.module.scss';
 interface Props {
     titularCampana: string;
     subtitularCampana: string;
     videosCampana: CampanaInterface[];
 }
-const CarruselCampanas = ({ titularCampana, subtitularCampana, videosCampana }: Props) => {
+const CarruselProCampanas = ({ titularCampana, subtitularCampana, videosCampana }: Props) => {
 
     return (
         <div className={styles.listadoComponentContainer}>
@@ -65,4 +65,4 @@ const CarruselCampanas = ({ titularCampana, subtitularCampana, videosCampana }: 
     )
 }
 
-export default CarruselCampanas
+export default CarruselProCampanas

@@ -32,7 +32,7 @@ const HeaderMarca = ({ multimediaContents, viewLogo = true }: multimediaParamete
         <>
             {
                 (multimediaContents.marca?.logo?.trim() && viewLogo) && (
-                    <div className='LogoProductoHeader'>
+                    <div className='LogoProductoHeader Pro'>
                         <Image src={(multimediaContents.marca.logo ?? '/gloria.svg') as string} width={121} height={84} alt={multimediaContents.marca.nombre ?? ''} />
                     </div>
                 )

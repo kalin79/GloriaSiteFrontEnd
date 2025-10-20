@@ -4,8 +4,8 @@ import { getListadoMarcaProductos } from '@/actions/marca/producto/getListadoPro
 import Image from 'next/image';
 import { useRouter } from "next/navigation";
 
-import styles from '@/styles/scss/producto.module.scss';
-import CardComponent from "@/components/producto/CardProductoListado";
+import styles from '@/styles/scss/marcapro.module.scss';
+import CardComponent from "@/components/pro/CardProductoProListado";
 import { ProductListadoInterface } from '@/interfaces/producto';
 import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
@@ -76,19 +76,14 @@ const Listado = ({ slugMarca }: Props) => {
                     <div className={styles.gridContiner}>
                         <div>
                             <h2 className={styles.titularMain}>
-                                Explora nuestra <br />
-                                selección de <br />
-                                <span>productos:</span>
+                                PRO, <span>proteína para <br />
+                                    lo que propongas:</span>
                             </h2>
                         </div>
                         <div>
                             <p className={styles.parrafoTitProductos}>
-                                Nutritivos, deliciosos y perfectos para toda la familia. <br />Desliza y encuentra tus favoritos.
+                                Para todos los que enfrentan retos en el día a día. Conoce nuestros productos PRO POWER y PRO DAY.
                             </p>
-                            {/* <div className={styles.recetaContainer}>
-                                <Image src="/iconChef.svg" width={42} height={37} alt='Recetas de Producto' />
-                                <h3 className='parrafoMediano celesteTxt'>Producto <br />con receta</h3>
-                            </div> */}
                         </div>
                     </div>
                 </div>
@@ -96,8 +91,8 @@ const Listado = ({ slugMarca }: Props) => {
                     <div className={styles.filtrosContainer}>
                         <div>
                             <div className={styles.buttonFilter}>
-                                <p className='parrafoMediano celesteTxt'>Filtrar productos</p>
-                                <Image src="/filtro.svg" width={32} height={32} alt='Filtrar' />
+                                <p className='parrafoMediano'>Filtrar productos</p>
+                                <Image src="/filtropro.svg" width={32} height={32} alt='Filtrar' />
                             </div>
                         </div>
                     </div>
@@ -119,8 +114,8 @@ const Listado = ({ slugMarca }: Props) => {
                                 className={styles.arrowButton}
                             >
                                 <Image src="/arrowP1.svg"
-                                    width={18}
-                                    height={9}
+                                    width={16}
+                                    height={28}
                                     alt='anterior'
                                     className={styles.arrowLeft}
                                 />
@@ -142,8 +137,8 @@ const Listado = ({ slugMarca }: Props) => {
                             >
                                 <Image
                                     src="/arrowP2.svg"
-                                    width={18}
-                                    height={9}
+                                    width={16}
+                                    height={28}
                                     alt="Siguiente"
                                 />
                             </button>
