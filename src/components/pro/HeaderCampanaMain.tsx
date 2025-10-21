@@ -1,14 +1,14 @@
 'use client';
 import { useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
+import Image from 'next/image';
 import VideoBanner from "@/components/video/BannerCampana";
 import Portal from '@/components/Portal';
 import { CampanaInterface } from '@/interfaces/campana';
 
 // import SantizedHtml from "@/components/SanitizedHtml";
 import dynamic from 'next/dynamic';
-import styles from '@/styles/scss/banner.module.scss';
+import styles from '@/styles/scss/marcapro.module.scss';
 interface multimediaParameters {
     multimediaContents: CampanaInterface;
     viewLogo?: boolean;
@@ -26,7 +26,7 @@ const HeaderCampana = ({ multimediaContents, viewLogo = true }: multimediaParame
         <>
             {
                 (multimediaContents.marca?.logo?.trim() && viewLogo) && (
-                    <div className='LogoProductoHeader'>
+                    <div className='LogoProductoHeader Pro'>
                         <Link href={`/${multimediaContents.marca?.slug}` || ''}>
                             <Image src={(multimediaContents.marca.logo ?? '/gloria.svg') as string} width={121} height={84} alt={multimediaContents.marca.nombre ?? ''} />
                         </Link>

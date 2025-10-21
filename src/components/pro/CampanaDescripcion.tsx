@@ -1,30 +1,27 @@
 'use client';
-import { VideoInterface } from "@/interfaces/video";
+import { CampanaInterface } from '@/interfaces/campana';
 import SantizedHtml from "@/components/SanitizedHtml";
 import HtmlSafeRender from '@/components/HtmlSafeRender';
 
 // import Link from 'next/link';
 import Image from 'next/image';
 
-import styles from '@/styles/scss/campanas.module.scss';
+import styles from '@/styles/scss/marcapro.module.scss';
 
 interface Props {
-    multimediaContents: VideoInterface,
+    multimediaContents: CampanaInterface,
     // legalesData: CampanaLegalesInterfaces[]
 }
 
-const Descripcion = ({ multimediaContents }: Props) => {
+const CampanaDescripcion = ({ multimediaContents }: Props) => {
     return (
         <div className={styles.bgDescripcionContainer}>
-            <div className={styles.backGroundFull}>
-                <Image src='/bgGloria.webp' width={2460} height={2880} alt='fondo' />
-            </div>
             <div className='containerFluid'>
                 <div className={styles.descriptionCampanaContainer}>
                     <div>
-                        <h2><SantizedHtml html={multimediaContents.sub_title || ''} /></h2>
-                        <h1><SantizedHtml html={multimediaContents.title_large || ''} /></h1>
-                        <HtmlSafeRender html={multimediaContents.descripcion || ''} className='contenidoHTML' />
+                        <h2>CAMPAÑA <SantizedHtml html={multimediaContents.marca.nombre} /></h2>
+                        <h1><SantizedHtml html={multimediaContents.title_large} /></h1>
+                        <HtmlSafeRender html={multimediaContents.descripcion} className='contenidoHTML' />
                     </div>
                     <div>
                         <div className={styles.btnContainers}>
@@ -60,4 +57,4 @@ const Descripcion = ({ multimediaContents }: Props) => {
     )
 }
 
-export default Descripcion
+export default CampanaDescripcion

@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import VideoBanner from "@/components/video/Banner";
 import Portal from '@/components/Portal';
 import { VideoInterface } from "@/interfaces/video";
@@ -22,7 +23,9 @@ const Header = ({ multimediaContents, viewLogo = true }: multimediaParameters) =
             {
                 (multimediaContents.marca?.logo?.trim() && viewLogo) && (
                     <div className='LogoProductoHeader'>
-                        <Image src={(multimediaContents.marca.logo ?? '/gloria.svg') as string} width={121} height={84} alt={multimediaContents.marca.nombre ?? ''} />
+                        <Link href={`/${multimediaContents.marca?.slug}` || ''}>
+                            <Image src={(multimediaContents.marca.logo ?? '/gloria.svg') as string} width={121} height={84} alt={multimediaContents.marca.nombre ?? ''} />
+                        </Link>
                     </div>
                 )
             }

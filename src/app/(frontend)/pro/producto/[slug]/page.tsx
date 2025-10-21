@@ -1,13 +1,14 @@
 import { getProductoBySlug } from '@/actions/marca/producto/getProductoBySlug';
 
-import BannerPrincipalComponent from "@/components/banners/Producto";
-import DetallePrincipalComponent from "@/components/producto/DetailMain";
-import TabsComponent from "@/components/producto/Tabs";
-import CarruselProductsRelacionadosComponent from "@/components/carrusel/CarruselProductosRelacionados";
+import BannerPrincipalComponent from "@/components/pro/BannerProductoMain";
+import DetallePrincipalComponent from "@/components/pro/DetalleMainProducto";
+import BannerInternoComponent from "@/components/pro/BannerProInterna";
+import TabsComponent from "@/components/pro/TabsPro";
+import CarruselProductsRelacionadosComponent from "@/components/pro/CarruselProductosRelacionados";
 // import { SlugInterface } from '@/interfaces/slug';
 
 import { ProductInterface } from '@/interfaces/producto';
-import styles from '@/styles/scss/producto.module.scss';
+import styles from '@/styles/scss/marcapro.module.scss';
 
 interface CampanaPageProps {
     params: Promise<{ slug: string }>;
@@ -29,13 +30,15 @@ export default async function ProductoPage({ params }: CampanaPageProps) {
 
     return (
         <>
-            <div className="bgGloria">
+            <div>
                 <BannerPrincipalComponent multimediaContents={producto} />
                 <div className={`${styles.productoContainerPage}`}>
                     <DetallePrincipalComponent productoData={producto} />
                     <TabsComponent productoData={producto} />
+                    <BannerInternoComponent productoData={producto} />
                     <CarruselProductsRelacionadosComponent productosRelacionados={productos_relacionados} />
                 </div>
+
             </div>
         </>
     );

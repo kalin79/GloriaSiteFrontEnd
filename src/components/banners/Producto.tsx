@@ -1,6 +1,6 @@
 'use cliente';
 import Image from 'next/image';
-
+import Link from 'next/link';
 // import styles from '@/styles/scss/banner.module.scss';
 import { ProductInterface } from '@/interfaces/producto';
 // import SanitizedHtml from '@/components/SanitizedHtml';
@@ -13,7 +13,9 @@ const Producto = ({ multimediaContents }: Props) => {
     return (
         <>
             <div className='LogoProductoHeader'>
-                <Image src={multimediaContents.marca?.logo ?? '/gloria.svg'} width={121} height={84} alt='' />
+                <Link href={`/${multimediaContents.marca?.slug}` || ''}>
+                    <Image src={multimediaContents.marca?.logo ?? '/gloria.svg'} width={121} height={84} alt='' />
+                </Link>
             </div>
 
             {/* <div className={styles.BannerProductoContainer}>

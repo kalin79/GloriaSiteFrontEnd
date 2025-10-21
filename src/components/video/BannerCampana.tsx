@@ -35,7 +35,7 @@ const BannerCampana = ({ videoData }: Props) => {
     }, [videoData.link_video]);
     return (
         <>
-            <div className={styles.videoFullPage}>
+            <div className={`${styles.videoFullPage} ${styles.sinDegradado}`}>
                 <div ref={videoRef} />
             </div>
         </>

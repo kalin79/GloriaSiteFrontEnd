@@ -27,22 +27,26 @@ const BannerAuto = ({ videoData }: Props) => {
             // Cuando el video empieza a reproducirse → ocultamos imagen
             player.on('play', () => {
                 if (placeholderRef.current) {
-                    setTimeout(() => {
-                        placeholderRef.current!.style.opacity = '0';
-                        placeholderRef.current!.style.display = 'none';
+                    const timeout = setTimeout(() => {
+                        if (placeholderRef.current) { // 👈 Verificación dentro del timeout
+                            placeholderRef.current!.style.opacity = '0';
+                            placeholderRef.current!.style.display = 'none';
+                        }
                     }, 500);
+                    return () => clearTimeout(timeout); // 👈 Limpieza por si se desmonta el componente
                 }
             });
 
             // Cuando el video termina → mostramos imagen y pausamos
             player.on('ended', async () => {
-                console.log('entro')
-                console.log(placeholderRef.current)
                 if (placeholderRef.current) {
-                    setTimeout(() => {
-                        placeholderRef.current!.style.display = 'block';
-                        placeholderRef.current!.style.opacity = '1';
+                    const timeout = setTimeout(() => {
+                        if (placeholderRef.current) { // 👈 Verificación dentro del timeout
+                            placeholderRef.current!.style.display = 'block';
+                            placeholderRef.current!.style.opacity = '1';
+                        }
                     }, 50);
+                    return () => clearTimeout(timeout); // 👈 Limpieza por si se desmonta el componente
                 }
             });
 

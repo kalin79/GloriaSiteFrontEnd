@@ -307,7 +307,7 @@ h4 {
         top: 2.5rem;
 
         img {
-            width: 80px;
+            width: 50px;
             height: auto;
             object-fit: cover;
 
@@ -1051,7 +1051,7 @@ h4 {
 .contenidoHTML {
     h2 {
         font-family: var(--font-misti), sans-serif;
-        font-size: 1.375rem;
+        font-size: 1.175rem;
         line-height: 1.5em;
         color: $celesteP;
         font-weight: 400;
@@ -1073,6 +1073,12 @@ h4 {
         @media screen and (min-width: 992px) {
             font-size: 1rem;
             line-height: 1.75em;
+        }
+    }
+
+    &.Pro {
+        h2 {
+            color: #fff;
         }
     }
 }
@@ -1123,6 +1129,37 @@ h4 {
                         font-family: var(--fuente-poppins), sans-serif;
                         font-weight: 400;
                         color: $celesteP;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.contenidoHTML {
+    &.Pro {
+        .tableResponsiveNutricional {
+            .table {
+                thead {
+                    tr {
+                        border: 1px solid #ED1C24;
+                    }
+
+                    th {
+                        color: #fff;
+                        text-align: center;
+                    }
+                }
+
+                tbody {
+                    tr {
+                        border: 1px solid rgba(#ED1C24, 1);
+
+                        td {
+                            h3 {
+                                color: #fff;
+                            }
+                        }
                     }
                 }
             }

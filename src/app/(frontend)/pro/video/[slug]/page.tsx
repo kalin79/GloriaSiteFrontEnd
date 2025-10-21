@@ -1,14 +1,14 @@
 import { getVideoBySlug } from '@/actions/marca/video/getVideoBySlug';
-import BannerPrincipalComponent from "@/components/banners/Header";
-import DetalleComponent from "@/components/video/Descripcion";
-import CarruselVideosComponent from "@/components/video/CarruselVideos";
+import BannerPrincipalComponent from "@/components/pro/HeaderVideoMain";
+import DetalleComponent from "@/components/pro/VideoDescripcion";
+import CarruselVideosComponent from "@/components/pro/CarruselVideosRelacionados";
 
 // import TabsComponent from "@/components/video/Tabs";
 import { VideoInterface } from "@/interfaces/video";
 // import { SlugInterface } from '@/interfaces/slug';
 
-import styles from '@/styles/scss/campanas.module.scss';
 
+import styles from '@/styles/scss/marcapro.module.scss';
 interface CampanaPageProps {
     params: Promise<{ slug: string }>;
 }
@@ -23,24 +23,17 @@ export default async function VideoPage({ params }: CampanaPageProps) {
 
     return (
         <>
-            <div className="bgGloria">
+            <div>
                 <BannerPrincipalComponent multimediaContents={video} />
                 <div className={`${styles.campanaContainerPage}`}>
                     <DetalleComponent multimediaContents={video} />
-                    <div className="containerFluid">
-                        <CarruselVideosComponent videosCampana={related_video} titularCampana="Contenido hecho para ti" subtitularCampana="Videos hechos por especialistas para guiarte y acompañarte." />
+                    <div className={styles.bgProContainer}>
+                        <div className="containerFluid">
+                            <CarruselVideosComponent videosCampana={related_video} titularCampana="Contenido hecho para ti" subtitularCampana=" Nuestros especialistas resuelven todas tus dudas sobre la proteína y cómo alcanzar todo lo que te PROpongas." />
+                        </div>
                     </div>
                 </div>
             </div>
-
-            {/* <div className="bgGloria">
-                <BannerPrincipalComponent multimediaContents={video} />
-                <div className={`${styles.productoContainerPage}`}>
-                    <div className="containerFluid">
-                        <TabsComponent video={video} relatedVideo={related_video} />
-                    </div>
-                </div>
-            </div> */}
         </>
     )
 }

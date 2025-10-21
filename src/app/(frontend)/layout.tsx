@@ -36,6 +36,16 @@ const misti = localFont({
   variable: "--font-misti",
   display: "swap",
 });
+
+const round8 = localFont({
+  src: [
+    { path: "../../../public/fonts/round8/ROUND8-FOUR.woff2", weight: "500", style: "normal" },
+  ],
+  variable: "--font-round8",
+  display: "swap",
+});
+
+
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -52,7 +62,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${poppins.variable} ${misti.variable}`}>
+    <html lang="es" className={`${poppins.variable} ${misti.variable} ${round8.variable}`}>
       <body>
         <DomChangeWatcher />
         <GTM />

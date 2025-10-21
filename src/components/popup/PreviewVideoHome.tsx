@@ -47,23 +47,26 @@ const PreviewVideoHome = ({ videoData, isVisible, isHovered, tipo }: Props) => {
 
             // Cuando el video está cargado
             playerPopUp.on("play", () => {
-                console.log('entro');
                 if (placeholderPopupRef.current) {
-                    setTimeout(() => {
-                        placeholderPopupRef.current!.style.opacity = '0';
-                        placeholderPopupRef.current!.style.display = 'none';
+                    const timeout = setTimeout(() => {
+                        if (placeholderPopupRef.current) { // 👈 Verificación dentro del timeout
+                            placeholderPopupRef.current!.style.opacity = '0';
+                            placeholderPopupRef.current!.style.display = 'none';
+                        }
                     }, 500);
+                    return () => clearTimeout(timeout); // 👈 Limpieza por si se desmonta el componente
                 }
             });
 
             playerPopUp.on('ended', async () => {
-                console.log('entro')
-                console.log(placeholderPopupRef.current)
                 if (placeholderPopupRef.current) {
-                    setTimeout(() => {
-                        placeholderPopupRef.current!.style.display = 'block';
-                        placeholderPopupRef.current!.style.opacity = '1';
+                    const timeout = setTimeout(() => {
+                        if (placeholderPopupRef.current) { // 👈 Verificación dentro del timeout
+                            placeholderPopupRef.current!.style.display = 'block';
+                            placeholderPopupRef.current!.style.opacity = '1';
+                        }
                     }, 50);
+                    return () => clearTimeout(timeout); // 👈 Limpieza por si se desmonta el componente
                 }
             })
 

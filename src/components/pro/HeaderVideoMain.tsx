@@ -1,32 +1,28 @@
 'use client';
 import { useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
-import VideoBanner from "@/components/video/BannerCampana";
+import Image from 'next/image';
+import VideoBanner from "@/components/video/Banner";
 import Portal from '@/components/Portal';
-import { CampanaInterface } from '@/interfaces/campana';
-
-// import SantizedHtml from "@/components/SanitizedHtml";
+import { VideoInterface } from "@/interfaces/video";
 import dynamic from 'next/dynamic';
 import styles from '@/styles/scss/banner.module.scss';
 interface multimediaParameters {
-    multimediaContents: CampanaInterface;
+    multimediaContents: VideoInterface;
     viewLogo?: boolean;
 }
-const Lightbox = dynamic(() => import('@/components/popup/VideoCampana'), {
+const Lightbox = dynamic(() => import('@/components/popup/Video'), {
     ssr: false, // importante si el video usa APIs del navegador
     loading: () => <p>Cargando video...</p>
 })
-const HeaderCampana = ({ multimediaContents, viewLogo = true }: multimediaParameters) => {
+const HeaderVideoMain = ({ multimediaContents, viewLogo = true }: multimediaParameters) => {
     const [showVideo, setShowVideo] = useState(false);
-    // const handleLigthVideo = () => {
-    //     setShowVideo(true);
-    // }
+
     return (
         <>
             {
                 (multimediaContents.marca?.logo?.trim() && viewLogo) && (
-                    <div className='LogoProductoHeader'>
+                    <div className='LogoProductoHeader Pro'>
                         <Link href={`/${multimediaContents.marca?.slug}` || ''}>
                             <Image src={(multimediaContents.marca.logo ?? '/gloria.svg') as string} width={121} height={84} alt={multimediaContents.marca.nombre ?? ''} />
                         </Link>
@@ -49,4 +45,4 @@ const HeaderCampana = ({ multimediaContents, viewLogo = true }: multimediaParame
     )
 }
 
-export default HeaderCampana
+export default HeaderVideoMain

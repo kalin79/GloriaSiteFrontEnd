@@ -6,19 +6,17 @@ import HtmlSafeRender from '@/components/HtmlSafeRender';
 // import Link from 'next/link';
 import Image from 'next/image';
 
-import styles from '@/styles/scss/campanas.module.scss';
+// import styles from '@/styles/scss/campanas.module.scss';
+import styles from '@/styles/scss/marcapro.module.scss';
 
 interface Props {
     multimediaContents: VideoInterface,
     // legalesData: CampanaLegalesInterfaces[]
 }
 
-const Descripcion = ({ multimediaContents }: Props) => {
+const VideoDescripcion = ({ multimediaContents }: Props) => {
     return (
         <div className={styles.bgDescripcionContainer}>
-            <div className={styles.backGroundFull}>
-                <Image src='/bgGloria.webp' width={2460} height={2880} alt='fondo' />
-            </div>
             <div className='containerFluid'>
                 <div className={styles.descriptionCampanaContainer}>
                     <div>
@@ -60,4 +58,4 @@ const Descripcion = ({ multimediaContents }: Props) => {
     )
 }
 
-export default Descripcion
+export default VideoDescripcion
