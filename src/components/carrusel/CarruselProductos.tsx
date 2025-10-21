@@ -86,29 +86,47 @@ const CarruselProductos = ({ productosData, paginationData, tagsData }: Props) =
     }, [isLoading, pagination, optionSelect]);
 
 
-    // 🔹 2. Scroll handler con debounce simple
-    const handleScroll = useCallback(() => {
-        const swiperInstance = swiperRef.current?.swiper;
-        const swiperEl = swiperInstance?.el;
-        if (!swiperEl || isLoading) return;
-
-        const { scrollLeft, scrollWidth, clientWidth } = swiperEl;
-        if (scrollLeft + clientWidth >= scrollWidth - 80) {
-            handlePagination();
-        }
-    }, [isLoading, handlePagination]);
-
-    // 🔹 3. Agregar / quitar el listener correctamente
+    // 🔹 Detectar si es móvil
+    const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
     useEffect(() => {
         const swiperInstance = swiperRef.current?.swiper;
         const swiperEl = swiperInstance?.el;
         if (!swiperEl) return;
 
-        swiperEl.addEventListener("scroll", handleScroll);
-        return () => {
-            swiperEl.removeEventListener("scroll", handleScroll);
+        // Desktop → scroll
+        const handleScroll = () => {
+            const { scrollLeft, scrollWidth, clientWidth } = swiperEl;
+            if (scrollLeft + clientWidth >= scrollWidth - 80 && !isLoading) {
+                handlePagination();
+            }
         };
-    }, [handleScroll]);
+
+        // Mobile → touchmove con verificación de fin de scroll
+        const handleTouchMove = () => {
+            const { scrollLeft, scrollWidth, clientWidth } = swiperEl;
+            if (scrollLeft + clientWidth >= scrollWidth - 20 && !isLoading) {
+                handlePagination();
+            }
+        };
+
+        if (isMobile) {
+            swiperEl.addEventListener("touchmove", handleTouchMove);
+        } else {
+            swiperEl.addEventListener("scroll", handleScroll);
+        }
+
+        return () => {
+            if (isMobile) {
+                swiperEl.removeEventListener("touchmove", handleTouchMove);
+            } else {
+                swiperEl.removeEventListener("scroll", handleScroll);
+            }
+        };
+    }, [handlePagination, isLoading, isMobile]);
+
+
+
+
     return (
         <div className={`${styles.sectionHomeProductos}`}>
             <div className={`containerFluidLeft`}>

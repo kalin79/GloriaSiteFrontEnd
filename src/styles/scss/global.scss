@@ -809,16 +809,16 @@ h4 {
         .swiper-button-next,
         .swiper-button-prev {
             @media screen and (min-width: 992px) {
-                width: 9.5rem;
+                width: 3.5rem;
             }
 
-            @media screen and (min-width: 1200px) {
-                width: 12.5rem;
-            }
+            // @media screen and (min-width: 1200px) {
+            //     width: 12.5rem;
+            // }
 
-            @media screen and (min-width: 1600px) {
-                width: 24.5rem;
-            }
+            // @media screen and (min-width: 1600px) {
+            //     width: 24.5rem;
+            // }
         }
     }
 
@@ -933,7 +933,7 @@ h4 {
 
 .swiperScrollHorizontal {
     &.swiper {
-        overflow-x: auto !important;
+        // overflow-x: auto !important;
         /* Habilita el desplazamiento horizontal */
         scrollbar-width: thin;
         /* Personaliza la barra de desplazamiento */
