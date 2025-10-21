@@ -110,7 +110,7 @@ const CarruselVideos = ({ videos, titularVideo, listFiltro, tipo }: Props) => {
             <div className={`containerFluid`}>
                 <div className={`headerContainer`}>
                     <h2 className={styles.titularMini} >{titularVideo}</h2>
-                    <p className={styles.parrafoMini}>Descubre lo que cada marca tiene para ofrecerte</p>
+                    <p className={styles.parrafoMini}> Junto con especialistas, te acompañamos a cuidar lo que más te importa. ¡Lo estás haciendo bien!</p>
                 </div>
 
                 {

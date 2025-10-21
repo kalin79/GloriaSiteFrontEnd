@@ -76,14 +76,14 @@ const Listado = ({ slugMarca }: Props) => {
                     <div className={styles.gridContiner}>
                         <div>
                             <h2 className={styles.titularMain}>
-                                Explora nuestra <br />
-                                selección de <br />
-                                <span>productos:</span>
+                                Hechos y pensados <br />
+                                para toda la <br />
+                                <span>familia:</span>
                             </h2>
                         </div>
                         <div>
                             <p className={styles.parrafoTitProductos}>
-                                Nutritivos, deliciosos y perfectos para toda la familia. <br />Desliza y encuentra tus favoritos.
+                                Estamos con quienes lo dan todo por los suyos, a través de productos deliciosos, nutritivos y perfectos para acompañar momentos que unen e inspiran.
                             </p>
                             {/* <div className={styles.recetaContainer}>
                                 <Image src="/iconChef.svg" width={42} height={37} alt='Recetas de Producto' />
