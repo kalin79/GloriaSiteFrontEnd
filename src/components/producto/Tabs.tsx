@@ -80,11 +80,16 @@ const Tabs = ({ productoData }: Props) => {
                                 onClick={() => setActiveTab(2)}
                             >INFORMACIÓN NUTRICIONAL
                             </div>
-                            <div
-                                className={`parrafoMediano ${3 === activeTab ? styles.active : ''}`}
-                                onClick={() => setActiveTab(3)}
-                            >PRODUCTO CON RECETA
-                            </div>
+                            {
+                                productoData.receta_nombre && productoData.receta_nombre != '' && (
+                                    <div
+                                        className={`parrafoMediano ${3 === activeTab ? styles.active : ''}`}
+                                        onClick={() => setActiveTab(3)}
+                                    >PRODUCTO CON RECETA
+                                    </div>
+                                )
+                            }
+
                         </div>
                     </div>
                     <div className={styles.headerContainer}>
