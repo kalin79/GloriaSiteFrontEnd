@@ -316,6 +316,21 @@ h4 {
             }
         }
     }
+
+    &.Bonle {
+        transform: translateX(-50%);
+        top: 2rem;
+
+        img {
+            width: 90px;
+            height: auto;
+            object-fit: cover;
+
+            @media screen and (min-width: 768px) {
+                width: 90px;
+            }
+        }
+    }
 }
 
 .containerHomeMain {
@@ -831,6 +846,18 @@ h4 {
         .swiper-button-prev {
             border: 1px solid #DD1A20 !important;
             background: rgba(#DD1A20, 0.2) !important;
+        }
+    }
+
+    &.swiperNetflixBonle {
+        .swiper-button-next {
+            border: 1px solid #DF1683 !important;
+            background: rgba(#DF1683, 0.2) !important;
+        }
+
+        .swiper-button-prev {
+            border: 1px solid #DF1683 !important;
+            background: rgba(#DF1683, 0.2) !important;
         }
     }
 }

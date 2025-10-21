@@ -8,7 +8,7 @@ import { VideoInterface } from "@/interfaces/video";
 import SantizedHtml from '@/components/SanitizedHtml';
 import HtmlSafeRender from '@/components/HtmlSafeRender';
 import dynamic from 'next/dynamic';
-import styles from '@/styles/scss/marcapro.module.scss';
+import styles from '@/styles/scss/marcabonle.module.scss';
 interface multimediaParameters {
     multimediaContents: VideoInterface;
     viewLogo?: boolean;
@@ -33,7 +33,7 @@ const HeaderMarca = ({ multimediaContents, viewLogo = true }: multimediaParamete
 
             {
                 (multimediaContents.marca?.logo?.trim() && viewLogo) && (
-                    <div className='LogoProductoHeader Pro'>
+                    <div className='LogoProductoHeader Bonle'>
                         <Image src={(multimediaContents.marca.logo ?? '/gloria.svg') as string} width={121} height={84} alt={multimediaContents.marca.nombre ?? ''} />
                     </div>
                 )

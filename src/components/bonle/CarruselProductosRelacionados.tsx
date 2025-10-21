@@ -5,13 +5,13 @@ import { ProductInterface } from '@/interfaces/producto';
 // import SanitizedHtml from '@/components/SanitizedHtml';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import CardComponent from "@/components/bonle/CardProProducto";
+import CardComponent from "@/components/pro/CardProProducto";
 // Estilos swiper
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-import styles from '@/styles/scss/marcabonle.module.scss';
+import styles from '@/styles/scss/marcapro.module.scss';
 interface Props {
     productosRelacionados: ProductInterface[];
     // productoData: ProductInterface;

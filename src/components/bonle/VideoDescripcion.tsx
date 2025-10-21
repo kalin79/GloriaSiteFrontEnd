@@ -1,27 +1,28 @@
 'use client';
-import { CampanaInterface } from '@/interfaces/campana';
+import { VideoInterface } from "@/interfaces/video";
 import SantizedHtml from "@/components/SanitizedHtml";
 import HtmlSafeRender from '@/components/HtmlSafeRender';
 
 // import Link from 'next/link';
 import Image from 'next/image';
 
+// import styles from '@/styles/scss/campanas.module.scss';
 import styles from '@/styles/scss/marcabonle.module.scss';
 
 interface Props {
-    multimediaContents: CampanaInterface,
+    multimediaContents: VideoInterface,
     // legalesData: CampanaLegalesInterfaces[]
 }
 
-const CampanaDescripcion = ({ multimediaContents }: Props) => {
+const VideoDescripcion = ({ multimediaContents }: Props) => {
     return (
         <div className={styles.bgDescripcionContainer}>
             <div className='containerFluid'>
                 <div className={styles.descriptionCampanaContainer}>
                     <div>
-                        <h2>CAMPAÑA <SantizedHtml html={multimediaContents.marca.nombre} /></h2>
-                        <h1><SantizedHtml html={multimediaContents.title_large} /></h1>
-                        <HtmlSafeRender html={multimediaContents.descripcion} className='contenidoHTML' />
+                        <h2><SantizedHtml html={multimediaContents.sub_title || ''} /></h2>
+                        <h1><SantizedHtml html={multimediaContents.title_large || ''} /></h1>
+                        <HtmlSafeRender html={multimediaContents.descripcion || ''} className='contenidoHTML' />
                     </div>
                     <div>
                         <div className={styles.btnContainers}>
@@ -57,4 +58,4 @@ const CampanaDescripcion = ({ multimediaContents }: Props) => {
     )
 }
 
-export default CampanaDescripcion
+export default VideoDescripcion
