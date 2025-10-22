@@ -7,7 +7,7 @@ import { CampanaInterface } from '@/interfaces/campana';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import CardCampanaComponent from "@/components/pro/CardPro";
+import CardCampanaComponent from "@/components/bonle/CardPro";
 
 import styles from '@/styles/scss/marcabonle.module.scss';
 interface Props {
@@ -35,7 +35,7 @@ const CarruselProCampanas = ({ titularCampana, subtitularCampana, videosCampana 
                         // autoplay={{ delay: 3000 }}
                         loop={false}
                         modules={[Navigation]}
-                        className={`swiperNetflix vertical`}
+                        className={`swiperNetflix swiperNetflixBonle vertical`}
                         breakpoints={{
                             750: {
                                 slidesPerView: 3

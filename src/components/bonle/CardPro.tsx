@@ -5,7 +5,7 @@ import { CampanaInterface } from '@/interfaces/campana';
 
 
 import Image from 'next/image'
-import styles from '@/styles/scss/marcapro.module.scss';
+import styles from '@/styles/scss/marcabonle.module.scss';
 
 interface Props {
     videosContents: CampanaInterface,
