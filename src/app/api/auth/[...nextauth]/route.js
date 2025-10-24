@@ -11,8 +11,12 @@ const handler = NextAuth({
             async authorize(credentials) {
                 // console.log(`${process.env.NEXT_PUBLIC_BACKEND_URL}participante/authenticate`)
                 try {
-
-
+                    const _username = process.env.BASIC_AUTH_USER;
+                    const _password = process.env.BASIC_AUTH_PASS;
+                    const _auth = Buffer.from(`${_username}:${_password}`).toString('base64');
+                    // console.log(_username);
+                    // console.log(_password);
+                    // console.log(_auth);
                     const res = await fetch(
                         `${process.env.NEXT_PUBLIC_BACKEND_URL}participante/authenticate`,
                         {
@@ -22,11 +26,13 @@ const handler = NextAuth({
                                 password: credentials?.password,
                             }),
                             headers: {
-                                "Content-Type": "application/json",
-                                "Authorization-secret": "TSTCbj7mQO2xEOuwEK08RajQS1OxndfY"
+                                "Authorization": `Basic ${_auth}`,  // 👈 Aquí va la autenticación básica
+                                "Authorization-secret": "TSTCbj7mQO2xEOuwEK08RajQS1OxndfY",
+                                "Content-Type": "application/json"
                             },
                         }
                     );
+                    console.log(res);
                     if (!res.ok) {
                         throw new Error("Fallo en la autenticación");
                     }

@@ -160,102 +160,7 @@
     }
 }
 
-.nuestraLataContainer {
-    background: $cremaP;
-    padding: 4rem 0 10rem;
 
-    .gridContainer {
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        gap: 1rem;
-
-        >div {
-            &:nth-of-type(3) {
-                grid-column: 1 / -1;
-                display: grid;
-                grid-template-columns: repeat(1, 1fr);
-                /* 3 columnas iguales */
-                gap: 1rem;
-                padding: 3rem 0 0;
-
-                @media screen and (min-width: 768px) {
-                    grid-template-columns: repeat(2, 1fr);
-                }
-
-                @media screen and (min-width: 992px) {
-                    padding: 4rem 0 0;
-                    grid-template-columns: repeat(3, 1fr);
-                }
-
-                /* espacio entre columnas y filas (opcional) */
-                .itemLata {
-                    background: $celesteP;
-                    padding: 4rem 3rem 6rem;
-                    border-radius: 30px;
-
-                    @media screen and (min-width: 992px) {
-                        padding: 1.5rem 3rem 3rem;
-                    }
-
-                    .infoContainer {
-
-                        h3,
-                        p {
-                            text-align: center;
-                        }
-
-                        h3 {
-                            margin-bottom: .35rem;
-                        }
-                    }
-
-                    .imgMetaContainer {
-                        display: flex;
-                        justify-content: center;
-                        margin-top: .65rem;
-                    }
-
-                    .imgContainer {
-                        display: flex;
-                        justify-content: center;
-                        height: 100px;
-                        border: 0px solid red;
-                        padding: 1rem 0;
-
-                        img {
-                            width: auto;
-                            height: 100%;
-                            object-fit: contain;
-                        }
-                    }
-                }
-            }
-
-            &:nth-of-type(2) {
-                grid-column: 1 / -1;
-                padding-top: 1rem;
-
-                @media screen and (min-width: 992px) {
-                    grid-column: 7 / -1;
-                    padding-top: 3rem;
-                }
-            }
-
-            &:nth-of-type(1) {
-                grid-column: 1 / -1;
-
-                @media screen and (min-width: 992px) {
-                    grid-column: 1 / span 6;
-                }
-
-                h2 {
-                    margin-top: 1rem;
-
-                }
-            }
-        }
-    }
-}
 
 .imgSostenibilidadContainer {
     img {
@@ -303,9 +208,190 @@
 
 .nuestraPlantaContainer {
     background: $cremaP;
-    padding: 8rem 0 10rem;
+    padding: 6rem 0 6rem;
 
-    .gridContainer {
+    overflow: hidden;
+
+    .tabsMovil {
+        margin-top: 1.75rem;
+        display: block;
+
+        @media screen and (min-width: 992px) {
+            display: none;
+        }
+
+        .listTabs {
+            display: flex;
+            justify-content: flex-start;
+            gap: 1rem;
+            flex-wrap: nowrap;
+
+            button {
+                background: transparent;
+                border: 0;
+                // height: 40;
+                flex: 0 0 150px;
+                text-align: center;
+                padding: 1rem 0rem;
+                background-color: $celesteP;
+                transition: .5s ease-in;
+                font-size: .85rem;
+                line-height: 1em;
+                letter-spacing: -.025em;
+
+                &:hover,
+                &.active {
+                    background-color: $azulP;
+                    color: white;
+                }
+
+            }
+        }
+    }
+
+    .tabsContainer {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        margin-top: 2.5rem;
+
+        >div {
+            &:nth-of-type(2) {
+                grid-column: 1 /-1;
+
+                @media screen and (min-width: 992px) {
+                    grid-column: 4 /-1;
+                }
+
+                .infoTabContainer {
+                    background: #fff;
+                    overflow: hidden;
+                    border-radius: 0;
+
+                    @media screen and (min-width: 992px) {
+                        border-radius: 0 20px 0px 0px;
+                    }
+
+                    .mantaContainer {
+                        padding: 2rem 1rem 2rem 1rem;
+
+                        @media screen and (min-width: 992px) {
+                            padding: 2rem 4rem 2rem 3rem;
+                        }
+
+                        p {
+                            font-family: var(--font-misti), sans-serif;
+                            font-weight: 300;
+                            font-size: 1rem;
+                            line-height: 1.25em;
+                            letter-spacing: -.05em;
+                            color: #1A172B;
+                            margin-bottom: .5rem;
+
+                            @media screen and (min-width: 992px) {
+                                font-size: 1.125em;
+                                line-height: 1.35em;
+                            }
+                        }
+
+                        h2 {
+                            font-family: var(--font-misti), sans-serif;
+                            font-weight: 400;
+                            font-size: 1.35rem;
+                            line-height: 1.15em;
+                            letter-spacing: -.05em;
+                            color: #1A172B;
+                            margin-bottom: .5rem;
+
+                            @media screen and (min-width: 992px) {
+                                font-size: 1.375em;
+                                line-height: 1.35em;
+                            }
+                        }
+
+                        h3,
+                        a {
+                            font-family: var(--font-misti), sans-serif;
+                            font-weight: 400;
+                            font-size: 1rem;
+                            line-height: 1.25em;
+                            letter-spacing: -.05em;
+                            color: #0083C0;
+                            margin-bottom: .5rem;
+                            margin-top: 1.5rem;
+
+                            @media screen and (min-width: 992px) {
+                                font-size: 1.125em;
+                                line-height: 1.35em;
+                            }
+                        }
+
+                        a {
+                            font-size: 1em;
+                        }
+                    }
+
+                    .bannerContainer {
+                        min-height: auto;
+
+                        @media screen and (min-width: 992px) {
+                            min-height: 300px;
+                        }
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+
+                    }
+                }
+            }
+
+            &:nth-of-type(1) {
+                grid-column: 1 / -1;
+                display: none;
+
+                @media screen and (min-width: 992px) {
+                    grid-column: 1 /span 3;
+                    display: flex;
+                    flex-direction: column;
+                    gap: .15rem;
+                }
+
+                button {
+                    background: transparent;
+                    border: 0;
+                    width: 100%;
+                    height: 110px;
+                    text-align: left;
+                    padding-left: 2.5rem;
+                    background-color: $celesteP;
+                    transition: .5s ease-in;
+
+                    &:hover,
+                    &.active {
+                        background-color: $azulP;
+                        color: white;
+                    }
+
+                }
+
+                >button {
+                    &:first-child {
+                        overflow: hidden;
+                        border-radius: 20px 0px 0px 0px;
+                    }
+
+                    &:last-child {
+                        border-radius: 0px 0px 0px 20px;
+                    }
+                }
+
+            }
+        }
+    }
+
+    .plantaHeaderContainer {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
         gap: 1rem;
@@ -315,167 +401,59 @@
                 grid-column: 1 / -1;
 
                 @media screen and (min-width: 992px) {
-                    grid-column: 1 / span 7;
+                    grid-column: 1 / span 6;
                 }
 
-                p {
-                    margin-top: 1rem;
+                @media screen and (min-width: 1400px) {
+                    grid-column: 1 / span 5;
+                }
+
+                h3 {
+                    font-family: var(--font-misti), sans-serif;
+                    font-weight: 400;
+                    font-size: 1rem;
+                    line-height: 1em;
+                    letter-spacing: -.05em;
+                    color: rgba(#DD1A20, 1);
+                    margin-bottom: .5rem;
+
+                    @media screen and (min-width: 992px) {
+                        font-size: 1em;
+                        line-height: 1.25em;
+                    }
+                }
+
+                h2 {
+                    font-family: var(--font-misti), sans-serif;
+                    font-weight: 300;
+                    font-size: 2rem;
+                    line-height: 1em;
+                    letter-spacing: -.05em;
+                    color: rgba(#1A172B, 1);
+
+                    @media screen and (min-width: 992px) {
+                        font-size: 3.25em;
+                        line-height: 1em;
+                    }
+
+                    span {
+                        font-weight: 500;
+                    }
                 }
             }
 
             &:nth-of-type(2) {
                 grid-column: 1 / -1;
-                margin-top: 3rem;
-
-                @media screen and (min-width: 768px) {
-                    grid-column: 2 / span 5;
-                }
-
-                @media screen and (min-width: 1600px) {
-                    grid-column: 4 / span 3;
-                }
-            }
-
-            &:nth-of-type(3) {
-                grid-column: 1 / -1;
-                margin-top: 3rem;
-
-                @media screen and (min-width: 768px) {
-                    grid-column: 7 / span 5;
-                }
-
-                @media screen and (min-width: 1600px) {
-                    grid-column: 7 / span 3;
-                }
-            }
-
-            .plantaBox {
-                position: relative;
-                height: auto;
-                overflow: hidden;
-                border-radius: 30px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
 
                 @media screen and (min-width: 992px) {
-                    height: 448px;
+                    grid-column: 8 / -1;
                 }
 
-                @media screen and (min-width: 1600px) {
-                    height: 420px;
-                }
-
-                .footerContainer {
-                    background: $celesteP;
-                    height: auto;
-
-                    width: 100%;
-                    position: relative;
-                    bottom: 0%;
-                    cursor: pointer;
-                    transition: .5s ease-out all;
-                    padding-bottom: 1rem;
-
-                    @media screen and (min-width: 992px) {
-                        position: absolute;
-                        height: 104px;
-                    }
-
-                    .bodyContainer {
-                        position: relative;
-                        height: 100%;
-                        width: 100%;
-                        padding: .5rem 2rem 1rem;
-
-                        .curvaHeader {
-                            position: absolute;
-                            top: -3rem;
-                            left: 0rem;
-                            width: 100%;
-
-                            img {
-                                width: 100%;
-                                height: auto;
-                                object-fit: contain;
-                            }
-                        }
-
-                        .infoContent {
-                            position: relative;
-                            z-index: 10;
-
-                            .detalleContainer {
-                                opacity: 1;
-                                margin-top: 1.5rem;
-
-                                @media screen and (min-width: 992px) {
-                                    opacity: 0;
-                                }
-
-                                p {
-                                    margin-bottom: 1rem;
-                                    line-height: 1.5em;
-                                }
-
-                                a {
-                                    @extend %parrafoMedianoBse;
-                                    @include colorTexto($azulP);
-                                    @include propiedadResponsiva(font-size, $parrafo);
-                                    font-weight: 400;
-                                    color: $azulP;
-                                }
-                            }
-
-                        }
-
-                        .btnTransparente {
-                            border: 1px solid $azulP;
-                            padding: .5rem 0;
-                            border-radius: 30px;
-                            width: 159px;
-                            text-align: center;
-                            margin-top: 1rem;
-                            cursor: pointer;
-                            display: none;
-
-                            @media screen and (min-width: 992px) {
-                                display: block;
-                            }
-                        }
-                    }
-
-                    &:hover {
-
-                        @media screen and (min-width: 992px) {
-                            height: 100%;
-                            bottom: -6%;
-
-                            @media screen and (min-width: 1400px) {
-                                bottom: -5%;
-                            }
-
-                            .btnTransparente {
-                                display: none;
-                            }
-
-                            .bodyContainer {
-                                .infoContent {
-                                    .detalleContainer {
-                                        opacity: 1;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-
-                .imgContainer {
-                    height: 80%;
-
-                    img {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                        object-position: center;
-                    }
+                @media screen and (min-width: 1400px) {
+                    grid-column: 7 / -1;
                 }
             }
         }

@@ -76,7 +76,14 @@ h4 {
 }
 
 .containerFluidLeft {
-    padding: 0 0 0 2vw;
+    padding: 0 2vw 0 2vw;
+
+    @media screen and (min-width: 1600px) {
+        padding: 0 2vw;
+        width: 1600px;
+        margin: auto;
+    }
+
 }
 
 .centerTxt {
@@ -739,6 +746,48 @@ h4 {
         }
     }
 }
+
+.SwiperComportamos {
+    .swiper-button-next {
+        border: 1px solid $celesteP !important;
+        background: rgba($celesteP, 0.2) !important;
+        width: 52px;
+        height: 52px;
+        right: 8rem !important;
+        bottom: 1rem !important;
+        top: auto !important;
+        border-radius: 10px;
+        padding: .65rem;
+
+        svg {
+            path {
+                fill: white !important;
+            }
+        }
+    }
+
+    .swiper-button-prev {
+        border: 1px solid $celesteP !important;
+        background: rgba($celesteP, 0.2) !important;
+
+        width: 52px;
+        height: 52px;
+        right: 12.25rem !important;
+        left: auto !important;
+        bottom: 1rem !important;
+        top: auto !important;
+        border-radius: 10px;
+        padding: .65rem;
+
+
+        svg {
+            path {
+                fill: white !important;
+            }
+        }
+    }
+}
+
 
 .swiperNetflix {
     &.vertical {

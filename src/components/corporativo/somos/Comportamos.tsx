@@ -1,57 +1,108 @@
 'use client';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Autoplay } from 'swiper/modules';
+
 import Image from 'next/image';
+
+
+// Estilos swiper
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 import styles from '@/styles/scss/somos.module.scss';
 
 const Comportamos = () => {
+    const itemComportamos = [
+        {
+            img: 'imgc1.webp',
+            title: 'Compromiso',
+            descripcion: 'Nos comprometemos con pasión y perseverancia para convertir nuestras ideas en productos que mejoren la vida de nuestros consumidores.',
+        },
+        {
+            img: 'imgc2.webp',
+            title: 'Integridad',
+            descripcion: 'Actuamos con integridad y transparencia; respetando las leyes, normas y procesos para garantizar confianza y seguridad en todo lo que ofrecemos.',
+        },
+        {
+            img: 'imgc3.webp',
+            title: 'Enfoque en el Cosumidor',
+            descripcion: 'Ponemos siempre a nuestros consumidores y clientes en el centro de nuestras decisiones, para responder a sus necesidades y superar sus expectativas.',
+        },
+        {
+            img: 'imgc4.webp',
+            title: 'Productividad y calidad',
+            descripcion: 'Somos productivos y eficientes en el uso de recursos, buscamos la máxima calidad en cada producto.',
+        },
+        {
+            img: 'imgc5.webp',
+            title: 'Responsabilidad y transparencia',
+            descripcion: 'Estamos presentes donde las cosas suceden y decimos las cosas como son para generar relaciones genuinas.',
+        },
+        {
+            img: 'imgc6.webp',
+            title: 'Empoderamiento',
+            descripcion: 'Practicamos un liderazgo que empodera a las personas, para que cada acción se convierta en un mejor servicio para nuestros clientes.',
+        },
+        {
+            img: 'imgc7.webp',
+            title: 'Aprendizaje',
+            descripcion: 'Aprendemos y mejoramos constantemente para ofrecer siempre lo mejor de nosotros.',
+        },
+    ]
     return (
-        <div className={`${styles.comportamosContainer}`}>
+        <div className={styles.sectionComportamosContainer}>
             <div className='containerFluid'>
-                <div className={styles.bgContainerData}>
-                    <div className={styles.gridContainer}>
-                        <div>
-                            <h3 className='parrafoMediano celesteTxt'>¿CÓMO NOS COMPORTAMOS?</h3>
-                            <h2 className='titularExtraGrande fontLight'>
-                                Nuestra manera <br />
-                                de <span className='boldRegular'>hacer las cosas</span>
-                            </h2>
-                            <ul>
-                                <li className='fontLight'>
-                                    Nos comprometemos con pasión y
-                                    perseverancia para hacer que las cosas pasen.
-                                </li>
-                                <li className='fontLight'>
-                                    Actuamos con integridad y transparencia; respetando las leyes,
-                                    normas y procesos.
-                                </li>
-                                <li className='fontLight'>
-                                    Ponemos a nuestros consumidores y
-                                    clientes al centro de nuestras
-                                    decisiones.
-                                </li>
-                                <li className='fontLight'>
-                                    Somos productivos, usamos de forma
-                                    eficiente nuestros recursos y nunca
-                                    sacrificamos la calidad.
-                                </li>
-                                <li className='fontLight'>
-                                    Estamos presentes donde las cosas
-                                    suceden y decimos las cosas como son.
-                                </li>
-                                <li className='fontLight'>
-                                    Creemos en el liderazgo que empodera a
-                                    las personas.
-                                </li>
-                                <li className='fontLight'>
-                                    Aprendemos para superarnos siempre.
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <Image src="/comportamos.webp" width={758} height={765} alt='' />
-                        </div>
-                    </div>
+                <h3 className={styles.subTitularMain}>¿CÓMO NOS COMPORTAMOS?</h3>
+                <h2 className={styles.titularMain}>
+                    La manera Gloria <br />
+                    de <span>hacer las cosas</span>
+                </h2>
+            </div>
+            <div className='containerFluidLeft'>
+                <div className={styles.carruselComportamos}>
+                    <Swiper
+                        spaceBetween={10}
+                        centeredSlides={false}
+                        slidesPerView={1} // Muestra 5 películas a la vez
+                        navigation
+                        pagination={{ clickable: true }}
+                        autoplay={{ delay: 3000, disableOnInteraction: false }}
+                        loop={false}
+                        modules={[Navigation, Autoplay]}
+                        className={`${styles.SwiperComportamos} SwiperComportamos`}
+                        breakpoints={{
+                            750: {
+                                slidesPerView: 3
+                            },
+                            992: {
+                                slidesPerView: 4
+                            },
+                            1400: {
+                                slidesPerView: 5
+                            }
+                        }}
 
+                    >
+                        {itemComportamos.map((item, index) => (
+                            <SwiperSlide
+                                key={index}
+                                className={``}
+                            >
+                                <div className={styles.cardComportamosContainer}>
+                                    <div className={styles.body}>
+                                        <Image src={`/${item.img}`} alt='' width={433} height={433} />
+                                    </div>
+                                    <div className={styles.Footer}>
+                                        <h2>{item.title}</h2>
+                                        <p>{item.descripcion}</p>
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+                        ))}
+
+                    </Swiper>
                 </div>
             </div>
         </div>

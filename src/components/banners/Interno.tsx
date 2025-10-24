@@ -6,8 +6,8 @@ import ArrowSvg from '@/svg/arrow.svg';
 // import ArrowDownSvg from '@/svg/arrow2.svg';
 import styles from '@/styles/scss/banner.module.scss';
 import { BannerInterface } from '@/interfaces/bannerInterno';
-import HtmlSafeRender from '@/components/HtmlSafeRender';
-
+// import HtmlSafeRender from '@/components/HtmlSafeRender';
+import SanitizedHtml from "@/components/SanitizedHtml";
 interface Props {
     dataBanner: BannerInterface;
 }
@@ -33,24 +33,24 @@ const Interno = ({ dataBanner }: Props) => {
                             {
                                 (dataBanner.slugbreadHEADER) ? (
                                     <>
-                                        <p className='parrafoMediano celesteTxt boldMedium'>GLORIA</p> <ArrowSvg /> <Link className='parrafoMediano celesteTxt boldMedium' href={dataBanner.slugbreadHEADER}>{dataBanner.breadHeader}</Link> <ArrowSvg /> <Link className='parrafoMediano celesteTxt boldMedium' href={slugbread}>{breadcrumb}</Link>
+                                        <p className={styles.migasTitular}>GLORIA</p> <ArrowSvg /> <Link className={styles.migasTitular} href={dataBanner.slugbreadHEADER}>{dataBanner.breadHeader}</Link> <ArrowSvg /> <Link className={styles.migasTitular} href={slugbread}>{breadcrumb}</Link>
                                     </>
                                 ) : (
                                     <>
-                                        <p className='parrafoMediano celesteTxt boldMedium'>GLORIA</p> <ArrowSvg /> <Link className='parrafoMediano celesteTxt boldMedium' href={slugbread}>{breadcrumb}</Link>
+                                        <p className={styles.migasTitular}>GLORIA</p> <ArrowSvg /> <Link className={styles.migasTitular} href={slugbread}>{breadcrumb}</Link>
                                     </>
                                 )
                             }
 
                         </div>
                         <div className={styles.titularContainer}>
-                            <h1 className='bannerTitular fontLight'>
-                                <HtmlSafeRender html={titulo} />
+                            <h1 className={styles.titularBanner}>
+                                <SanitizedHtml html={titulo} />
                             </h1>
                             {
                                 descripcion && (
-                                    <p className="blancoTxt titularPequeno2 fontLight">
-                                        <HtmlSafeRender html={descripcion} />
+                                    <p className={styles.descripcionBanner}>
+                                        <SanitizedHtml html={descripcion} />
                                     </p>
                                 )
                             }
@@ -65,17 +65,12 @@ const Interno = ({ dataBanner }: Props) => {
                                     </>
                                 )
                             }
-
                         </div>
-                        {/* <div className={styles.btnContainer}>
-                            <p className='parrafoMediano2 rojoTxt boldMedium'>Más información</p>
-                            <ArrowDownSvg className={styles.iconArrow} />
-                        </div> */}
                     </div>
                     <div>
-                        <div className={styles.curvaImg}>
+                        {/* <div className={styles.curvaImg}>
                             <Image src='/curvaPC.svg' width={156} height={880} alt="" />
-                        </div>
+                        </div> */}
                         <div className={styles.curvaImgM}>
                             <Image src='/curvaM.svg' width={440} height={120} alt="" />
                         </div>

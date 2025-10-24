@@ -1,7 +1,7 @@
 import { BannerInterface } from '@/interfaces/bannerInterno';
 import InternoBannerComponent from '@/components/banners/Interno';
 
-import DescripcionComponent from '@/components/corporativo/Descripcion';
+// import DescripcionComponent from '@/components/corporativo/Descripcion';
 import CicloVidaComponent from '@/components/corporativo/sostenibilidad/CicloVida';
 const CicloDeVida = () => {
     const dataBanner: BannerInterface = {
@@ -14,7 +14,7 @@ const CicloDeVida = () => {
         slugbreadHEADER: '',
         slugbread: '/corporativo/sostenibilidad/ciclo-de-vida',
     };
-    const dataInfo = `<p class=''>Conoce el ciclo de vida de nuestra leche evaporada gloria y el impacto ambiental en cada fase de su producción.</p>`;
+    // const dataInfo = `<p class=''>Conoce el ciclo de vida de nuestra leche evaporada gloria y el impacto ambiental en cada fase de su producción.</p>`;
     const dataFase = [
         {
             icon: '/fase1.svg',
@@ -70,7 +70,7 @@ const CicloDeVida = () => {
     return (
         <div className='bgAzul'>
             <InternoBannerComponent dataBanner={dataBanner} />
-            <DescripcionComponent dataDescripcion={dataInfo} />
+            {/* <DescripcionComponent dataDescripcion={dataInfo} /> */}
             <CicloVidaComponent dataFase={dataFase} />
         </div>
     )

@@ -95,13 +95,13 @@ const LineaTiempo = () => {
         <div className={styles.LineaContainer}>
             <div className='containerFluid'>
                 <div className={styles.gridContainer}>
-                    <div>
-                        <h2 className='parrafoMediano celesteTxt boldMedium'>LÍNEA DE TIEMPO</h2>
-                        <h3 className='titularExtraGrande celesteTxt fontLight'>
+                    <div className={styles.headerLine}>
+                        <h2>LÍNEA DE TIEMPO</h2>
+                        <h3>
                             Más de 83 años de <br />
-                            <span className='boldRegular'>historia y compromiso</span>
+                            <span>historia y compromiso</span>
                         </h3>
-                        <p className='titularPequeno blancoTxt fontLight'>
+                        <p>
                             Explora nuestra línea de tiempo y conoce los momentos que han marcado nuestro camino.
                         </p>
                     </div>

@@ -7,51 +7,32 @@ const PropositoSinBtn = () => {
             <div className='containerFluid'>
                 <div className={`${styles.gridContainer}`}>
                     <div>
-                        <Image src="/nino.png" width={1136} height={1599} alt='Niña tomando leche Gloria' />
+                        <div className={styles.containerBoy}>
+                            <Image src="/boy.webp" width={711} height={1127} alt='Niña tomando leche Gloria' />
+                        </div>
                     </div>
-                    <div className={styles.separate}>
+                    <div>
                         <div className={styles.headerContainer}>
-                            <h3 className='titularPequeno rojoTxt'>NUESTRO PROPÓSITO</h3>
-                            <h2 className='titularExtraGrande azulTxt'>
+                            <h3 className={styles.subTitularMain}>NUESTRO PROPÓSITO</h3>
+                            <h2 className={styles.titularMain}>
                                 Alimentamos el progreso, el bienestar y los <span className='boldMedium'>sueños de todos los peruanos</span>
                             </h2>
                         </div>
-                        {/* <p className='parrafoMediano2'>
-                            En Gloria, trabajamos con pasión para llevar nutrición y bienestar a cada hogar peruano. Con integridad y calidad, impulsamos el desarrollo del país a través de nuestros productos.
-                        </p> */}
                         <div className={styles.listadoBox}>
-                            {/* <div>
-                                <div className={styles.iconBox}>
-                                    <Image src="/pro1.svg" width={100} height={100} alt='PROPÓSITO' />
-                                </div>
-                                <div className={styles.infoBox}>
-                                    <h4 className='parrafoGrande azulCTxt boldMedium'>PROPÓSITO</h4>
-                                    <p className='parrafoMediano2 azulTxt'>
-                                        Alimentamos el progreso, el
-                                        bienestar y los sueños de todos los
-                                        peruanos.
-                                    </p>
-                                </div>
-                            </div> */}
+
                             <div>
-                                {/* <div className={styles.iconBox}>
-                                    <Image src="/pro2.svg" width={100} height={100} alt='PROPÓSITO' />
-                                </div> */}
                                 <div className={styles.infoBox}>
-                                    <h4 className='parrafoGrande rojoTxt boldMedium'>VISIÓN</h4>
-                                    <p className='parrafoMediano2 azulTxt'>
+                                    <h4>VISIÓN</h4>
+                                    <p>
                                         Aspiramos a que la alimentación sea un eje central para el
                                         desarrollo del país.
                                     </p>
                                 </div>
                             </div>
                             <div>
-                                {/* <div className={styles.iconBox}>
-                                    <Image src="/pro3.svg" width={100} height={100} alt='PROPÓSITO' />
-                                </div> */}
                                 <div className={styles.infoBox}>
-                                    <h4 className='parrafoGrande rojoTxt boldMedium'>MISIÓN</h4>
-                                    <p className='parrafoMediano2 azulTxt'>
+                                    <h4>MISIÓN</h4>
+                                    <p>
                                         Garantizamos el acceso a alimentos ricos, nutritivos y de calidad para todos los peruanos mediante nuestras marcas, capacidad industrial y estrategia go to market.
                                     </p>
                                 </div>
