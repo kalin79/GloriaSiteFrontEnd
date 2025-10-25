@@ -5,7 +5,7 @@ import { BannerInterface } from '@/interfaces/bannerInterno';
 
 export default function Contacto() {
     const dataBanner: BannerInterface = {
-        imgMobile: '/bcontactoM.webp',
+        imgMobile: '/bcontactom.webp',
         imgPc: '/bcontacto.webp',
         titulo: `Escucharte es <br /><span>nuestro <br />compromiso</span>`,
         descripcion: `Este es un canal directo para resolver tus dudas, atender tus reclamos y escuchar tus sugerencias.`,

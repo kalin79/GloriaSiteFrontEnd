@@ -9,13 +9,22 @@
         display: flex;
         gap: 1rem;
         margin-top: 3rem;
+        flex-direction: column;
+
+        @media screen and (min-width: 768px) {
+            flex-direction: row;
+        }
 
         .cardContacto {
             flex: 1;
             background: $celesteP;
             overflow: hidden;
             border-radius: 20px;
-            padding: 2.5rem 2rem;
+            padding: .5rem 2rem 2.5rem;
+
+            @media screen and (min-width: 768px) {
+                padding: 2.5rem 2rem;
+            }
 
             &.bgAzul {
                 background: $azulP;
@@ -167,9 +176,13 @@
                 border: 0px solid red;
 
                 img {
-                    width: 80px;
+                    width: 60px;
                     height: auto;
                     object-fit: contain;
+
+                    @media screen and (min-width: 768px) {
+                        width: 80px;
+                    }
                 }
             }
         }
@@ -184,7 +197,7 @@
             &:nth-of-type(1) {
                 grid-column: 2 / span 10;
                 font-family: var(--font-misti), sans-serif;
-                font-size: 1.35rem;
+                font-size: 1.15rem;
                 line-height: 1.5em;
                 color: #1A172B;
                 font-weight: 400;
