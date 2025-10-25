@@ -76,7 +76,11 @@ h4 {
 }
 
 .containerFluidLeft {
-    padding: 0 2vw 0 2vw;
+    padding: 0 1rem 0;
+
+    @media screen and (min-width: 992px) {
+        padding: 0 0vw 0 2vw;
+    }
 
     @media screen and (min-width: 1600px) {
         padding: 0 2vw;

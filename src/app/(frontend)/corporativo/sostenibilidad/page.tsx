@@ -1,31 +1,34 @@
+// import dynamic from 'next/dynamic';
 import { BannerInterface } from '@/interfaces/bannerInterno';
 import InternoBannerComponent from '@/components/banners/Interno';
-import DescripcionComponent from '@/components/corporativo/sostenibilidad/Descripcion';
-import ComprometidosComponent from '@/components/corporativo/sostenibilidad/Comprometidos';
-import ImgComponent from '@/components/corporativo/sostenibilidad/Imagen';
+import EnergiaLimpiaComponent from '@/components/corporativo/sostenibilidad/EnergiaLimpia';
+// const EnergiaLimpiaComponent = dynamic(() => import('@/components/corporativo/sostenibilidad/EnergiaLimpia'), {
+//     ssr: false,
+// });
+import CicloVidaComponent from '@/components/corporativo/sostenibilidad/CicloVida';
+import EconomiaCircularComponent from '@/components/corporativo/sostenibilidad/EconomiaCircular';
 import LataComponent from '@/components/corporativo/sostenibilidad/nuestraLata';
-import MensajeComponent from '@/components/corporativo/sostenibilidad/Mensaje';
-import LecheComponent from '@/components/corporativo/sostenibilidad/Leche';
+import GanaderosComponent from '@/components/corporativo/sostenibilidad/Ganaderos';
+import LacteaComponent from '@/components/corporativo/sostenibilidad/Lactea';
 const Sostenibilidad = () => {
     const dataBanner: BannerInterface = {
-        imgMobile: '/bi4.webp',
-        imgPc: '/bi4.webp',
-        titulo: `Nuestras acciones <br />también <span class='boldRegular'>alimentan el futuro</span>`,
-        descripcion: `Buscamos generar un impacto positivo en el desarrollo del país, actuando con integridad, cuidando el entorno, las personas y comunidades.
-Descubre y explora nuestras prácticas sostenibles`,
+        imgMobile: '/bsosm.webp',
+        imgPc: '/bsos.webp',
+        titulo: `Nuestras acciones también <span>alimentan el futuro</span>`,
+        descripcion: `Buscamos generar un impacto positivo en el desarrollo del país, actuando con integridad, cuidando el entorno, las personas y comunidades.`,
         breadcrumb: 'SOSTENIBILIDAD',
         slugbread: '/corporativo/sostenibilidad',
     };
 
     return (
-        <div className='bgAzul'>
+        <div>
             <InternoBannerComponent dataBanner={dataBanner} />
-            <ComprometidosComponent />
-            <DescripcionComponent />
-            <ImgComponent />
+            <CicloVidaComponent />
+            <EnergiaLimpiaComponent />
+            <EconomiaCircularComponent />
             <LataComponent />
-            <MensajeComponent />
-            <LecheComponent />
+            <GanaderosComponent />
+            <LacteaComponent />
         </div>
     )
 }

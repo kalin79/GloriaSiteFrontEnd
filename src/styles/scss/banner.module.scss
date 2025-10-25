@@ -168,6 +168,10 @@
     border-bottom: 0px solid $rojoP;
     overflow: hidden;
 
+    @media screen and (min-width: 768px) {
+        height: 500px;
+    }
+
     // 1️⃣ Si el ancho es mayor a 992px y el alto es menor a 780px
     @media (min-width: 992px) and (max-height: 680px) {
         height: 680px;
@@ -358,17 +362,21 @@
                 order: 2;
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
+                justify-content: flex-start;
                 padding: 0rem 1rem 0;
                 position: relative;
                 z-index: 30;
-                margin-top: -10rem;
+                margin-top: -2rem;
+                border: 0px solid red;
+                min-height: 300px;
 
                 @media screen and (min-width: 768px) {
                     grid-column: 1 / span 6;
+                    justify-content: center;
                     order: 1;
                     padding: 0 0 0 2vw;
                     margin-top: 0rem;
+                    min-height: auto;
                 }
 
 

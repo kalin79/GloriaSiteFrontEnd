@@ -69,6 +69,7 @@
 
                         a {
                             font-size: 2rem;
+                            line-height: 1.5em;
                             font-family: var(--fuente-misti), sans-serif;
                             font-weight: 300;
                             color: $blancoP;
@@ -77,6 +78,15 @@
                             display: block;
                             padding: .5rem 0 .5rem 2rem;
 
+                            @media screen and (min-width: 992px) {
+                                font-size: 1.5rem;
+                                line-height: 1.5em;
+                            }
+
+                            @media screen and (min-width: 1400px) {
+                                font-size: 2rem;
+                                line-height: 1.5em;
+                            }
 
                         }
 
@@ -91,18 +101,30 @@
 
                             .menuMultipleHeader {
                                 display: flex;
-                                justify-content: space-between;
+                                justify-content: flex-start;
                                 gap: 2rem;
                                 cursor: pointer;
                                 padding: .5rem 1rem 0 2rem;
 
                                 h2 {
                                     font-size: 2rem;
+                                    line-height: 1.5em;
                                     font-family: var(--fuente-misti), sans-serif;
                                     font-weight: 300;
                                     color: $blancoP;
                                     text-decoration: none;
                                     margin-bottom: .5rem;
+                                    min-width: 100px;
+
+                                    @media screen and (min-width: 992px) {
+                                        font-size: 1.5rem;
+                                        line-height: 1.5em;
+                                    }
+
+                                    @media screen and (min-width: 1400px) {
+                                        font-size: 2rem;
+                                        line-height: 1.5em;
+                                    }
                                 }
 
                                 img {

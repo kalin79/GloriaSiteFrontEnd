@@ -10,10 +10,7 @@ const NavBar = () => {
     const [isMenuMarcas, setIsMenuMarcas] = useState(false);
     const miDivRefMenu = useRef(null);
     const { data: session } = useSession();
-    // const [activeIndex, setActiveIndex] = useState<number | null>(null);
-    // const handleClick = (index: number) => {
-    //     setActiveIndex(index === activeIndex ? null : index); // Toggle
-    // };
+
     const handleViewMenu = () => {
         const tlMenu = gsap.timeline();
         tlMenu.to(miDivRefMenu.current, {
@@ -30,18 +27,6 @@ const NavBar = () => {
             duration: .5,
         }, .85)
     }
-    // useEffect(() => {
-    //     const handleScroll = () => {
-    //         if (window.scrollY > 150) {
-    //             gsap.to(".navContainer", { backgroundColor: "rgba(26, 23, 43,0.85) ", duration: 0.3 });
-    //         } else {
-    //             gsap.to(".navContainer", { backgroundColor: "transparent", duration: 0.3 });
-    //         }
-    //     };
-
-    //     window.addEventListener("scroll", handleScroll);
-    //     return () => window.removeEventListener("scroll", handleScroll);
-    // }, []);
     return (
         <>
             <div className={`${styles.navContainer} navContainer`}>
@@ -105,31 +90,9 @@ const NavBar = () => {
                                         <div className={`${styles.menuMultipleListado} ${isMenuCooporativo ? `${styles.active}` : ''}`} >
                                             <Link href='/corporativo/quienes-somos' onClick={handleCloseMenu}>Quienes Somos</Link>
 
-                                            <Link href='/corporativo/sostenibilidad' onClick={handleCloseMenu}>Nuestra Sostenibilidad</Link>
-                                            {/* <Link href='/informacion-financiera' onClick={handleCloseMenu}>Informaci&oacute;n financiera</Link> */}
-                                            {/* <div className={styles.subMenuContainer}>
-                                                <div className={`${styles.headerSubMenu} ${activeIndex === 1 ? styles.active : ''}`} onClick={() => handleClick(1)}>
-                                                    <h2>Sostenibilidad</h2>
-                                                    <p className="boldMedium"></p>
-                                                </div>
-                                                <ul>
-                                                    <li>
-                                                        <Link href='/corporativo/sostenibilidad' onClick={handleCloseMenu}>Nuestra Sostenibilidad</Link>
-                                                    </li>
+                                            <Link href='/corporativo/sostenibilidad' onClick={handleCloseMenu}>Sostenibilidad</Link>
 
-                                                    <li>
-                                                        <Link href='/corporativo/sostenibilidad/ciclo-de-vida' onClick={handleCloseMenu}>Ciclo de Vida</Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link href='/corporativo/sostenibilidad/las-latas' onClick={handleCloseMenu}>Las Latas</Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link href='/corporativo/sostenibilidad/lactea' onClick={handleCloseMenu}>L&aacute;ctea</Link>
-                                                    </li>
-                                                </ul>
-                                            </div> */}
-                                            <Link href='/corporativo/ganaderos' onClick={handleCloseMenu}>Ganaderos</Link>
-                                            {/* <Link href='/noticias' onClick={handleCloseMenu}>Noticias</Link> */}
+                                            <Link href='/noticias' onClick={handleCloseMenu}>Noticias</Link>
                                         </div>
                                     </div>
                                     <div className={styles.menuMultiple}>
@@ -148,7 +111,7 @@ const NavBar = () => {
                                             <Link href='/batti-mix' onClick={handleCloseMenu}>Battimix</Link>
                                         </div>
                                     </div>
-                                    <Link href='/contacto'>Contacto</Link>
+                                    <Link href='/contacto' onClick={handleCloseMenu}>Contacto</Link>
                                 </nav>
                                 <div className={styles.footerContainer}>
                                     <div>
@@ -205,7 +168,7 @@ const NavBar = () => {
                                 <Image src='/curvaPC.svg' width="155" height='880' alt='' />
                             </div>
                             <div className={styles.bgContainer}>
-                                <Image src='/bgMenu.webp' width="1796" height='2360' alt='¡Comienza un nuevo regreso a clases! :: Detrás de un niño volviendo al cole, hay una mamá y papá dándolo todo. Conoce la nueva campaña de Gloria.' />
+                                <Image src='/colegiomenu.webp' width="1796" height='2360' alt='¡Comienza un nuevo regreso a clases! :: Detrás de un niño volviendo al cole, hay una mamá y papá dándolo todo. Conoce la nueva campaña de Gloria.' />
                             </div>
                         </div>
                     </div>
