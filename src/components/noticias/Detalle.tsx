@@ -1,14 +1,38 @@
 'use client';
-
+import { useEffect, useRef } from 'react';
+import Player from '@vimeo/player';
 import Image from 'next/image';
 import styles from '@/styles/scss/noticias.module.scss';
 const Detalle = () => {
+    const videoRef = useRef<HTMLDivElement>(null);
+    const videoData = useRef(1130404330);
+    useEffect(() => {
+        if (videoRef.current && videoData.current) {
+            const player = new Player(videoRef.current, {
+                id: Number(videoData.current),
+                autoplay: false, // ✅ No inicia automáticamente
+                muted: false,
+                loop: false,
+                controls: true, // ✅ Muestra los controles
+                responsive: true,
+            });
+
+            // Opcional: ajustar a fullscreen por CSS
+            player.ready().then(() => {
+                player.pause(); // ✅ Asegura que empiece pausado
+            });
+
+            return () => {
+                player.unload().catch(console.error);
+            };
+        }
+    }, []);
     return (
         <div className={styles.infoContainer}>
             <div className='containerFluid contenidoNoticiasHTML'>
                 <div className={styles.gridContainer}>
                     <div>
-                        <div className={`${styles.descripcionMainContainer} descripcionMainContainer`}>
+                        <div className={`descripcionMainContainer`}>
                             <h2>
                                 Gloria relanza al mercado PRO, su línea de bebidas lácteas altas en proteína, ahora reforzada con nuevos productos con una alta concentración de proteínas, 0% lactosa, 0%
                                 azúcares añadidos y bajo contenido de grasa.
@@ -53,13 +77,24 @@ const Detalle = () => {
                                     <div className={styles.infoAutor}>
                                         <h3>Cristiano Sampaio</h3>
                                         <h4>GERENTE GENERAL DE GLORIA</h4>
-                                        <a href="" target='_blank'>
-                                            <Image src={`/in.svg`} height={19} width={19} alt='' />
-                                        </a>
+                                        <div className={styles.redesContainer}>
+                                            <a href="" target='_blank'>
+                                                <Image src={`/in.svg`} height={19} width={19} alt='' />
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div className={`descripcionMainContainer`}>
+                            <p>
+                                Esta propuesta se enmarca en una tendencia global en la industria alimentaria, donde la demanda por productos ricos en proteínas continúa creciendo de forma sostenida, y por tanto el aumento en la oferta de alimentos con etiquetas como “alto en proteínas” o “high protein”.
+                            </p>
+                            <p>
+                                Con esta iniciativa, Gloria renueva su compromiso de ofrecer productos accesibles e innovadores que impulsen una vida activa y saludable.
+                            </p>
+                        </div>
+                        <div className={styles.videoContent} ref={videoRef}></div>
                     </div>
                 </div>
             </div>

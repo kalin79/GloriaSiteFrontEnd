@@ -237,14 +237,140 @@
     .infoContainer {
         padding: 6rem 0 8rem;
 
+        .videoContent {
+            width: 100%;
+            height: 450px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            margin-top: 3rem;
+            background-color: #000000;
+
+            @media screen and (min-width: 1400px) {
+                height: 550px;
+            }
+
+            >div {
+                padding: 0 !important;
+                height: 100% !important;
+                width: 100% !important;
+            }
+
+            iframe {
+                width: 100%;
+                height: 100%;
+                border: none;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+
+        .autorContainerNoticia {
+            display: flex;
+            justify-content: flex-start;
+            gap: 1px solid red;
+            margin-top: 3rem;
+            margin-bottom: 2.5rem;
+
+            >div {
+                &:first-child {
+                    flex: 0 0 40px;
+
+                    @media screen and (min-width: 992px) {
+                        flex: 0 0 90px;
+                    }
+
+                    img {
+                        width: 100%;
+                        height: auto;
+                        object-fit: contain;
+                    }
+                }
+
+                &:last-child {
+                    flex: 1;
+                    padding-left: 1.5rem;
+
+                    .viewAutorContent {
+                        display: flex;
+                        gap: 1rem;
+                        align-items: center;
+                        margin-top: 2rem;
+
+                        >div {
+                            &:first-child {
+                                flex: 0 0 90px;
+
+                                &.imgAutor {
+                                    width: 90px;
+                                    height: 90px;
+                                    overflow: hidden;
+                                    border-radius: 50%;
+
+                                    img {
+                                        width: 100%;
+                                        height: 100%;
+                                        object-fit: cover;
+                                    }
+                                }
+                            }
+
+                            &:last-child {
+                                flex: 1;
+
+                                .redesContainer {
+                                    display: flex;
+                                    justify-content: flex-start;
+                                    align-items: flex-start;
+                                }
+
+                                h3 {
+                                    font-family: var(--font-misti), sans-serif;
+                                    font-size: .85rem;
+                                    line-height: 1em;
+                                    color: #000000;
+                                    font-weight: 400;
+                                    margin-bottom: .25rem;
+
+                                    @media screen and (min-width: 992px) {
+                                        font-size: 1rem;
+                                        line-height: 1.35em;
+                                    }
+                                }
+
+                                h4 {
+                                    font-family: var(--font-misti), sans-serif;
+                                    font-size: 0.875rem;
+                                    line-height: 1em;
+                                    color: #000000;
+                                    font-weight: 500;
+                                    margin-bottom: .25rem;
+                                    text-transform: uppercase;
+
+                                    @media screen and (min-width: 992px) {
+                                        font-size: 0.875rem;
+                                        line-height: 1em;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         .gridContainer {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
             gap: 1rem;
 
             >div {
-                grid-column: 3 / span 8;
+                grid-column: 1 / -1;
 
+                @media screen and (min-width: 992px) {
+                    grid-column: 3 / span 8;
+                }
 
             }
         }
