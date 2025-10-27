@@ -1,5 +1,5 @@
 import { getMarcaBySlug } from '@/actions/marca/getMarcaBySlug';
-import { VideosHomeInterface } from '@/interfaces/marca';
+// import { VideosHomeInterface } from '@/interfaces/marca';
 import { VideoInterface } from "@/interfaces/video";
 import { CampanaInterface } from '@/interfaces/campana';
 import BannerPrincipalComponent from "@/components/bonle/HeaderMarca";
@@ -17,8 +17,9 @@ export default async function MarcaPage() {
 
     const response = await getMarcaBySlug('bonle');
 
-    const { videos, campanas, banner, slug: slugMarca }: { videos: VideosHomeInterface[], campanas: CampanaInterface[], banner: VideoInterface, slug: string } = response.data;
-
+    const { banner, slug: slugMarca }: { campanas: CampanaInterface[], banner: VideoInterface, slug: string } = response.data;
+    const { data } = response.data.videos;
+    const { data: dataCamapana } = response.data.campanas;
     return (
         <>
 
@@ -27,8 +28,8 @@ export default async function MarcaPage() {
                 <div className={styles.fondoBg}>
                     <div className={styles.imgBg}></div>
                 </div>
-                <CarruselVideosComponent videos={videos} tipo="video" titularVideo="Si te identificas, vamos en buen camino." listFiltro={null} />
-                <CarruselCampanasComponent videosCampana={campanas} titularCampana="Nos inspiramos en ti" subtitularCampana="Celebramos a mamás y a papás que resuelven el día a día todos los días. Estamos contigo en ese disfraz a última hora." />
+                <CarruselVideosComponent videos={data} tipo="video" titularVideo="Si te identificas, vamos en buen camino." listFiltro={null} />
+                <CarruselCampanasComponent videosCampana={dataCamapana} titularCampana="Nos inspiramos en ti" subtitularCampana="Celebramos a mamás y a papás que resuelven el día a día todos los días. Estamos contigo en ese disfraz a última hora." />
                 <BannerProComponent />
             </div>
             <ListadoProductosComponent slugMarca={slugMarca} />

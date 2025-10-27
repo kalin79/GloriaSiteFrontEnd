@@ -576,7 +576,7 @@ h4 {
         }
 
         .slideVideoCard {
-            height: 300px;
+            height: 336px;
             overflow: hidden;
             border-radius: 10px;
             background: $azulP;
@@ -658,9 +658,13 @@ h4 {
 
             .cardBody {
                 position: relative;
-                height: 164px;
+                height: 200px;
                 overflow: hidden;
                 border-radius: 0px 0 10px 10px;
+
+                @media screen and (min-width: 992px) {
+                    height: 164px;
+                }
 
                 &:before {
                     position: absolute;
@@ -1243,6 +1247,117 @@ h4 {
                         }
                     }
                 }
+            }
+        }
+    }
+}
+
+.listaNoticiasCarruselHomeContainer {
+    .swiperNetflix {
+        padding-bottom: 6rem;
+
+        @media screen and (min-width: 992px) {
+            padding-bottom: 0rem;
+        }
+    }
+}
+
+.contenidoNoticiasHTML {
+    .galeriaNoticiaDos {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        margin-top: 3rem;
+
+        >div {
+            flex: 1;
+
+            p {
+                font-family: var(--font-misti), sans-serif;
+                font-size: .85rem;
+                line-height: 1.5em;
+                color: #1A172B;
+                font-weight: 400;
+                margin-bottom: .75rem;
+
+                @media screen and (min-width: 992px) {
+                    font-size: 1rem;
+                    line-height: 1.35em;
+                }
+            }
+
+            .galeriaImgContainer {
+                width: 100%;
+                height: 400px;
+                overflow: hidden;
+                border-radius: 20px;
+                margin-bottom: 1rem;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+        }
+    }
+
+    .descripcionMainContainer {
+        p {
+            font-family: var(--font-misti), sans-serif;
+            font-size: .85rem;
+            line-height: 1.5em;
+            color: #1A172B;
+            font-weight: 400;
+            margin-bottom: .75rem;
+
+            @media screen and (min-width: 992px) {
+                font-size: 1rem;
+                line-height: 1.35em;
+            }
+
+            @media screen and (min-width: 1400px) {
+                font-size: 1.125rem;
+                line-height: 1.35em;
+            }
+        }
+
+        h2 {
+            font-family: var(--font-misti), sans-serif;
+            font-size: 1.65rem;
+            line-height: 1.5em;
+            color: #1A172B;
+            font-weight: 400;
+            margin-bottom: .75rem;
+
+            @media screen and (min-width: 992px) {
+                font-size: 1.85rem;
+                line-height: 1.15em;
+            }
+
+            @media screen and (min-width: 1400px) {
+                font-size: 2rem;
+                line-height: 1.15em;
+            }
+        }
+
+        h3 {
+            font-family: var(--font-misti), sans-serif;
+            font-size: 1rem;
+            line-height: 1.5em;
+            color: #1A172B;
+            font-weight: 400;
+            margin-bottom: .75rem;
+
+            @media screen and (min-width: 992px) {
+                font-size: 1.025rem;
+                line-height: 1.15em;
+            }
+
+            @media screen and (min-width: 1400px) {
+                font-size: 1.125rem;
+                line-height: 1.15em;
             }
         }
     }

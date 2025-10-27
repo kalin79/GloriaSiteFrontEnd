@@ -1,7 +1,7 @@
 import { getMarcaBySlug } from '@/actions/marca/getMarcaBySlug';
-import { VideosHomeInterface } from '@/interfaces/marca';
+// import { VideosHomeInterface } from '@/interfaces/marca';
 import { VideoInterface } from "@/interfaces/video";
-import { CampanaInterface } from '@/interfaces/campana';
+// import { CampanaInterface } from '@/interfaces/campana';
 import BannerPrincipalComponent from "@/components/pro/HeaderMarca";
 import CarruselVideosComponent from "@/components/pro/CarruselVideos";
 import CarruselCampanasComponent from "@/components/pro/CarruselProCampanas";
@@ -17,8 +17,9 @@ export default async function MarcaPage() {
 
     const response = await getMarcaBySlug('pro');
 
-    const { videos, campanas, banner, slug: slugMarca }: { videos: VideosHomeInterface[], campanas: CampanaInterface[], banner: VideoInterface, slug: string } = response.data;
-
+    const { banner, slug: slugMarca }: { banner: VideoInterface, slug: string } = response.data;
+    const { data } = response.data.videos;
+    const { data: dataCamapana } = response.data.campanas;
     return (
         <>
 
@@ -27,8 +28,8 @@ export default async function MarcaPage() {
                 <div className={styles.fondoBg}>
                     <div className={styles.imgBg}></div>
                 </div>
-                <CarruselVideosComponent videos={videos} tipo="video" titularVideo="Contenido hecho para ti" listFiltro={null} />
-                <CarruselCampanasComponent videosCampana={campanas} titularCampana="Nuestras Campañas" subtitularCampana="¿Quiénes necesitan PROteína? Todos. Te acompañamos con PROteina para todo lo que PROpongas." />
+                <CarruselVideosComponent videos={data} tipo="video" titularVideo="Contenido hecho para ti" listFiltro={null} />
+                <CarruselCampanasComponent videosCampana={dataCamapana} titularCampana="Nuestras Campañas" subtitularCampana="¿Quiénes necesitan PROteína? Todos. Te acompañamos con PROteina para todo lo que PROpongas." />
                 <BannerProComponent />
             </div>
             <ListadoProductosComponent slugMarca={slugMarca} />

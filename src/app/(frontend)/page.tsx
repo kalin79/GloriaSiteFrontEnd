@@ -1,16 +1,12 @@
 import { getHome } from '@/actions/home/getHome';
-import CarruselBannerFullComponent from "@/components/carrusel/FullPage"
-// import Image from 'next/image';
+import CarruselBannerFullComponent from "@/components/carrusel/FullPage";
 import MarcasComponent from "@/components/marcas/Listado";
 import CarruselVideosHomeComponent from "@/components/carrusel/CarruselVideosHome";
 import CarruselCampanasComponent from "@/components/carrusel/CarruselCampanasHome";
 
-// import CarruselVideosHorizontalComponent from "@/components/carrusel/CarruselVideosHorizontal";
 import CarruselProductsComponent from "@/components/carrusel/CarruselProductos";
-// import PropositoComponet from "@/components/corporativo/somos/Proposito";
 
-// import CarruselNoticiasComponent from "@/components/carrusel/CaruselNoticias";
-// import LecherosComponet from "@/components/banners/Lecheros";
+import CarruselNoticiasComponent from "@/components/carrusel/CaruselNoticias";
 
 import { MarcaInterface } from '@/interfaces/marca';
 import { VideoInterfaceAux } from '@/interfaces/video';
@@ -33,9 +29,8 @@ export default async function Home() {
                 <CarruselCampanasComponent videosCampana={campanas} titularCampana="Contenido hecho para ti" subtitularCampana="Descubre lo que hacemos y los mensajes que nos inspiran y nos acercan a ti." />
                 {/* <CarruselVideosHorizontalComponent videosHorizontales={videosHorizontales} titularVideoH="Tendencia en la" subTitularVideoH="comunidad Gloria Contigo" /> */}
                 <CarruselProductsComponent productosData={productos} paginationData={pagination} tagsData={tags} />
-                {/* <PropositoComponet /> */}
-                {/* <LecherosComponet /> */}
-                {/* <CarruselNoticiasComponent noticias={noticias} /> */}
+
+                <CarruselNoticiasComponent />
 
             </div>
 

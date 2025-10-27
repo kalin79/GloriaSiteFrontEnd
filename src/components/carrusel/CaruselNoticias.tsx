@@ -3,59 +3,111 @@ import Link from 'next/link'
 import { useRouter } from "next/navigation";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import CardComponent from "@/components/noticias/Card";
-import { NoticiaInterface } from '@/interfaces/noticia';
+import { Navigation } from 'swiper/modules';
+import NoticiaCardComponent from "@/components/noticias/Card";
+// import { NoticiaInterface } from '@/interfaces/noticia';
 // Estilos swiper
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import styles from '@/styles/scss/noticias.module.scss';
-interface Props {
-    noticias: NoticiaInterface[];
-}
-const CaruselNoticias = ({ noticias }: Props) => {
+// interface Props {
+//     noticias: NoticiaInterface[];
+// }
+const CaruselNoticias = () => {
     const router = useRouter();
-
-    const handleClickViewVideo = (slug: string) => {
+    const handleClickNoticias = (slug: string) => {
         router.push(`/noticias/${slug}`)
     }
+    const NoticiaCard = [
+        {
+            img: '/111.webp',
+            fecha: '14 de julio 2025',
+            titulo: 'Gloria amplía “PRO”: portafolio extendido con proteínas enfocadas en la energía',
+            categoria: 'PRENSA',
+            slug: 'noticia'
+        },
+        {
+            img: '/n11.webp',
+            fecha: '14 de julio 2025',
+            titulo: 'Gloria amplía “PRO”: portafolio extendido con proteínas enfocadas en la energía',
+            categoria: 'PRENSA',
+            slug: 'noticia'
+        },
+        {
+            img: '/n11.webp',
+            fecha: '14 de julio 2025',
+            titulo: 'Gloria amplía “PRO”: portafolio extendido con proteínas enfocadas en la energía',
+            categoria: 'PRENSA',
+            slug: 'noticia'
+        },
+        {
+            img: '/n11.webp',
+            fecha: '14 de julio 2025',
+            titulo: 'Gloria amplía “PRO”: portafolio extendido con proteínas enfocadas en la energía',
+            categoria: 'PRENSA',
+            slug: 'noticia'
+        }
+    ]
     return (
-        <div className={`${styles.carruselNoticiasContainer} bgAzul`}>
-            <div className={`containerFluidLeft`}>
-                <div className={styles.headerContainer}>
+        <div className={styles.noticiasHomeContainer}>
+            <div className='containerFluid'>
+                <div className={styles.noticiaHeaderContainer}>
                     <div>
-                        <h3 className='titularPequeno boldMedium rojoTxt '>NOTICIAS QUE INSPIRAN</h3>
-                        <h2 className='titularExtraGrande'>
-                            Historias y Actualidad <br />
-                            de Gloria
+                        <h3>NOTICIAS</h3>
+                        <h2>
+                            Noticias que Inspiran: <br />
+                            <span>Actualidad de Gloria</span>
                         </h2>
                     </div>
-                    <div className='btnContainer'>
-                        <Link href={`/noticias`} className='btnStandart' title='Ver todas las noticias'>Ver todas las noticias</Link>
+                    <div>
+                        <p>
+                            Seguimos creciendo y trabajando para alimentar un futuro mejor. Conoce las últimas novedades de Gloria: logros, innovaciones y proyectos que nos acercan cada día más a las familias peruanas.
+                        </p>
                     </div>
                 </div>
-                <div className={styles.listadoCarrusel}>
+                <div className={`${styles.listaNoticiasContainer} listaNoticiasCarruselHomeContainer`}>
                     <Swiper
                         spaceBetween={10}
-                        slidesPerView={"auto"} // Permite ajustar el tamaño según el contenido
-                        freeMode={true} // Activa el desplazamiento libre
-                        grabCursor={true} // Muestra el cursor tipo "agarre"
-                        style={{ overflowX: "auto" }} // Permite el scroll horizontal
-                        className={`swiperScrollHorizontalNoticias`}
+                        centeredSlides={false}
+                        slidesPerView={1} // Muestra 5 películas a la vez
+                        navigation
+                        grabCursor={true}
+                        pagination={{ clickable: true }}
+                        // autoplay={{ delay: 3000 }}
+
+                        loop={false}
+                        modules={[Navigation]}
+                        className={`swiperNetflix`}
+                        breakpoints={{
+                            750: {
+                                slidesPerView: 3
+                            },
+                            992: {
+                                slidesPerView: 4
+                            },
+                            1600: {
+                                slidesPerView: 4
+                            }
+                        }}
+
                     >
-                        {noticias.map((item, index) => (
+                        {NoticiaCard.map((item, index) => (
                             <SwiperSlide
                                 key={index}
-                                className={styles.slide}
+                                className={`slideNetflix`}
                             >
-                                <CardComponent
-                                    noticiaContents={item}
-                                    onClick={() => handleClickViewVideo(item.slug)}
-
+                                <NoticiaCardComponent
+                                    noticiaContent={item}
+                                    onClick={() => handleClickNoticias(item.slug ?? '')}
                                 />
                             </SwiperSlide>
                         ))}
+
                     </Swiper>
+                </div>
+                <div className={styles.btnContainer}>
+                    <Link href='/noticias'>Ver todas las noticias</Link>
                 </div>
             </div>
         </div>

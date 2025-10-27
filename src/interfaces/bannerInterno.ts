@@ -8,4 +8,6 @@ export interface BannerInterface {
     slugbreadHEADER?: string;
     breadcrumb: string;
     slugbread: string;
+    categoria?: string;
+    fecha?: string;
 }

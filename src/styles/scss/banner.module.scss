@@ -188,6 +188,62 @@
         height: 750px;
     }
 
+    .fechaContainer {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 1.5rem;
+
+        >div {
+            &:last-child {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: .5rem;
+
+                img {
+                    width: 16px;
+                    height: auto;
+                    object-fit: contain;
+                }
+
+                h4 {
+                    font-family: var(--font-misti), sans-serif;
+                    font-weight: 400;
+                    font-size: 0.875rem;
+                    line-height: 1.5em;
+                    letter-spacing: -.05em;
+                    color: $celesteP;
+
+                    @media screen and (min-width: 992px) {
+                        font-size: 0.875em;
+                        line-height: 1.5em;
+                    }
+                }
+            }
+
+            &:first-child {
+                font-family: var(--font-misti), sans-serif;
+                font-weight: 500;
+                font-size: 0.875rem;
+                line-height: 1.5em;
+                letter-spacing: -.05em;
+                color: #1A172B;
+                text-transform: uppercase;
+                background: $celesteP;
+                padding: .25rem 1.75rem;
+                display: inline-block;
+                border-radius: 30px;
+
+                @media screen and (min-width: 992px) {
+                    font-size: 0.875em;
+                    line-height: 1.5em;
+                }
+            }
+        }
+    }
+
     .descripcionBanner {
         font-family: var(--font-misti), sans-serif;
         font-weight: 300;
