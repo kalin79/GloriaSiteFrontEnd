@@ -77,7 +77,7 @@ const Listado = ({ slugMarca }: Props) => {
                         <div>
                             <h2 className={styles.titularMain}>
                                 PRO, <span>proteína para <br />
-                                    lo que propongas:</span>
+                                    lo que propongas</span>
                             </h2>
                         </div>
                         <div>

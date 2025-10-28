@@ -5,50 +5,20 @@ import { useRouter } from "next/navigation";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import NoticiaCardComponent from "@/components/noticias/Card";
-// import { NoticiaInterface } from '@/interfaces/noticia';
+import { NoticiaInterface } from '@/interfaces/noticia';
 // Estilos swiper
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import styles from '@/styles/scss/noticias.module.scss';
-// interface Props {
-//     noticias: NoticiaInterface[];
-// }
-const CaruselNoticias = () => {
+interface Props {
+    noticiasData: NoticiaInterface[];
+}
+const CaruselNoticias = ({ noticiasData }: Props) => {
     const router = useRouter();
     const handleClickNoticias = (slug: string) => {
         router.push(`/noticias/${slug}`)
     }
-    const NoticiaCard = [
-        {
-            img: '/111.webp',
-            fecha: '14 de julio 2025',
-            titulo: 'Gloria amplía “PRO”: portafolio extendido con proteínas enfocadas en la energía',
-            categoria: 'PRENSA',
-            slug: 'noticia'
-        },
-        {
-            img: '/n11.webp',
-            fecha: '14 de julio 2025',
-            titulo: 'Gloria amplía “PRO”: portafolio extendido con proteínas enfocadas en la energía',
-            categoria: 'PRENSA',
-            slug: 'noticia'
-        },
-        {
-            img: '/n11.webp',
-            fecha: '14 de julio 2025',
-            titulo: 'Gloria amplía “PRO”: portafolio extendido con proteínas enfocadas en la energía',
-            categoria: 'PRENSA',
-            slug: 'noticia'
-        },
-        {
-            img: '/n11.webp',
-            fecha: '14 de julio 2025',
-            titulo: 'Gloria amplía “PRO”: portafolio extendido con proteínas enfocadas en la energía',
-            categoria: 'PRENSA',
-            slug: 'noticia'
-        }
-    ]
     return (
         <div className={styles.noticiasHomeContainer}>
             <div className='containerFluid'>
@@ -92,7 +62,7 @@ const CaruselNoticias = () => {
                         }}
 
                     >
-                        {NoticiaCard.map((item, index) => (
+                        {noticiasData.map((item, index) => (
                             <SwiperSlide
                                 key={index}
                                 className={`slideNetflix`}

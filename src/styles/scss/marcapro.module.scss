@@ -916,11 +916,13 @@
 
                 &:nth-child(2) {
                     grid-column: 1 / -1;
-                    padding-top: 0rem;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-end;
+                    align-items: flex-start;
 
                     @media screen and (min-width: 768px) {
                         grid-column: 7 / -1;
-                        padding-top: 5rem;
                     }
 
                     .recetaContainer {

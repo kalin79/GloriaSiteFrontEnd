@@ -1,4 +1,5 @@
 import { getHome } from '@/actions/home/getHome';
+import { getNoticias } from '@/actions/noticia/getNoticias';
 import CarruselBannerFullComponent from "@/components/carrusel/FullPage";
 import MarcasComponent from "@/components/marcas/Listado";
 import CarruselVideosHomeComponent from "@/components/carrusel/CarruselVideosHome";
@@ -19,6 +20,9 @@ export default async function Home() {
     const { marcas, videos, banners, campanas, tags }: { marcas: MarcaInterface[], videos: VideoInterfaceAux[], banners: BannerInterfaceAux[], campanas: CampanaInterfaceAux[], tags: TagsAux[] } = response.data;
     const { productos, pagination } = response.data.productos;
 
+    const response2 = await getNoticias();
+    const { noticias } = response2.data;
+
     return (
         <div className='bodyContainerMain'>
 
@@ -30,7 +34,7 @@ export default async function Home() {
                 {/* <CarruselVideosHorizontalComponent videosHorizontales={videosHorizontales} titularVideoH="Tendencia en la" subTitularVideoH="comunidad Gloria Contigo" /> */}
                 <CarruselProductsComponent productosData={productos} paginationData={pagination} tagsData={tags} />
 
-                <CarruselNoticiasComponent />
+                <CarruselNoticiasComponent noticiasData={noticias} />
 
             </div>
 

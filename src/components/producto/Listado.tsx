@@ -78,7 +78,7 @@ const Listado = ({ slugMarca }: Props) => {
                             <h2 className={styles.titularMain}>
                                 Hechos y pensados <br />
                                 para toda la <br />
-                                <span>familia:</span>
+                                <span>familia</span>
                             </h2>
                         </div>
                         <div>

@@ -29,7 +29,7 @@ const Descripcion = () => {
                                 </h3>`
         },
         {
-            img: 'Arequipa.webp',
+            img: 'pare.webp',
             descripcion: `<h2>
             Nuestra primera casa y también la primera planta con una línea aséptica en todo el país.
             </h2>
@@ -42,7 +42,7 @@ const Descripcion = () => {
                                 </h3>`
         },
         {
-            img: 'PlantaTrujillo.webp',
+            img: 'ptru.webp',
             descripcion: `<h2>Nuestra planta de Trujillo, inaugurada en 2003, es un orgullo para Gloria y para todo el norte del país.</h2>
                                 <p>
                                 Es la planta de concentración de leche más grande de la región. Aquí recibimos la leche de mayor calidad de la zona y, bajo los más estrictos estándares de inocuidad, la transformamos en productos confiables, nutritivos y capaces de mantenerse frescos por largos periodos. Además, seguimos innovando con la próxima implementación de líneas de producción de jugos naturales y néctares, junto con el desarrollo de nuevos envases, siempre pensando en ofrecer lo mejor para las mesas del Perú.
@@ -54,7 +54,7 @@ const Descripcion = () => {
         },
 
         {
-            img: 'Cajamarca.webp',
+            img: 'pcaja2.webp',
             descripcion: `<h2>
                 Inspirados por la rica tradición cajamarquina, nuestra planta Cajamarca es un verdadero punto de encuentro entre la herencia, la cultura y la innovación
             </h2>

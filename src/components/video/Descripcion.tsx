@@ -46,12 +46,12 @@ const Descripcion = ({ multimediaContents }: Props) => {
                                 </div>
                                 <p>127 Me gusta</p>
                             </div>
-                            <div>
+                            {/* <div>
                                 <div className={styles.iconContainer}>
                                     <Image src="/mundo.svg" height={22} width={22} alt='Me gusta' />
                                 </div>
                                 <a href={multimediaContents.duracion} target='_blank'>{multimediaContents.duracion}</a>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

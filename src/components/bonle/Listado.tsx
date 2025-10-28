@@ -80,7 +80,7 @@ const Listado = ({ slugMarca }: Props) => {
                                 <span>
                                     No tenemos a Brad Pitt ni a Chayanne, pero si
                                     tenemos lo que sí necesitas
-                                    para tu día a día:
+                                    para tu día a día
                                 </span>
                             </h2>
                         </div>

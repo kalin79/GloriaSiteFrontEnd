@@ -53,6 +53,7 @@
                 position: relative;
                 background: $azulP;
                 padding: .75rem 1.45rem 2rem;
+                min-height: 195px;
 
                 .curvaContainer {
                     position: absolute;
@@ -141,6 +142,7 @@
             .noticiaHeader {
                 overflow: hidden;
                 border-radius: 0px;
+                height: 250px;
 
                 img {
                     width: 100%;
@@ -584,6 +586,7 @@
                     position: relative;
                     background: $azulP;
                     padding: .75rem .5rem 2rem 1rem;
+                    min-height: 195px;
 
                     @media screen and (min-width: 992px) {
                         padding: .75rem 1.45rem 2rem;
@@ -676,6 +679,7 @@
                 .noticiaHeader {
                     overflow: hidden;
                     border-radius: 0px;
+                    height: 250px;
 
                     img {
                         width: 100%;

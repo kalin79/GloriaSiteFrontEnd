@@ -3,49 +3,17 @@ import { useRouter } from "next/navigation";
 import Image from 'next/image';
 import styles from '@/styles/scss/noticias.module.scss';
 import NoticiaCardComponent from "@/components/noticias/Card";
+import { NoticiaInterface } from '@/interfaces/noticia';
 
-const Listado = () => {
+interface Props {
+    noticiasData: NoticiaInterface[];
+}
+const Listado = ({ noticiasData }: Props) => {
     const router = useRouter();
     const handleClickNoticias = (slug: string) => {
         router.push(`/noticias/${slug}`)
     }
-    const NoticiasData = [
-        {
-            img: '/111.webp',
-            fecha: '14 de julio 2025',
-            titulo: 'Gloria amplía “PRO”: portafolio extendido con proteínas enfocadas en la energía',
-            categoria: 'PRENSA',
-            slug: 'noticia'
-        },
-        {
-            img: '/111.webp',
-            fecha: '14 de julio 2025',
-            titulo: 'Gloria amplía “PRO”: portafolio extendido con proteínas enfocadas en la energía',
-            categoria: 'PRENSA',
-            slug: 'noticia'
-        },
-        {
-            img: '/n11.webp',
-            fecha: '14 de julio 2025',
-            titulo: 'Gloria amplía “PRO”: portafolio extendido con proteínas enfocadas en la energía',
-            categoria: 'PRENSA',
-            slug: 'noticia'
-        },
-        {
-            img: '/n11.webp',
-            fecha: '14 de julio 2025',
-            titulo: 'Gloria amplía “PRO”: portafolio extendido con proteínas enfocadas en la energía',
-            categoria: 'PRENSA',
-            slug: 'noticia'
-        },
-        {
-            img: '/n11.webp',
-            fecha: '14 de julio 2025',
-            titulo: 'Gloria amplía “PRO”: portafolio extendido con proteínas enfocadas en la energía',
-            categoria: 'PRENSA',
-            slug: 'noticia'
-        }
-    ]
+
     return (
         <div className={styles.listadoContainer}>
             <div className='containerFluid'>
@@ -85,7 +53,7 @@ const Listado = () => {
                 </div>
                 <div className={styles.PaginadoNoticasContainer}>
                     {
-                        NoticiasData.map((item, index) => (
+                        noticiasData.map((item, index) => (
                             <NoticiaCardComponent
                                 key={index}
                                 noticiaContent={item}
