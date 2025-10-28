@@ -40,6 +40,11 @@ const NavBar = () => {
                             </div>
                         </div>
                         <div>
+                            <a href="https://www.portalganaderogloria.com.pe/" target="_blank" className={styles.linkEnterno}>
+                                <Image src={`/vaca.svg`} height={21} width={20} alt="Portal Ganaderos" />
+                                <span>Portal Ganaderos</span>
+                            </a>
+
                             {
                                 (session) ? (
                                     <div className={styles.userContainer}>
@@ -66,6 +71,10 @@ const NavBar = () => {
             </div>
             <div className={styles.openMenuContainer} ref={miDivRefMenu}>
                 <div className={`${styles.containerFluid}`}>
+                    <a href="https://www.portalganaderogloria.com.pe/" target="_blank" className={styles.linkEnterno}>
+                        <Image src={`/vaca.svg`} height={21} width={20} alt="Portal Ganaderos" />
+                        <span>Portal Ganaderos</span>
+                    </a>
                     <div className={styles.btnCloseContainer} onClick={handleCloseMenu}>
                         <Image src='/close.svg' width="58" height='54' alt='Gloria :: Cerrar Menu' />
                     </div>

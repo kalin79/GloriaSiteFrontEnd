@@ -19,6 +19,46 @@
         scrollbar-color: #888 #eee;
     }
 
+    .linkEnterno {
+        position: absolute;
+        top: 1.5rem;
+        right: 5rem;
+        width: 50px;
+        height: 50px;
+        border-radius: 30px;
+        background: $celesteP;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: .5rem;
+        text-decoration: none;
+        z-index: 11;
+
+        @media screen and (min-width: 768px) {
+
+            width: 228px;
+            height: 54px;
+        }
+
+        span {
+            font-family: var(--font-misti), sans-serif;
+            font-size: 1rem;
+            line-height: 1.25em;
+            color: #1D192F;
+            font-weight: 500;
+            display: none;
+
+            @media screen and (min-width: 768px) {
+                display: block;
+            }
+
+            @media screen and (min-width: 992px) {
+                font-size: 1rem;
+                line-height: 1.25em;
+            }
+        }
+    }
+
     .btnCloseContainer {
         position: absolute;
         top: 1.5rem;
@@ -513,7 +553,7 @@
             }
 
             &:nth-child(2) {
-                grid-column: 8 / -1;
+                grid-column: 6 / -1;
                 display: flex;
                 justify-content: flex-end;
                 align-items: flex-start;
@@ -525,7 +565,44 @@
                 }
 
                 @media screen and (min-width: 992px) {
-                    grid-column: 11 / -1;
+                    grid-column: 8 / -1;
+                }
+
+                .linkEnterno {
+                    width: 34px;
+                    height: 34px;
+                    border-radius: 30px;
+                    background: $celesteP;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: .5rem;
+                    text-decoration: none;
+
+                    @media screen and (min-width: 768px) {
+
+                        width: 228px;
+                        height: 54px;
+                    }
+
+                    span {
+                        font-family: var(--font-misti), sans-serif;
+                        font-size: 1rem;
+                        line-height: 1.25em;
+                        color: #1D192F;
+                        font-weight: 500;
+
+                        display: none;
+
+                        @media screen and (min-width: 768px) {
+                            display: block;
+                        }
+
+                        @media screen and (min-width: 992px) {
+                            font-size: 1rem;
+                            line-height: 1.25em;
+                        }
+                    }
                 }
 
                 .userLoginContainer {
