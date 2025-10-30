@@ -17,7 +17,7 @@ const HtmlSafeRender: React.FC<Props> = ({ html, className }) => {
         const DOMPurify = createDOMPurify(window);
         // ✅ Habilita explícitamente el atributo `class`
         DOMPurify.setConfig({
-            ALLOWED_ATTR: ['class', 'href', 'src', 'alt', 'style', 'title', 'id', 'colspan', 'rowspan', 'colSpan', 'rowSpan'], // puedes añadir más según necesites
+            ALLOWED_ATTR: ['class', 'href', 'target', 'src', 'alt', 'style', 'title', 'id', 'colspan', 'rowspan', 'colSpan', 'rowSpan'], // puedes añadir más según necesites
         });
         const clean = DOMPurify.sanitize(html);
         setSafeHtml(clean);

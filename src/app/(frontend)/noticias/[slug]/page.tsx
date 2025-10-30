@@ -1,8 +1,8 @@
-// import { getProductoBySlug } from '@/actions/marca/producto/getProductoBySlug';
+import { getNoticiaBySlug } from '@/actions/noticia/getNoticiaBySlug';
 
 import InternoBannerComponent from '@/components/banners/InternoNoticia';
 import DetalleComponent from '@/components/noticias/Detalle';
-import { BannerInterface } from '@/interfaces/bannerInterno';
+// import { BannerInterface } from '@/interfaces/bannerInterno';
 
 import styles from '@/styles/scss/noticias.module.scss';
 
@@ -20,27 +20,26 @@ export default async function ProductoPage({ params }: CampanaPageProps) {
         throw new Error('Slug no disponible');
     }
 
-    // const response = await getProductoBySlug(slug);
-    // const { producto, productos_relacionados }: { producto: ProductInterface, productos_relacionados: ProductInterface[] } = response.data;
-    // console.log(productos_relacionados)
+    const response = await getNoticiaBySlug(slug);
+    const { noticia } = response.data;
 
-    const dataBanner: BannerInterface = {
-        imgMobile: '/dnotm.webp',
-        imgPc: '/dnot.webp',
-        titulo: `Gloria amplía “PRO”: <br />portafolio extendido <br />con proteínas <br />enfocadas en la <br />energía`,
-        descripcion: ``,
-        breadcrumb: 'Mundo Gloria abre sus puertas...',
-        slugbread: `/noticias/${slug}`,
-        slugbreadHEADER: '/noticias',
-        breadHeader: 'NOTICIAS',
-        categoria: 'PRENSA',
-        fecha: '14 de julio 2025',
-    };
+    // const dataBanner: BannerInterface = {
+    //     imgMobile: '/dnotm.webp',
+    //     imgPc: '/dnot.webp',
+    //     titulo: `Gloria amplía “PRO”: <br />portafolio extendido <br />con proteínas <br />enfocadas en la <br />energía`,
+    //     descripcion: ``,
+    //     breadcrumb: 'Mundo Gloria abre sus puertas...',
+    //     slugbread: `/noticias/${slug}`,
+    //     slugbreadHEADER: '/noticias',
+    //     breadHeader: 'NOTICIAS',
+    //     categoria: 'PRENSA',
+    //     fecha: '14 de julio 2025',
+    // };
     return (
         <>
             <div className={styles.pageNoticiaDetalle}>
-                <InternoBannerComponent dataBanner={dataBanner} />
-                <DetalleComponent />
+                <InternoBannerComponent dataBanner={noticia} />
+                <DetalleComponent dataNoticia={noticia} />
             </div>
         </>
     );

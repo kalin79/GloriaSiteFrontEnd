@@ -1,7 +1,6 @@
 'use client';
 import Link from 'next/link'
 import { useRouter } from "next/navigation";
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import NoticiaCardComponent from "@/components/noticias/Card";
@@ -19,6 +18,8 @@ const CaruselNoticias = ({ noticiasData }: Props) => {
     const handleClickNoticias = (slug: string) => {
         router.push(`/noticias/${slug}`)
     }
+
+
     return (
         <div className={styles.noticiasHomeContainer}>
             <div className='containerFluid'>

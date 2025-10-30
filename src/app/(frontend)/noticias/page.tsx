@@ -7,7 +7,8 @@ import styles from '@/styles/scss/noticias.module.scss';
 export default async function NoticiasPage() {
 
     const response2 = await getNoticias();
-    const { noticias } = response2.data;
+    const { noticias, paginacion } = response2.data;
+
 
     const dataBanner: BannerInterface = {
         imgMobile: '/bbnotm2.webp',
@@ -20,7 +21,7 @@ export default async function NoticiasPage() {
     return (
         <div className={styles.pageNoticiasContainer}>
             <InternoBannerComponent dataBanner={dataBanner} />
-            <ListadoNoticiasComponent noticiasData={noticias} />
+            <ListadoNoticiasComponent noticiasData={noticias} paginacionData={paginacion} />
         </div>
 
 

@@ -3,7 +3,7 @@
 // import { BannerInterface } from '@/interfaces/banner';
 
 
-export async function getNoticias(page?: number) {
+export async function getNoticiaBySlug(slug: string) {
     const API_TOKEN = process.env.NEXT_PUBLIC_AUTHORIZATION_FORM; // Acceso a variable de entorno
     const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
     const username = process.env.BASIC_AUTH_USER;
@@ -13,14 +13,9 @@ export async function getNoticias(page?: number) {
     if (!API_TOKEN) {
         throw new Error('API_TOKEN no está definido');
     }
-    let _url_ = `${apiUrl}noticias`;
-    if ((page) && (page > 0)) {
-        _url_ = `${apiUrl}noticias/?page=${page}`;
-    }
-
 
     // Ejemplo de envío a una API externa
-    const response = await fetch(`${_url_}`, {
+    const response = await fetch(`${apiUrl}noticia/${slug}`, {
         method: 'GET',
         cache: 'no-store', // evita cachear si necesitas siempre lo último
         headers: {
@@ -33,7 +28,6 @@ export async function getNoticias(page?: number) {
 
     const resultado = await response.json();
 
-    console.log(resultado);
 
     if (resultado.status === 'error') {
         return resultado;
