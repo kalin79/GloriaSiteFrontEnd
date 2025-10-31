@@ -3,6 +3,8 @@ import Image from 'next/image'
 import { ProductoHomeInterface } from '@/interfaces/producto';
 
 import styles from '@/styles/scss/producto.module.scss';
+// import HtmlSafeRender from '@/components/HtmlSafeRender';
+import SanitizedHtml from '@/components/SanitizedHtml';
 
 interface productParameters {
     productContents: ProductoHomeInterface,
@@ -26,7 +28,7 @@ const Card = ({ productContents, onClick }: productParameters) => {
                 <Image src={productContents.image || '/pO1M.png'} width={656} height={858} alt={productContents.title || 'producto'} />
             </div>
             <div className={styles.footerCardBox}>
-                <h4 className=''>{productContents.title ?? ''}</h4>
+                <h4 className={`sinBr`}><SanitizedHtml html={productContents.title ?? ''} /></h4>
                 <h2 className=''>{productContents.subtitulo ?? ''}</h2>
             </div>
         </div>

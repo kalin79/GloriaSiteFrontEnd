@@ -229,7 +229,7 @@
 
 .sectionHomeProductos {
     background: $azulP;
-    padding: 8rem 0 0;
+    padding: 5rem 0 0;
 
     .subTitularProductoHome {
         font-family: var(--font-misti), sans-serif;
@@ -320,7 +320,12 @@
         display: grid;
         grid-template-columns: repeat(12, 1fr);
         gap: 1rem;
-        padding-bottom: 8rem;
+        padding-bottom: 4rem;
+
+        @media screen and (min-width: 1600px) {
+            position: relative;
+            right: -2vw;
+        }
 
         >div {
             &:nth-child(1) {
@@ -328,6 +333,10 @@
 
                 @media screen and (min-width: 768px) {
                     grid-column: 1 / span 4;
+                }
+
+                @media screen and (min-width: 1600px) {
+                    grid-column: 2 / span 3;
                 }
 
                 .chefContent {
@@ -469,6 +478,10 @@
         }
 
         @media screen and (min-width: 1200px) {
+            height: 380px;
+        }
+
+        @media screen and (min-width: 1400px) {
             height: 480px;
         }
 

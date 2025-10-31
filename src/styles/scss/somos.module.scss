@@ -202,6 +202,23 @@
                     overflow: hidden;
                     position: relative;
 
+                    .viewLinePc {
+                        position: relative;
+                        width: 2643px;
+                        height: 249px;
+
+                        button {
+                            position: absolute;
+                            width: 26px;
+                            height: 26px;
+                        }
+
+                        img {
+                            width: 2643px;
+                            height: 249px;
+                        }
+                    }
+
                     .imageBox {
                         position: absolute;
                         cursor: move;

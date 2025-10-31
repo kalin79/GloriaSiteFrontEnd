@@ -5,6 +5,7 @@ import { getListadoProductos } from '@/actions/marca/producto/getListadoProducto
 import { useRouter } from "next/navigation";
 import { ProductoHomeInterface, PaginationHomeInterface, TagsAux } from '@/interfaces/producto';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
 import type { SwiperRef } from "swiper/react";
 // import { Navigation } from 'swiper/modules';
 // import VideoBanner from "@/components/videos/Banner"
@@ -129,7 +130,7 @@ const CarruselProductos = ({ productosData, paginationData, tagsData }: Props) =
 
     return (
         <div className={`${styles.sectionHomeProductos}`}>
-            <div className={`containerFluidLeft`}>
+            <div className={`containerFluidLeft2`}>
                 <div className={`${styles.productoCarruselContainer}`}>
                     <div>
                         <h3 className={styles.subTitularProductoHome}>NUESTROS PRODUCTOS</h3>
@@ -175,17 +176,31 @@ const CarruselProductos = ({ productosData, paginationData, tagsData }: Props) =
                         <div className={`${styles.bodyContainer}`}>
                             {/* <pre>{JSON.stringify(productos)}</pre> */}
                             <Swiper
-                                ref={swiperRef}
                                 spaceBetween={10}
-                                slidesPerView={"auto"} // Permite ajustar el tamaño según el contenido
-                                freeMode={true} // Activa el desplazamiento libre
-                                grabCursor={true} // Muestra el cursor tipo "agarre"
-                                style={{ overflowX: "auto" }} // Permite el scroll horizontal
-                                className={`swiperScrollHorizontal`}
-                            // onReachEnd={() => {
-                            //     console.log(1)
-                            //     handlePagination()
-                            // }}
+                                centeredSlides={false}
+                                slidesPerView={1} // Muestra 5 películas a la vez
+                                navigation
+                                grabCursor={true}
+                                pagination={{ clickable: true }}
+                                // autoplay={{ delay: 3000 }}
+
+                                loop={false}
+                                modules={[Navigation]}
+                                className={`swiperNetflix swiperNetflixProductoHome`}
+                                breakpoints={{
+                                    750: {
+                                        slidesPerView: 3
+                                    },
+                                    992: {
+                                        slidesPerView: 2
+                                    },
+                                    1200: {
+                                        slidesPerView: 3
+                                    },
+                                    1600: {
+                                        slidesPerView: 3
+                                    }
+                                }}
                             >
                                 {productos.map((item, index) => (
                                     <SwiperSlide

@@ -817,6 +817,18 @@ h4 {
         padding-bottom: 6rem;
     }
 
+    &.swiperNetflixProductoHome {
+        padding-bottom: 6rem;
+
+        @media screen and (min-width: 992px) {
+            padding-bottom: 3rem;
+        }
+
+        @media screen and (min-width: 1400px) {
+            padding-bottom: 7rem;
+        }
+    }
+
     .swiper-button-next {
         width: 52px;
         height: 52px;
@@ -995,8 +1007,10 @@ h4 {
 /* Cambia el fondo y el borde del input */
 .customSelectHomeProducts__control {
     background-color: transparent !important;
-    border: 1px solid #8fd2ea;
-    color: #fff;
+    border: 1px solid rgba($celesteP, 1) !important;
+    border-radius: 30px !important;
+    padding-left: 1rem;
+    color: rgba($celesteP, 1) !important;
     width: 295px;
     height: 56px;
 }
@@ -1008,7 +1022,7 @@ h4 {
 
 /* Cambia el color del texto seleccionado */
 .customSelectHomeProducts__single-value {
-    color: #fff !important;
+    color: rgba($celesteP, 1) !important;
 }
 
 /* Estiliza las opciones del menú */
@@ -1274,6 +1288,8 @@ h4 {
         @media screen and (min-width: 992px) {
             padding-bottom: 6rem;
         }
+
+
     }
 }
 
@@ -1444,4 +1460,11 @@ h4 {
     p {
         margin: 0 !important;
     }
+}
+
+.sinBr {
+    br {
+        display: none !important;
+    }
+
 }
