@@ -9,12 +9,13 @@ interface Props {
 }
 const Card = ({ noticiaContent, onClick }: Props) => {
     const formatearFecha = (fechaIso: string): string => {
-        const fecha = new Date(fechaIso);
+        const fechaLocal = new Date(fechaIso.replace('Z', '')); // quita UTC
+        // const fecha = new Date(fechaIso);
         return new Intl.DateTimeFormat('es-ES', {
             day: 'numeric',
             month: 'long',
             year: 'numeric'
-        }).format(fecha);
+        }).format(fechaLocal);
     };
     function recortarTexto(texto: string, limite: number = 30): string {
         if (!texto) return '';

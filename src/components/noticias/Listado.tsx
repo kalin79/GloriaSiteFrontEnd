@@ -77,6 +77,7 @@ const Listado = ({ noticiasData, paginacionData }: Props) => {
             year: 'numeric'
         }).format(fechaLocal);
     };
+
     const handleClickNoticias = (slug: string) => {
         router.push(`/noticias/${slug}`)
     }
@@ -99,7 +100,7 @@ const Listado = ({ noticiasData, paginacionData }: Props) => {
                                             <div>PRENSA</div>
                                             <div>
                                                 <Image src='/fechaIcon2.svg' height={16} width={16} alt='' />
-                                                <h4>{formatearFecha(noticiaDestacada.fecha_publicacion)}</h4>
+                                                <h4>{formatearFecha(noticiaDestacada.fecha_publicacion)} </h4>
                                             </div>
                                         </div>
                                         <div className={styles.infoContainer}>
