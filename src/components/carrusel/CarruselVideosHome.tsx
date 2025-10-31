@@ -1,7 +1,7 @@
 'use client';
 import { useRef, useEffect, useState } from "react";
 import { VideoInterfaceAux } from '@/interfaces/video';
-
+import { useRouter } from "next/navigation";
 import { gsap } from "gsap"; // Importar GSAP
 import Draggable from 'gsap/Draggable';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -32,7 +32,7 @@ const CarruselVideosHome = ({ videos, titularVideo, tipo }: Props) => {
     const [hoverIndex, setHoverIndex] = useState<number | null>(null);
 
     const [visibleIndexes, setVisibleIndexes] = useState<number[]>([]);
-
+    const router = useRouter();
     // Detectar elementos visibles con IntersectionObserver
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -65,7 +65,9 @@ const CarruselVideosHome = ({ videos, titularVideo, tipo }: Props) => {
             setVideosData(videos); // Reinicia videosData cuando cambian las props
         };
     }, [videos]);
-
+    const handleClickViewVideo = (slug: string, marca: string) => {
+        router.push(`/${marca}/video/${slug}`)
+    }
     return (
         <div className={`videoPrevisualizacionContent ${styles.carruselVideos}`}>
             <div className={`containerFluid`}>
@@ -116,10 +118,10 @@ const CarruselVideosHome = ({ videos, titularVideo, tipo }: Props) => {
                                         index={index}
                                         videosContents={item}
 
-                                    // onMouseEnter={() => handleMouseEnter(index, item.slug ?? '', item.marca ?? '', item.title ?? '', item.video ?? '')}
-                                    // onMouseMove={() => handleMouseEnter(index, item.slug ?? '', item.marca ?? '', item.title ?? '', item.video ?? '')}
+                                        // onMouseEnter={() => handleMouseEnter(index, item.slug ?? '', item.marca ?? '', item.title ?? '', item.video ?? '')}
+                                        // onMouseMove={() => handleMouseEnter(index, item.slug ?? '', item.marca ?? '', item.title ?? '', item.video ?? '')}
 
-                                    // onClick={() => handleClickViewVideo(item.slug ?? '', item.marca ?? '')}
+                                        onClick={() => handleClickViewVideo(item.slug ?? '', item.marca_slug ?? '')}
 
                                     />
                                     <div className={`videoPreview ${hoverIndex === index ? 'show' : ''}`}>

@@ -8,18 +8,19 @@ import SanitizedHtml from '@/components/SanitizedHtml';
 interface videoParameters {
     index: number,
     videosContents: VideoInterfaceAux,
+    onClick: (event: React.MouseEvent<HTMLDivElement>) => void,
     // onClick: (event: React.MouseEvent<HTMLDivElement>) => void,
     // onMouseEnter: (event: React.MouseEvent<HTMLDivElement>) => void,
     // onMouseLeave: (event: React.MouseEvent<HTMLDivElement>) => void
 }
-const PrevisualizacionHome = forwardRef<HTMLDivElement, videoParameters>(({ videosContents }, ref) => {
+const PrevisualizacionHome = forwardRef<HTMLDivElement, videoParameters>(({ videosContents, onClick }, ref) => {
 
     return (
         <div
             ref={ref}
             // onMouseEnter={onMouseEnter}
             className={`slideVideoCard `}
-        // onClick={onClick}
+            onClick={onClick}
         // onMouseMove={onMouseLeave}
         >
             {

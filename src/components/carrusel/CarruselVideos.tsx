@@ -1,6 +1,7 @@
 'use client';
 import { useRef, useEffect, useState } from "react";
 import { CategoriaVideosHomeInterface, VideosHomeInterface } from '@/interfaces/marca';
+import { useRouter } from "next/navigation";
 
 import { gsap } from "gsap"; // Importar GSAP
 import Draggable from 'gsap/Draggable';
@@ -28,7 +29,7 @@ const CarruselVideos = ({ videos, titularVideo, listFiltro, tipo }: Props) => {
     const [filtroActivo, setFiltroActivo] = useState<string | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const wrapperRef = useRef<HTMLDivElement>(null);
-
+    const router = useRouter();
     // Referencia al div  que contiene la informacion.
     const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
     const [hoverIndex, setHoverIndex] = useState<number | null>(null);
@@ -103,7 +104,11 @@ const CarruselVideos = ({ videos, titularVideo, listFiltro, tipo }: Props) => {
         };
 
         fetchData();
-    }, [videos, filtroActivo])
+    }, [videos, filtroActivo]);
+
+    const handleClickViewVideo = (slug: string, marca: string) => {
+        router.push(`/${marca}/video/${slug}`)
+    }
 
     return (
         <div className={`videoPrevisualizacionContent ${styles.carruselVideos}`}>
@@ -167,6 +172,7 @@ const CarruselVideos = ({ videos, titularVideo, listFiltro, tipo }: Props) => {
                                 key={index}
                                 className={`slideNetflix`}
 
+
                             >
                                 <div className="slideContentVideoPrevio"
                                     onMouseEnter={() => { console.log(index); setHoverIndex(index) }}
@@ -176,6 +182,7 @@ const CarruselVideos = ({ videos, titularVideo, listFiltro, tipo }: Props) => {
                                         ref={(el) => { cardRefs.current[index] = el }}
                                         index={index}
                                         videosContents={item}
+                                        onClick={() => handleClickViewVideo(item.slug ?? '', item.marca.slug ?? '')}
 
                                     // onMouseEnter={() => handleMouseEnter(index, item.slug ?? '', item.marca ?? '', item.title ?? '', item.video ?? '')}
                                     // onMouseMove={() => handleMouseEnter(index, item.slug ?? '', item.marca ?? '', item.title ?? '', item.video ?? '')}
