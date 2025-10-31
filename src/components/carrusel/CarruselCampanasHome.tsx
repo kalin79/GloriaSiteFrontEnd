@@ -44,9 +44,9 @@ const CarruselCampanasHome = ({ titularCampana, subtitularCampana, videosCampana
                             992: {
                                 slidesPerView: 3
                             },
-                            1600: {
-                                slidesPerView: 3
-                            }
+                            1400: {
+                                slidesPerView: 4
+                            },
                         }}
 
                     >

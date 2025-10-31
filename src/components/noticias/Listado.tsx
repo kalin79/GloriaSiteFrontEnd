@@ -7,7 +7,7 @@ import Image from 'next/image';
 import styles from '@/styles/scss/noticias.module.scss';
 import NoticiaCardComponent from "@/components/noticias/Card";
 import { NoticiaInterface, PaginationInterface } from '@/interfaces/noticia';
-
+import HtmlSafeRender from '@/components/HtmlSafeRender';
 interface Props {
     noticiasData: NoticiaInterface[];
     paginacionData: PaginationInterface;
@@ -106,9 +106,7 @@ const Listado = ({ noticiasData, paginacionData }: Props) => {
                                             <h2>
                                                 {noticiaDestacada.titulo}
                                             </h2>
-                                            <p>
-                                                {noticiaDestacada.descripcion_corta}
-                                            </p>
+                                            <HtmlSafeRender html={noticiaDestacada.descripcion_corta} />
                                         </div>
                                         <div className={styles.btnContainer}>
                                             <button onClick={() => handleClickNoticias(noticiaDestacada.slug)}>

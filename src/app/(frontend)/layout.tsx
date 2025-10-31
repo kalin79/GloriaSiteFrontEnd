@@ -45,6 +45,15 @@ const round8 = localFont({
   display: "swap",
 });
 
+const obvio = localFont({
+  src: [
+    { path: "../../../public/fonts/obvio/Obviously-NarwBold.woff2", weight: "700", style: "normal" },
+    { path: "../../../public/fonts/obvio/Obviously-NarwMedi.woff2", weight: "600", style: "normal" },
+  ],
+  variable: "--font-obvio",
+  display: "swap",
+});
+
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -62,7 +71,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${poppins.variable} ${misti.variable} ${round8.variable}`}>
+    <html lang="es" className={`${obvio.variable} ${poppins.variable} ${misti.variable} ${round8.variable}`}>
       <body>
         <DomChangeWatcher />
         <GTM />

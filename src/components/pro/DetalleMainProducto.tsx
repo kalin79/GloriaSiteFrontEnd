@@ -109,7 +109,7 @@ const DetailMain = ({ productoData }: Props) => {
                             )
                         }
 
-                        <h1><HtmlSafeRender html={productoData.titulo || ''} /></h1>
+                        <h1><SanitizedHtml html={productoData.titulo || ''} /></h1>
                         <div className={styles.textComprimido}>
                             <div className={styles.parrafoInfo}>
                                 <SanitizedHtml html={textoVisible} />

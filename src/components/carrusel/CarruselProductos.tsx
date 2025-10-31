@@ -145,12 +145,12 @@ const CarruselProductos = ({ productosData, paginationData, tagsData }: Props) =
                             tus favoritos junto a <br />
                             novedades pensadas para ti.
                         </p>
-                        <div className={`${styles.chefContent}`}>
+                        {/* <div className={`${styles.chefContent}`}>
                             <Image src="/iconChef.svg" width={42} height={37} alt='Receta' />
                             <p className={styles.parrafoPequeHome}>
                                 Producto <br />con receta
                             </p>
-                        </div>
+                        </div> */}
                     </div>
                     <div>
                         <div className={`${styles.headerContainer}`}>

@@ -45,13 +45,13 @@ const Ganaderos = () => {
     ]
     return (
         <div className={styles.ganaderosContainer}>
-            <div className='containerFluidLeft'>
+            <div className='containerFluidLeft2'>
                 <div className={styles.headerGanaderos}>
                     <div>
                         <div className={styles.infoHeaderContainer}>
                             <h3>DESARROLLO GANADERO</h3>
                             <h2>
-                                Impulsamos el <span>desarrollo ganadero de nuestro país</span>
+                                Impulsamos el <br /><span>desarrollo ganadero <br />de nuestro país</span>
                             </h2>
                             <p>
                                 En cada región del país, los ganaderos confían en nosotros y nosotros en ellos. Los acompañamos con asistencia técnica, herramientas y compromiso mutuo para que la mejor leche pueda llegar a millones de familias peruanas, de forma sostenible y responsable.

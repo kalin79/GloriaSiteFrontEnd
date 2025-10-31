@@ -16,6 +16,10 @@ const Card = ({ noticiaContent, onClick }: Props) => {
             year: 'numeric'
         }).format(fecha);
     };
+    function recortarTexto(texto: string, limite: number = 30): string {
+        if (!texto) return '';
+        return texto.length > limite ? texto.slice(0, limite) + '...' : texto;
+    }
     return (
         <div className={styles.cardNoticiaContainer} onClick={onClick}>
             <div className={styles.noticiaHeader}>
@@ -30,7 +34,7 @@ const Card = ({ noticiaContent, onClick }: Props) => {
                         <Image src='/fechaIcon.svg' height={16} width={16} alt='' />
                         <h4>{formatearFecha(noticiaContent.fecha_publicacion)}</h4>
                     </div>
-                    <h2>{noticiaContent.titulo}</h2>
+                    <h2>{recortarTexto(noticiaContent.titulo, 70)}</h2>
                     <h3>{noticiaContent.categoria}</h3>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 'use client';
-import { useEffect, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 import Player from '@vimeo/player';
 import Image from 'next/image';
 import styles from '@/styles/scss/noticias.module.scss';
@@ -12,6 +13,14 @@ interface Props {
 const Detalle = ({ dataNoticia }: Props) => {
     const videoRef = useRef<HTMLDivElement>(null);
     const videoData = useRef(dataNoticia.video);
+    const pathname = usePathname();
+    const [url, setUrl] = useState('');
+    // Construir URL completa del sitio
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            setUrl(window.location.origin + pathname);
+        }
+    }, [pathname]);
     useEffect(() => {
         if (videoRef.current && videoData.current) {
             const player = new Player(videoRef.current, {
@@ -33,6 +42,23 @@ const Detalle = ({ dataNoticia }: Props) => {
             };
         }
     }, []);
+    // Funciones para compartir
+    const compartirLinkedIn = () => {
+        const shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+        window.open(shareUrl, '_blank', 'noopener,noreferrer');
+    };
+
+    const compartirFacebook = () => {
+        const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+        window.open(shareUrl, '_blank', 'noopener,noreferrer');
+    };
+
+    const compartirInstagram = () => {
+        // ⚠️ Instagram no permite compartir directamente una URL desde web.
+        // Lo más cercano es copiar el enlace para que el usuario lo publique manualmente.
+        navigator.clipboard.writeText(url);
+        alert('El enlace se copió al portapapeles. Puedes pegarlo en tu historia o publicación de Instagram.');
+    };
     return (
         <div className={styles.infoContainer}>
             <div className='containerFluid contenidoNoticiasHTML'>
@@ -83,7 +109,21 @@ const Detalle = ({ dataNoticia }: Props) => {
                                 <div className={styles.videoContent} ref={videoRef}></div>
                             )
                         }
+                        <div className={styles.redesContainerFooter}>
 
+                            <p>Comparte esta noticia:</p>
+                            <div>
+                                <button onClick={compartirLinkedIn}>
+                                    <Image src='/share1.svg' width={32} height={32} alt='LinkedIn' />
+                                </button>
+                                <button onClick={compartirInstagram}>
+                                    <Image src='/share2.svg' width={32} height={32} alt='LinkedIn' />
+                                </button>
+                                <button onClick={compartirFacebook}>
+                                    <Image src='/share3.svg' width={32} height={32} alt='LinkedIn' />
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -14,10 +14,13 @@ const Lactea = () => {
                 <div className={styles.gridContainer}>
                     <div>
                         <div className={styles.imgContainer}>
-                            <Image src={`/flactea.webp`} height={915} width={780} alt='Cada vez más cerca de nuestra meta: Cero Residuos' />
+                            <div className={styles.imgLacteaContainer}>
+                                <Image src={`/flactea.webp`} height={915} width={780} alt='Cada vez más cerca de nuestra meta: Cero Residuos' />
+                            </div>
+
                         </div>
                     </div>
-                    <div>
+                    <div className={styles.infoLactea}>
                         <h3>SOSTENIBILIDAD LÁCTEA</h3>
                         <h2>
                             Comprometidos con una <span>producción láctea responsable</span>

@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'Obviously';
+    src: url('Obviously-NarwMedi.eot');
+    src: url('Obviously-NarwMedi.eot?#iefix') format('embedded-opentype'),
+        url('Obviously-NarwMedi.woff2') format('woff2'),
+        url('Obviously-NarwMedi.woff') format('woff'),
+        url('Obviously-NarwMedi.ttf') format('truetype'),
+        url('Obviously-NarwMedi.svg#Obviously-NarwMedi') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Obviously';
+    src: url('Obviously-NarwBold.eot');
+    src: url('Obviously-NarwBold.eot?#iefix') format('embedded-opentype'),
+        url('Obviously-NarwBold.woff2') format('woff2'),
+        url('Obviously-NarwBold.woff') format('woff'),
+        url('Obviously-NarwBold.ttf') format('truetype'),
+        url('Obviously-NarwBold.svg#Obviously-NarwBold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+

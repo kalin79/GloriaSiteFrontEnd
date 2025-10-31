@@ -379,6 +379,30 @@
     }
 }
 
+.redesContainerFooter {
+    margin-top: 3rem;
+    border-top: 1px solid #919191;
+    padding-top: 2rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: .5rem;
+
+    >div {
+        display: flex;
+        justify-content: flex-start;
+        gap: .5rem;
+
+        button {
+            background: transparent;
+            border: 0;
+            width: 32px;
+            height: 32px;
+            padding: 0;
+        }
+    }
+}
+
 .pageNoticiasContainer {
     background: $cremaP;
 

@@ -78,8 +78,8 @@ const Listado = ({ slugMarca }: Props) => {
                         <div>
                             <h2 className={styles.titularMain}>
                                 <span>
-                                    No tenemos a Brad Pitt ni a Chayanne, pero si
-                                    tenemos lo que sí necesitas
+                                    No tenemos a Brad Pitt <br />ni a Chayanne, pero si <br />
+                                    tenemos lo que sí necesitas <br />
                                     para tu día a día
                                 </span>
                             </h2>

@@ -1,7 +1,7 @@
 import { getCampanaBySlug } from '@/actions/marca/campana/getCamapanaBySlug';
 
 import BannerPrincipalComponent from "@/components/bonle/HeaderCampanaMain";
-import DetalleComponent from "@/components/pro/CampanaDescripcion";
+import DetalleComponent from "@/components/bonle/CampanaDescripcion";
 import CarruselCampanasComponent from "@/components/bonle/CarruselProCampanas";
 
 import { CampanaInterface } from '@/interfaces/campana';

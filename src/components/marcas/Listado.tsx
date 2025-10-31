@@ -11,7 +11,7 @@ const Listado = ({ marcas }: multimediaParameters) => {
         <div className="containerFluid">
             <div className="headerTitle">
                 <h3 className={styles.titularMarcaHome}>Nuestras Marcas</h3>
-                <h2 className={styles.descripcionMarcaHome}>Descubre lo que cada marca tiene para ofrecerte</h2>
+                <h2 className={styles.descripcionMarcaHome}>Conoce las marcas que han crecido junto a millones de peruanos.</h2>
             </div>
             <div className={styles.listadoCard}>
                 {

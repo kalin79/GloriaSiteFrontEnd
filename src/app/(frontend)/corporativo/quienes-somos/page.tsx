@@ -9,7 +9,7 @@ export default function Somos() {
     const dataBanner: BannerInterface = {
         imgMobile: '/bsomosm.webp',
         imgPc: '/bsomos.webp',
-        titulo: `Somos una empresa de alimentos <span>orgullosamente peruana</span>`,
+        titulo: `Somos una empresa <br />de alimentos y bebidas <span>orgullosamente peruana</span>`,
         descripcion: `Conoce nuestra historia, nuestra forma de trabajar y el propósito que nos impulsa a seguir acompañando a más peruanos, produciendo marcas de calidad que nutren, inspiran y fortalecen vínculos desde hace generaciones.`,
         breadcrumb: 'QUIENES SOMOS',
         slugbread: '/corporativo/quienes-somos',

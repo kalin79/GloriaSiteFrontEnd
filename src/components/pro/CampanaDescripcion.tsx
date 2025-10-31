@@ -6,7 +6,7 @@ import HtmlSafeRender from '@/components/HtmlSafeRender';
 // import Link from 'next/link';
 import Image from 'next/image';
 
-import styles from '@/styles/scss/marcabonle.module.scss';
+import styles from '@/styles/scss/marcapro.module.scss';
 
 interface Props {
     multimediaContents: CampanaInterface,

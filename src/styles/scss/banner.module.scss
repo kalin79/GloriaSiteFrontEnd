@@ -59,12 +59,17 @@
         }
 
         @media screen and (min-width: 1200px) {
-            line-height: 1.25em;
+            line-height: 1.08em;
             font-size: 3rem;
         }
 
-        @media screen and (min-width: 1600px) {
+        @media screen and (min-width: 1400px) {
             line-height: 1.15em;
+            font-size: 3.25rem;
+        }
+
+        @media screen and (min-width: 1600px) {
+            line-height: 1em;
             font-size: 4.35rem;
         }
     }
@@ -83,6 +88,11 @@
         }
 
         @media screen and (min-width: 1200px) {
+            line-height: 1.35em;
+            font-size: 1.1rem;
+        }
+
+        @media screen and (min-width: 1400px) {
             line-height: 1.35em;
             font-size: 1.25rem;
         }
@@ -754,12 +764,17 @@
 
         @media screen and (min-width: 1200px) {
             line-height: 1.18em;
-            font-size: 3.75rem;
+            font-size: 3rem;
+        }
+
+        @media screen and (min-width: 1400px) {
+            line-height: 1.2em;
+            font-size: 3.5rem;
         }
 
         @media screen and (min-width: 1600px) {
             line-height: 1.15em;
-            font-size: 5.35rem;
+            font-size: 5rem;
         }
     }
 
@@ -785,12 +800,13 @@
 
             @media screen and (min-width: 1200px) {
                 line-height: 1.35em;
-                font-size: 1.25rem;
+                font-size: 1.1rem;
             }
 
             @media screen and (min-width: 1600px) {
                 line-height: 1.35em;
-                font-size: 1.5rem;
+                font-size: 1.35rem;
+                padding-right: 4rem;
             }
         }
     }

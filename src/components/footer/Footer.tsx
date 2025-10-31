@@ -24,9 +24,10 @@ const Footer = () => {
                             <h3 className='titularPequeno'>Leche Gloria</h3>
                             <div className={styles.navMenu}>
                                 <Link href="/corporativo/quienes-somos" className='parrafoMediano fontLight'>Quienes Somos</Link>
-                                <Link href="/corporativo/nuestro-compromiso" className='parrafoMediano fontLight'>Nuestro compromiso</Link>
-                                <Link href="/corporativo/ganaderos" className='parrafoMediano fontLight'>Ganaderos</Link>
                                 <Link href="/corporativo/sostenibilidad" className='parrafoMediano fontLight'>Sostenibilidad</Link>
+                                <Link href="/noticias" className='parrafoMediano fontLight'>Noticias</Link>
+                                {/* <Link href="/corporativo/ganaderos" className='parrafoMediano fontLight'>Ganaderos</Link> */}
+
                                 {/* <Link href="/noticias" className='parrafoMediano fontLight'>Noticias</Link> */}
                             </div>
                         </div>
@@ -35,9 +36,9 @@ const Footer = () => {
                             <div className={styles.navMenu}>
                                 <Link href="/gloria" className='parrafoMediano fontLight'>Gloria</Link>
                                 <Link href="/pro" className='parrafoMediano fontLight'>PRO</Link>
-                                <Link href="/actibio" className='parrafoMediano fontLight'>ActiBio</Link>
+                                {/* <Link href="/actibio" className='parrafoMediano fontLight'>ActiBio</Link> */}
                                 <Link href="/bonle" className='parrafoMediano fontLight'>Bonlé</Link>
-                                <Link href="/batti-mix" className='parrafoMediano fontLight'>BattiMix</Link>
+                                {/* <Link href="/batti-mix" className='parrafoMediano fontLight'>BattiMix</Link> */}
                             </div>
                         </div>
                         <div>

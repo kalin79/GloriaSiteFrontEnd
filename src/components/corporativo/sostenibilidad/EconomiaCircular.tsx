@@ -14,13 +14,16 @@ const EconomiaCircular = () => {
                 <div className={styles.gridContainer}>
                     <div>
                         <div className={styles.imgContainer}>
-                            <Image src={`/eco.webp`} height={915} width={780} alt='Cada vez más cerca de nuestra meta: Cero Residuos' />
+                            <div className={`${styles.imgPremioContainer}`}>
+                                <Image src={`/premio.webp`} height={915} width={780} alt='Cada vez más cerca de nuestra meta: Cero Residuos' />
+                            </div>
+                            <h3>Reconocidos en Revolución 2025 en la categoría Industria Sostenible por nuestra gestión responsable de residuos.</h3>
                         </div>
                     </div>
                     <div>
                         <h3>ECONOMÍA CIRCULAR</h3>
                         <h2>
-                            Cada vez más cerca de nuestra meta: <span>Cero Residuos</span>
+                            Cada vez más cerca de <br />nuestra meta: <br /><span>Cero Residuos</span>
                         </h2>
                         <p>
                             El 90% de los residuos de nuestras plantas no se desecha:
