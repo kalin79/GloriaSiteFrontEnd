@@ -1,7 +1,7 @@
 'use client';
 import { useCallback, useEffect, useRef, useState } from "react";
 import { getListadoProductos } from '@/actions/marca/producto/getListadoProductos';
-import Image from 'next/image'
+// import Image from 'next/image'
 import { useRouter } from "next/navigation";
 import { ProductoHomeInterface, PaginationHomeInterface, TagsAux } from '@/interfaces/producto';
 import { Swiper, SwiperSlide } from 'swiper/react';
