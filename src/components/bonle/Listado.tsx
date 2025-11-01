@@ -1,14 +1,16 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
-import { getListadoMarcaProductos } from '@/actions/marca/producto/getListadoProductos';
+import { getListadoMarcaProductos, getListadoProductosMarca } from '@/actions/marca/producto/getListadoProductos';
 import Image from 'next/image';
 import { useRouter } from "next/navigation";
 
 import CardComponent from "@/components/bonle/CardProductoProListado";
-import { ProductListadoInterface } from '@/interfaces/producto';
+import { ProductListadoInterface, ProductoCategoriaInterface } from '@/interfaces/producto';
 import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import styles from '@/styles/scss/marcabonle.module.scss';
+import SanitizedHtml from '@/components/SanitizedHtml';
+
 
 gsap.registerPlugin(ScrollToPlugin);
 interface Props {
@@ -18,9 +20,12 @@ interface Props {
 }
 const Listado = ({ slugMarca }: Props) => {
     const [productos, setProductos] = useState<ProductListadoInterface[]>([]);
+    const [categorias, setCategorias] = useState<ProductoCategoriaInterface[]>([]);
     const [pagina, setPagina] = useState(1);
+    const [catSelect, setCatSelect] = useState(0);
     const [totalPaginas, setTotalPaginas] = useState(1); // Puedes ajustarlo luego desde API
     const contenedorIniProdRef = useRef<HTMLDivElement>(null);
+    const contenedorFilterPopup = useRef<HTMLDivElement>(null);
     const router = useRouter();
 
     const [isInit, setIsInit] = useState(false); // Puedes ajustarlo luego desde API
@@ -46,11 +51,15 @@ const Listado = ({ slugMarca }: Props) => {
     useEffect(() => {
         const fetchProductos = async () => {
             if (pagina !== 0) {
-                const response = await getListadoMarcaProductos(pagina, slugMarca);
-                const { productos: tempP, pagination: tempPP } = response.data.productos;
+                const response = await getListadoProductosMarca(pagina, slugMarca, catSelect);
+                const { productos: tempP, pagination: tempPP } = response;
+
+                const response2 = await getListadoMarcaProductos(pagina, slugMarca);
+                const { categoria_productos } = response2.data;
 
                 setProductos(tempP);
                 setTotalPaginas(tempPP.last_page);
+                setCategorias(categoria_productos);
 
                 if (isInit) {
                     setTimeout(() => {
@@ -68,10 +77,54 @@ const Listado = ({ slugMarca }: Props) => {
         };
 
         fetchProductos(); // ✅ no olvides ejecutarla
-    }, [pagina, slugMarca, isInit]);
+    }, [pagina, slugMarca, isInit, catSelect]);
+    const handleFilterCategory = (id: number) => {
+        setCatSelect(id);
+    }
 
+    const handleOcultarFiltro = () => {
+        if (contenedorFilterPopup.current) {
+            gsap.to(contenedorFilterPopup.current, {
+                opacity: 0,
+                y: -20,
+                duration: 0.4,
+                ease: 'power2.out',
+                onComplete: () => {
+                    // Opcional: ocultarlo completamente del flujo del DOM
+                    contenedorFilterPopup.current!.style.display = 'none';
+                },
+            });
+        }
+    }
+    const handleMostrarFiltro = () => {
+        if (contenedorFilterPopup.current) {
+            contenedorFilterPopup.current.style.display = 'block';
+            gsap.fromTo(
+                contenedorFilterPopup.current,
+                { opacity: 0, y: -20 },
+                { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' }
+            );
+        }
+    }
     return (
         <div className={styles.listadoProductoContainer} ref={contenedorIniProdRef}>
+            <div className='popupContentFilterProducts' ref={contenedorFilterPopup}>
+                <div className='popupContentFilterProductsView'>
+                    <div className='popupCenterContainer'>
+                        <h3>Filtrar productos</h3>
+                        <h2>Por categoría</h2>
+                        <div className='filtroOpcionesContent'>
+                            {categorias && categorias.map((cat, index) => (
+                                <button key={index} className={`${catSelect === cat.id ? 'active' : ''}`} onClick={() => handleFilterCategory(cat.id)}><SanitizedHtml html={cat.name} /></button>
+                            ))}
+                        </div>
+                        <div className='footerPopupContainer'>
+                            <button onClick={handleOcultarFiltro}>Mostrar resultados</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
             <div className='containerFluid'>
                 <div className={styles.headerContainer}>
                     <div className={styles.gridContiner}>
@@ -95,7 +148,7 @@ const Listado = ({ slugMarca }: Props) => {
                 <div className={styles.bodyContainer}>
                     <div className={styles.filtrosContainer}>
                         <div>
-                            <div className={styles.buttonFilter}>
+                            <div className={styles.buttonFilter} onClick={handleMostrarFiltro}>
                                 <p className='parrafoMediano'>Filtrar productos</p>
                                 <Image src="/filtro.svg" width={32} height={32} alt='Filtrar' />
                             </div>

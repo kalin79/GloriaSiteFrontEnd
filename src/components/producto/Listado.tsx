@@ -9,6 +9,8 @@ import CardComponent from "@/components/producto/CardProductoListado";
 import { ProductListadoInterface, ProductoCategoriaInterface } from '@/interfaces/producto';
 import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import SanitizedHtml from '@/components/SanitizedHtml';
+
 gsap.registerPlugin(ScrollToPlugin);
 interface Props {
     // products: ProductListadoInterface[];
@@ -113,7 +115,7 @@ const Listado = ({ slugMarca }: Props) => {
                         <h2>Por categoría</h2>
                         <div className='filtroOpcionesContent'>
                             {categorias && categorias.map((cat, index) => (
-                                <button key={index} className={`${catSelect === cat.id ? 'active' : ''}`} onClick={() => handleFilterCategory(cat.id)}>{cat.name}</button>
+                                <button key={index} className={`${catSelect === cat.id ? 'active' : ''}`} onClick={() => handleFilterCategory(cat.id)}><SanitizedHtml html={cat.name} /></button>
                             ))}
                         </div>
                         <div className='footerPopupContainer'>
