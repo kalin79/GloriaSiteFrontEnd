@@ -16,6 +16,12 @@ export interface ProductListadoInterface {
     receta: boolean;
 }
 
+export interface ProductoCategoriaInterface {
+    id: number;
+    name: string;
+    slug: string;
+}
+
 export interface ProductoHomeInterface {
     title: string;
     subtitulo: string;

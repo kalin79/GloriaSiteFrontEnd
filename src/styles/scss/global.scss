@@ -821,7 +821,7 @@ h4 {
         padding-bottom: 6rem;
 
         @media screen and (min-width: 992px) {
-            padding-bottom: 3rem;
+            padding-bottom: 5rem;
         }
 
         @media screen and (min-width: 1400px) {
@@ -1467,4 +1467,120 @@ h4 {
         display: none !important;
     }
 
+}
+
+.popupContentFilterProducts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba($azulP, .86);
+    z-index: 10000;
+    display: none;
+    opacity: 0;
+
+    .popupContentFilterProductsView {
+        width: 100vw;
+        height: 100vh;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 1rem;
+        place-items: center;
+    }
+
+    .popupCenterContainer {
+        grid-column: 2 / span 11;
+        padding: 2.5rem 2rem 2rem;
+        background: rgba($azulP, 1);
+        border: 0px solid red;
+        border-radius: 30px;
+        overflow: hidden;
+
+        .footerPopupContainer {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 2.5rem;
+
+            button {
+                background: rgba($celesteP, 1);
+                border: 1px solid rgba($celesteP, 1);
+                padding: .5rem 1.5rem;
+                border-radius: 30px;
+                font-family: var(--font-misti), sans-serif;
+                font-size: 1rem;
+                line-height: 1.15em;
+                color: rgba($azulP, 1);
+                font-weight: 400;
+                text-align: center;
+                transition: .5s all ease-in-out;
+
+                @media screen and (min-width: 992px) {
+                    font-size: 1rem;
+                    line-height: 1.15em;
+                }
+            }
+        }
+
+        .filtroOpcionesContent {
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: .95rem;
+
+            button {
+                background: transparent;
+                border: 1px solid rgba($celesteP, 1);
+                padding: .5rem 1.5rem;
+                border-radius: 30px;
+                font-family: var(--font-misti), sans-serif;
+                font-size: 1rem;
+                line-height: 1.15em;
+                color: rgba($celesteP, 1);
+                font-weight: 400;
+                text-align: center;
+                transition: .5s all ease-in-out;
+
+                @media screen and (min-width: 992px) {
+                    font-size: 1rem;
+                    line-height: 1.15em;
+                }
+
+                &.active,
+                &:hover {
+                    background: rgba($celesteP, 1);
+                    color: $azulP;
+                }
+            }
+
+
+        }
+
+        h3 {
+            font-family: var(--font-misti), sans-serif;
+            font-size: 1.125rem;
+            line-height: 1.25em;
+            color: #fff;
+            font-weight: 500;
+
+            @media screen and (min-width: 992px) {
+                font-size: 1.125rem;
+                line-height: 1.25em;
+            }
+        }
+
+        h2 {
+            font-family: var(--font-misti), sans-serif;
+            font-size: 1rem;
+            line-height: 1.15em;
+            color: rgba($celesteP, 1);
+            font-weight: 500;
+            margin-top: 1rem;
+
+            @media screen and (min-width: 992px) {
+                font-size: 1rem;
+                line-height: 1.15em;
+            }
+
+        }
+    }
 }
