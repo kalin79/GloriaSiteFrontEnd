@@ -1,19 +1,28 @@
 'use client';
-// import { useEffect, useRef, useState } from 'react';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+// import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import gsap from "gsap";
 import { Draggable } from "gsap/Draggable";
 // import Link from 'next/link'
+import SanitizedHtml from "@/components/SanitizedHtml";
+// import HtmlSafeRender from '@/components/HtmlSafeRender';
+
 import styles from '@/styles/scss/somos.module.scss';
 gsap.registerPlugin(Draggable);
-// interface Area {
-//     id: string;
-//     x: number;
-//     y: number;
-//     r: number;
-//     label: string;
-// }
+interface Area {
+    id: string;
+    x: number;
+    y: number;
+    titulo: string;
+    anno: string;
+    xlabel: number;
+    ylabel: number;
+    xp: number;
+    yp: number;
+    active: boolean;
+    descripcion: string;
+}
 const LineaTiempo = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const imageRef = useRef<HTMLImageElement>(null);
@@ -100,20 +109,42 @@ const LineaTiempo = () => {
         };
     }, []);
 
-    // const [activeArea, setActiveArea] = useState<Area | null>(null);
+    const [activeArea, setActiveArea] = useState<Area | null>(null);
 
-    // const areas: Area[] = [
-    //     { id: 'area1', x: 345, y: 411, r: 61, label: 'Punto 1' },
-    //     { id: 'area2', x: 550, y: 449, r: 61, label: 'Punto 2' },
-    // ];
+    const areas: Area[] = [
+        { id: 'area1', x: 409, y: 201, titulo: 'Nuestro Origen', anno: '1941', xlabel: 354, ylabel: 116, active: true, xp: 416, yp: 160, descripcion: `La empresa General Milk Company Inc constituyó Leche Gloria S.A. en la Ciudad de Arequipa, que posteriormente sería adquirida por Carnation Company.` },
+        { id: 'area2', x: 492, y: 216, titulo: 'Inicia la producción', anno: '1942', xlabel: 419, ylabel: 263, active: false, xp: 0, yp: 0, descripcion: `La empresa General Milk Company Inc constituyó Leche Gloria S.A. en la Ciudad de Arequipa, que posteriormente sería adquirida por Carnation Company.` },
+        { id: 'area3', x: 576, y: 212, titulo: 'Planta de <br />envasado', anno: '1945', xlabel: 543, ylabel: 130, active: false, xp: 0, yp: 0, descripcion: `La empresa General Milk Company Inc constituyó Leche Gloria S.A. en la Ciudad de Arequipa, que posteriormente sería adquirida por Carnation Company.` },
+        { id: 'area4', x: 668, y: 182, titulo: 'Garantía de <br />calidad', anno: '1968', xlabel: 623, ylabel: 233, active: false, xp: 0, yp: 0, descripcion: `La empresa General Milk Company Inc constituyó Leche Gloria S.A. en la Ciudad de Arequipa, que posteriormente sería adquirida por Carnation Company.` },
+        { id: 'area5', x: 756, y: 140, titulo: 'Innovación', anno: '1970', xlabel: 694, ylabel: 66, active: false, xp: 0, yp: 0, descripcion: `La empresa General Milk Company Inc constituyó Leche Gloria S.A. en la Ciudad de Arequipa, que posteriormente sería adquirida por Carnation Company.` },
+        { id: 'area6', x: 840, y: 96, titulo: 'Una alianza para <br />la gloria', anno: '1978', xlabel: 787, ylabel: 146, active: false, xp: 0, yp: 0, descripcion: `La empresa General Milk Company Inc constituyó Leche Gloria S.A. en la Ciudad de Arequipa, que posteriormente sería adquirida por Carnation Company.` },
+        { id: 'area7', x: 920, y: 67, titulo: 'Diversificación <br />del negocio', anno: '1978', xlabel: 870, ylabel: -25, active: false, xp: 0, yp: 0, descripcion: `La empresa General Milk Company Inc constituyó Leche Gloria S.A. en la Ciudad de Arequipa, que posteriormente sería adquirida por Carnation Company.` },
+        { id: 'area8', x: 1012, y: 56, titulo: 'El inicio de una <br />nueva etapa', anno: '1986', xlabel: 959, ylabel: 111, active: false, xp: 0, yp: 0, descripcion: `La empresa General Milk Company Inc constituyó Leche Gloria S.A. en la Ciudad de Arequipa, que posteriormente sería adquirida por Carnation Company.` },
+        { id: 'area9', x: 1097, y: 69, titulo: 'Record de acopio <br />de leche', anno: '1988', xlabel: 1028, ylabel: -16, active: false, xp: 0, yp: 0, descripcion: `La empresa General Milk Company Inc constituyó Leche Gloria S.A. en la Ciudad de Arequipa, que posteriormente sería adquirida por Carnation Company.` },
+        { id: 'area10', x: 1182, y: 94, titulo: 'Ampliación <br />de portafolio', anno: '1993<br/>1994', xlabel: 1133, ylabel: 146, active: false, xp: 0, yp: 0, descripcion: `La empresa General Milk Company Inc constituyó Leche Gloria S.A. en la Ciudad de Arequipa, que posteriormente sería adquirida por Carnation Company.` },
+        { id: 'area11', x: 1276, y: 131, titulo: 'Nuevas plantas <br />de acopio', anno: '1998', xlabel: 1224, ylabel: 51, active: false, xp: 0, yp: 0, descripcion: `La empresa General Milk Company Inc constituyó Leche Gloria S.A. en la Ciudad de Arequipa, que posteriormente sería adquirida por Carnation Company.` },
+        { id: 'area12', x: 1353, y: 160, titulo: 'La planta <br />soñada', anno: '1999', xlabel: 1310, ylabel: 204, active: false, xp: 0, yp: 0, descripcion: `La empresa General Milk Company Inc constituyó Leche Gloria S.A. en la Ciudad de Arequipa, que posteriormente sería adquirida por Carnation Company.` },
+        { id: 'area13', x: 1445, y: 187, titulo: 'Cruzando <br />fronteras', anno: '1999', xlabel: 1406, ylabel: 111, active: false, xp: 0, yp: 0, descripcion: `La empresa General Milk Company Inc constituyó Leche Gloria S.A. en la Ciudad de Arequipa, que posteriormente sería adquirida por Carnation Company.` },
+        { id: 'area14', x: 1532, y: 200, titulo: 'Descentralizamos <br />nuestras<br/>operaciones', anno: '2004<br />2007', xlabel: 1466, ylabel: 248, active: false, xp: 0, yp: 0, descripcion: `La empresa General Milk Company Inc constituyó Leche Gloria S.A. en la Ciudad de Arequipa, que posteriormente sería adquirida por Carnation Company.` },
+        { id: 'area15', x: 1643, y: 54, titulo: 'Compromiso con <br />el medio ambiente', anno: '2009<br />2010', xlabel: 1573, ylabel: -53, active: false, xp: 0, yp: 0, descripcion: `La empresa General Milk Company Inc constituyó Leche Gloria S.A. en la Ciudad de Arequipa, que posteriormente sería adquirida por Carnation Company.` },
+        { id: 'area16', x: 1705, y: 200, titulo: 'Producción de <br />yogurt y refrescos', anno: '2012', xlabel: 1638, ylabel: 252, active: false, xp: 0, yp: 0, descripcion: `La empresa General Milk Company Inc constituyó Leche Gloria S.A. en la Ciudad de Arequipa, que posteriormente sería adquirida por Carnation Company.` },
+        { id: 'area17', x: 1791, y: 211, titulo: 'Leche <br />Condensada', anno: '2013', xlabel: 1746, ylabel: 133, active: false, xp: 0, yp: 0, descripcion: `La empresa General Milk Company Inc constituyó Leche Gloria S.A. en la Ciudad de Arequipa, que posteriormente sería adquirida por Carnation Company.` },
+        { id: 'area18', x: 1879, y: 195, titulo: 'Panificadora <br />Gloria', anno: '2014', xlabel: 1832, ylabel: 243, active: false, xp: 0, yp: 0, descripcion: `La empresa General Milk Company Inc constituyó Leche Gloria S.A. en la Ciudad de Arequipa, que posteriormente sería adquirida por Carnation Company.` },
+        { id: 'area19', x: 1955, y: 163, titulo: 'Alimentando al <br />Perú', anno: '2016', xlabel: 1895, ylabel: 85, active: false, xp: 0, yp: 0, descripcion: `La empresa General Milk Company Inc constituyó Leche Gloria S.A. en la Ciudad de Arequipa, que posteriormente sería adquirida por Carnation Company.` },
+        { id: 'area20', x: 2028, y: 124, titulo: 'Línea Aséptica', anno: '2019', xlabel: 1986, ylabel: 166, active: false, xp: 0, yp: 0, descripcion: `La empresa General Milk Company Inc constituyó Leche Gloria S.A. en la Ciudad de Arequipa, que posteriormente sería adquirida por Carnation Company.` },
+        { id: 'area21', x: 2092, y: 93, titulo: 'Apoyando al Perú <br />durante la <br />pandemia', anno: '2021', xlabel: 2022, ylabel: 0, active: false, xp: 0, yp: 0, descripcion: `La empresa General Milk Company Inc constituyó Leche Gloria S.A. en la Ciudad de Arequipa, que posteriormente sería adquirida por Carnation Company.` },
+        { id: 'area22', x: 2191, y: 59, titulo: 'Adquisición de <br />Soporte', anno: '2023', xlabel: 2137, ylabel: 96, active: false, xp: 0, yp: 0, descripcion: `La empresa General Milk Company Inc constituyó Leche Gloria S.A. en la Ciudad de Arequipa, que posteriormente sería adquirida por Carnation Company.` },
+        { id: 'area23', x: 2278, y: 51, titulo: 'Compra de <br />Ecuajugos', anno: '2024', xlabel: 2237, ylabel: -16, active: false, xp: 0, yp: 0, descripcion: `La empresa General Milk Company Inc constituyó Leche Gloria S.A. en la Ciudad de Arequipa, que posteriormente sería adquirida por Carnation Company.` },
+        { id: 'area24', x: 2360, y: 58, titulo: 'Nueva imagen <br />de Gloria', anno: '2025', xlabel: 2306, ylabel: 94, active: false, xp: 0, yp: 0, descripcion: `La empresa General Milk Company Inc constituyó Leche Gloria S.A. en la Ciudad de Arequipa, que posteriormente sería adquirida por Carnation Company.` },
+    ];
 
-    // const handleClick = (area: Area) => {
-    //     setActiveArea(area);
-    // };
+    const handleClick = (area: Area) => {
+        setActiveArea(area);
+    };
 
-    // const handleClose = () => {
-    //     setActiveArea(null);
-    // };
+    const handleClose = () => {
+        setActiveArea(null);
+    };
     return (
         <div className={styles.LineaContainer}>
             <div className='containerFluid'>
@@ -128,7 +159,7 @@ const LineaTiempo = () => {
                             Acompáñanos a revivir los momentos que han marcado nuestra historia. Desde nuestro nacimiento en Arequipa hasta nuestra consolidación en el mundo.
                         </p>
                     </div>
-                    <div>
+                    {/* <div>
                         <div className={styles.carruselLineaContainer} ref={containerRef}>
 
                             <Image
@@ -145,56 +176,72 @@ const LineaTiempo = () => {
                                 <button id="right"><Image src="/arrowL.svg" width={30} height={60} alt='' /></button>
                             </div>
                         </div>
-                    </div>
-                    {/* <div>
+                    </div> */}
+                    <div>
                         <div className={styles.carruselLineaContainer} ref={containerRef}>
 
                             <div className={styles.viewLinePc} ref={imageRef}>
                                 <Image
-                                    src="/onda2.svg"
+                                    src="/onda5.svg"
                                     alt="Mapa interactivo"
-                                    width={2643}
-                                    height={249}
+                                    width={2795}
+                                    height={296}
                                     priority
                                 />
                                 {areas.map((area) => (
                                     <button
                                         key={area.id}
-                                        className="absolute bg-blue-500/20 hover:bg-blue-500/30 rounded-full border border-blue-400 transition"
                                         style={{
-                                            top: `${area.y - area.r}px`,
-                                            left: `${area.x - area.r}px`,
-                                            width: `${area.r * 2}px`,
-                                            height: `${area.r * 2}px`,
+                                            top: `${area.y}px`,
+                                            left: `${area.x}px`,
                                         }}
                                         onClick={() => handleClick(area)}
                                     >
                                     </button>
+
+                                ))}
+                                {areas.map((area) => (
+                                    <div
+                                        key={area.id}
+                                        className={`${styles.cabeceraContainer}`}
+                                        style={{
+                                            top: `${area.ylabel}px`,
+                                            left: `${area.xlabel}px`,
+                                        }}
+                                        onClick={() => handleClick(area)}
+                                    >
+                                        <h2><SanitizedHtml html={area.anno} /></h2>
+                                        <h3 className={`${area.active ? styles.active : ''}`}><SanitizedHtml html={area.titulo} /></h3>
+                                    </div>
+
                                 ))}
                                 {activeArea && (
-                                    <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-                                        <div className="bg-white rounded-2xl p-6 shadow-xl max-w-sm">
-                                            <h2 className="text-lg font-semibold mb-2">{activeArea.label}</h2>
-                                            <p className="text-gray-700 mb-4">
-                                                Aquí puedes mostrar información del área seleccionada, o cualquier
-                                                contenido dinámico.
+                                    <div className={styles.toolTipContainer}
+                                        style={{
+                                            top: `${activeArea.yp}px`,
+                                            left: `${activeArea.xp}px`,
+                                        }}
+                                    >
+                                        <div className={styles.toolInfo}>
+                                            <p>
+                                                <SanitizedHtml html={activeArea.descripcion} />
                                             </p>
                                             <button
                                                 onClick={handleClose}
-                                                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
                                             >
                                                 Cerrar
                                             </button>
                                         </div>
                                     </div>
                                 )}
+
                             </div>
                             <div className={styles.controls}>
                                 <button id="left"><Image src="/arrowL.svg" width={30} height={60} alt='' /></button>
                                 <button id="right"><Image src="/arrowL.svg" width={30} height={60} alt='' /></button>
                             </div>
                         </div>
-                    </div> */}
+                    </div>
                 </div>
             </div>
         </div>

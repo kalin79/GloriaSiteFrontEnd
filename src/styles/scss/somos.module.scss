@@ -201,16 +201,119 @@
                     height: 580px;
                     overflow: hidden;
                     position: relative;
+                    border: 1px solid red;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    justify-content: center;
 
                     .viewLinePc {
                         position: relative;
-                        width: 2643px;
-                        height: 249px;
+                        width: 2795px;
+                        height: 295px;
+
+                        .toolTipContainer {
+                            position: absolute;
+                            background: rgba($celesteP, 1);
+                            width: 366px;
+                            padding: 1.5rem 2rem 1.5rem 1rem;
+                            box-sizing: border-box;
+                            border-radius: 10px;
+                            overflow: hidden;
+
+                            button {
+                                color: #fff;
+                                font-family: var(--font-misti), sans-serif;
+                                font-size: .95rem;
+                                line-height: 1.5em;
+                                font-weight: 500;
+                                text-align: left;
+                                background: $azulP;
+                                width: auto !important;
+                                height: auto !important;
+                                margin-top: .65rem;
+                                padding: .5rem 2rem;
+                                border-radius: 30px;
+                                position: relative !important;
+                                top: auto !important;
+                                left: auto !important;
+
+                                @media screen and (min-width: 992px) {
+                                    font-size: 1rem;
+                                    line-height: 1.35em;
+                                }
+
+                            }
+
+                            p {
+                                font-family: var(--font-misti), sans-serif;
+                                font-size: .95rem;
+                                line-height: 1.5em;
+                                color: #000000;
+                                font-weight: 400;
+                                text-align: left;
+
+                                @media screen and (min-width: 992px) {
+                                    font-size: 1rem;
+                                    line-height: 1.35em;
+                                }
+                            }
+                        }
+
+                        .cabeceraContainer {
+                            position: absolute;
+                            border: 0px solid red !important;
+                            display: flex;
+                            justify-content: center;
+                            flex-direction: column;
+
+
+
+                            h2 {
+                                font-family: var(--font-misti), sans-serif;
+                                font-size: .95rem;
+                                line-height: 1.5em;
+                                color: #fff;
+                                font-weight: 500;
+                                text-align: center;
+
+                                @media screen and (min-width: 992px) {
+                                    font-size: 1rem;
+                                    line-height: 1.35em;
+                                }
+                            }
+
+                            h3 {
+                                font-family: var(--font-misti), sans-serif;
+                                font-size: .95rem;
+                                line-height: 1.5em;
+                                color: #fff;
+                                font-weight: 400;
+                                text-align: center;
+
+                                border-radius: 30px;
+                                padding: 0.25rem 1rem;
+                                margin-top: -.25rem;
+
+                                @media screen and (min-width: 992px) {
+                                    font-size: 1rem;
+                                    line-height: 1.15em;
+                                }
+
+                                &.active {
+                                    background: $rojoP;
+                                    margin-top: .35rem;
+                                }
+                            }
+
+                        }
 
                         button {
                             position: absolute;
-                            width: 26px;
-                            height: 26px;
+                            width: 30px;
+                            height: 30px;
+                            background: transparent;
+                            border: 0px solid red !important;
                         }
 
                         img {
