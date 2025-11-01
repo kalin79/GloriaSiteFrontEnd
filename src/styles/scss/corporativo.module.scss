@@ -1586,16 +1586,29 @@
                 .videoContainer {
                     overflow: hidden;
                     border-radius: 20px;
-                    max-height: 483px;
+                    height: 483px;
+                    background-color: #000;
+
+                    @media screen and (min-width: 1600px) {
+                        height: 400px;
+                    }
 
                     >div {
                         width: 100%;
                         height: 483px;
+
+                        @media screen and (min-width: 1600px) {
+                            height: 400px;
+                        }
                     }
 
                     iframe {
                         width: 100%;
                         height: 483px !important;
+
+                        @media screen and (min-width: 1600px) {
+                            height: 400px !important;
+                        }
                     }
                 }
             }
@@ -1671,7 +1684,7 @@
 .economiaContainer {
     border: 0px solid red;
     background: $cremaP;
-    padding: 6rem 0 8rem;
+    padding: 6rem 0 4rem;
 
     .gridContainer {
         display: grid;
@@ -1716,6 +1729,22 @@
                             width: 100%;
                             max-height: 500px;
                             object-fit: cover;
+
+                            @media screen and (min-width: 992px) {
+                                max-height: 500px;
+                            }
+
+                            @media screen and (min-width: 1200px) {
+                                max-height: 550px;
+                            }
+
+                            @media screen and (min-width: 1400px) {
+                                max-height: 600px;
+                            }
+
+                            @media screen and (min-width: 1600px) {
+                                max-height: 650px;
+                            }
                         }
                     }
 
@@ -2074,7 +2103,7 @@
 
                     @media screen and (min-width: 992px) {
                         padding: 1.5rem 1rem 2rem;
-                        min-height: 240px;
+                        min-height: 266px;
                     }
 
                     p {
@@ -2095,16 +2124,16 @@
 
                     h2 {
                         font-family: var(--font-misti), sans-serif;
-                        font-weight: 400;
+                        font-weight: 500;
                         font-size: 1.175rem;
                         line-height: 1em;
                         letter-spacing: -.05em;
                         color: #1A172B;
                         text-align: center;
-                        margin-bottom: .5rem;
+                        margin-bottom: 1.5rem;
 
                         @media screen and (min-width: 992px) {
-                            font-size: 1.375em;
+                            font-size: 1.5em;
                             line-height: 1em;
                         }
                     }

@@ -15,7 +15,7 @@ const CicloVida = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const plantaData = [
         {
-            img: 'ciclo1.svg',
+            img: 'vaca11.svg',
             descripcion: `<h2>
             Apoyamos la sostenibilidad agropecuaria de más de 19,000 ganaderos,  capacitándolos en el buen uso de la tierra, el cuidado del agua y la producción responsable de alimentos. 
             </h2>
@@ -27,7 +27,7 @@ const CicloVida = () => {
         {
             img: 'ciclo2.svg',
             descripcion: `<h2>
-            Cambiamos toda nuestra matriz energética de petróleo a gas natural, el combustible fósil más limpio del mundo. 
+            Cambiamos toda nuestra matriz energética de petróleo a gas natural, el combustible fósil más limpio del mundo.
             </h2>
                                 <p>
                                 Además, contamos con la única planta de cogeneración en el sector de alimentos en el Perú, que nos permite producir al mismo tiempo electricidad y calor a partir de una sola fuente de energía. Gracias a ello, logramos reducir en 40% nuestras emisiones de gases de efecto invernadero cada año.  

@@ -18,28 +18,25 @@ const Descripcion = () => {
         {
             img: '_planta1.webp',
             descripcion: `<h2>
-                                    Operativa desde 1999, esta planta es el centro de innovación que nos permite crear, diseñar y desarrollar productos que alimentan a millones de peruanos.
+                                    Operativa desde 1999, esta planta es el centro de innovación que nos permite crear, diseñar y desarrollar productos que alimentan a millones de peruanos. 
                                 </h2>
                                 <p>
-                                    No solo es la planta lechera más importante del Perú, sino también la planta de leche evaporada más grande del mundo. Aquí elaboramos, con mucha dedicación, los mejores productos: leche UHT, yogures, néctares, mantequilla, quesos y mucho más, combinando tecnología de punta con nuestro compromiso con la innovación y nutrición. Gracias a su capacidad y alcance, esta planta nos permite llevar lo mejor de Gloria a todo el país.
+                                    No solo es la planta más importante del Perú, sino también la planta de leche evaporada más grande del mundo. Aquí producimos productos como: leche en lata, leche UHT, yogures, néctares, bebidas, mantequilla, quesos y mucho más. Su capacidad, tecnología y alcance nos permite llevar nuestros productos a millones de hogares a lo largo del de todo el país. 
                                 </p>
                                 <h3>
                                     ¿Te gustaría visitar nuestra planta?
-                                    Escríbenos a <a href="mailto:visitasplanta@gloria.com.pe" target='_blank'>visitasplanta@gloria.com.pe</a> para organizar una visita de estudiantes o universitarios.
+                                    Escríbenos a <a href="mailto:karla.chunga@gloria.com.pe " target='_blank'>karla.chunga@gloria.com.pe</a> para organizar una visita de estudiantes o universitarios.
                                 </h3>`
         },
         {
             img: 'pare.webp',
             descripcion: `<h2>
-            Nuestra primera casa y también la primera planta con una línea aséptica en todo el país.
+            Nuestra primera planta operativa, inaugurada en 1941, es un símbolo de innovación y progreso en la alimentación. En ella se instaló la primera línea aséptica del Perú, que permite elaborar productos que no requieren refrigeración, como Yofresh, PRO y Shake
             </h2>
                                 <p>
-                                Operativa desde 1941, ha sido y es un símbolo de innovación y progreso al servicio de la nutrición peruana. Contar con la primera línea aséptica nos permitió crear productos que no necesitan refrigeración pensando en las difíciles y variadas condiciones del Perú. Hoy se elaboran productos como Yofresh, PRO y Shake, y desde el sur peruano seguimos innovando, impulsados por nuestro compromiso de mejorar la nutrición y ofrecer la mejor calidad para responder a las nuevas necesidades de todos nuestros consumidores.
+                                Una solución pensada tanto para las diversas condiciones climáticas de nuestro país, como para la comodidad de los consumidores en su día a día. Desde el sur del Perú, seguimos innovando con el compromiso de ofrecer productos de calidad y responder a las nuevas necesidades de todos nuestros consumidores.
                                 </p>
-                                <h3>
-                                    ¿Te gustaría visitar nuestra planta?
-                                    Escríbenos a <a href="mailto:visitasplanta@gloria.com.pe" target='_blank'>visitasplanta@gloria.com.pe</a> para organizar una visita de estudiantes o universitarios.
-                                </h3>`
+                                `
         },
         {
             img: 'ptru.webp',
@@ -47,24 +44,18 @@ const Descripcion = () => {
                                 <p>
                                 Es la planta de concentración de leche más grande de la región. Aquí recibimos la leche de mayor calidad de la zona y, bajo los más estrictos estándares de inocuidad, la transformamos en productos confiables, nutritivos y capaces de mantenerse frescos por largos periodos. Además, seguimos innovando con la próxima implementación de líneas de producción de jugos naturales y néctares, junto con el desarrollo de nuevos envases, siempre pensando en ofrecer lo mejor para las mesas del Perú.
                                 </p>
-                                <h3>
-                                    ¿Te gustaría visitar nuestra planta?
-                                    Escríbenos a <a href="mailto:visitasplanta@gloria.com.pe" target='_blank'>visitasplanta@gloria.com.pe</a> para organizar una visita de estudiantes o universitarios.
-                                </h3>`
+                                `
         },
 
         {
             img: 'pcaja2.webp',
             descripcion: `<h2>
-                Inspirados por la rica tradición cajamarquina, nuestra planta Cajamarca es un verdadero punto de encuentro entre la herencia, la cultura y la innovación
+                Inspirados por la rica tradición quesera cajamarquina, nuestra planta en Cajamarca es un verdadero punto de encuentro entre herencia, cultura e innovación. 
             </h2>
                                 <p>
-                                    Aquí, el conocimiento de los maestros queseros de la zona se une a la tecnología más avanzada para crear y perfeccionar productos que responden a las necesidades de nuestros consumidores. Cada queso envasado en esta planta nace del respeto por las raíces cajamarquinas y de nuestro compromiso con la innovación, la calidad y la nutrición peruana.
+                                    Desde 1998, el conocimiento de los maestros queseros de la zona se une a la tecnología más avanzada para crear y perfeccionar productos que responden a las necesidades y gustos de nuestros consumidores. En esta planta se elaboran quesos Edam, Paria, Gouda, Mozzarella, Parmesano y nuestra línea de quesos artesanales: Suizo, Paria, Andino y Paria con finas hierbas, además de nuestro manjar Blanco Bonlé. Cada producto desarrollado en nuestra planta de Cajamarca está hecho con insumos 100% locales y nace del respeto por nuestras raíces y del compromiso con la innovación, la calidad y la alimentación.
                                 </p>
-                                <h3>
-                                    ¿Te gustaría visitar nuestra planta?
-                                    Escríbenos a <a href="mailto:visitasplanta@gloria.com.pe" target='_blank'>visitasplanta@gloria.com.pe</a> para organizar una visita de estudiantes o universitarios.
-                                </h3>`
+                                `
         },
 
     ]

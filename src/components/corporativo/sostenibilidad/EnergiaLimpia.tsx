@@ -43,13 +43,11 @@ const EnergiaLimpia = () => {
                     <div>
                         <h3>ENERGÍA LIMPIA</h3>
                         <h2>
-                            Damos un paso firme hacia un futuro más limpio incorporando
+                            Damos un paso firme hacia un futuro más sostenible incorporando
                             <span> paneles solares en nuestras operaciones</span>
                         </h2>
                         <p>
-                            Aprovechamos la radiación solar para generar energía,
-                            producir de manera responsable, reducir nuestra huella de carbono y
-                            cuidar el planeta.
+                            Aprovechamos la radiación solar para generar energía, producir de manera responsable, reducir nuestra huella de carbono y cuidar el planeta.
                         </p>
                     </div>
                 </div>

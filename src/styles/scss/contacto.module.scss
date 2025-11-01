@@ -96,6 +96,8 @@
             }
 
             .infoContainer {
+
+
                 h2 {
                     font-family: var(--font-misti), sans-serif;
                     font-size: 1.35rem;
@@ -145,6 +147,9 @@
 
                 a {
                     color: #0083C0;
+                    margin: auto;
+                    display: block;
+                    text-align: center;
                 }
             }
 

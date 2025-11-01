@@ -29,7 +29,7 @@ export default async function MarcaPage() {
                     <div className={styles.imgBg}></div>
                 </div>
                 <CarruselVideosComponent videos={data} tipo="video" titularVideo="Contenido hecho para ti" listFiltro={null} />
-                <CarruselCampanasComponent videosCampana={dataCamapana} titularCampana="Nuestras Campañas" subtitularCampana="¿Quiénes necesitan PROteína? Todos. Te acompañamos con PROteina para todo lo que PROpongas." />
+                <CarruselCampanasComponent videosCampana={dataCamapana} titularCampana="Nuestras Campañas" subtitularCampana="¿Quiénes necesitan PROteína? Todos. Te acompañamos con PRO, PROteina para lo que te PROpongas" />
                 <BannerProComponent />
             </div>
             <ListadoProductosComponent slugMarca={slugMarca} />

@@ -45,7 +45,7 @@ const Footer = () => {
                             <h3 className='titularPequeno'>Legales</h3>
                             <div className={styles.navMenu}>
                                 <Link href="/legales/terminos-y-condiciones" className='parrafoMediano fontLight'>T&eacute;rminos y Condiciones</Link>
-                                <Link href="/legales/politicias-de-proteccion-de-datos" className='parrafoMediano fontLight'>Pol&iacute;ticias de Protecci&oacute;n de Datos</Link>
+                                <Link href="/legales/politicias-de-proteccion-de-datos" className='parrafoMediano fontLight'>Pol&iacute;ticas de Protecci&oacute;n de Datos</Link>
                             </div>
                         </div>
                         <div className={styles.gloriaAyudaContainer}>
@@ -72,8 +72,8 @@ const Footer = () => {
                             </div>
                         </div>
                         <div className={styles.redesContainer}>
-                            <a href="https://www.gloriateescucha.com/" target='_blank'>
-                                <Image src="/ln.svg" width={42} height={42} alt='Gloria' />
+                            <a href="#" target='_blank'>
+                                <Image src="https://s3.us-east-1.amazonaws.com/img.qa.gloria.com.pe/multimedia/16/16-img-1761954294.svg" width={42} height={42} alt='Gloria' />
                             </a>
                             <p className='parrafoMediano celesteTxt'>
                                 Entérate de nuestras <br />

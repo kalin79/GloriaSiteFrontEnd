@@ -113,7 +113,7 @@
     border: 0px solid red;
 
     @media screen and (min-width: 992px) {
-        padding: 4rem 0 10rem;
+        padding: 0rem 0 10rem;
     }
 
     .headerLine {
@@ -441,12 +441,7 @@
                                 font-size: 1.12rem;
                                 line-height: 1.2em;
                                 letter-spacing: -.05em;
-                                background: linear-gradient(0deg, #000000 20%, #5D5D5D);
-                                -webkit-background-clip: text;
-                                /* recorta el fondo al texto */
-                                -webkit-text-fill-color: transparent;
-                                /* hace el texto transparente */
-                                background-clip: text;
+                                color: #5D5D5D;
 
                                 @media screen and (min-width: 992px) {
                                     font-size: 1.125em;
