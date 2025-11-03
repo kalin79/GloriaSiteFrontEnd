@@ -7,7 +7,7 @@ import { VideoInterface } from '@/interfaces/video';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-// import PrevisualizacionComponent from "@/components/video/Previsualizacion";
+import PrevisualizacionComponent from "@/components/bonle/PrevisualizacionRel";
 import styles from '@/styles/scss/marcabonle.module.scss';
 
 
@@ -19,7 +19,7 @@ interface Props {
 const CarruselVideosRelacionados = ({ titularCampana, subtitularCampana, videosCampana }: Props) => {
 
     return (
-        <div className={styles.listadoComponentContainer}>
+        <div className={`${styles.listadoComponentContainer} videoPrevisualizacionContent`}>
             <div className={`${styles.titularHeader}`}>
                 <h3 className={`${styles.titularMini}`}>{titularCampana} </h3>
                 <h2 className={styles.parrafoMini}>{subtitularCampana}</h2>
@@ -28,23 +28,23 @@ const CarruselVideosRelacionados = ({ titularCampana, subtitularCampana, videosC
             <div className={`${styles.carruselCampanas}`}>
                 <Swiper
                     spaceBetween={10}
-                    centeredSlides={true}
+                    centeredSlides={false}
                     slidesPerView={1} // Muestra 5 películas a la vez
                     navigation
                     pagination={{ clickable: true }}
                     // autoplay={{ delay: 3000 }}
                     loop={true}
                     modules={[Navigation]}
-                    className={`swiperNetflix`}
+                    className={`swiperNetflix ${styles.swiperNetflix}`}
                     breakpoints={{
                         750: {
-                            slidesPerView: 3
+                            slidesPerView: 4
                         },
                         992: {
-                            slidesPerView: 3
+                            slidesPerView: 4
                         },
                         1600: {
-                            slidesPerView: 3
+                            slidesPerView: 4
                         }
                     }}
 
@@ -54,7 +54,7 @@ const CarruselVideosRelacionados = ({ titularCampana, subtitularCampana, videosC
                             key={index}
                             className={`slideNetflix`}
                         >
-                            {/* <PrevisualizacionComponent videosContents={item} /> */}
+                            <PrevisualizacionComponent videosContents={item} />
                         </SwiperSlide>
                     ))}
 

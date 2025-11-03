@@ -19,7 +19,7 @@ const CarruselCampanas = ({ titularCampana, subtitularCampana, videosCampana }: 
 
     return (
         <div className={styles.listadoComponentContainer}>
-            <div className='containerFluid'>
+            <div className=''>
                 <div className={`${styles.titularHeader}`}>
                     <h2 className={styles.titularMini}>{titularCampana} </h2>
                     <p className={styles.parrafoMini}>{subtitularCampana}</p>

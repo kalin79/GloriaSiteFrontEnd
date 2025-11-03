@@ -1,6 +1,472 @@
 @use 'vars/variables' as *;
 @use 'vars/mixins' as *;
 
+.listadoComponentContainer {
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+    position: relative;
+    z-index: 10;
+
+    .listaReproduccionContainer {
+        margin-top: 1rem;
+
+        @media screen and (min-width: 992px) {
+            margin-top: 0rem;
+        }
+
+        .slideVideoCard {
+            border-radius: 10px;
+            height: 587px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+
+            @media screen and (min-width: 992px) {
+                height: 450px;
+            }
+
+            @media screen and (min-width: 1200px) {
+                height: 500px;
+            }
+
+            @media screen and (min-width: 1400px) {
+                height: 560px;
+            }
+
+            @media screen and (min-width: 1600px) {
+                height: 587px;
+            }
+
+
+
+            &:before {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                content: '';
+                background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75));
+                z-index: 5;
+            }
+
+            .cardFooter {
+                position: absolute;
+                bottom: 1.5rem;
+                left: 0rem;
+                z-index: 20;
+                width: 100%;
+                min-height: 70px;
+                box-sizing: border-box;
+                padding: 0 2.5rem 0 2rem;
+            }
+
+            .cardFooterNumber {
+                position: absolute;
+                bottom: 0rem;
+                right: 0rem;
+                z-index: 19;
+
+                h4 {
+                    font-family: var(--font-misti), sans-serif;
+                    font-size: 32.5rem;
+                    line-height: .75em;
+                    -webkit-text-stroke: 1px rgba($celesteP, .8);
+                    color: transparent;
+
+                    @media screen and (min-width: 992px) {
+                        font-size: 21rem;
+                        line-height: .8em;
+                    }
+
+                    // @media screen and (min-width: 1200px) {
+                    //     font-size: 28rem;
+                    //     line-height: .75em;
+                    // }
+
+                    @media screen and (min-width: 1400px) {
+                        font-size: 21.5rem;
+                        line-height: .75em;
+                    }
+
+                    @media screen and (min-width: 1600px) {
+                        font-size: 26.5rem;
+                        line-height: .75em;
+                    }
+                }
+            }
+
+            .cardBody {
+                width: 100%;
+                height: 100%;
+
+                .imgContainer {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                    transition: .5s ease-in-out all;
+                }
+            }
+
+            .etiquetaCard {
+                position: absolute;
+                top: 1rem;
+                left: 1rem;
+                padding: .25rem 1rem;
+                border-radius: 30px;
+                background: $azulP;
+                z-index: 10;
+                @extend %parrafoBse;
+                @include colorTexto(blanco);
+                @include propiedadResponsiva(font-size, $parrafo);
+                font-weight: 400;
+                z-index: 10;
+            }
+
+            &:hover {
+                .cardBody {
+                    .imgContainer {
+                        transform: scale(1.1);
+                    }
+                }
+            }
+
+        }
+
+        .slideVideoCardV {
+            border-radius: 10px;
+            height: 587px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+
+            @media screen and (min-width: 992px) {
+                height: 450px;
+            }
+
+            @media screen and (min-width: 1200px) {
+                height: 500px;
+            }
+
+            @media screen and (min-width: 1400px) {
+                height: 560px;
+            }
+
+            @media screen and (min-width: 1600px) {
+                height: 587px;
+            }
+
+
+
+            &:before {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                content: '';
+                background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75));
+                z-index: 5;
+            }
+
+
+
+            .cardFooter {
+                position: absolute;
+                bottom: 0rem;
+                left: 0rem;
+                z-index: 20;
+                width: 100%;
+                height: 130px;
+                box-sizing: border-box;
+                padding: 0.75rem 2.5rem 2rem 2rem;
+                background: rgba($azulP, 1);
+
+                .infoContainer {
+                    position: relative;
+                    z-index: 10;
+                    display: flex;
+                    justify-content: flex-start;
+                    gap: 1rem;
+                    align-items: flex-start;
+                }
+
+                .curvaContainer {
+                    position: absolute;
+                    top: -2rem;
+                    left: 0rem;
+                    width: 100%;
+
+                    img {
+                        width: 100%;
+                        height: auto;
+                        object-fit: contain;
+                    }
+                }
+
+            }
+
+            .cardFooterNumber {
+                position: absolute;
+                bottom: 0rem;
+                right: 0rem;
+                z-index: 19;
+
+                h4 {
+                    font-family: var(--font-misti), sans-serif;
+                    font-size: 32.5rem;
+                    line-height: .75em;
+                    -webkit-text-stroke: 1px rgba($celesteP, .8);
+                    color: transparent;
+
+                    @media screen and (min-width: 992px) {
+                        font-size: 21rem;
+                        line-height: .8em;
+                    }
+
+                    // @media screen and (min-width: 1200px) {
+                    //     font-size: 28rem;
+                    //     line-height: .75em;
+                    // }
+
+                    @media screen and (min-width: 1400px) {
+                        font-size: 21.5rem;
+                        line-height: .75em;
+                    }
+
+                    @media screen and (min-width: 1600px) {
+                        font-size: 26.5rem;
+                        line-height: .75em;
+                    }
+                }
+            }
+
+            .cardBody {
+                width: 100%;
+                height: 100%;
+
+                .imgContainer {
+                    width: 100%;
+                    height: 90%;
+                    object-fit: cover;
+                    object-position: center;
+                    transition: .5s ease-in-out all;
+                }
+            }
+
+            .etiquetaCard {
+                position: absolute;
+                top: 1rem;
+                left: 1rem;
+                padding: .25rem 1rem;
+                border-radius: 30px;
+                background: $azulP;
+                z-index: 10;
+                @extend %parrafoBse;
+                @include colorTexto(blanco);
+                @include propiedadResponsiva(font-size, $parrafo);
+                font-weight: 400;
+                z-index: 10;
+            }
+
+            &:hover {
+                .cardBody {
+                    .imgContainer {
+                        transform: scale(1.1);
+                    }
+                }
+            }
+
+        }
+
+
+    }
+
+    .titularHeader {
+        margin-bottom: 3rem;
+
+        .titularMini {
+            font-family: var(--font-poppins), sans-serif;
+            font-size: 1.225rem;
+            line-height: 1.5em;
+            color: rgba($celesteP, 1);
+            font-weight: 400;
+
+            @media screen and (min-width: 992px) {
+                font-size: 1.625rem;
+                line-height: 1.75em;
+            }
+        }
+
+        .parrafoMini {
+            font-family: var(--font-poppins), sans-serif;
+            font-size: .85rem;
+            line-height: 1.25em;
+            color: rgba(white, 1);
+            font-weight: 400;
+            width: 100%;
+
+            @media screen and (min-width: 992px) {
+                font-size: 1.125rem;
+                line-height: 1.25em;
+                width: 85%;
+            }
+
+            @media screen and (min-width: 1400px) {
+                width: 80%;
+            }
+        }
+    }
+
+    .carruselCampanas {
+        .cardContainer {
+            position: relative;
+            overflow: hidden;
+            height: 480px;
+            border: 0px solid rgba($blancoP, .8);
+            border-radius: 10px;
+            cursor: pointer;
+
+            @media screen and (min-width: 992px) {
+                height: 450px;
+            }
+
+            @media screen and (min-width: 1200px) {
+                height: 540px;
+            }
+
+            @media screen and (min-width: 1600px) {
+                height: 587px;
+            }
+
+            .cardBody {
+                width: 100%;
+                height: 100%;
+                position: relative;
+
+                &:before {
+                    content: '';
+                    background: linear-gradient(to bottom,
+                            rgba(0, 0, 0, 0),
+                            /* parte superior (negro con opacidad .35) */
+                            rgba($azulP, .75)
+                            /* parte inferior (transparente) */
+                        );
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 2;
+                }
+
+                .playContainer {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    z-index: 10;
+                }
+
+                .bgContainerVideo {
+                    width: 100%;
+                    height: 100%;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-position: center;
+                        object-fit: cover;
+                        transition: .5s all ease-in;
+                    }
+                }
+            }
+
+            &:hover {
+                .cardBody {
+                    .bgContainerVideo {
+                        img {
+                            transform: scale(1.15);
+                        }
+                    }
+
+                }
+            }
+
+            .cardFooter {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 0 0rem 1rem 1rem;
+                z-index: 20;
+                min-height: 120px;
+
+
+
+                .cardInfo {
+                    position: relative;
+                    z-index: 10;
+
+                    .playIcon {
+                        width: 25px;
+                        height: 25px;
+                        object-position: center;
+                        margin-bottom: .5rem;
+                    }
+
+                    h2 {
+                        font-family: var(--font-misti), sans-serif;
+                        font-size: .85rem;
+                        line-height: 1.5em;
+                        color: $celesteP;
+                        font-weight: 400;
+                        display: inline-block;
+                        background-color: $azulP;
+                        padding: .5rem 1rem;
+                        border-radius: 30px;
+
+                        @media screen and (min-width: 992px) {
+                            font-size: .85rem;
+                            line-height: 1.5em;
+                            padding: .25rem 1rem;
+                        }
+
+                        @media screen and (min-width: 1200px) {
+                            font-size: 1rem;
+                            line-height: 1.5em;
+                        }
+
+                    }
+
+                    h3 {
+                        font-family: var(--font-misti), sans-serif;
+                        font-size: 1rem;
+                        line-height: 1.35em;
+                        color: white;
+                        font-weight: 500;
+                        margin-top: .25rem;
+
+                        @media screen and (min-width: 992px) {
+                            font-size: 1rem;
+                            line-height: 1.25em;
+                        }
+
+                        @media screen and (min-width: 1200px) {
+                            font-size: 1.375rem;
+                            line-height: 1.25em;
+                        }
+                    }
+                }
+
+            }
+
+
+        }
+    }
+}
 
 .videoPrevisualizacionHorizontalContent {
     margin-top: 4rem;

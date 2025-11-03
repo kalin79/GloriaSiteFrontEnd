@@ -495,7 +495,9 @@
     position: relative;
     z-index: 10;
 
-
+    .cardFooter {
+        background-color: #DF1683 !important;
+    }
 
     .titularHeader {
         margin-bottom: 3rem;
@@ -1035,7 +1037,7 @@
         z-index: 10;
 
         @media screen and (min-width: 992px) {
-            padding-bottom: 8rem;
+            padding-bottom: 4rem;
             padding-top: 8rem;
         }
 
