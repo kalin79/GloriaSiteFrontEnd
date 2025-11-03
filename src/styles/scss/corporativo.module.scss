@@ -1712,15 +1712,21 @@
                 }
 
                 .imgContainer {
+                    border: 0px solid red;
+
                     h3 {
                         font-family: var(--font-misti), sans-serif;
                         font-size: .9rem;
                         line-height: 1.5em;
                         color: #1A172B;
                         font-weight: 400;
-                        margin-top: 1rem;
-                        padding: 0 1rem 0 2rem;
+                        margin-top: -1rem;
+                        padding: 1rem 1rem 1.25rem 2rem;
                         text-align: left;
+                        background: rgba($celesteP, 1);
+                        border-radius: 0 0 20px 20px;
+                        position: relative;
+                        z-index: 100;
 
                         @media screen and (min-width: 992px) {
                             font-size: 1rem;
@@ -1762,7 +1768,7 @@
 
                     .imgLacteaContainer {
                         overflow: hidden;
-                        border-radius: 20px;
+                        border-radius: 20px 20px 0 0;
 
                         img {
                             width: 100%;
