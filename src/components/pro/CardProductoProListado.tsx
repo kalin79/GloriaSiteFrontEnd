@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { ProductListadoInterface } from '@/interfaces/producto';
 
 import styles from '@/styles/scss/marcapro.module.scss';
+import SanitizedHtml from '@/components/SanitizedHtml';
 
 interface productParameters {
     productContents: ProductListadoInterface,
@@ -26,8 +27,8 @@ const CardProductoProListado = ({ productContents, onClick }: productParameters)
                 <Image src={productContents.image || '/pO1M.png'} width={656} height={858} alt={productContents.title || 'producto'} />
             </div>
             <div className={styles.footerCardBox}>
-                <h4 className=''>{productContents.title ?? ''}</h4>
-                <h2 className=''>{productContents.subtitulo ?? ''}</h2>
+                <h4 className=''><SanitizedHtml html={productContents.title ?? ''} /></h4>
+                <h2 className=''><SanitizedHtml html={productContents.subtitulo ?? ''} /></h2>
             </div>
         </div>
     )
