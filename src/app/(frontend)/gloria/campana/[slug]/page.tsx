@@ -38,9 +38,7 @@ export default async function CampanaPage({ params }: CampanaPageProps) {
                 <BannerPrincipalComponent multimediaContents={campana} />
                 <div className={`${styles.campanaContainerPage}`}>
                     <DetalleComponent multimediaContents={campana} />
-                    <div className="containerFluid">
-                        <CarruselCampanasComponent videosCampana={related_video} titularCampana="Nuestras Campañas" subtitularCampana="Videos hechos por especialistas para guiarte y acompañarte." />
-                    </div>
+                    <CarruselCampanasComponent videosCampana={related_video} titularCampana="Otras campañas" subtitularCampana="Videos hechos por especialistas para guiarte y acompañarte." />
                 </div>
             </div>
         </>

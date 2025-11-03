@@ -198,14 +198,15 @@
 
                 .carruselLineaContainer {
                     width: 100%;
-                    height: 667px;
+                    height: 590px;
+                    padding-top: 82px;
                     overflow: hidden;
                     position: relative;
                     border: 0px solid red;
                     display: flex;
                     flex-direction: column;
                     align-items: flex-start;
-                    justify-content: center;
+                    justify-content: flex-start;
 
                     .viewLinePc {
                         position: relative;

@@ -152,7 +152,7 @@ const LineaTiempo = () => {
                     <div className={styles.headerLine}>
                         <h2>LÍNEA DE TIEMPO</h2>
                         <h3>
-                            Más de 83 años de <br />
+                            Más de 83 años<br />
                             <span>creciendo juntos</span>
                         </h3>
                         <p>
