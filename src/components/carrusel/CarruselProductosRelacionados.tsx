@@ -50,7 +50,7 @@ const CarruselProductosRelacionados = ({ productosRelacionados }: Props) => {
                                 >
                                     <CardComponent
                                         productContents={item}
-                                        onClick={() => { if (item.titulo && item.marca) { handleClickViewVideo(item.titulo, item.marca?.name) } }}
+                                        onClick={() => { if (item.slug && item.marca) { handleClickViewVideo(item.slug, item.marca?.slug) } }}
                                     />
                                 </SwiperSlide>
                             ))}
