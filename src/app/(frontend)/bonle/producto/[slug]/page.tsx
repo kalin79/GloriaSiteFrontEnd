@@ -4,7 +4,7 @@ import BannerPrincipalComponent from "@/components/bonle/BannerProductoMain";
 import DetallePrincipalComponent from "@/components/bonle/DetalleMainProducto";
 // import BannerInternoComponent from "@/components/bonle/BannerProInterna";
 import TabsComponent from "@/components/bonle/TabsPro";
-import CarruselProductsRelacionadosComponent from "@/components/pro/CarruselProductosRelacionados";
+import CarruselProductsRelacionadosComponent from "@/components/bonle/CarruselProductosRelacionados";
 // import { SlugInterface } from '@/interfaces/slug';
 
 import { ProductInterface } from '@/interfaces/producto';

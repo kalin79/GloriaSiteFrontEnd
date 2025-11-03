@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image'
 import { ProductInterface } from '@/interfaces/producto';
-
+import SanitizedHtml from '@/components/SanitizedHtml';
 import styles from '@/styles/scss/marcabonle.module.scss';
 
 interface productParameters {
@@ -26,8 +26,8 @@ const CardProProducto = ({ productContents, onClick }: productParameters) => {
                 <Image src={productContents.image_producto || '/pO1M.png'} width={656} height={858} alt={productContents.titulo || 'producto'} />
             </div>
             <div className={styles.footerCardBox}>
-                <h4 className=''>{productContents.titulo ?? ''}</h4>
-                <h2 className=''>{productContents.subtitulo ?? ''}</h2>
+                <h4 className=''><SanitizedHtml html={productContents.titulo ?? ''} /></h4>
+                <h2 className=''><SanitizedHtml html={productContents.subtitulo ?? ''} /></h2>
             </div>
         </div>
     )

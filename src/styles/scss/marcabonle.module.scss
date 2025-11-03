@@ -1958,14 +1958,120 @@
 
 
         @media screen and (min-width: 768px) {
-            padding-top: 6rem;
+            padding-top: 4rem;
+        }
+
+        .cardPrduct {
+            background: $azulP;
+            // height: 552px;
+            overflow: hidden;
+            border-radius: 10px;
+            position: relative;
+            // margin-bottom: 1.8rem;
+            width: 100%;
+            cursor: pointer;
+
+            .footerCardBox {
+                height: auto;
+                box-sizing: border-box;
+                padding: 1rem 0rem;
+
+                @media screen and (min-width: 992px) {
+                    padding: 1rem 2rem;
+                }
+
+                h4 {
+                    font-size: .95rem;
+                    line-height: 1.5em;
+                    font-weight: 400;
+                    font-family: var(--fuente-misti), sans-serif;
+                    color: white;
+                    text-align: center;
+
+
+                    @media screen and (min-width: 992px) {
+                        font-size: 1.125rem;
+                        line-height: 1.25em;
+                    }
+                }
+
+                h2 {
+                    text-align: center;
+                    font-size: .85rem;
+                    line-height: 1.15em;
+                    font-weight: 400;
+                    font-family: var(--fuente-misti), sans-serif;
+                    color: rgba($celesteP, 1);
+
+                    @media screen and (min-width: 992px) {
+                        font-size: 1rem;
+                        line-height: 1.5em;
+                    }
+                }
+            }
+
+            .bodyCardBox {
+                height: 240px;
+                background: $celesteP;
+                border-radius: 0 0 10px 10px;
+                padding: 0rem;
+                box-sizing: border-box;
+                overflow: hidden;
+
+                @media screen and (min-width: 768px) {
+                    height: 360px;
+                }
+
+                @media screen and (min-width: 992px) {
+                    height: 360px;
+                }
+
+                @media screen and (min-width: 1200px) {
+                    height: 380px;
+                }
+
+                @media screen and (min-width: 1400px) {
+                    height: 480px;
+                }
+
+                img {
+                    width: 100%;
+                    /* La imagen ocupa todo el ancho de la caja */
+                    height: 100%;
+                    /* La imagen ocupa todo el alto de la caja */
+                    object-fit: contain;
+                    /* Mantiene la proporción sin distorsión */
+                }
+
+            }
+
+            .recetacontent {
+                position: absolute;
+                top: 1rem;
+                left: .5rem;
+
+                @media screen and (min-width: 768px) {
+                    left: 1.5rem;
+                }
+
+                img {
+                    width: 25px;
+                    height: auto;
+                    object-fit: contain;
+
+                    @media screen and (min-width: 768px) {
+                        width: 42px;
+                    }
+                }
+
+            }
         }
 
         .titularRelacionados {
             font-family: var(--font-misti), sans-serif;
             font-size: 1.95rem;
             line-height: 1em;
-            color: rgba($celesteP, 1);
+            color: white;
             font-weight: 300;
 
             @media screen and (min-width: 992px) {
