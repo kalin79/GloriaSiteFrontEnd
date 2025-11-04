@@ -1,6 +1,6 @@
 'use client';
 import { useCallback, useEffect, useRef, useState } from "react";
-import { getListadoProductos } from '@/actions/marca/producto/getListadoProductos';
+import { getListadoProductos, getListadoProductosInput } from '@/actions/marca/producto/getListadoProductos';
 // import Image from 'next/image'
 import { useRouter } from "next/navigation";
 import { ProductoHomeInterface, PaginationHomeInterface, TagsAux } from '@/interfaces/producto';
@@ -43,6 +43,7 @@ const CarruselProductos = ({ productosData, paginationData, tagsData }: Props) =
     const [pagination, setPagination] = useState<PaginationHomeInterface>(paginationData);
     const [optionSelect, setOptionSelect] = useState<SingleValue<OptionType>>(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [query, setQuery] = useState("");
     // Convertimos el arreglo en opciones que entienda react-select
     const options: OptionType[] = [
         { value: 0, label: 'Ver todos' }, // 👈 opción adicional
@@ -54,6 +55,7 @@ const CarruselProductos = ({ productosData, paginationData, tagsData }: Props) =
     const swiperRef = useRef<SwiperRef | null>(null);
     const handleChange = async (newValue: SingleValue<OptionType>) => {
         setOptionSelect(newValue);
+        setQuery("")
         const response = await getListadoProductos(1, newValue?.value);
         const { productos, pagination } = response;
 
@@ -127,7 +129,42 @@ const CarruselProductos = ({ productosData, paginationData, tagsData }: Props) =
 
 
 
+    const handleSearch = async () => {
+        setOptionSelect(null);
+        if (!query.trim()) {
+            try {
+                const response = await getListadoProductos(pagination.current_page + 1);
 
+                const { productos: nuevos, pagination: nuevaPaginacion } = response;
+
+                setProductos(prev => [...prev, ...nuevos]);
+                setPagination(nuevaPaginacion);
+            } finally {
+                setIsLoading(false);
+            }
+        } else {
+
+            // setLoading(true);
+            try {
+
+                const response = await getListadoProductosInput(1, query);
+
+                const { productos: nuevos, pagination: nuevaPaginacion } = response;
+
+                setProductos(nuevos);
+                setPagination(nuevaPaginacion);
+            } finally {
+                setIsLoading(false);
+            }
+        }
+    };
+    // 🔹 Detectar Enter en el input
+    // const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    //     alert(2)
+    //     if (e.key === "Enter") {
+    //         handleSearch();
+    //     }
+    // };
     return (
         <div className={`${styles.sectionHomeProductos}`}>
             <div className={`containerFluidLeft2`}>
@@ -169,9 +206,29 @@ const CarruselProductos = ({ productosData, paginationData, tagsData }: Props) =
                                     classNamePrefix="customSelectHomeProducts"
                                 />
                             </div>
-                            {/* <div>
-                            <Link href={`/marca/producto/gloria`} className='buttonBtn' title='Ir a productos'>Ver todos los productos</Link>
-                        </div> */}
+                            <div className={styles.inputSearchBox}>
+                                <p className={styles.parrofoTagHome}>
+                                    Buscar Productos:
+                                </p>
+                                <div className={styles.buscadorInfo}>
+                                    <input
+                                        type="text"
+                                        value={query}
+                                        placeholder="Buscar productos ..."
+                                        onChange={(e) => setQuery(e.target.value)}
+                                    // onKeyDown={handleKeyDown} // 👈 Escucha Enter aquí
+                                    />
+                                    <button
+                                        onClick={handleSearch}
+                                        type="submit" // importante: submit para que Enter también dispare submit
+                                        className="bg-orange-500 text-white rounded-lg px-4 py-2 disabled:opacity-50"
+                                    // disabled={loading}
+                                    >
+                                        {/* {loading ? "Buscando..." : "Buscar"} */} buscar
+                                    </button>
+                                </div>
+
+                            </div>
                         </div>
                         <div className={`${styles.bodyContainer}`}>
                             {/* <pre>{JSON.stringify(productos)}</pre> */}

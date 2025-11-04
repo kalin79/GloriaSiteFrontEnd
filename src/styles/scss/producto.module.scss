@@ -375,13 +375,55 @@
                     grid-column: 1 / -1;
                     position: relative;
                     z-index: 20;
+                    border: 0px solid red;
+                    display: flex;
+                    justify-content: flex-start;
+                    gap: 1rem;
+                    flex-direction: column;
 
                     @media screen and (min-width: 992px) {
-                        grid-column: 1 / span 3;
+                        flex-direction: row;
                     }
 
                     p {
                         margin-bottom: 1rem;
+                    }
+
+                    .inputSearchBox {
+                        .buscadorInfo {
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: flex-start;
+                            gap: 1rem;
+                            flex-direction: column;
+
+                            @media screen and (min-width: 992px) {
+                                flex-direction: row;
+                            }
+
+                            button {
+                                background: rgba($celesteP, 1);
+                                border-radius: 30px;
+                                color: $azulP !important;
+                                border: 0;
+                            }
+                        }
+
+                        input[type="text"] {
+                            border: 1px solid $celesteP;
+                            height: 56px;
+                            background: transparent;
+                            border-radius: 30px;
+                            padding: 1rem 2rem;
+                            box-sizing: border-box;
+                            color: white;
+                            font-weight: 300;
+
+                            &:focus {
+                                outline: none;
+                                border: 1px solid $celesteP;
+                            }
+                        }
                     }
 
                 }
