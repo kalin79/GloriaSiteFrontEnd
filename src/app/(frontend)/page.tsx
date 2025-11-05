@@ -30,7 +30,7 @@ export default async function Home() {
             <div className="containerHomeMain">
                 <MarcasComponent marcas={marcas} />
                 <CarruselVideosHomeComponent videos={videos} titularVideo="Contenido hecho para ti" tipo="video" />
-                <CarruselCampanasComponent videosCampana={campanas} titularCampana="Contenido hecho para ti" subtitularCampana="Descubre lo que hacemos y los mensajes que nos inspiran y nos acercan a ti." />
+                <CarruselCampanasComponent videosCampana={campanas} titularCampana="Nuestras Campañas" subtitularCampana="Ser mamá o papá es una aventura que se vive con el corazón. Por eso, celebramos y reconocemos ese esfuerzo diario que construye un futuro lleno de amor y esperanza." />
                 {/* <CarruselVideosHorizontalComponent videosHorizontales={videosHorizontales} titularVideoH="Tendencia en la" subTitularVideoH="comunidad Gloria Contigo" /> */}
                 <CarruselProductsComponent productosData={productos} paginationData={pagination} tagsData={tags} />
 
