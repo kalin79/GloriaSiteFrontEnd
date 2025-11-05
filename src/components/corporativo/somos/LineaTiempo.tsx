@@ -135,7 +135,7 @@ const LineaTiempo = () => {
         { id: 'area21', x: 2092, y: 93, titulo: 'Apoyando al Perú <br />durante la <br />pandemia', anno: '2021', xlabel: 2022, ylabel: 0, active: false, xp: 2103, yp: 71, descripcion: `Fuimos reconocidos por Hombro a Hombro e INDECI como una de las empresas e instituciones que más han aportado a la lucha contra el COVID-19 en Perú.` },
         { id: 'area22', x: 2191, y: 59, titulo: 'Adquisición de <br />Soporte', anno: '2023', xlabel: 2137, ylabel: 96, active: false, xp: 2198, yp: -23, descripcion: `Se concretó la adquisición de Soprole, empresa chilena líder en lácteos.` },
         { id: 'area23', x: 2278, y: 51, titulo: 'Compra de <br />Ecuajugos', anno: '2024', xlabel: 2237, ylabel: -16, active: false, xp: 2282, yp: 90, descripcion: `Se realizó la compra de Ecuajugos, consolidando nuestra presencia en Ecuador.` },
-        { id: 'area24', x: 2360, y: 58, titulo: 'Nueva imagen <br />de Gloria', anno: '2025', xlabel: 2306, ylabel: 94, active: false, xp: 2367, yp: -19, descripcion: `` },
+        { id: 'area24', x: 2360, y: 58, titulo: 'Nueva imagen <br />de Gloria', anno: '2025', xlabel: 2306, ylabel: 94, active: false, xp: 2367, yp: -19, descripcion: `Se renueva la identidad visual de la marca, reflejando su evolución y proyección hacia el futuro.` },
     ];
 
     const handleClick = (area: Area) => {
