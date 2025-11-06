@@ -134,7 +134,7 @@
         font-family: var(--font-obvio), sans-serif;
         line-height: 2.85rem;
         font-size: 3em;
-        color: #E8ECFA;
+        color: #fff;
         font-weight: 700;
 
         @media screen and (min-width: 992px) {
@@ -500,7 +500,7 @@
     }
 
     .titularHeader {
-        margin-bottom: 3rem;
+        margin-bottom: 1.5rem;
 
         .titularMini {
             font-family: var(--font-obvio), sans-serif;
@@ -537,6 +537,7 @@
             line-height: 1.5em;
             color: rgba(white, 1);
             font-weight: 400;
+            margin-top: 1rem;
 
             @media screen and (min-width: 992px) {
                 font-size: 1rem;
@@ -1104,7 +1105,7 @@
                     font-family: var(--font-poppins), sans-serif;
                     font-size: 1.125rem;
                     line-height: 1.2em;
-                    color: #E8ECFA;
+                    color: #fff;
                     font-weight: 400;
 
                     @media screen and (min-width: 992px) {
@@ -1862,7 +1863,7 @@
                 font-family: var(--font-misti), sans-serif;
                 font-size: .85rem;
                 line-height: 1.5em;
-                color: #E8ECFA;
+                color: #fff;
                 font-weight: 400;
                 text-align: center;
 

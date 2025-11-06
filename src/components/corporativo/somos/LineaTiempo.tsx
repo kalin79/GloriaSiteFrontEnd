@@ -48,13 +48,13 @@ const LineaTiempo = () => {
 
         // Inicializar Draggable
         Draggable.create(image, {
+            type: 'x',          // ✅ Solo horizontal
             bounds: {
                 minX,
-                minY,
+                minY: 0,
                 maxX,
-                maxY,
+                maxY: 0,
             },
-            type: 'x,y',
             inertia: true, // Suaviza el movimiento al soltar
             onDrag: function () {
                 gsap.set(image, {

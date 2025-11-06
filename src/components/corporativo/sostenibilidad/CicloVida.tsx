@@ -15,7 +15,7 @@ const CicloVida = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const plantaData = [
         {
-            img: 'vaca11.svg',
+            img: '/vaca11.svg',
             descripcion: `<h2>
             Apoyamos la sostenibilidad agropecuaria de más de 19,000 ganaderos,  capacitándolos en el buen uso de la tierra, el cuidado del agua y la producción responsable de alimentos. 
             </h2>
@@ -25,7 +25,7 @@ const CicloVida = () => {
                                 `
         },
         {
-            img: 'ciclo2.svg',
+            img: '/ciclo2.svg',
             descripcion: `<h2>
             Cambiamos toda nuestra matriz energética de petróleo a gas natural, el combustible fósil más limpio del mundo.
             </h2>
@@ -34,7 +34,7 @@ const CicloVida = () => {
                                 </p>`
         },
         {
-            img: 'ciclo3.svg',
+            img: '/ciclo3.svg',
             descripcion: `<h2>
                 Transportamos nuestros productos a todo el país optimizando las rutas de distribución para reducir la emisión de gases de efecto invernadero.
             </h2>
@@ -45,7 +45,7 @@ const CicloVida = () => {
         },
 
         {
-            img: 'ciclo4.svg',
+            img: '/ciclo4.svg',
             descripcion: `<h2>
             Gracias a una cadena de frío eficiente y nuestra tecnología aséptica, llevamos frescura y calidad a cada rincón del país.
             </h2>
@@ -118,10 +118,11 @@ const CicloVida = () => {
                         <div className={styles.infoTabContainer} ref={contentRef}>
                             <div className={styles.bannerContainer}>
                                 <Image
-                                    src={`/${plantaData[btnActive].img}`}
+                                    src={`${plantaData[btnActive].img}`}
                                     width={245}
                                     height={210}
                                     alt=''
+                                    unoptimized
                                 />
                             </div>
                             <div className={styles.mantaContainer}>
