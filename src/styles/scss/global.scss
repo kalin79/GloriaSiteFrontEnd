@@ -1595,3 +1595,38 @@ h4 {
         }
     }
 }
+
+// Flecha derecha personalizada
+.swiper-button-next-custom {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    // Icono de flecha (puedes usar SVG o texto)
+    &::after {
+        content: '>';
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    &.disabled {
+        opacity: 0.3;
+        pointer-events: none;
+    }
+
+    &:hover:not(.disabled) {
+        background: rgba(0, 0, 0, 0.8);
+    }
+}

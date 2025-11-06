@@ -17,7 +17,9 @@ export default async function MarcaPage() {
     const response = await getMarcaBySlug('gloria');
     const { banner, slug: slugMarca }: { banner: VideoInterface, slug: string } = response.data;
     const { data } = response.data.videos;
+    // const { data: dataCamapana, pagination: paginationCampana } = response.data.campanas;
     const { data: dataCamapana } = response.data.campanas;
+
 
     return (
         <>

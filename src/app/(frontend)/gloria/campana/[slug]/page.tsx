@@ -38,7 +38,7 @@ export default async function CampanaPage({ params }: CampanaPageProps) {
                 <BannerPrincipalComponent multimediaContents={campana} />
                 <div className={`${styles.campanaContainerPage}`}>
                     <DetalleComponent multimediaContents={campana} />
-                    <CarruselCampanasComponent videosCampana={related_video} titularCampana="Otras campañas" subtitularCampana="Videos hechos por especialistas para guiarte y acompañarte." />
+                    <CarruselCampanasComponent videosCampana={related_video} titularCampana="Nuestras Campañas" subtitularCampana="Ser mamá o papá es una aventura que se vive con el corazón. Por eso, celebramos y reconocemos ese esfuerzo diario que construye un futuro lleno de amor y esperanza." />
                 </div>
             </div>
         </>

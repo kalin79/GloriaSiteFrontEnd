@@ -10,6 +10,15 @@ export interface CampanaInterfaceAux {
     video: string; // ID de video (por ejemplo, Vimeo o YouTube)
     fecha_estreno?: string;
 }
+export interface PaginationInterface {
+    current_page: number;
+    last_page: number;
+    per_page: number;
+    total: number;
+    next_page_url: string | null;
+    prev_page_url: string | null;
+    has_more_pages: boolean;
+}
 export interface CampanaLegalesInterfaces {
     id: number;
     titulo: string;

@@ -35,7 +35,7 @@ const NavBar = () => {
                         <div>
                             <div className={styles.logoContainer}>
                                 <Link href='/'>
-                                    <Image src='/logoCorp.svg' width="120" height='40' alt='Gloria' />
+                                    <Image src='/logoprincipal.svg' width="120" height='40' alt='Gloria' />
                                 </Link>
                             </div>
                         </div>
@@ -82,7 +82,7 @@ const NavBar = () => {
                         <div>
                             <div className={styles.logoContainer}>
                                 <Link href='/' onClick={handleCloseMenu}>
-                                    <Image src='/logoCorp.svg' width="120" height='40' alt='Gloria' />
+                                    <Image src='/logoprincipal.svg' width="120" height='40' alt='Gloria' />
                                 </Link>
                             </div>
                             <div className={styles.listaMenuContainer}>

@@ -6,7 +6,7 @@ import SessionAuthProvider from '@/context/SessionAuthProvider'
 import 'bootstrap/dist/css/bootstrap.min.css'; // Importa el CSS de Bootstrap
 import "@/styles/scss/global.scss";
 import NavBarComponent from "@/components/navbar/NavBar";
-import DomChangeWatcher from "@/components/DomChangeWatcher";
+// import DomChangeWatcher from "@/components/DomChangeWatcher";
 import FooterComponent from "@/components/footer/Footer";
 // import SuscribeteComponent from "@/components/suscribete/Formulario";
 
@@ -73,7 +73,7 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${obvio.variable} ${poppins.variable} ${misti.variable} ${round8.variable}`}>
       <body>
-        <DomChangeWatcher />
+        {/* <DomChangeWatcher /> */}
         <GTM />
         <GTMNoScript />
         <SessionAuthProvider>
