@@ -48,14 +48,16 @@
 
     .titularBanner {
         font-family: var(--font-poppins), sans-serif;
-        line-height: 1.5rem;
-        font-size: 1.25em;
+        line-height: 2.5rem;
+        font-size: 2.25em;
         color: white;
-        font-weight: 400;
+        font-weight: 500;
 
         @media screen and (min-width: 992px) {
-            line-height: 1.15em;
-            font-size: 2.85rem;
+            // line-height: 1.15em;
+            // font-size: 2.85rem;
+            line-height: 1.08em;
+            font-size: 3rem;
         }
 
         @media screen and (min-width: 1200px) {
@@ -123,7 +125,7 @@
             gap: 1rem;
 
             >div {
-                grid-column: 2 / -1;
+                grid-column: 1 / -1;
                 padding-left: 0rem;
 
                 @media screen and (min-width: 768px) {
@@ -190,7 +192,8 @@
     // @media (min-width: 992px) and (min-height: 585px) {
     @media (min-width: 992px) and (min-height: 681px) {
         margin-top: 4rem;
-        height: calc(100vh - 4rem);
+        height: 580px;
+        // height: calc(100vh - 4rem);
     }
 
     @media (min-width: 1400px) and (min-height: 681px) {
@@ -304,6 +307,14 @@
         span {
             font-weight: 400;
         }
+
+        br {
+            display: none;
+
+            @media screen and (min-width: 992px) {
+                display: block;
+            }
+        }
     }
 
     .migasTitular {
@@ -321,6 +332,10 @@
 
         &.principal {
             color: #E7F6FB;
+        }
+
+        br {
+            display: none;
         }
     }
 
@@ -752,10 +767,10 @@
 
     .titularBanner {
         font-family: var(--font-poppins), sans-serif;
-        line-height: 1.5rem;
-        font-size: 1.25em;
+        line-height: 2.5rem;
+        font-size: 2.25em;
         color: #fff;
-        font-weight: 400;
+        font-weight: 500;
 
         @media screen and (min-width: 992px) {
             line-height: 1.15em;

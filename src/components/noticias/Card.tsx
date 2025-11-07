@@ -1,5 +1,6 @@
 'use client';
 import { NoticiaInterface } from '@/interfaces/noticia';
+import SanitizedHtml from "@/components/SanitizedHtml";
 import Image from 'next/image';
 import styles from '@/styles/scss/noticias.module.scss';
 
@@ -35,7 +36,7 @@ const Card = ({ noticiaContent, onClick }: Props) => {
                         <Image src='/fechaIcon.svg' height={16} width={16} alt='' />
                         <h4>{formatearFecha(noticiaContent.fecha_publicacion)}</h4>
                     </div>
-                    <h2>{recortarTexto(noticiaContent.titulo, 70)}</h2>
+                    <h2 className='sinBr'><SanitizedHtml html={recortarTexto(noticiaContent.titulo, 70)} /></h2>
                     <h3>{noticiaContent.categoria}</h3>
                 </div>
             </div>

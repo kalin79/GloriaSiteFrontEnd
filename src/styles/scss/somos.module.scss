@@ -109,11 +109,11 @@
 }
 
 .LineaContainer {
-    padding: 4rem 0;
+    padding: 0rem 0 0;
     border: 0px solid red;
 
     @media screen and (min-width: 992px) {
-        padding: 0rem 0 4rem;
+        padding: 0rem 0 0rem;
     }
 
     .headerLine {
@@ -364,6 +364,16 @@
                             background: rgba($celesteP, .2);
                             padding: 1rem 1.75rem;
 
+                            img {
+                                width: 15px;
+                                height: auto;
+                                object-fit: contain;
+
+                                @media screen and (min-width: 992px) {
+                                    width: 30px;
+                                }
+                            }
+
                             &:nth-child(1) {
                                 left: 0;
                             }
@@ -397,10 +407,13 @@
         letter-spacing: -.05em;
         color: #DD1A20;
         margin-bottom: .5rem;
+        text-align: center;
 
         @media screen and (min-width: 992px) {
             font-size: 1em;
             line-height: 1.25em;
+            text-align: left;
+
         }
     }
 

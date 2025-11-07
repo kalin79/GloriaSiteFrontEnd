@@ -55,7 +55,7 @@ const HeaderMarca = ({ multimediaContents, viewLogo = true }: multimediaParamete
                             <div className={styles.gridContainer}>
                                 <div>
                                     <h1 className={styles.titularBanner}><SantizedHtml html={multimediaContents.title_large || ''} /></h1>
-                                    <HtmlSafeRender html={multimediaContents.elenco || ''} className={styles.descripcionBanner} />
+                                    <HtmlSafeRender html={multimediaContents.descripcion || ''} className={styles.descripcionBanner} />
                                     <button className={`btnStandart ${styles.btnStandart}`} onClick={() => setShowVideo(true)}>
                                         <span>Reproducir </span>
                                         <Image src='/play4.svg' width={14} height={16} alt="" />

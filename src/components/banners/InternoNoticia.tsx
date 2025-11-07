@@ -43,7 +43,7 @@ const Interno = ({ dataBanner }: Props) => {
                 <div className={styles.gridContainer}>
                     <div>
                         <div className={styles.breadcrumbContainer}>
-                            <p className={styles.migasTitular}>GLORIA</p> <ArrowSvg /> <Link className={styles.migasTitular} href='/noticias'>NOTICIAS</Link> <ArrowSvg /> <Link className={`${styles.migasTitular} ${styles.principal}`} href={dataBanner.slug} >{recortarTexto(dataBanner.titulo, 40)}</Link>
+                            <p className={styles.migasTitular}>GLORIA</p> <ArrowSvg /> <Link className={styles.migasTitular} href='/noticias'>NOTICIAS</Link> <ArrowSvg /> <Link className={`${styles.migasTitular} ${styles.principal}`} href={dataBanner.slug} ><SanitizedHtml html={recortarTexto(dataBanner.titulo, 40)} /></Link>
                         </div>
                         <div className={styles.fechaContainer}>
                             <div><SanitizedHtml html={dataBanner.categoria} /></div>
