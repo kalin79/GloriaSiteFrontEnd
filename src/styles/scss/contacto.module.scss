@@ -181,12 +181,20 @@
                 border: 0px solid red;
 
                 img {
-                    width: 60px;
+                    // width: 60px;
                     height: auto;
                     object-fit: contain;
 
-                    @media screen and (min-width: 768px) {
-                        width: 80px;
+                    // @media screen and (min-width: 768px) {
+                    //     width: 80px;
+                    // }
+                    &.icon1,
+                    &.icon2 {
+                        width: 90px;
+                    }
+
+                    &.icon3 {
+                        width: 78px;
                     }
                 }
             }

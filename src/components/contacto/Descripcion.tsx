@@ -14,7 +14,7 @@ const Descripcion = () => {
                 <div className={styles.listadoContactoContainer}>
                     <div className={styles.cardContacto}>
                         <div className={styles.iconContainer}>
-                            <Image src={`/iconContacto1.svg`} width={94} height={87} alt='Línea telefónica gratuitas' />
+                            <Image src={`/iconContacto1.svg`} className={styles.icon1} width={94} height={87} alt='Línea telefónica gratuitas' />
                         </div>
                         <div className={styles.infoContainer}>
                             <h2>Línea telefónica gratuitas</h2>
@@ -28,7 +28,7 @@ const Descripcion = () => {
                     </div>
                     <div className={styles.cardContacto}>
                         <div className={styles.iconContainer}>
-                            <Image src={`/iconContacto2.svg`} width={101} height={70} alt='Correo electrónico:' />
+                            <Image src={`/iconContacto2.svg`} className={styles.icon2} width={101} height={70} alt='Correo electrónico:' />
                         </div>
                         <div className={styles.infoContainer}>
                             <h2>Correo electrónico:</h2>
@@ -43,7 +43,7 @@ const Descripcion = () => {
                     </div>
                     <div className={`${styles.cardContacto} ${styles.bgAzul}`}>
                         <div className={styles.iconContainer}>
-                            <Image src={`/iconContacto3.svg`} width={79} height={106} alt='Correo electrónico:' />
+                            <Image src={`/iconContacto3.svg`} className={styles.icon3} width={79} height={106} alt='Correo electrónico:' />
                         </div>
                         <div className={styles.infoContainer}>
                             <h2>Línea ética*</h2>
