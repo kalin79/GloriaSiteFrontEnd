@@ -39,7 +39,7 @@ export async function getListadoMarcaProductos(page: number, marca: string, tag?
     return resultado;
 }
 
-export async function getListadoProductos(page: number, tag?: number) {
+export async function getListadoProductos(page: number, tag?: string) {
     const API_TOKEN = process.env.NEXT_PUBLIC_AUTHORIZATION_FORM; // Acceso a variable de entorno
     const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
     const username = process.env.BASIC_AUTH_USER;
@@ -52,7 +52,7 @@ export async function getListadoProductos(page: number, tag?: number) {
 
     // Ejemplo de envío a una API externa
     let _url_ = `${apiUrl}productos/filtro-tags?page=${page}`;
-    if (tag && tag > 0) {
+    if (tag && tag.length > 0) {
         _url_ = `${apiUrl}productos/filtro-tags?page=${page}&tags[]=${tag}`;
     }
 

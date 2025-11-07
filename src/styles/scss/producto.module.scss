@@ -389,26 +389,7 @@
                         margin-bottom: 1rem;
                     }
 
-                    .inputSearchBox {
-                        .buscadorInfo {
-                            display: flex;
-                            justify-content: flex-start;
-                            align-items: flex-start;
-                            gap: 1rem;
-                            flex-direction: column;
-
-                            @media screen and (min-width: 992px) {
-                                flex-direction: row;
-                            }
-
-                            button {
-                                background: rgba($celesteP, 1);
-                                border-radius: 30px;
-                                color: $azulP !important;
-                                border: 0;
-                            }
-                        }
-
+                    .buscadorInfo {
                         input[type="text"] {
                             border: 1px solid $celesteP;
                             height: 56px;
@@ -425,7 +406,6 @@
                             }
                         }
                     }
-
                 }
 
                 .bodyContainer {

@@ -56,7 +56,7 @@ const CarruselProductos = ({ productosData, paginationData, tagsData }: Props) =
     const handleChange = async (newValue: SingleValue<OptionType>) => {
         setOptionSelect(newValue);
         setQuery("")
-        const response = await getListadoProductos(1, newValue?.value);
+        const response = await getListadoProductos(1, '');
         const { productos, pagination } = response;
 
         setProductos(productos);
@@ -76,7 +76,8 @@ const CarruselProductos = ({ productosData, paginationData, tagsData }: Props) =
         try {
             let response = await getListadoProductos(pagination.current_page + 1);
             if (optionSelect && optionSelect.value > 0) {
-                response = await getListadoProductos(pagination.current_page + 1, optionSelect.value);
+                // response = await getListadoProductos(pagination.current_page + 1, optionSelect.value);
+                response = await getListadoProductos(pagination.current_page + 1, '');
             }
 
             const { productos: nuevos, pagination: nuevaPaginacion } = response;
