@@ -126,10 +126,11 @@ export async function getListadoProductosMarca(page: number, slugmarca: string, 
     // Ejemplo de envío a una API externa
     let _url_ = '';
     if (tag && tag > 0) {
-        _url_ = `${apiUrl}productos/filtro-tags?marca=${slugmarca}&page=${page}&categoria_id=${tag}`;
+        _url_ = `${apiUrl}productos/filtro-tags?marca=${slugmarca}&page=${page}&categoria_id=${tag}&view_home=1`;
     } else {
-        _url_ = `${apiUrl}productos/filtro-tags?marca=${slugmarca}&page=${page}`;
+        _url_ = `${apiUrl}productos/filtro-tags?marca=${slugmarca}&page=${page}&view_home=1`;
     }
+
 
     const response = await fetch(_url_, {
         method: 'GET',
