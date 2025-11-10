@@ -51,9 +51,9 @@ export async function getListadoProductos(page: number, tag?: string) {
     }
 
     // Ejemplo de envío a una API externa
-    let _url_ = `${apiUrl}productos/filtro-tags?page=${page}`;
+    let _url_ = `${apiUrl}productos/filtro-tags?page=${page}&view_home=1`;
     if (tag && tag.length > 0) {
-        _url_ = `${apiUrl}productos/filtro-tags?page=${page}&tags[]=${tag}`;
+        _url_ = `${apiUrl}productos/filtro-tags?page=${page}&tags[]=${tag}&view_home=1`;
     }
 
     const response = await fetch(_url_, {
@@ -89,7 +89,7 @@ export async function getListadoProductosInput(page: number, value: string) {
     }
 
     // Ejemplo de envío a una API externa
-    const _url_ = `${apiUrl}productos/filtro-tags?page=${page}&search_title=${value}`;
+    const _url_ = `${apiUrl}productos/filtro-tags?page=${page}&search_title=${value}&view_home=1`;
     // console.log(_url_)
     const response = await fetch(_url_, {
         method: 'GET',
