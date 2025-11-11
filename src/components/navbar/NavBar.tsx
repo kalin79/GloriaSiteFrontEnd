@@ -160,7 +160,7 @@ const NavBar = () => {
                                         </div>
                                     </div>
                                     <div className={styles.redesContainer}>
-                                        <a href="https://www.gloriateescucha.com/" target='_blank'>
+                                        <a href="https://www.linkedin.com/company/gloria-peru/posts/?feedView=all" target='_blank'>
                                             <Image src="https://s3.us-east-1.amazonaws.com/img.qa.gloria.com.pe/multimedia/16/16-img-1761954294.svg" width={42} height={42} alt='Gloria' />
                                         </a>
                                         <p className='parrafoMediano celesteTxt'>

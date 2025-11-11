@@ -40,6 +40,10 @@
             height: 54px;
         }
 
+        @media screen and (min-width: 1600px) {
+            right: 7rem;
+        }
+
         span {
             font-family: var(--font-misti), sans-serif;
             font-size: 1rem;

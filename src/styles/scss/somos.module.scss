@@ -398,6 +398,11 @@
     background: $celesteP;
     padding-top: 0rem;
     overflow: hidden;
+    padding-bottom: 0rem;
+
+    @media screen and (min-width: 992px) {
+        padding-bottom: 3rem;
+    }
 
     .subTitularMain {
         font-family: var(--font-misti), sans-serif;
@@ -443,7 +448,11 @@
         height: auto;
 
         @media screen and (min-width: 992px) {
-            height: 716px;
+            height: 500px;
+        }
+
+        @media screen and (min-width: 1200px) {
+            height: 600px;
         }
 
         >div {
@@ -465,7 +474,11 @@
                     height: auto;
 
                     @media screen and (min-width: 992px) {
-                        height: 716px;
+                        height: 500px;
+                    }
+
+                    @media screen and (min-width: 1200px) {
+                        height: 600px;
                     }
 
                     img {
@@ -474,7 +487,11 @@
                         object-fit: contain;
 
                         @media screen and (min-width: 992px) {
-                            height: 716px;
+                            height: 500px;
+                        }
+
+                        @media screen and (min-width: 1200px) {
+                            height: 600px;
                         }
                     }
                 }

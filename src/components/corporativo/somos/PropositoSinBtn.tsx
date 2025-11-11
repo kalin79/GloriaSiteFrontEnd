@@ -8,7 +8,7 @@ const PropositoSinBtn = () => {
                 <div className={`${styles.gridContainer}`}>
                     <div>
                         <div className={styles.containerBoy}>
-                            <Image src="/boy.webp" width={711} height={1127} alt='Niña tomando leche Gloria' />
+                            <Image src="/nina.webp" width={915} height={1109} alt='Niña tomando leche Gloria' />
                         </div>
                     </div>
                     <div>
