@@ -39,7 +39,7 @@ const Descripcion = () => {
                                 `
         },
         {
-            img: 'trujillo1.webp',
+            img: 'trujillo.webp',
             descripcion: `<h2>Nuestra planta de Trujillo, inaugurada en 2003, es un orgullo para Gloria y para todo el norte del país.</h2>
                                 <p>
                                 Es la planta de concentración de leche más grande de la región. Aquí recibimos la leche de mayor calidad de la zona y, bajo los más estrictos estándares de inocuidad, la transformamos en productos confiables, nutritivos y capaces de mantenerse frescos por largos periodos. Además, seguimos innovando con la próxima implementación de líneas de producción de jugos naturales y néctares, junto con el desarrollo de nuevos envases, siempre pensando en ofrecer lo mejor para las mesas del Perú.
