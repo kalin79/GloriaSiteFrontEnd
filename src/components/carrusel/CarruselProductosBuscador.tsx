@@ -1,14 +1,15 @@
 'use client';
 import { useCallback, useEffect, useRef, useState } from "react";
+import Image from 'next/image';
 // import { debounce } from 'lodash';
-import { getListadoProductos, getListadoProductosInput } from '@/actions/marca/producto/getListadoProductos';
+import { getListadoProductos, getListadoProductosInput, getListadoProductosCategorias, getListadoTodosProductosCateogria } from '@/actions/marca/producto/getListadoProductos';
 import { useRouter } from "next/navigation";
-import { ProductoHomeInterface, PaginationHomeInterface } from '@/interfaces/producto';
+import { ProductoHomeInterface, PaginationHomeInterface, CategoriaInterface } from '@/interfaces/producto';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 // import type { SwiperRef } from "swiper/react";
 import CardComponent from "@/components/producto/CardHome";
-
+import SanitizedHtml from "@/components/SanitizedHtml";
 // Estilos swiper
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -16,6 +17,7 @@ import 'swiper/css/pagination';
 
 import styles from '@/styles/scss/producto.module.scss';
 export interface ApiResponse {
+    categorias: CategoriaInterface[];
     productos: ProductoHomeInterface[];
     pagination: PaginationHomeInterface;
 }
@@ -27,10 +29,12 @@ interface Props {
 const CarruselProductosBuscador = ({ productosData, paginationData }: Props) => {
     const router = useRouter();
     const [productos, setProductos] = useState<ProductoHomeInterface[]>([]);
+    const [categorias, setCategorias] = useState<CategoriaInterface[]>([]);
     const [pagination, setPagination] = useState<PaginationHomeInterface>(paginationData);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const abortControllerRef = useRef<AbortController | null>(null);
+    const abortControllerRef2 = useRef<AbortController | null>(null);
     const [query, setQuery] = useState("");
     const handleClickViewVideo = (slug: string, marca: string) => {
         router.push(`/${marca}/producto/${slug}`)
@@ -40,6 +44,31 @@ const CarruselProductosBuscador = ({ productosData, paginationData }: Props) => 
         setProductos(productosData);
     }, [productosData]); // ← depende solo de productosIniciales
     // Búsqueda en API
+
+    // const cargarTodasCategorias = useCallback(() => {
+    //     setCategorias(categorias);
+    // }, [categorias]);
+
+    const handleFiltraCategoria = async (id: number) => {
+        try {
+            const response = await getListadoTodosProductosCateogria(id);
+            const productos = response.productos || [];
+            // 3. Actualizar estado
+            setProductos(productos);
+            setPagination(response.pagination);
+            if (productos.length === 0) {
+                setError('No se encontraron productos');
+            }
+        } catch (err: unknown) {
+            if (err instanceof Error && err.name !== 'AbortError') {
+                setError('Error en la búsqueda');
+                setProductos([]);
+            }
+        } finally {
+            setIsLoading(false);
+        }
+    }
+
 
     const buscarEnApi = useCallback(async (term: string) => {
         if (abortControllerRef.current) {
@@ -97,6 +126,44 @@ const CarruselProductosBuscador = ({ productosData, paginationData }: Props) => 
         }
     }, [query, cargarTodos, buscarEnApi]);
 
+
+    const buscarApiCategoria = useCallback(async () => {
+        if (abortControllerRef2.current) {
+            abortControllerRef2.current.abort();
+        }
+        const controller = new AbortController();
+        abortControllerRef2.current = controller;
+
+        // setIsLoading(true);
+        // setError(null);
+
+        try {
+            // 1. Búsqueda por NOMBRE
+            const response = await getListadoProductosCategorias();
+            const categoriasResult = response || [];
+
+            // 3. Actualizar estado
+            setCategorias(categoriasResult);
+
+            if (categoriasResult.length === 0) {
+                setError('No se encontraron productos');
+            }
+
+        } catch (err: unknown) {
+            if (err instanceof Error && err.name !== 'AbortError') {
+                // setError('Error en la búsqueda');
+                setCategorias([]);
+            }
+        } finally {
+            // setIsLoading(false);
+        }
+    }, []);
+
+    useEffect(() => {
+        buscarApiCategoria()
+        // cargarTodasCategorias()
+    }, [buscarApiCategoria])
+
     return (
         <div className={`${styles.sectionHomeProductos}`}>
             <div className={`containerFluidLeft2`}>
@@ -125,18 +192,49 @@ const CarruselProductosBuscador = ({ productosData, paginationData }: Props) => 
                     <div>
                         <div className={`${styles.headerContainer}`}>
                             <div>
-                                <p className={styles.parrofoTagHome}>
-                                    Buscar Producto:
-                                </p>
+                                {/* <p className={styles.parrofoTagHome}>
+                                    {JSON.stringify(categorias)}
+                                </p> */}
                                 <div className={styles.buscadorInfo}>
                                     <input
                                         type="text"
                                         value={query}
-                                        placeholder="Buscar productos ..."
+                                        placeholder="¿Buscas algún producto o categoría?"
                                         onChange={(e) => setQuery(e.target.value)}
                                     />
+                                    <Image src='/imgsearch2.svg' className={styles.imgBuscar} width='52' height='52' alt='' />
                                 </div>
 
+                            </div>
+                            <div className={styles.listCategoriaProductosHome}>
+                                <Swiper
+                                    spaceBetween={10}
+                                    centeredSlides={false}
+                                    slidesPerView={1} // Muestra 5 películas a la vez
+                                    navigation
+                                    grabCursor={true}
+                                    pagination={{ clickable: true }}
+                                    // autoplay={{ delay: 3000 }}
+
+                                    loop={false}
+                                    modules={[Navigation]}
+                                    className={`swiperNetflix swiperNetflixCategoriaHome ${styles.swiperNetflixCategoriaHome}`}
+                                    breakpoints={{
+                                        992: {
+                                            slidesPerView: 5
+                                        },
+                                    }}
+                                >
+                                    {categorias.map((item, index) => (
+                                        <SwiperSlide
+                                            // style={{ width: "auto" }}
+                                            key={index}
+                                            className={styles.slide}
+                                        >
+                                            <div className={styles.card} onClick={() => handleFiltraCategoria(item.id)}><SanitizedHtml html={item.name} /></div>
+                                        </SwiperSlide>
+                                    ))}
+                                </Swiper>
                             </div>
 
                         </div>

@@ -2,6 +2,30 @@
 @use 'vars/mixins' as *;
 
 
+.listCategoriaProductosHome {
+    margin-top: 1rem;
+
+    .swiperNetflixCategoriaHome {
+        border: 0px solid red;
+        padding: 0 0rem;
+        min-height: 80px;
+
+        .slide {
+
+
+            .card {
+                border: 1px solid #66D3EC;
+                color: #66D3EC;
+                border-radius: 20px;
+                padding: .5rem 1rem;
+                font-size: .5rem;
+                cursor: pointer;
+            }
+        }
+    }
+
+}
+
 .listadoProductoContainer {
     padding: 5rem 0 10rem;
 
@@ -382,7 +406,7 @@
                     flex-direction: column;
 
                     @media screen and (min-width: 992px) {
-                        flex-direction: row;
+                        flex-direction: column;
                     }
 
                     p {
@@ -390,15 +414,29 @@
                     }
 
                     .buscadorInfo {
+                        position: relative;
+                        width: 500px;
+
+                        .imgBuscar {
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            right: .5rem;
+                            width: 40px;
+                            height: auto;
+                            object-fit: contain;
+                        }
+
                         input[type="text"] {
                             border: 1px solid $celesteP;
                             height: 56px;
-                            background: transparent;
+                            background: white;
                             border-radius: 30px;
                             padding: 1rem 2rem;
                             box-sizing: border-box;
-                            color: white;
-                            font-weight: 300;
+                            color: #747474;
+                            font-weight: 500;
+                            width: 100%;
 
                             &:focus {
                                 outline: none;

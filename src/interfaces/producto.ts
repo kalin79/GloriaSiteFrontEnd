@@ -1,3 +1,10 @@
+export interface CategoriaInterface {
+    id: number;
+    name: string;
+    slug: string;
+    productos_count: string;
+}
+
 export interface TagsAux {
     id: number;
     name: string;

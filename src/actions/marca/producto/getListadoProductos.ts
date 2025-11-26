@@ -3,6 +3,40 @@
 // import { BannerInterface } from '@/interfaces/banner';
 
 
+export async function getListadoProductosCategorias() {
+    const API_TOKEN = process.env.NEXT_PUBLIC_AUTHORIZATION_FORM; // Acceso a variable de entorno
+    const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+    const username = process.env.BASIC_AUTH_USER;
+    const password = process.env.BASIC_AUTH_PASS;
+    // Codificar credenciales en Base64
+    const auth = Buffer.from(`${username}:${password}`).toString('base64');
+    if (!API_TOKEN) {
+        throw new Error('API_TOKEN no está definido');
+    }
+
+    // Ejemplo de envío a una API externa
+    const _url_ = `${apiUrl}categorias-productos`;
+    console.log(_url_)
+    const response = await fetch(_url_, {
+        method: 'GET',
+        cache: 'no-store', // evita cachear si necesitas siempre lo último
+        headers: {
+            "Authorization": `Basic ${auth}`,  // 👈 Aquí va la autenticación básica
+            "Authorization-secret": `${API_TOKEN}`,
+            "Content-Type": 'application/json',
+            "Accept": 'application/json',
+        }
+    });
+
+    const resultado = await response.json();
+    console.log(resultado)
+    if (resultado.status === 'error') {
+        return resultado;
+    }
+
+    return resultado;
+}
+
 export async function getListadoMarcaProductos(page: number, marca: string, tag?: number) {
     const API_TOKEN = process.env.NEXT_PUBLIC_AUTHORIZATION_FORM; // Acceso a variable de entorno
     const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
@@ -131,6 +165,42 @@ export async function getListadoProductosMarca(page: number, slugmarca: string, 
         _url_ = `${apiUrl}productos/filtro-tags?marca=${slugmarca}&page=${page}&view_home=1`;
     }
 
+
+    const response = await fetch(_url_, {
+        method: 'GET',
+        cache: 'no-store', // evita cachear si necesitas siempre lo último
+        headers: {
+            "Authorization": `Basic ${auth}`,  // 👈 Aquí va la autenticación básica
+            "Authorization-secret": `${API_TOKEN}`,
+            "Content-Type": 'application/json',
+            "Accept": 'application/json',
+        }
+    });
+
+    const resultado = await response.json();
+    console.log(_url_)
+    console.log(resultado)
+
+    if (resultado.status === 'error') {
+        return resultado;
+    }
+
+    return resultado;
+}
+
+export async function getListadoTodosProductosCateogria(tag: number) {
+    const API_TOKEN = process.env.NEXT_PUBLIC_AUTHORIZATION_FORM; // Acceso a variable de entorno
+    const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+    const username = process.env.BASIC_AUTH_USER;
+    const password = process.env.BASIC_AUTH_PASS;
+    // Codificar credenciales en Base64
+    const auth = Buffer.from(`${username}:${password}`).toString('base64');
+    if (!API_TOKEN) {
+        throw new Error('API_TOKEN no está definido');
+    }
+
+    // Ejemplo de envío a una API externa
+    const _url_ = `${apiUrl}productos/filtro-tags?page=1&categoria_id=${tag}&view_home=1`;;
 
     const response = await fetch(_url_, {
         method: 'GET',
