@@ -2,6 +2,166 @@
 @use 'vars/mixins' as *;
 
 
+// 1. Definición de Variables
+$dark-background: #171a25;
+$primary-color: #0ea5e9; // Un tono de azul similar al sky-500 de Tailwind
+$border-color: #4b5563; // Gris oscuro para bordes inactivos
+$text-color: #d1d5db; // Gris claro para texto inactivo
+$button-padding-x: 1rem;
+$button-padding-y: 0.5rem;
+$button-radius: 9999px; // Para hacer los botones completamente redondeados
+
+.carruselCategoriasContainer {
+    position: relative;
+
+
+    .viewCarrusel {
+        border: 0px solid red;
+        padding: 0 0rem 0 2rem;
+    }
+
+    .arrowButton2 {
+        width: 34px;
+        height: 34px;
+        z-index: 300;
+        bottom: auto !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        border: 1px solid #a2b5b9;
+        border-radius: 50%;
+        padding: .65rem;
+        background: #a2b5b9;
+        margin: 0 !important;
+        position: absolute;
+        display: flex;
+        transition: .5s all ease-in;
+
+        &.left {
+            left: 0 !important;
+
+            svg {
+                transform: scale(-1);
+            }
+
+        }
+
+        &:hover {
+            background: #66D3EC;
+            border: 1px solid #66D3EC;
+
+        }
+
+        &.right {
+            right: 0 !important;
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transform-origin: center;
+            fill: currentColor;
+            pointer-events: none;
+
+            path {
+                fill: white;
+            }
+        }
+    }
+}
+
+// El contenedor principal que limita la vista del carrusel
+.carouselContainer {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 1rem 0rem; // Añade algo de padding vertical
+    background-color: $dark-background;
+
+
+}
+
+.carruselMargen {
+    padding: 0 3rem;
+}
+
+// El wrapper interno que se va a arrastrar
+.carouselWrapper {
+    display: flex;
+    // Aseguramos que el wrapper sea tan ancho como sus hijos, lo que permite el scroll.
+    width: max-content;
+    white-space: nowrap; // Opcional, pero ayuda a asegurar que no se rompan
+    // Cursor para indicar que el elemento es arrastrable
+    cursor: grab;
+
+    // Estilo cuando se está arrastrando (cambio de cursor)
+    &:active {
+        cursor: grabbing;
+    }
+
+
+
+    // Estilos generales del botón
+    .categoryButton {
+        padding: $button-padding-y $button-padding-x;
+        margin: 0 0.25rem; // Espacio entre botones
+        white-space: nowrap; // Evita que el texto se rompa
+        border: 1px solid #66D3EC;
+        border-radius: #66D3EC;
+        color: #66D3EC;
+        background-color: transparent;
+        transition: all 0.3s ease;
+        border-radius: 30px;
+        font-size: .85rem;
+
+        // Efecto hover para botones inactivos
+        &:hover {
+            border-color: #66D3EC;
+            color: #66D3EC;
+        }
+
+        // Estilo cuando el botón está activo (seleccionado)
+        &.active {
+            background-color: #66D3EC;
+            border-color: #66D3EC;
+            color: white;
+            cursor: default; // Cambiamos el cursor para el elemento activo
+        }
+    }
+}
+
+// Estilos de las flechas de navegación
+.arrowButton {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 10;
+    width: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+    background: transparent; // Base transparente
+
+    // Flecha Izquierda
+    &.left {
+        left: 0;
+        // Degradado de la izquierda hacia el centro para crear un efecto de "fade"
+        background: linear-gradient(to right, $dark-background 50%, rgba($dark-background, 0) 100%);
+    }
+
+    // Flecha Derecha
+    &.right {
+        right: 0;
+        // Degradado de la derecha hacia el centro
+        background: linear-gradient(to left, $dark-background 50%, rgba($dark-background, 0) 100%);
+    }
+}
+
+
 .listCategoriaProductosHome {
     margin-top: 1rem;
 
@@ -415,7 +575,11 @@
 
                     .buscadorInfo {
                         position: relative;
-                        width: 500px;
+                        width: 100%;
+
+                        @media screen and (min-width: 992px) {
+                            width: 500px;
+                        }
 
                         .imgBuscar {
                             position: absolute;
