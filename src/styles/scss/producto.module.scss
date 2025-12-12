@@ -201,8 +201,19 @@ $button-radius: 9999px; // Para hacer los botones completamente redondeados
                 align-items: center;
                 gap: .5rem;
                 padding: 3rem 0 1rem;
+                position: relative;
 
-                button {
+                .arrowButtonPag {
+                    border: 1px solid $celesteP;
+                    background: transparent;
+                    border-radius: 10px;
+                    padding: .5rem 1rem;
+                    color: $celesteP;
+
+
+                }
+
+                .btnNum {
                     border: 1px solid $celesteP;
                     background: transparent;
                     border-radius: 10px;

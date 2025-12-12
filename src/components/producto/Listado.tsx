@@ -4,12 +4,12 @@ import { getListadoMarcaProductos, getListadoProductosMarca } from '@/actions/ma
 import Image from 'next/image';
 import { useRouter } from "next/navigation";
 
-import styles from '@/styles/scss/producto.module.scss';
 import CardComponent from "@/components/producto/CardProductoListado";
 import { ProductListadoInterface, ProductoCategoriaInterface } from '@/interfaces/producto';
 import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import SanitizedHtml from '@/components/SanitizedHtml';
+import styles from '@/styles/scss/producto.module.scss';
 
 gsap.registerPlugin(ScrollToPlugin);
 interface Props {
@@ -170,7 +170,7 @@ const Listado = ({ slugMarca }: Props) => {
                             <button
                                 onClick={handleAnterior}
                                 disabled={pagina === 1}
-                                className={styles.arrowButton}
+                                className={styles.arrowButtonPag}
                             >
                                 <Image src="/arrowP1.svg"
                                     width={18}
@@ -183,7 +183,7 @@ const Listado = ({ slugMarca }: Props) => {
                                 <button
                                     key={num}
                                     onClick={() => handlePagina(num)}
-                                    className={`parrafoPequeno ${pagina === num ? styles.active : ''}`}
+                                    className={`${styles.btnNum} parrafoPequeno ${pagina === num ? styles.active : ''}`}
                                 >
                                     {num}
                                 </button>
@@ -192,7 +192,7 @@ const Listado = ({ slugMarca }: Props) => {
                             <button
                                 onClick={handleSiguiente}
                                 disabled={pagina === totalPaginas}
-                                className={styles.arrowButton}
+                                className={styles.arrowButtonPag}
                             >
                                 <Image
                                     src="/arrowP2.svg"
