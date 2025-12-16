@@ -24,6 +24,9 @@ const CardPro = ({ videosContents }: Props) => {
             onClick={() => handleClickViewVideo(videosContents.slug, videosContents.marca.slug)}
         >
             <div className={styles.cardBody}>
+                <div className={styles.logoHeader}>
+                    <Image src='/bonleLogo3.svg' width={103} height={52} alt="Bonle" />
+                </div>
                 <div className={`${styles.playContainer}`}>
                     <Image src='/play5.svg' width={78} height={78} alt='Reproducir el video' />
                 </div>

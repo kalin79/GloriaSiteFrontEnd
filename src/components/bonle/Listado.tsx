@@ -137,11 +137,15 @@ const Listado = ({ slugMarca }: Props) => {
                                 </span>
                             </h2>
                         </div>
-                        <div>
-                            <p className={styles.parrafoTitProductos}>
-                                Productos prácticos, nutritivos y deliciosos.
-                                Se ven bonitos en foto pero más bonitos en tu casa.
-                            </p>
+                        <div >
+                            <div className={styles.flexTaza}>
+                                <Image src='/taza.svg' width={65} height={95} alt='' />
+                                <p className={styles.parrafoTitProductos}>
+                                    Productos prácticos, nutritivos y deliciosos.
+                                    Se ven bonitos en foto pero más bonitos en tu casa.
+                                </p>
+                            </div>
+
                         </div>
                     </div>
                 </div>

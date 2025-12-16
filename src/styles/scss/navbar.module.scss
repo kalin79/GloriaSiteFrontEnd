@@ -521,7 +521,7 @@
     width: 100%;
     padding: 1rem 0;
     z-index: 5000;
-    background: $azulP;
+    background: #fff;
 
     .gridContainer {
         display: grid;
@@ -617,8 +617,8 @@
                         width: 34px;
                         height: 34px;
                         border-radius: 50%;
-                        background: #38AB66;
-                        border: 1px solid #38AB66;
+                        background: #0500C4;
+                        border: 1px solid #0500C4;
                         display: flex;
                         justify-content: center;
                         align-items: center;
@@ -637,7 +637,7 @@
                     .letterUserContainer {
                         width: 34px;
                         height: 34px;
-                        background: $verdeS;
+                        background: #0500C4;
                         border-radius: 50%;
                         display: flex;
                         justify-content: center;
@@ -647,7 +647,7 @@
                         font-family: var(--font-poppins), sans-serif;
                         line-height: 1.5em;
                         color: $blancoP;
-                        border: 1px solid #87CCA3;
+                        border: 1px solid #0500C4;
 
                         @media screen and (min-width: 768px) {
                             width: 54px;
@@ -660,8 +660,8 @@
                     width: 38px;
                     height: 34px;
                     position: relative;
-                    border: 1px solid $blancoP;
-                    border-radius: 10px;
+                    border: 2px solid #0500C4;
+                    border-radius: 50%;
 
                     @media screen and (min-width: 768px) {
                         width: 58px;
@@ -671,7 +671,7 @@
                     >div {
                         position: absolute;
                         height: 3px;
-                        background: rgba($blancoP, 1);
+                        background: rgba(#0500C4, 1);
                         right: .35rem;
                         border-radius: 1px;
                         top: .5rem;
@@ -685,7 +685,7 @@
                             width: 25px;
 
                             @media screen and (min-width: 768px) {
-                                width: 39px;
+                                width: 30px;
                             }
                         }
 
@@ -694,7 +694,7 @@
                             top: .95rem;
 
                             @media screen and (min-width: 768px) {
-                                width: 30px;
+                                width: 25px;
                                 top: 1.5rem;
                             }
                         }

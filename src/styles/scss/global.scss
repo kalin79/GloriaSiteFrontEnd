@@ -348,7 +348,7 @@ h4 {
         top: 3rem;
 
         @media screen and (min-width: 768px) {
-            top: 3.5rem;
+            top: 1.5rem;
         }
 
         img {
@@ -987,13 +987,13 @@ h4 {
 
     &.swiperNetflixBonle {
         .swiper-button-next {
-            border: 1px solid #DF1683 !important;
-            background: rgba(#DF1683, 0.2) !important;
+            border: 1px solid #D2008F !important;
+            background: rgba(#B00477, 1) !important;
         }
 
         .swiper-button-prev {
-            border: 1px solid #DF1683 !important;
-            background: rgba(#DF1683, 0.2) !important;
+            border: 1px solid #D2008F !important;
+            background: rgba(#B00477, 1) !important;
         }
     }
 }

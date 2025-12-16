@@ -10,6 +10,7 @@ import PreviewVideo from "@/components/bonle/PreviewVideo"
 import PrevisualizacionComponent from "@/components/bonle/Previsualizacion";
 import styles from '@/styles/scss/marcabonle.module.scss';
 import { getVideoByCatgories } from '@/actions/marca/video/getVideoBySlug';
+import SanitizedHtml from "@/components/SanitizedHtml";
 // Estilos swiper
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -113,7 +114,7 @@ const CarruselVideos = ({ videos, titularVideo, listFiltro, tipo }: Props) => {
         <div className={`videoPrevisualizacionContent ${styles.carruselVideos}`}>
             <div className={`containerFluid`}>
                 <div className={`headerContainer`}>
-                    <h2 className={styles.titularMini} >{titularVideo}</h2>
+                    <h2 className={styles.titularMini} ><SanitizedHtml html={titularVideo} /></h2>
                     <p className={styles.parrafoMini}>Encuentra Ideas, consejos y soluciones prácticas para cada día.</p>
                 </div>
 

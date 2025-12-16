@@ -8,7 +8,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import CardCampanaComponent from "@/components/bonle/CardPro";
-
+import SanitizedHtml from "@/components/SanitizedHtml";
 import styles from '@/styles/scss/marcabonle.module.scss';
 interface Props {
     titularCampana: string;
@@ -21,8 +21,8 @@ const CarruselProCampanas = ({ titularCampana, subtitularCampana, videosCampana 
         <div className={styles.listadoComponentContainer}>
             <div className='containerFluid'>
                 <div className={`${styles.titularHeader}`}>
-                    <h2 className={styles.titularMini}>{titularCampana} </h2>
-                    <p className={styles.parrafoMini}>{subtitularCampana}</p>
+                    <h2 className={styles.titularMini}><SanitizedHtml html={titularCampana} /> </h2>
+                    <p className={styles.parrafoMini}><SanitizedHtml html={subtitularCampana} /></p>
                 </div>
 
                 <div className={`${styles.carruselCampanas}`}>
