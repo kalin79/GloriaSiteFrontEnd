@@ -34,9 +34,10 @@ export default async function ProductoPage({ params }: CampanaPageProps) {
                 <BannerPrincipalComponent multimediaContents={producto} />
                 <div className={`${styles.productoContainerPage}`}>
                     <DetallePrincipalComponent productoData={producto} />
-                    <TabsComponent productoData={producto} />
-                    {/* <BannerInternoComponent productoData={producto} /> */}
-                    <CarruselProductsRelacionadosComponent productosRelacionados={productos_relacionados} />
+                    <div className={styles.bgAzulBonle}>
+                        <TabsComponent productoData={producto} />
+                        <CarruselProductsRelacionadosComponent productosRelacionados={productos_relacionados} />
+                    </div>
                 </div>
 
             </div>

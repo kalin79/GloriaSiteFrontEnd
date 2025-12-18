@@ -1613,10 +1613,16 @@
     }
 }
 
+.bgAzulBonle {
+    background-image: url('/azulclaro.webp');
+    background-position: center center;
+    background-repeat: repeat;
+    background-size: contain;
+}
+
 .tabsContainer {
-    background: rgba($azulP, 1);
-    padding-top: 2rem;
-    padding-bottom: 4rem;
+    padding-top: 5rem;
+    padding-bottom: 0rem;
 
     .curvaV {
         position: absolute;
@@ -1641,7 +1647,7 @@
         padding: 2rem 0 0rem;
 
         @media screen and (min-width: 768px) {
-            padding: 4rem 0 7rem;
+            padding: 4rem 0 2rem;
         }
 
         >div {
@@ -1988,7 +1994,7 @@
 }
 
 .bgProductosRelacionados {
-    background: rgba($azulP, 1);
+    // background: rgba($azulP, 1);
 
     .productoCarruselRelacionadosContainer {
         display: grid;
@@ -2004,7 +2010,7 @@
         }
 
         .cardPrduct {
-            background: $azulP;
+            // background: $azulP;
             // height: 552px;
             overflow: hidden;
             border-radius: 10px;
