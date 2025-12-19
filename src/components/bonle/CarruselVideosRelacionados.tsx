@@ -2,7 +2,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import { VideoInterface } from '@/interfaces/video';
-
+import SantizedHtml from '@/components/SanitizedHtml';
 // Estilos swiper
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -19,10 +19,10 @@ interface Props {
 const CarruselVideosRelacionados = ({ titularCampana, subtitularCampana, videosCampana }: Props) => {
 
     return (
-        <div className={`${styles.listadoComponentContainer} videoPrevisualizacionContent`}>
+        <div className={`${styles.listadoComponentContainer} ${styles.listadoComponentContainer2} videoPrevisualizacionContent`}>
             <div className={`${styles.titularHeader}`}>
-                <h3 className={`${styles.titularMini}`}>{titularCampana} </h3>
-                <h2 className={styles.parrafoMini}>{subtitularCampana}</h2>
+                <h3 className={`${styles.titularMini}`}><SantizedHtml html={titularCampana} /></h3>
+                <h2 className={styles.parrafoMini}><SantizedHtml html={subtitularCampana} /></h2>
             </div>
 
             <div className={`${styles.carruselCampanas}`}>
@@ -35,7 +35,7 @@ const CarruselVideosRelacionados = ({ titularCampana, subtitularCampana, videosC
                     // autoplay={{ delay: 3000 }}
                     loop={true}
                     modules={[Navigation]}
-                    className={`swiperNetflix ${styles.swiperNetflix}`}
+                    className={`swiperNetflix swiperNetflixBonle ${styles.swiperNetflix}`}
                     breakpoints={{
                         750: {
                             slidesPerView: 4
@@ -52,7 +52,7 @@ const CarruselVideosRelacionados = ({ titularCampana, subtitularCampana, videosC
                     {videosCampana.map((item, index) => (
                         <SwiperSlide
                             key={index}
-                            className={`slideNetflix`}
+                            className={`slideNetflix `}
                         >
                             <PrevisualizacionComponent videosContents={item} />
                         </SwiperSlide>

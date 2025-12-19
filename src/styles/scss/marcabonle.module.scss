@@ -129,6 +129,23 @@
         height: calc(100vh - 0rem);
     }
 
+    .fullVideoContainerDiv {
+        width: 100%;
+        height: 480px;
+        margin-top: 3rem;
+
+        // 1️⃣ Si el ancho es mayor a 992px y el alto es menor a 780px
+        @media (min-width: 992px) and (max-height: 680px) {
+            height: 680px;
+        }
+
+        // @media (min-width: 992px) and (min-height: 585px) {
+        @media (min-width: 992px) and (min-height: 681px) {
+            margin-top: 0rem;
+            height: calc(100vh - 0rem);
+        }
+    }
+
 
     .titularBanner {
         font-family: var(--font-obvio), sans-serif;
@@ -161,6 +178,29 @@
     .descripcionBanner {
         margin-top: .25rem;
         margin-bottom: 1rem;
+        font-family: var(--font-poppins), sans-serif;
+        line-height: 1rem;
+        font-size: .85em;
+        // color: #F7E6CD;
+        color: #fff;
+        font-weight: 400;
+        margin-top: 1.25rem;
+
+        @media screen and (min-width: 992px) {
+            line-height: 1.35em;
+            font-size: 1rem;
+        }
+
+        @media screen and (min-width: 1200px) {
+            line-height: 1.35em;
+            font-size: 1.25rem;
+        }
+
+        @media screen and (min-width: 1600px) {
+            line-height: 1.35em;
+            font-size: 1.5rem;
+            width: 680px;
+        }
 
         @media screen and (min-width: 992px) {
             margin-top: .75rem;
@@ -511,6 +551,16 @@
         background-image: url('/fondoB.webp');
         background-size: contain;
         background-repeat: no-repeat;
+    }
+
+    &.listadoComponentContainer2 {
+        .cardFooter {
+            background-color: #0042ee !important;
+            background-image: url(/simbolo.svg) !important;
+            background-position: 50% !important;
+            background-repeat: no-repeat !important;
+        }
+
     }
 
     .titularHeader {
@@ -1038,18 +1088,20 @@
 .campanaContainerPage {
 
     .bgProContainer {
-        background-image: url('/bgGloria.webp');
+        background-image: url('/morado1.webp');
         background-position: center top;
         background-repeat: repeat;
         background-size: cover;
+        padding: 4rem 0;
     }
 
     .bgDescripcionContainer {
         position: relative;
-        background-image: url('/bgGloria.webp');
+        background-image: url('/azulclaro.webp');
         background-position: center top;
         background-repeat: repeat;
         background-size: cover;
+        padding-bottom: 5rem;
     }
 
     .backGroundFull {
@@ -1087,7 +1139,7 @@
             font-family: var(--font-misti), sans-serif;
             font-size: 1.125rem;
             line-height: 1.5em;
-            color: #DF1683;
+            color: #fff;
             font-weight: 500;
             text-transform: uppercase;
 

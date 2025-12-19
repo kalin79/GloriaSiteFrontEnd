@@ -15,7 +15,7 @@ import styles from '@/styles/scss/marca.module.scss';
 export default async function MarcaPage() {
 
     const response = await getMarcaBySlug('gloria');
-    const { banner, slug: slugMarca }: { banner: VideoInterface, slug: string } = response.data;
+    const { banner, slug: slugMarca, avatar_detalle: logo }: { banner: VideoInterface[], slug: string, avatar_detalle: string } = response.data;
     const { data } = response.data.videos;
     // const { data: dataCamapana, pagination: paginationCampana } = response.data.campanas;
     const { data: dataCamapana } = response.data.campanas;
@@ -24,7 +24,7 @@ export default async function MarcaPage() {
     return (
         <>
 
-            <BannerPrincipalComponent multimediaContents={banner} />
+            <BannerPrincipalComponent multimediaContents={banner} logo={logo} />
             <div className={styles.marcaContainerPage}>
                 <div className={styles.fondoBg}>
                     <Image src="/5.webp" width={2460} height={2880} alt='' />

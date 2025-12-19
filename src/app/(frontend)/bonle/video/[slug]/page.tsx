@@ -29,7 +29,7 @@ export default async function VideoPage({ params }: CampanaPageProps) {
                     <DetalleComponent multimediaContents={video} />
                     <div className={styles.bgProContainer}>
                         <div className="containerFluid">
-                            <CarruselVideosComponent videosCampana={related_video} titularCampana="Si te identificas, vamos en buen camino." subtitularCampana="Encuentra Ideas, consejos y soluciones prácticas para cada día." />
+                            <CarruselVideosComponent videosCampana={related_video} titularCampana="Contenido hecho para ti " subtitularCampana="Nuestros especialistas resuelven todas tus dudas sobre la proteína y cómo <br />alcanzar todo lo que te PROpongas." />
                         </div>
                     </div>
                 </div>

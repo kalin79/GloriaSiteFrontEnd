@@ -12,6 +12,7 @@ export interface VideoInterfaceAux {
     duracion?: string;
     cantidad_like?: number;
     previsualizacion_video?: string;
+    description?: string;
 }
 
 export interface VideoInterface {
@@ -36,6 +37,8 @@ export interface VideoInterface {
     autor_imagen?: string;
     gallery?: unknown[];
     cantidad_like?: number;
+    description?: string;
+
 }
 
 interface Categoria {

@@ -17,13 +17,13 @@ export default async function MarcaPage() {
 
     const response = await getMarcaBySlug('pro');
 
-    const { banner, slug: slugMarca }: { banner: VideoInterface, slug: string } = response.data;
+    const { banner, slug: slugMarca, avatar_detalle: logo }: { banner: VideoInterface[], slug: string, avatar_detalle: string } = response.data;
     const { data } = response.data.videos;
     const { data: dataCamapana } = response.data.campanas;
     return (
         <>
 
-            <BannerPrincipalComponent multimediaContents={banner} />
+            <BannerPrincipalComponent multimediaContents={banner} logo={logo} />
             <div className={styles.marcaContainerPage}>
                 <div className={styles.fondoBg}>
                     <div className={styles.imgBg}></div>

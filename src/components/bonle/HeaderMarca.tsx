@@ -8,18 +8,27 @@ import { VideoInterface } from "@/interfaces/video";
 import SantizedHtml from '@/components/SanitizedHtml';
 import HtmlSafeRender from '@/components/HtmlSafeRender';
 import dynamic from 'next/dynamic';
+import { Swiper } from 'swiper/react';
+import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
+// Estilos swiper
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
 import styles from '@/styles/scss/marcabonle.module.scss';
 interface multimediaParameters {
-    multimediaContents: VideoInterface;
+    multimediaContents: VideoInterface[];
     viewLogo?: boolean;
+    logo: string;
 
 }
 const Lightbox = dynamic(() => import('@/components/popup/Video'), {
     ssr: false, // importante si el video usa APIs del navegador
     loading: () => <p>Cargando video...</p>
 })
-const HeaderMarca = ({ multimediaContents, viewLogo = true }: multimediaParameters) => {
+const HeaderMarca = ({ multimediaContents, viewLogo = true, logo }: multimediaParameters) => {
     const [showVideo, setShowVideo] = useState(false);
+    const [videoSelect, setVideoSelect] = useState<VideoInterface>()
     // const router = useRouter();
     // const [isOpen, setIsOpen] = useState(false);
     // const irVerVideo = (items: BannerInterface) => {
@@ -32,39 +41,58 @@ const HeaderMarca = ({ multimediaContents, viewLogo = true }: multimediaParamete
         <>
 
             {
-                (multimediaContents.marca?.logo?.trim() && viewLogo) && (
+                (logo?.trim() && viewLogo) && (
                     <div className='LogoProductoHeader Bonle'>
-                        <Image src={(multimediaContents.marca.logo ?? '/gloria.svg') as string} width={121} height={84} alt={multimediaContents.marca.nombre ?? ''} />
+                        <Image src={(logo ?? '/gloria.svg') as string} width={121} height={84} alt="" />
                     </div>
                 )
             }
-            {showVideo && (
+            {showVideo && videoSelect ? (
                 <Portal>
                     <Lightbox
-                        videoData={multimediaContents}
+                        videoData={videoSelect}
                         onClose={() => setShowVideo(false)}
                         isOpen={showVideo}
                     />
                 </Portal>
-            )}
+            ) : null}
             <div className={`${styles.bannerContainer}`}>
-                <VideoBanner videoData={multimediaContents} />
-                <div className={styles.infoCenter}>
-                    <div className={styles.infoContainer}>
-                        <div className="containerFluid">
-                            <div className={styles.gridContainer}>
-                                <div>
-                                    <h1 className={styles.titularBanner}><SantizedHtml html={multimediaContents.title_large || ''} /></h1>
-                                    <HtmlSafeRender html={multimediaContents.descripcion || ''} className={styles.descripcionBanner} />
-                                    <button className={`btnStandart ${styles.btnStandart}`} onClick={() => setShowVideo(true)}>
-                                        <span>Reproducir </span>
-                                        <Image src='/play4.svg' width={14} height={16} alt="" />
-                                    </button>
+                <Swiper
+                    modules={[EffectFade, Navigation, Pagination, Autoplay]}
+                    effect={'fade'}
+                    spaceBetween={30}
+                    slidesPerView={1}
+                    navigation={true}
+                    pagination={false}
+                    // autoplay={{ delay: 8000 }}
+                    className={`bannerCarruselHome`}
+                >
+                    {multimediaContents.map((item, index) => (
+                        <div className={styles.fullVideoContainerDiv} key={index}>
+                            <VideoBanner videoData={item} />
+                            <div className={styles.infoCenter} >
+                                <div className={styles.infoContainer}>
+                                    <div className="containerFluid">
+                                        <div className={styles.gridContainer}>
+                                            <div>
+                                                <h1 className={styles.titularBanner}><SantizedHtml html={item.title_large || ''} /></h1>
+                                                <HtmlSafeRender html={item.description || ''} className={styles.descripcionBanner} />
+                                                <button className={`btnStandart ${styles.btnStandart}`} onClick={() => { setShowVideo(true); setVideoSelect(item) }}>
+                                                    <span>Reproducir </span>
+                                                    <Image src='/play4.svg' width={14} height={16} alt="" />
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    ))}
+
+                </Swiper>
+
+
+
 
             </div>
         </>
