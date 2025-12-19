@@ -24,7 +24,7 @@ const HeaderVideoMain = ({ multimediaContents, viewLogo = true }: multimediaPara
                 (multimediaContents.marca?.logo?.trim() && viewLogo) && (
                     <div className='LogoProductoHeader Pro'>
                         <Link href={`/${multimediaContents.marca?.slug}` || ''}>
-                            <Image src={(multimediaContents.marca.logo ?? '/gloria.svg') as string} width={121} height={84} alt={multimediaContents.marca.nombre ?? ''} />
+                            <Image src={(multimediaContents.marca.avatar_detalle ?? '/gloria.svg') as string} width={121} height={84} alt={multimediaContents.marca.nombre ?? ''} />
                         </Link>
                     </div>
                 )

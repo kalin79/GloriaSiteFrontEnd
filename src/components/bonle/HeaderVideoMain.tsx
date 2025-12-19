@@ -21,10 +21,10 @@ const HeaderVideoMain = ({ multimediaContents, viewLogo = true }: multimediaPara
     return (
         <>
             {
-                (multimediaContents.marca?.logo?.trim() && viewLogo) && (
+                (multimediaContents.marca?.avatar_detalle && viewLogo) && (
                     <div className='LogoProductoHeader Bonle'>
                         <Link href={`/${multimediaContents.marca?.slug}` || ''}>
-                            <Image src={(multimediaContents.marca.logo ?? '/gloria.svg') as string} width={121} height={84} alt={multimediaContents.marca.nombre ?? ''} />
+                            <Image src={(multimediaContents.marca?.avatar_detalle ?? '/gloria.svg') as string} width={121} height={84} alt='' />
                         </Link>
                     </div>
                 )
