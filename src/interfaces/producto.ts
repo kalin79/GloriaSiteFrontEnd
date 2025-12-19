@@ -117,6 +117,7 @@ interface Marca {
     name: string;
     slug: string;
     logo: string;
+    avatar_detalle?: string;
 }
 
 

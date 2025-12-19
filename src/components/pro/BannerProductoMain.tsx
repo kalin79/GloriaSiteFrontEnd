@@ -14,7 +14,7 @@ const Producto = ({ multimediaContents }: Props) => {
         <>
             <div className='LogoProductoHeader Pro'>
                 <Link href={`/${multimediaContents.marca?.slug}` || ''}>
-                    <Image src={multimediaContents.marca?.logo ?? '/gloria.svg'} width={121} height={84} alt='' />
+                    <Image src={multimediaContents.marca?.avatar_detalle ?? '/gloria.svg'} width={121} height={84} alt='' />
                 </Link>
             </div>
         </>
