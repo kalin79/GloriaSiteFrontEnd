@@ -45,9 +45,9 @@ const Ganaderos = () => {
     ]
     return (
         <div className={styles.ganaderosContainer}>
-            <div className='containerFluidLeft2'>
-                <div className={styles.headerGanaderos}>
-                    <div>
+            <div className={styles.headerGanaderos}>
+                <div>
+                    <div className='containerFluid'>
                         <div className={styles.infoHeaderContainer}>
                             <h3>DESARROLLO GANADERO</h3>
                             <h2>
@@ -75,56 +75,56 @@ const Ganaderos = () => {
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <Image src={`/ganaBa.webp`} width={1215} height={1320} alt='' />
-                    </div>
                 </div>
+                <div className={styles.imgFullPage}>
+                    <Image src={`/bgganaderos2.webp`} width={3280} height={2120} alt='' />
+                </div>
+            </div>
 
-                <div className={styles.carruselComportamos}>
-                    <Swiper
-                        spaceBetween={10}
-                        centeredSlides={false}
-                        slidesPerView={1} // Muestra 5 películas a la vez
-                        navigation
-                        pagination={{ clickable: true }}
-                        autoplay={{ delay: 5000, disableOnInteraction: false }}
-                        loop={false}
-                        modules={[Navigation, Autoplay]}
-                        className={`${styles.SwiperComportamos} SwiperComportamos`}
-                        breakpoints={{
-                            750: {
-                                slidesPerView: 3
-                            },
-                            992: {
-                                slidesPerView: 4
-                            },
-                            1400: {
-                                slidesPerView: 5
-                            }
-                        }}
+            <div className={styles.carruselComportamos}>
+                <Swiper
+                    spaceBetween={10}
+                    centeredSlides={false}
+                    slidesPerView={1} // Muestra 5 películas a la vez
+                    navigation
+                    pagination={{ clickable: true }}
+                    autoplay={{ delay: 5000, disableOnInteraction: false }}
+                    loop={false}
+                    modules={[Navigation, Autoplay]}
+                    className={`${styles.SwiperComportamos} SwiperGanaderos`}
+                    breakpoints={{
+                        750: {
+                            slidesPerView: 3
+                        },
+                        992: {
+                            slidesPerView: 4
+                        },
+                        1400: {
+                            slidesPerView: 5
+                        }
+                    }}
 
-                    >
-                        {itemComportamos.map((item, index) => (
-                            <SwiperSlide
-                                key={index}
-                                className={``}
-                            >
-                                <div className={styles.cardComportamosContainer}>
-                                    <div className={styles.body}>
-                                        <div className={styles.iconContainer}>
-                                            <Image src={`/${item.img}`} alt='' width={90} height={109} />
-                                        </div>
-                                    </div>
-                                    <div className={styles.Footer}>
-                                        <h2>{item.title}</h2>
-                                        <p>{item.descripcion}</p>
+                >
+                    {itemComportamos.map((item, index) => (
+                        <SwiperSlide
+                            key={index}
+                            className={``}
+                        >
+                            <div className={styles.cardComportamosContainer}>
+                                <div className={styles.body}>
+                                    <div className={styles.iconContainer}>
+                                        <Image src={`/${item.img}`} alt='' width={90} height={109} />
                                     </div>
                                 </div>
-                            </SwiperSlide>
-                        ))}
+                                <div className={styles.Footer}>
+                                    <h2>{item.title}</h2>
+                                    <p>{item.descripcion}</p>
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                    ))}
 
-                    </Swiper>
-                </div>
+                </Swiper>
             </div>
         </div>
     )

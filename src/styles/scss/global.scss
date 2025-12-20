@@ -778,6 +778,55 @@ h4 {
     }
 }
 
+.SwiperGanaderos {
+    .swiper-button-next {
+        border: 1px solid $celesteP !important;
+        background: rgba($celesteP, 1) !important;
+        width: 52px;
+        height: 52px;
+        right: 0rem !important;
+        bottom: 1rem !important;
+        top: auto !important;
+        border-radius: 50%;
+        padding: .65rem;
+
+        @media screen and (min-width: 992px) {
+            right: 8rem !important;
+        }
+
+        svg {
+            path {
+                fill: white !important;
+            }
+        }
+    }
+
+    .swiper-button-prev {
+        border: 1px solid $celesteP !important;
+        background: rgba($celesteP, 0.95) !important;
+
+        width: 52px;
+        height: 52px;
+        right: 4rem !important;
+        left: auto !important;
+        bottom: 1rem !important;
+        top: auto !important;
+        border-radius: 50%;
+        padding: .65rem;
+
+        @media screen and (min-width: 992px) {
+            right: 12rem !important;
+        }
+
+
+        svg {
+            path {
+                fill: white !important;
+            }
+        }
+    }
+}
+
 .SwiperComportamos {
     .swiper-button-next {
         border: 1px solid $celesteP !important;

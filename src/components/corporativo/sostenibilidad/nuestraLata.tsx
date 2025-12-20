@@ -4,28 +4,28 @@ import styles from '@/styles/scss/corporativo.module.scss';
 const nuestraLata = () => {
     return (
         <div className={styles.nuestraLataContainer}>
-            <div className={styles.lataHeader}>
-                <div className='containerFluid'>
-                    <div className={styles.gridContainer}>
-                        <div>
-                            <h2>
-                                <span>Nuestra Lata:</span> La mejor manera de
-                                llevar nutrición a cada <span>rincón del país</span>
-                            </h2>
-                        </div>
-                        <div>
-                            <p>
-                                Elegimos este envase por su resistencia, seguridad y
-                                compromiso con el medio ambiente.
-                                Hoy, sigue siendo una de las formas más eficientes y
-                                sostenibles de llevar nuestros productos a todo el Perú.
-                            </p>
+            <div className={styles.bannerLata}>
+                <Image src={`/latabg2.webp`} className={styles.fullImg} height={3280} width={1324} alt='La mejor manera de llevar nutrición a cada rincón del país' />
+                <div className={styles.lataHeader}>
+                    <div className='containerFluid'>
+                        <div className={styles.gridContainer}>
+                            <div>
+                                <h2>
+                                    <span>Nuestra Lata:</span> La mejor <br />manera de
+                                    llevar nutrición <br />a cada <span>rincón del país</span>
+                                </h2>
+                            </div>
+                            <div>
+                                <p>
+                                    Elegimos este envase por su resistencia, seguridad y
+                                    compromiso con <br />el medio ambiente.
+                                    Hoy, sigue siendo una de las formas más eficientes <br />y
+                                    sostenibles de llevar nuestros productos a todo el Perú.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className={styles.bannerLata}>
-                <Image src={`/latabg.webp`} height={3280} width={1324} alt='La mejor manera de llevar nutrición a cada rincón del país' />
             </div>
             <div className={styles.itemLatasContainer}>
                 <div className='containerFluid'>
