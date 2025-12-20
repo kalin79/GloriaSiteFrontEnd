@@ -560,12 +560,12 @@
 
                     img {
                         width: auto;
-                        height: 90%;
+                        height: 300px;
                         object-fit: contain;
 
-                        // @media screen and (min-width: 992px) {
-                        //     height: 100%;
-                        // }
+                        @media screen and (min-width: 992px) {
+                            height: 600px;
+                        }
 
                         // @media screen and (min-width: 1200px) {
                         //     height: 100%;
