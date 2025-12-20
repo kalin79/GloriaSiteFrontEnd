@@ -781,13 +781,13 @@ h4 {
 .SwiperComportamos {
     .swiper-button-next {
         border: 1px solid $celesteP !important;
-        background: rgba($celesteP, 0.2) !important;
+        background: rgba($celesteP, 1) !important;
         width: 52px;
         height: 52px;
-        right: 8rem !important;
+        right: 0rem !important;
         bottom: 1rem !important;
         top: auto !important;
-        border-radius: 10px;
+        border-radius: 50%;
         padding: .65rem;
 
         svg {
@@ -799,15 +799,15 @@ h4 {
 
     .swiper-button-prev {
         border: 1px solid $celesteP !important;
-        background: rgba($celesteP, 0.2) !important;
+        background: rgba($celesteP, 0.95) !important;
 
         width: 52px;
         height: 52px;
-        right: 12.25rem !important;
+        right: 4rem !important;
         left: auto !important;
         bottom: 1rem !important;
         top: auto !important;
-        border-radius: 10px;
+        border-radius: 50%;
         padding: .65rem;
 
 

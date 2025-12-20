@@ -26,6 +26,16 @@ const Interno = ({ dataBanner }: Props) => {
     }, [imgMobile, imgPc]);
     return (
         <div className={styles.bannerInternoContainer}>
+            <div className={styles.imgContainerFullPage}>
+                <Image
+                    src={srcImagen}
+                    fill
+                    sizes="100vw"
+                    style={{ objectFit: "cover" }}
+                    priority
+                    alt='QUIENES SOMOS - Somos la empresa líder en el mercado lácteo peruano'
+                />
+            </div>
             <div className={`${styles.containerFluid}`}>
                 <div className={styles.gridContainer}>
                     <div>
@@ -33,11 +43,13 @@ const Interno = ({ dataBanner }: Props) => {
                             {
                                 (dataBanner.slugbreadHEADER) ? (
                                     <>
-                                        <p className={styles.migasTitular}>GLORIA</p> <ArrowSvg /> <Link className={styles.migasTitular} href={dataBanner.slugbreadHEADER}>{dataBanner.breadHeader}</Link> <ArrowSvg /> <Link className={styles.migasTitular} href={slugbread}>{breadcrumb}</Link>
+                                        {/* <p className={styles.migasTitular}>GLORIA</p> <ArrowSvg />  */}
+                                        <Link className={styles.migasTitular} href={dataBanner.slugbreadHEADER}>{dataBanner.breadHeader}</Link> <ArrowSvg /> <Link className={styles.migasTitular} href={slugbread}>{breadcrumb}</Link>
                                     </>
                                 ) : (
                                     <>
-                                        <p className={styles.migasTitular}>GLORIA</p> <ArrowSvg /> <Link className={styles.migasTitular} href={slugbread}>{breadcrumb}</Link>
+                                        {/* <p className={styles.migasTitular}>GLORIA</p> <ArrowSvg />  */}
+                                        <Link className={styles.migasTitular} href={slugbread}>{breadcrumb}</Link>
                                     </>
                                 )
                             }
@@ -65,24 +77,6 @@ const Interno = ({ dataBanner }: Props) => {
                                     </>
                                 )
                             }
-                        </div>
-                    </div>
-                    <div>
-                        {/* <div className={styles.curvaImg}>
-                            <Image src='/curvaPC.svg' width={156} height={880} alt="" />
-                        </div> */}
-                        <div className={styles.curvaImgM}>
-                            <Image src='/curvaM.svg' width={440} height={120} alt="" />
-                        </div>
-                        <div className={styles.imgContainer}>
-                            <Image
-                                src={srcImagen}
-                                fill
-                                sizes="100vw"
-                                style={{ objectFit: "cover" }}
-                                priority
-                                alt='QUIENES SOMOS - Somos la empresa líder en el mercado lácteo peruano'
-                            />
                         </div>
                     </div>
                 </div>

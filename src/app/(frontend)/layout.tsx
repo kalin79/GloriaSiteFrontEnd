@@ -56,7 +56,7 @@ const obvio = localFont({
 
 
 export const viewport: Viewport = {
-  width: "device-width",
+  width: "width=device-width, initial-scale=1.0",
   initialScale: 1,
 };
 

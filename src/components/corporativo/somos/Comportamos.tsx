@@ -16,40 +16,40 @@ import styles from '@/styles/scss/somos.module.scss';
 const Comportamos = () => {
     const itemComportamos = [
         {
-            img: 'imgc1.webp',
+            img: 'compromiso.webp',
             title: 'Compromiso',
             descripcion: 'Nos comprometemos con pasión y perseverancia para convertir nuestras ideas en productos que mejoren la vida de nuestros consumidores.',
         },
         {
-            img: 'imgc2.webp',
+            img: 'integridad.webp',
             title: 'Integridad',
             descripcion: 'Actuamos con integridad y transparencia; respetando las leyes, normas y procesos para garantizar confianza y seguridad en todo lo que ofrecemos.',
         },
         {
-            img: 'imgc3.webp',
+            img: 'enfoque.webp',
             title: 'Enfoque en el Cosumidor',
             descripcion: 'Ponemos siempre a nuestros consumidores y clientes en el centro de nuestras decisiones, para responder a sus necesidades y superar sus expectativas.',
         },
         {
-            img: 'imgc4.webp',
+            img: 'productividad.webp',
             title: 'Productividad y calidad',
             descripcion: 'Somos productivos y eficientes en el uso de recursos, buscamos la máxima calidad en cada producto.',
         },
         {
-            img: 'imgc5.webp',
+            img: 'responsabilidad.webp',
             title: 'Responsabilidad y transparencia',
             descripcion: 'Estamos presentes donde las cosas suceden y decimos las cosas como son para generar relaciones genuinas.',
         },
-        {
-            img: 'imgc6.webp',
-            title: 'Empoderamiento',
-            descripcion: 'Practicamos un liderazgo que empodera a las personas, para que cada acción se convierta en un mejor servicio para nuestros clientes.',
-        },
-        {
-            img: 'imgc7.webp',
-            title: 'Aprendizaje',
-            descripcion: 'Aprendemos y mejoramos constantemente para ofrecer siempre lo mejor de nosotros.',
-        },
+        // {
+        //     img: 'imgc6.webp',
+        //     title: 'Empoderamiento',
+        //     descripcion: 'Practicamos un liderazgo que empodera a las personas, para que cada acción se convierta en un mejor servicio para nuestros clientes.',
+        // },
+        // {
+        //     img: 'imgc7.webp',
+        //     title: 'Aprendizaje',
+        //     descripcion: 'Aprendemos y mejoramos constantemente para ofrecer siempre lo mejor de nosotros.',
+        // },
     ]
     return (
         <div className={styles.sectionComportamosContainer}>
@@ -60,16 +60,16 @@ const Comportamos = () => {
                     de <span>hacer las cosas</span>
                 </h2>
             </div>
-            <div className='containerFluidLeft'>
+            <div className='containerFluid'>
                 <div className={styles.carruselComportamos}>
                     <Swiper
                         spaceBetween={10}
                         centeredSlides={false}
-                        slidesPerView={1} // Muestra 5 películas a la vez
+                        slidesPerView={2} // Muestra 5 películas a la vez
                         navigation
                         pagination={{ clickable: true }}
-                        autoplay={{ delay: 3000, disableOnInteraction: false }}
-                        loop={false}
+                        // autoplay={{ delay: 3000, disableOnInteraction: false }}
+                        // loop={false}
                         modules={[Navigation, Autoplay]}
                         className={`${styles.SwiperComportamos} SwiperComportamos`}
                         breakpoints={{
@@ -92,11 +92,14 @@ const Comportamos = () => {
                             >
                                 <div className={styles.cardComportamosContainer}>
                                     <div className={styles.body}>
-                                        <Image src={`/${item.img}`} alt='' width={433} height={433} />
+                                        <Image src={`/${item.img}`} alt='' width={148} height={243} />
                                     </div>
                                     <div className={styles.Footer}>
-                                        <h2>{item.title}</h2>
-                                        <p>{item.descripcion}</p>
+                                        <div>
+                                            <h2>{item.title}</h2>
+                                            <p>{item.descripcion}</p>
+                                        </div>
+                                        <button><Image src={`/flecha8.svg`} alt='' width={12} height={6} /></button>
                                     </div>
                                 </div>
                             </SwiperSlide>

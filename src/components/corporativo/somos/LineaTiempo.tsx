@@ -150,33 +150,18 @@ const LineaTiempo = () => {
             <div className='containerFluid'>
                 <div className={styles.gridContainer}>
                     <div className={styles.headerLine}>
-                        <h2>LÍNEA DE TIEMPO</h2>
-                        <h3>
-                            Más de 83 años<br />
-                            <span>creciendo juntos</span>
-                        </h3>
+                        <div>
+                            <h2>NUESTRA LÍNEA DE TIEMPO</h2>
+                            <h3>
+                                Más de 83 años<br />
+                                <span>creciendo juntos</span>
+                            </h3>
+                        </div>
                         <p>
                             Acompáñanos a revivir los momentos que han marcado nuestra historia. Desde nuestro nacimiento en Arequipa hasta nuestra consolidación en el mundo.
                         </p>
                     </div>
-                    {/* <div>
-                        <div className={styles.carruselLineaContainer} ref={containerRef}>
 
-                            <Image
-                                ref={imageRef}
-                                className={styles.imageBox}
-                                src="/linea.svg"
-                                alt="Imagen grande"
-                                width={4096}
-                                height={857}
-                                priority
-                            />
-                            <div className={styles.controls}>
-                                <button id="left"><Image src="/arrowL.svg" width={30} height={60} alt='' /></button>
-                                <button id="right"><Image src="/arrowL.svg" width={30} height={60} alt='' /></button>
-                            </div>
-                        </div>
-                    </div> */}
                     <div>
                         <div className={styles.carruselLineaContainer} ref={containerRef}>
 

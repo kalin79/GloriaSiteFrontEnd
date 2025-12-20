@@ -5,6 +5,7 @@
 
 .sectionComportamosContainer {
     padding: 6rem 0 3rem;
+    background: #FDF7EF;
 
     .subTitularMain {
         font-family: var(--font-misti), sans-serif;
@@ -12,7 +13,7 @@
         font-size: 1rem;
         line-height: 1em;
         letter-spacing: -.05em;
-        color: rgba($celesteP, 1);
+        color: rgba(#DD1A20, 1);
         margin-bottom: .5rem;
 
         @media screen and (min-width: 992px) {
@@ -27,7 +28,8 @@
         font-size: 2.5rem;
         line-height: 1em;
         letter-spacing: -.05em;
-        color: rgba(white, 1);
+
+        color: rgba(#1A172B, 1);
 
         @media screen and (min-width: 992px) {
             font-size: 3.25em;
@@ -52,14 +54,59 @@
                 width: 100%;
                 background: rgba($celesteP, 1);
                 border-radius: 30px;
+                position: relative;
 
                 .Footer {
                     padding: 1.5rem 1rem 2rem;
-                    min-height: auto;
+                    // min-height: auto;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    border: 0px solid red;
 
                     @media screen and (min-width: 992px) {
                         padding: 1.5rem 1rem 1rem;
-                        min-height: 180px;
+                        // min-height: 180px;
+                    }
+
+                    &:hover {
+                        p {
+                            max-height: 500px;
+                            opacity: 1;
+
+                            /* 2. Regresar a la posición original: (El crecimiento de abajo hacia arriba) */
+                            transform: translateY(0);
+                        }
+
+                        button {
+                            img {
+                                transform: scale(1);
+                            }
+                        }
+                    }
+
+                    button {
+                        position: absolute;
+                        right: 1rem;
+                        bottom: 1.75rem;
+                        background: transparent;
+                        width: 32px;
+                        height: 32px;
+                        border: 1px solid #fff;
+                        border-radius: 50%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column;
+
+                        img {
+                            transform: scale(-1);
+                            transition: .5s all ease-in;
+                        }
+                    }
+
+                    >div {
+                        width: 85%;
                     }
 
                     p {
@@ -68,9 +115,20 @@
                         font-size: .85rem;
                         line-height: 1.25em;
                         letter-spacing: -.05em;
-                        color: #1A172B;
-                        text-align: center;
+                        color: #fff;
+                        text-align: left;
                         margin-bottom: .5rem;
+                        max-height: 0;
+                        opacity: 0;
+                        overflow: hidden;
+                        /* Para que el crecimiento sea suave y la opacidad también */
+                        transition:
+                            max-height 0.5s ease-in-out,
+                            opacity 0.3s ease-in-out 0.2s;
+                        /* La opacidad comienza un poco después */
+
+                        /* Simulación de 'abajo hacia arriba': el elemento empieza movido hacia abajo */
+                        transform: translateY(10px);
 
                         @media screen and (min-width: 992px) {
                             font-size: 1em;
@@ -84,8 +142,8 @@
                         font-size: 1.175rem;
                         line-height: 1em;
                         letter-spacing: -.05em;
-                        color: #1A172B;
-                        text-align: center;
+                        color: #fff;
+                        text-align: left;
                         margin-bottom: .5rem;
 
                         @media screen and (min-width: 992px) {
@@ -98,6 +156,7 @@
                 .body {
                     img {
                         width: 100%;
+                        height: 243px;
                         object-fit: contain;
                         height: auto;
                         object-position: center;
@@ -109,14 +168,25 @@
 }
 
 .LineaContainer {
-    padding: 0rem 0 0;
+    padding: 4rem 0 0;
     border: 0px solid red;
 
     @media screen and (min-width: 992px) {
-        padding: 0rem 0 0rem;
+        padding: 6rem 0 0rem;
     }
 
     .headerLine {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+
+        >div {
+            grid-column: 1 / -1;
+
+            @media screen and (min-width: 992px) {
+                grid-column: 1 / span 6;
+            }
+        }
+
         p {
             font-family: var(--font-misti), sans-serif;
             font-weight: 300;
@@ -124,11 +194,16 @@
             line-height: 1.25em;
             letter-spacing: -.05em;
             color: rgba(#fff, 1);
-            margin-bottom: .5rem;
+            margin-bottom: 0.65rem;
+            grid-column: 1 / -1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
 
             @media screen and (min-width: 992px) {
                 font-size: 1.375em;
                 line-height: 1.15em;
+                grid-column: 7 / -1;
             }
         }
 
@@ -157,7 +232,7 @@
             font-size: 1rem;
             line-height: 1em;
             letter-spacing: -.05em;
-            color: rgba($celesteP, 1);
+            color: rgba(#DD1A20, 1);
             margin-bottom: .5rem;
 
             @media screen and (min-width: 992px) {
@@ -179,17 +254,13 @@
                 grid-column: 1 / -1;
 
                 @media screen and (min-width: 992px) {
-                    grid-column: 1 / span 6;
+                    grid-column: 1 / -1;
                     margin-bottom: 1rem;
                 }
 
                 @media screen and (min-width: 1400px) {
-                    grid-column: 1 / span 4;
+                    grid-column: 1 / -1;
                     margin-bottom: 1rem;
-                }
-
-                p {
-                    margin-top: 1rem;
                 }
             }
 
@@ -395,14 +466,14 @@
 }
 
 .propositoContainer {
-    background: $celesteP;
+    background: #C3E6F4;
     padding-top: 0rem;
     overflow: hidden;
     padding-bottom: 0rem;
 
-    @media screen and (min-width: 992px) {
-        padding-bottom: 3rem;
-    }
+    // @media screen and (min-width: 992px) {
+    //     padding-bottom: 3rem;
+    // }
 
     .subTitularMain {
         font-family: var(--font-misti), sans-serif;
@@ -428,11 +499,13 @@
         font-size: 2rem;
         line-height: 1.15em;
         letter-spacing: -.05em;
+        text-align: center;
         color: #1A172B;
 
         @media screen and (min-width: 992px) {
             font-size: 3.25em;
             line-height: 1em;
+            text-align: left;
         }
 
         span {
@@ -447,13 +520,13 @@
         // min-height: 750px;
         height: auto;
 
-        @media screen and (min-width: 992px) {
-            height: 500px;
-        }
+        // @media screen and (min-width: 992px) {
+        //     height: 500px;
+        // }
 
-        @media screen and (min-width: 1200px) {
-            height: 600px;
-        }
+        // @media screen and (min-width: 1200px) {
+        //     height: 600px;
+        // }
 
         >div {
             &:nth-child(1) {
@@ -468,31 +541,35 @@
                 }
 
                 .containerBoy {
-                    padding: 3rem 0rem 0;
+                    padding: 0rem 0rem 0;
                     box-sizing: border-box;
                     width: 100%;
-                    height: auto;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-end;
+                    align-items: center;
 
-                    @media screen and (min-width: 992px) {
-                        height: 500px;
-                    }
+                    // @media screen and (min-width: 992px) {
+                    //     height: 500px;
+                    // }
 
-                    @media screen and (min-width: 1200px) {
-                        height: 600px;
-                    }
+                    // @media screen and (min-width: 1200px) {
+                    //     height: 600px;
+                    // }
 
                     img {
                         width: auto;
-                        height: auto;
+                        height: 90%;
                         object-fit: contain;
 
-                        @media screen and (min-width: 992px) {
-                            height: 500px;
-                        }
+                        // @media screen and (min-width: 992px) {
+                        //     height: 100%;
+                        // }
 
-                        @media screen and (min-width: 1200px) {
-                            height: 600px;
-                        }
+                        // @media screen and (min-width: 1200px) {
+                        //     height: 100%;
+                        // }
                     }
                 }
 
@@ -593,7 +670,7 @@
                                 font-size: 1.12rem;
                                 line-height: 1.2em;
                                 letter-spacing: -.05em;
-                                color: $azulP;
+                                color: #5D5D5D;
 
                                 @media screen and (min-width: 992px) {
                                     font-size: 1.125em;
