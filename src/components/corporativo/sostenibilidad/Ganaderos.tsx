@@ -45,39 +45,41 @@ const Ganaderos = () => {
     ]
     return (
         <div className={styles.ganaderosContainer}>
-            <div className={styles.headerGanaderos}>
-                <div>
-                    <div className='containerFluid'>
-                        <div className={styles.infoHeaderContainer}>
-                            <h3>DESARROLLO GANADERO</h3>
-                            <h2>
-                                Impulsamos el <br /><span>desarrollo ganadero <br />de nuestro país</span>
-                            </h2>
-                            <p>
-                                En cada región del país, los ganaderos confían en nosotros y nosotros en ellos. Los acompañamos con asistencia técnica, herramientas y compromiso mutuo para que la mejor leche pueda llegar a millones de familias peruanas, de forma sostenible y responsable.
-                            </p>
-                        </div>
-                        <div className={styles.portalGanaderosContainer}>
-                            <div className={styles.portalBox}>
-                                <div>
-                                    <Image src={`/logoga.svg`} width={140} height={134} alt='' />
-                                </div>
-                                <div>
-                                    <h2>
-                                        ¿Eres uno de nuestros aliados ganaderos?
-                                    </h2>
-                                    <p>
-                                        Consulta tu historial de leche acopiada, servicios y beneficios por ser proveedor
-                                        de Gloria.
-                                    </p>
-                                    <a href="https://www.portalganaderogloria.com.pe/" target='_blank'>PORTAL GANADEROS</a>
+            <div className={styles.seccionSuperior}>
+                <div className={styles.imgFullPage}>
+                    <Image src={`/bgganaderos2.webp`} width={3280} height={2120} alt='' />
+                </div>
+                <div className='containerFluid'>
+                    <div className={styles.headerGanaderos}>
+                        <div>
+                            <div className={styles.infoHeaderContainer}>
+                                <h3>DESARROLLO GANADERO</h3>
+                                <h2>
+                                    Impulsamos el <br /><span>desarrollo ganadero <br />de nuestro país</span>
+                                </h2>
+                                <p>
+                                    En cada región del país, los ganaderos confían en nosotros y nosotros en ellos. Los acompañamos con asistencia técnica, herramientas y compromiso mutuo para que la mejor leche pueda llegar a millones de familias peruanas, de forma sostenible y responsable.
+                                </p>
+                            </div>
+                            <div className={styles.portalGanaderosContainer}>
+                                <div className={styles.portalBox}>
+                                    <div>
+                                        <Image src={`/logoga.svg`} width={140} height={134} alt='' />
+                                    </div>
+                                    <div>
+                                        <h2>
+                                            ¿Eres uno de nuestros aliados ganaderos?
+                                        </h2>
+                                        <p>
+                                            Consulta tu historial de leche acopiada, servicios y beneficios por ser proveedor
+                                            de Gloria.
+                                        </p>
+                                        <a href="https://www.portalganaderogloria.com.pe/" target='_blank'>PORTAL GANADEROS</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className={styles.imgFullPage}>
-                    <Image src={`/bgganaderos2.webp`} width={3280} height={2120} alt='' />
                 </div>
             </div>
 
