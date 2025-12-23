@@ -179,6 +179,30 @@
         margin-top: .25rem;
         margin-bottom: 1rem;
 
+        font-family: var(--font-poppins), sans-serif;
+        line-height: 1rem;
+        font-size: .85em;
+        // color: #F7E6CD;
+        color: #fff;
+        font-weight: 400;
+        margin-top: 1.25rem;
+
+        @media screen and (min-width: 992px) {
+            line-height: 1.35em;
+            font-size: 1rem;
+        }
+
+        @media screen and (min-width: 1200px) {
+            line-height: 1.35em;
+            font-size: 1.25rem;
+        }
+
+        @media screen and (min-width: 1600px) {
+            line-height: 1.35em;
+            font-size: 1.5rem;
+            width: 680px;
+        }
+
         @media screen and (min-width: 992px) {
             margin-top: .75rem;
         }
