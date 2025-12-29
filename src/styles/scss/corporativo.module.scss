@@ -1697,8 +1697,12 @@
 .sostenibilidadContainer {
     border: 0px solid red;
     background: $cremaP;
-    padding: 13rem 0 10rem;
+    padding: 5rem 0 5rem;
     position: relative;
+
+    @media screen and (min-width: 992px) {
+        padding: 13rem 0 10rem;
+    }
 
     @media screen and (min-width: 1600px) {
         padding: 20rem 0 18rem;
@@ -1846,7 +1850,7 @@
 .economiaContainer {
     border: 0px solid red;
     background: #FDF7EF;
-    padding: 8rem 0 10rem;
+    padding: 8rem 0 5rem;
     position: relative;
 
     .imgLacteaContainer {
@@ -1896,7 +1900,7 @@
                         padding: 1rem 1rem 1.25rem 2rem;
                         text-align: left;
                         background: rgba(#C3E6F4, 1);
-                        border-radius: 20px;
+                        border-radius: 0 0 20px 20px;
                         position: relative;
                         z-index: 100;
                         position: absolute;
@@ -2062,17 +2066,17 @@
 
 .nuestraLataContainer {
     background: #FDF7EF;
-    padding: 0rem 0 10rem;
+    padding: 0rem 0 5rem;
 
     .bannerLata {
         width: 100%;
         min-height: 700px;
-        padding: 20rem 0 20rem;
+        padding: 8rem 0 10rem;
         position: relative;
 
-        // @media screen and (min-width: 768px) {
-        //     height: 380px;
-        // }
+        @media screen and (min-width: 992px) {
+            padding: 20rem 0 20rem;
+        }
 
 
         // @media screen and (min-width: 992px) {
@@ -2306,7 +2310,7 @@
 
 .ganaderosContainer {
     background: #FDF7EF;
-    padding-bottom: 4rem;
+    padding-bottom: 0rem;
 
     .seccionSuperior {
         position: relative;
@@ -2316,8 +2320,8 @@
             grid-template-columns: repeat(12, 1fr);
             gap: 1rem;
             position: relative;
-            padding-bottom: 8rem;
-            padding-top: 8rem;
+            padding-bottom: 5rem;
+            padding-top: 3rem;
 
             @media screen and (min-width: 992px) {
                 padding-top: 0rem;
@@ -2592,10 +2596,10 @@
 
     .carruselComportamos {
         // margin-top: 6rem;
-        padding: 6rem 4rem 1rem;
+        padding: 5rem 4rem 1rem;
 
         @media screen and (min-width: 992px) {
-            padding: 10rem 0 4rem;
+            padding: 5rem 0 4rem;
         }
 
         .SwiperComportamos {

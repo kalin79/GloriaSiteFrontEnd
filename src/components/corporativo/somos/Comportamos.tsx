@@ -16,27 +16,27 @@ import styles from '@/styles/scss/somos.module.scss';
 const Comportamos = () => {
     const itemComportamos = [
         {
-            img: 'compromiso.webp',
+            img: 'compro1.webp',
             title: 'Compromiso',
             descripcion: 'Nos comprometemos con pasión y perseverancia para convertir nuestras ideas en productos que mejoren la vida de nuestros consumidores.',
         },
         {
-            img: 'integridad.webp',
+            img: 'compro2.webp',
             title: 'Integridad',
             descripcion: 'Actuamos con integridad y transparencia; respetando las leyes, normas y procesos para garantizar confianza y seguridad en todo lo que ofrecemos.',
         },
         {
-            img: 'enfoque.webp',
+            img: 'compro3.webp',
             title: 'Enfoque en el Cosumidor',
             descripcion: 'Ponemos siempre a nuestros consumidores y clientes en el centro de nuestras decisiones, para responder a sus necesidades y superar sus expectativas.',
         },
         {
-            img: 'productividad.webp',
+            img: 'compro4.webp',
             title: 'Productividad y calidad',
             descripcion: 'Somos productivos y eficientes en el uso de recursos, buscamos la máxima calidad en cada producto.',
         },
         {
-            img: 'responsabilidad.webp',
+            img: 'compro5.webp',
             title: 'Responsabilidad y transparencia',
             descripcion: 'Estamos presentes donde las cosas suceden y decimos las cosas como son para generar relaciones genuinas.',
         },
@@ -92,7 +92,7 @@ const Comportamos = () => {
                             >
                                 <div className={styles.cardComportamosContainer}>
                                     <div className={styles.body}>
-                                        <Image src={`/${item.img}`} alt='' width={148} height={243} />
+                                        <Image src={`/${item.img}`} alt='' width={590} height={970} />
                                     </div>
                                     <div className={styles.Footer}>
                                         <div>

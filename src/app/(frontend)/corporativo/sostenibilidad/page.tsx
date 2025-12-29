@@ -12,10 +12,10 @@ import GanaderosComponent from '@/components/corporativo/sostenibilidad/Ganadero
 import LacteaComponent from '@/components/corporativo/sostenibilidad/Lactea';
 const Sostenibilidad = () => {
     const dataBanner: BannerInterface = {
-        imgMobile: '/bgsomos3.webp',
-        imgPc: '/bgsomos3.webp',
-        titulo: `Nuestras acciones también <span>alimentan el futuro</span>`,
-        descripcion: `Buscamos generar un impacto positivo en el desarrollo del país, actuando con integridad, cuidando el entorno, las personas y comunidades.`,
+        imgMobile: '/sos222.webp',
+        imgPc: '/sos222.webp',
+        titulo: `Nuestras acciones <br />también alimentan <br />el futuro`,
+        descripcion: `Buscamos generar un impacto positivo en el desarrollo <br />del país, actuando con integridad, cuidando el entorno, <br />las personas y comunidades.`,
         breadcrumb: 'SOSTENIBILIDAD',
         slugbread: '/corporativo/sostenibilidad',
     };

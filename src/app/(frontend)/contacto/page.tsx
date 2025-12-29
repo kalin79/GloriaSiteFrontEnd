@@ -6,9 +6,9 @@ import { BannerInterface } from '@/interfaces/bannerInterno';
 export default function Contacto() {
     const dataBanner: BannerInterface = {
         imgMobile: 'https://s3.us-east-1.amazonaws.com/img.qa.gloria.com.pe/multimedia/9/9-img-1761914532.webp',
-        imgPc: '/bcontacto.webp',
-        titulo: `Escucharte es <br /><span>nuestro <br />compromiso</span>`,
-        descripcion: `Este es un canal directo para resolver tus dudas, atender tus reclamos y escuchar tus sugerencias.`,
+        imgPc: '/conta222.webp',
+        titulo: `Escucharte <br />es nuestro <br />compromiso`,
+        descripcion: `Este es un canal directo para resolver tus dudas, <br />atender tus reclamos y escuchar tus <br />sugerencias.`,
         breadcrumb: 'CONTÁCTENOS',
         slugbread: '/contacto',
     };
