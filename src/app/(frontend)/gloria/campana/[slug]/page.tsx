@@ -3,6 +3,7 @@ import { getCampanaBySlug } from '@/actions/marca/campana/getCamapanaBySlug';
 import BannerPrincipalComponent from "@/components/banners/HeaderCampana";
 import DetalleComponent from "@/components/campanas/Descripcion";
 import CarruselCampanasComponent from "@/components/carrusel/CarruselCampanas";
+import RedesSociales from "@/components/redes/Gloria";
 
 import { CampanaInterface } from '@/interfaces/campana';
 // import { SlugInterface } from '@/interfaces/slug';
@@ -34,6 +35,7 @@ export default async function CampanaPage({ params }: CampanaPageProps) {
 
     return (
         <>
+            <RedesSociales />
             <div className="bgGloria">
                 <BannerPrincipalComponent multimediaContents={campana} />
                 <div className={`${styles.campanaContainerPage}`}>

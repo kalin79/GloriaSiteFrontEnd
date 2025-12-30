@@ -3,7 +3,7 @@ import { getCampanaBySlug } from '@/actions/marca/campana/getCamapanaBySlug';
 import BannerPrincipalComponent from "@/components/bonle/HeaderCampanaMain";
 import DetalleComponent from "@/components/bonle/CampanaDescripcion";
 import CarruselCampanasComponent from "@/components/bonle/CarruselProCampanas";
-
+import RedesSociales from "@/components/redes/Bonle";
 import { CampanaInterface } from '@/interfaces/campana';
 // import { SlugInterface } from '@/interfaces/slug';
 import styles from '@/styles/scss/marcabonle.module.scss';
@@ -34,6 +34,7 @@ export default async function CampanaPage({ params }: CampanaPageProps) {
 
     return (
         <>
+            <RedesSociales />
             <div>
                 <BannerPrincipalComponent multimediaContents={campana} />
                 <div className={`${styles.campanaContainerPage}`}>

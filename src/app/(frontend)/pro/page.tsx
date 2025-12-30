@@ -7,6 +7,8 @@ import CarruselVideosComponent from "@/components/pro/CarruselVideos";
 import CarruselCampanasComponent from "@/components/pro/CarruselProCampanas";
 import BannerProComponent from "@/components/pro/BannerPro";
 import ListadoProductosComponent from "@/components/pro/Listado";
+import RedesSociales from "@/components/redes/Pro";
+
 // import { ProductInterface } from '@/interfaces/producto';
 // import Image from 'next/image';
 
@@ -22,7 +24,7 @@ export default async function MarcaPage() {
     const { data: dataCamapana } = response.data.campanas;
     return (
         <>
-
+            <RedesSociales />
             <BannerPrincipalComponent multimediaContents={banner} logo={logo} />
             <div className={styles.marcaContainerPage}>
                 <div className={styles.fondoBg}>

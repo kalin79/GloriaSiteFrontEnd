@@ -62,9 +62,9 @@ const HeaderMarca = ({ multimediaContents, viewLogo = true, logo }: multimediaPa
                     effect={'fade'}
                     spaceBetween={30}
                     slidesPerView={1}
-                    navigation={true}
-                    pagination={false}
-                    // autoplay={{ delay: 8000 }}
+                    navigation={false}
+                    pagination={{ clickable: true }}
+                    autoplay={{ delay: 8000 }}
                     className={`bannerCarruselHome`}
                 >
                     {multimediaContents.map((item, index) => (

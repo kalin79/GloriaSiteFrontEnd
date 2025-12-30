@@ -6,6 +6,8 @@ import BannerPrincipalComponent from "@/components/banners/HeaderMarca";
 import CarruselVideosComponent from "@/components/carrusel/CarruselVideos";
 import CarruselCampanasComponent from "@/components/carrusel/CarruselCampanas";
 import ListadoProductosComponent from "@/components/producto/Listado";
+import RedesSociales from "@/components/redes/Gloria";
+
 // import { ProductInterface } from '@/interfaces/producto';
 import Image from 'next/image';
 
@@ -23,7 +25,7 @@ export default async function MarcaPage() {
 
     return (
         <>
-
+            <RedesSociales />
             <BannerPrincipalComponent multimediaContents={banner} logo={logo} />
             <div className={styles.marcaContainerPage}>
                 <div className={styles.fondoBg}>

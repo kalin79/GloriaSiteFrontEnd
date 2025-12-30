@@ -2,7 +2,7 @@ import { getVideoBySlug } from '@/actions/marca/video/getVideoBySlug';
 import BannerPrincipalComponent from "@/components/bonle/HeaderVideoMain";
 import DetalleComponent from "@/components/bonle/VideoDescripcion";
 import CarruselVideosComponent from "@/components/bonle/CarruselVideosRelacionados";
-
+import RedesSociales from "@/components/redes/Bonle";
 // import TabsComponent from "@/components/video/Tabs";
 import { VideoInterface } from "@/interfaces/video";
 // import { SlugInterface } from '@/interfaces/slug';
@@ -23,6 +23,7 @@ export default async function VideoPage({ params }: CampanaPageProps) {
 
     return (
         <>
+            <RedesSociales />
             <div>
                 <BannerPrincipalComponent multimediaContents={video} />
                 <div className={`${styles.campanaContainerPage}`}>

@@ -4,6 +4,8 @@ import BannerPrincipalComponent from "@/components/banners/Producto";
 import DetallePrincipalComponent from "@/components/producto/DetailMain";
 import TabsComponent from "@/components/producto/Tabs";
 import CarruselProductsRelacionadosComponent from "@/components/carrusel/CarruselProductosRelacionados";
+import RedesSociales from "@/components/redes/Gloria";
+
 // import { SlugInterface } from '@/interfaces/slug';
 
 import { ProductInterface } from '@/interfaces/producto';
@@ -29,6 +31,7 @@ export default async function ProductoPage({ params }: CampanaPageProps) {
 
     return (
         <>
+            <RedesSociales />
             <div className="bgGloria">
                 <BannerPrincipalComponent multimediaContents={producto} />
                 <div className={`${styles.productoContainerPage}`}>

@@ -7,6 +7,7 @@ import CarruselVideosComponent from "@/components/bonle/CarruselVideos";
 import CarruselCampanasComponent from "@/components/bonle/CarruselProCampanas";
 import BannerProComponent from "@/components/bonle/BannerPro";
 import ListadoProductosComponent from "@/components/bonle/Listado";
+import RedesSociales from "@/components/redes/Bonle";
 // import { ProductInterface } from '@/interfaces/producto';
 // import Image from 'next/image';
 
@@ -22,7 +23,7 @@ export default async function MarcaPage() {
     const { data: dataCamapana } = response.data.campanas;
     return (
         <>
-
+            <RedesSociales />
             <BannerPrincipalComponent multimediaContents={banner} logo={logo} />
             {/* {JSON.stringify(banner)} */}
             <div className={styles.marcaContainerPage}>

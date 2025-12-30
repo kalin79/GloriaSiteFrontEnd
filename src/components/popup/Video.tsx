@@ -17,7 +17,7 @@ const Video = ({ videoData, onClose, isOpen }: Props) => {
     const playerRefPopUp = useRef<Player | null>(null);
     const hasTriggeredApi = useRef(false);
     useEffect(() => {
-
+        console.log(videoRefPopUp.current)
         if (isOpen && videoRefPopUp.current) {
             if (typeof window === 'undefined') return;
             if (playerRefPopUp.current) {

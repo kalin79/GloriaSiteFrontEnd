@@ -2,6 +2,7 @@ import { getVideoBySlug } from '@/actions/marca/video/getVideoBySlug';
 import BannerPrincipalComponent from "@/components/banners/Header";
 import DetalleComponent from "@/components/video/Descripcion";
 import CarruselVideosComponent from "@/components/video/CarruselVideos";
+import RedesSociales from "@/components/redes/Gloria";
 
 // import TabsComponent from "@/components/video/Tabs";
 import { VideoInterface } from "@/interfaces/video";
@@ -23,6 +24,7 @@ export default async function VideoPage({ params }: CampanaPageProps) {
 
     return (
         <>
+            <RedesSociales />
             <div className="bgGloria">
                 <BannerPrincipalComponent multimediaContents={video} />
                 <div className={`${styles.campanaContainerPage}`}>
