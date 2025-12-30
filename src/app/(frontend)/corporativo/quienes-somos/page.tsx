@@ -8,9 +8,9 @@ import { BannerInterface } from '@/interfaces/bannerInterno';
 export default function Somos() {
     const dataBanner: BannerInterface = {
         imgMobile: '/bsomosm.webp',
-        imgPc: '/bsomos2.webp',
-        titulo: `Somos una empresa <br />de alimentos y bebidas <span>orgullosamente peruana</span>`,
-        descripcion: `Conoce nuestra historia, nuestra forma de trabajar y el propósito que nos impulsa a seguir acompañando a más peruanos, produciendo marcas de calidad que nutren, inspiran y fortalecen vínculos desde hace generaciones.`,
+        imgPc: '/somos3bg.webp',
+        titulo: `Somos una empresa <br />de alimentos y bebidas <br />orgullosamente <br />peruana`,
+        descripcion: `Conoce nuestra historia, cómo trabajamos y el propósito <br />que nos impulsa a crear marcas de calidad que nutren e <br />inspiran a los peruanos desde hace generaciones.`,
         breadcrumb: 'QUIENES SOMOS',
         slugbread: '/corporativo/quienes-somos',
     };

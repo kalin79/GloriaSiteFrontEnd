@@ -13,7 +13,7 @@ import LacteaComponent from '@/components/corporativo/sostenibilidad/Lactea';
 const Sostenibilidad = () => {
     const dataBanner: BannerInterface = {
         imgMobile: '/sos222.webp',
-        imgPc: '/sos222.webp',
+        imgPc: '/bgsos4.webp',
         titulo: `Nuestras acciones <br />también alimentan <br />el futuro`,
         descripcion: `Buscamos generar un impacto positivo en el desarrollo <br />del país, actuando con integridad, cuidando el entorno, <br />las personas y comunidades.`,
         breadcrumb: 'SOSTENIBILIDAD',

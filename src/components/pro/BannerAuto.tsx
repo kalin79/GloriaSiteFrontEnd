@@ -69,7 +69,7 @@ const BannerAuto = ({ videoData }: Props) => {
                     width={2460}
                     height={1641}
                 />
-                <div ref={videoRef} />
+                <div ref={videoRef}></div>
             </div>
         </>
     );

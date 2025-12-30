@@ -52,7 +52,7 @@
             .cardComportamosContainer {
                 overflow: hidden;
                 width: 100%;
-                background: rgba($celesteP, 1);
+                background: transparent;
                 border-radius: 30px;
                 position: relative;
 
@@ -100,7 +100,7 @@
                         flex-direction: column;
 
                         img {
-                            transform: scale(-1);
+                            transform: scale(1);
                             transition: .5s all ease-in;
                         }
                     }
@@ -118,8 +118,8 @@
                         color: #fff;
                         text-align: left;
                         margin-bottom: .5rem;
-                        max-height: 0;
-                        opacity: 0;
+                        max-height: 500px;
+                        opacity: 1;
                         overflow: hidden;
                         /* Para que el crecimiento sea suave y la opacidad también */
                         transition:
@@ -128,7 +128,7 @@
                         /* La opacidad comienza un poco después */
 
                         /* Simulación de 'abajo hacia arriba': el elemento empieza movido hacia abajo */
-                        transform: translateY(10px);
+                        transform: translateY(0px);
 
                         @media screen and (min-width: 992px) {
                             font-size: 1em;
@@ -670,7 +670,7 @@
                                 font-size: 1.12rem;
                                 line-height: 1.2em;
                                 letter-spacing: -.05em;
-                                color: #5D5D5D;
+                                color: #1A172B;
 
                                 @media screen and (min-width: 992px) {
                                     font-size: 1.125em;

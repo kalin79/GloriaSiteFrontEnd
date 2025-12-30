@@ -2,7 +2,7 @@
 @use 'vars/mixins' as *;
 
 .containerContacto {
-    background: $cremaP;
+    background: #FDF7EF;
     padding: 6rem 0 8rem;
 
     .listadoContactoContainer {
@@ -177,7 +177,7 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                height: 140px;
+                height: 110px;
                 border: 0px solid red;
 
                 img {

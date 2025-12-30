@@ -43,7 +43,7 @@ const Descripcion = () => {
                     </div>
                     <div className={`${styles.cardContacto} ${styles.bgAzul}`}>
                         <div className={styles.iconContainer}>
-                            <Image src={`/iconContacto3.svg`} className={styles.icon3} width={79} height={106} alt='Correo electrónico:' />
+                            <Image src={`/contactoicon.svg`} className={styles.icon3} width={78} height={105} alt='Correo electrónico:' />
                         </div>
                         <div className={styles.infoContainer}>
                             <h2>Línea ética*</h2>
