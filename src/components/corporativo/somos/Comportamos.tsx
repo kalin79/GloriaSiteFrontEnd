@@ -21,7 +21,7 @@ const Comportamos = () => {
             descripcion: 'Nos comprometemos con pasión y perseverancia para convertir nuestras ideas en productos que mejoren la vida de nuestros consumidores.',
         },
         {
-            img: 'compro2.webp',
+            img: 'lechex.webp',
             title: 'Integridad',
             descripcion: 'Actuamos con integridad y transparencia; respetando las leyes, normas y procesos para garantizar confianza y seguridad en todo lo que ofrecemos.',
         },
