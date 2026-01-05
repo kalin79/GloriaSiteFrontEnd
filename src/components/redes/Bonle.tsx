@@ -10,7 +10,7 @@ const Bonle = () => {
                 <Image src='/m_instagram.svg' width={42} height={42} alt='' />
             </a>
             <a href="#" target="_blank">
-                <Image src='/m_x.svg' width={42} height={42} alt='' />
+                <Image src='/tiktok.svg' width={42} height={42} alt='' />
             </a>
         </div>
     )
