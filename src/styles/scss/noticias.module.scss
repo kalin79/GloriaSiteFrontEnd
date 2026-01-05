@@ -2,7 +2,7 @@
 @use 'vars/mixins' as *;
 
 .noticiasHomeContainer {
-    background: $cremaP;
+    background: #FDF7EF;
     padding: 5rem 0 6rem;
 
     .btnContainer {
@@ -234,7 +234,7 @@
 }
 
 .pageNoticiaDetalle {
-    background: $cremaP;
+    background: #FDF7EF;
 
     .infoContainer {
         padding: 6rem 0 8rem;
@@ -404,7 +404,7 @@
 }
 
 .pageNoticiasContainer {
-    background: $cremaP;
+    background: #FDF7EF;
 
     .paginadoContainer {
         display: flex;
