@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import { useRouter } from "next/navigation";
+import { FilterCategory, SelectedFilters } from "@/types/filters"
 // import HtmlSafeRender from '@/components/HtmlSafeRender';
 import SanitizedHtml from '@/components/SanitizedHtml';
 // Estilos swiper
@@ -21,7 +22,8 @@ const ListadoProductos = () => {
     const [totalPaginas, setTotalPaginas] = useState(1);
     const [pagina, setPagina] = useState(1);
     const [isInit, setIsInit] = useState(false); // Puedes ajustarlo luego desde API
-
+    const [viewFiltro, setViewFiltro] = useState(false);
+    const [selectedFilters, setSelectedFilters] = useState<SelectedFilters>({});
     const router = useRouter();
     const handleSiguiente = () => {
         if (!isInit) setIsInit((prev) => !prev);
@@ -171,27 +173,156 @@ const ListadoProductos = () => {
             subTitule: 'Presentación caja de 900 g',
         },
     ]
+    const filterCategories: FilterCategory[] = [
+        {
+            key: 'marcas',
+            title: 'MARCAS',
+            options: [
+                { value: 'bonle', label: 'Bonle' },
+                { value: 'pro', label: 'PRO' },
+                { value: 'battimix', label: 'Battimix' },
+                { value: 'actibio', label: 'Actibio' },
+                // ...
+            ],
+        },
+        {
+            key: 'formato',
+            title: 'FORMATO PRESENTACIÓN',
+            options: [
+                { value: 'individual', label: 'Individual' },
+                { value: 'lata', label: 'Lata' },
+                { value: 'caja-tetra', label: 'Caja (Tetra Pack)' },
+                // ...
+            ],
+        },
+        {
+            key: 'beneficio',
+            title: 'BENEFICIOS NUTRICIONALES',
+            options: [
+                { value: 'Sin lactosa', label: 'Sin lactosa' },
+                { value: 'bajo-en-grasa', label: 'Bajo en grasa' },
+                { value: 'alto-en-proteína', label: 'Alto en proteína' },
+                { value: 'sin-azucar', label: 'Sin azúcar añadida' },
+                // ...
+            ],
+        },
+        {
+            key: 'atributos',
+            title: 'ATRIBUTOS FUNCIONALES',
+            options: [
+                { value: 'para-compartir', label: 'Para compartir en familia' },
+                { value: 'ideal-para-ninos', label: 'Ideal para niños' },
+                { value: 'para-lonchera', label: 'Para lonchera' },
+                { value: 'para-reposteria', label: 'Para respotería' },
+                // ...
+            ],
+        },
+        // ... agrega las otras categorías (beneficios y atributos)
+    ];
     const handleClickViewVideo = (marca: string, slug: string) => {
         router.push(`/${marca}/producto/${slug}`)
+    }
+    const toggleOption = (categoryKey: string, value: string) => {
+        setSelectedFilters(prev => {
+            const current = prev[categoryKey] || [];
+            if (current.includes(value)) {
+                return { ...prev, [categoryKey]: current.filter(v => v !== value) };
+            }
+            return { ...prev, [categoryKey]: [...current, value] };
+        });
+    };
+    const handleViewFiltro = () => {
+        setViewFiltro(true);
+    }
+    const handleFiltroCancelar = () => {
+        setViewFiltro(false);
+    }
+    const handleResetFiltro = () => {
+        setSelectedFilters({})
+    }
+    const handleAplicarFiltro = () => {
+        console.log(selectedFilters);
+        // setViewFiltro(false);
     }
     return (
         <>
             <div className={styles.headerFiltrosContainer}>
                 <div className='containerFluid'>
                     <div className={styles.headerFiltroTop}>
-                        <div className={styles.buscadorContainer}>
-                            <Image src='/buscar.svg' className={styles.iconBuscador} alt='Buscar Productos' width='25' height='25' />
-                            <input type="text" placeholder='Buscar...' />
-                            <div className={styles.fitrosContainer}>
-                                <div className={styles.iconBuscarContainer}>
-                                    <Image src='/buscadorBlanco.svg' height={26} width={26} alt='filtros buscar' />
-                                </div>
-                                <div className={styles.opcionFiltrosContainer}>
-                                    <p>Filtrar productos</p>
-                                    <Image src='/filtroicon.svg' height={20} width={20} alt='filtros buscar' />
+                        <div className={styles.filtroContainerMain}>
+                            <div className={styles.buscadorContainer}>
+                                <Image src='/buscar.svg' className={styles.iconBuscador} alt='Buscar Productos' width='25' height='25' />
+                                <input type="text" placeholder='Buscar...' />
+                                <div className={styles.fitrosContainer}>
+                                    <div className={styles.iconBuscarContainer}>
+                                        <Image src='/buscadorBlanco.svg' height={26} width={26} alt='filtros buscar' />
+                                    </div>
+                                    <div className={styles.opcionFiltrosContainer} onClick={handleViewFiltro}>
+                                        <p>Filtrar productos</p>
+                                        <Image src='/filtroicon.svg' height={20} width={20} alt='filtros buscar' />
+                                    </div>
                                 </div>
                             </div>
+                            {
+                                viewFiltro && (
+                                    <div className={styles.popUpFiltro}>
+                                        <div className={styles.listFiltroContainer}>
+                                            {filterCategories.map(category => (
+                                                <div key={category.key}>
+                                                    <h2>{category.title}</h2>
+                                                    <div className={styles.listOpcionMultiple}>
+                                                        {category.options.map(option => (
+                                                            <div key={option.value}>
+                                                                <label className={styles.checkboxLabel}>
+                                                                    {/* Input real (oculto pero accesible) */}
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        checked={selectedFilters[category.key]?.includes(option.value) ?? false}
+                                                                        onChange={() => toggleOption(category.key, option.value)}
+                                                                        className={styles.checkboxInput}
+                                                                    />
+
+                                                                    {/* Checkbox visual personalizado */}
+                                                                    <div
+                                                                        className={`${styles.checkboxCustom} ${selectedFilters[category.key]?.includes(option.value)
+                                                                            ? styles.checkboxCustomChecked
+                                                                            : ''
+                                                                            }`}
+                                                                    >
+                                                                        <span
+                                                                            className={`${styles.checkMark} ${selectedFilters[category.key]?.includes(option.value)
+                                                                                ? styles.checkMarkVisible
+                                                                                : ''
+                                                                                }`}
+                                                                        >
+                                                                            ✓
+                                                                        </span>
+                                                                    </div>
+
+                                                                    {/* Texto de la opción */}
+                                                                    <span className={styles.checkboxText}>{option.label}</span>
+                                                                </label>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                        <div className={styles.btnFiltro}>
+                                            <div>
+                                                <button onClick={handleResetFiltro}>Resetear filtros</button>
+                                            </div>
+                                            <div>
+                                                <button onClick={handleFiltroCancelar}>Cerrar</button>
+                                                <button onClick={handleAplicarFiltro}>Aplicar filtros</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                            }
+
                         </div>
+
                     </div>
                     <div className={styles.headerFiltroBottom}>
                         <Swiper

@@ -1156,7 +1156,7 @@ $button-radius: 9999px; // Para hacer los botones completamente redondeados
         justify-content: center;
         align-items: center;
 
-        padding: 3rem 0 1rem;
+        padding: 0rem 0 5rem;
         position: relative;
 
         background: #FFF6E8;
@@ -1344,84 +1344,248 @@ $button-radius: 9999px; // Para hacer los botones completamente redondeados
             }
         }
 
+
+
         .headerFiltroTop {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
             gap: 1rem;
 
-            .buscadorContainer {
+
+
+            .filtroContainerMain {
                 grid-column: 3 / span 8;
-                background: #D8D8D8;
-                border: 2px solid #D8D8D8;
-                height: 56px;
-                border-radius: 30px;
                 position: relative;
-                overflow: hidden;
+                z-index: 50;
 
-                .iconBuscador {
+                .popUpFiltro {
                     position: absolute;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    left: .5rem;
-                    z-index: 10;
-                }
-
-                input[type="text"] {
-                    height: 100%;
+                    top: 0px;
+                    left: 0px;
                     width: 100%;
+                    min-height: 400px;
+                    background-color: #fff;
                     border-radius: 30px;
-                    border: 0;
-                    padding-left: 3rem;
-                    box-sizing: border-box;
-                    position: relative;
-                    z-index: 2;
-                    color: #A1A1A1;
-                    font-size: 1rem;
-                    font-family: var(--font-poppins), sans-serif;
-                    font-weight: 500;
-                }
+                    padding: 5rem 1.5rem 2rem;
 
-                .fitrosContainer {
-                    position: absolute;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    right: .25rem;
-                    display: flex;
-                    justify-content: flex-start;
-                    align-items: flex-start;
-                    gap: .5rem;
-                    z-index: 10;
-
-                    .opcionFiltrosContainer {
-                        width: 189px;
-                        height: 48px;
-                        border-radius: 30px;
-                        background: #60C1E8;
+                    .btnFiltro {
                         display: flex;
-                        justify-content: center;
+                        justify-content: space-between;
                         align-items: center;
-                        gap: .5rem;
+                        margin-top: 1.5rem;
 
-                        p {
-                            color: white;
-                            font-size: 0.875rem;
-                            font-family: var(--font-poppins), sans-serif;
-                            font-weight: 500;
+                        >div {
+                            &:nth-of-type(1) {
+                                button {
+                                    border: 0;
+                                    background: transparent;
+                                    color: #303030;
+                                    font-size: 1rem;
+                                    font-family: var(--font-poppins), sans-serif;
+                                    font-weight: 500;
+                                }
+                            }
+
+                            &:nth-of-type(2) {
+                                display: flex;
+                                justify-content: flex-end;
+                                gap: .5rem;
+
+                                >button {
+                                    &:nth-of-type(1) {
+                                        border: 1px solid #1A172B;
+                                        height: 41px;
+                                        width: 136px;
+                                        border-radius: 30px;
+                                        background: transparent;
+                                        color: #303030;
+                                        font-size: .85rem;
+                                        font-family: var(--font-poppins), sans-serif;
+                                        font-weight: 500;
+                                    }
+
+                                    &:nth-of-type(2) {
+                                        border: 1px solid #61C2E8;
+                                        height: 41px;
+                                        width: 136px;
+                                        border-radius: 30px;
+                                        background: #61C2E8;
+                                        color: #fff;
+                                        font-size: .85rem;
+                                        font-family: var(--font-poppins), sans-serif;
+                                        font-weight: 500;
+                                    }
+                                }
+                            }
                         }
                     }
 
-                    .iconBuscarContainer {
-                        width: 48px;
-                        height: 48px;
-                        border-radius: 50%;
-                        background: #60C1E8;
+                    .listFiltroContainer {
+                        display: grid;
+                        grid-template-columns: repeat(4, 1fr);
+                        gap: 1rem;
+
+                        >div {
+                            h2 {
+                                color: #303030;
+                                font-size: 1rem;
+                                font-family: var(--font-misti), sans-serif;
+                                font-weight: 500;
+                                min-height: 45px;
+                            }
+
+                            .listOpcionMultiple {
+                                >div {
+                                    .checkboxLabel {
+                                        display: flex;
+                                        align-items: flex-start;
+                                        gap: .25rem;
+                                        /* space-x-3 equivalente */
+                                        cursor: pointer;
+                                        user-select: none;
+                                        padding: 4px 0;
+                                    }
+
+                                    .checkboxInput {
+                                        position: absolute;
+                                        opacity: 0;
+                                        width: 0;
+                                        height: 0;
+                                    }
+
+                                    .checkboxCustom {
+                                        width: 12px;
+                                        height: 12px;
+                                        border: 1px solid #D9D9D9;
+                                        /* slate-400 */
+                                        border-radius: 2px;
+                                        background-color: #D9D9D9;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        transition: all 0.2s ease;
+                                        margin-top: .35rem;
+                                    }
+
+                                    .checkboxCustomChecked {
+                                        background-color: #1A172B;
+                                        /* pink-500, cambia al color que quieras */
+                                        border-color: #1A172B;
+                                    }
+
+                                    .checkboxCustomFocus {
+                                        box-shadow: 0 0 0 3px rgba(#1A172B, 0.3);
+                                        /* ring rosa suave */
+                                    }
+
+                                    .checkMark {
+                                        color: white;
+                                        font-weight: bold;
+                                        font-size: 0px;
+                                        opacity: 0;
+                                        transition: opacity 0.2s ease;
+                                    }
+
+                                    .checkMarkVisible {
+                                        opacity: 1;
+                                    }
+
+                                    .checkboxText {
+                                        font-size: 1rem;
+                                        font-family: var(--font-misti), sans-serif;
+                                        font-weight: 400;
+                                        color: #1f2937;
+
+                                        /* gray-800 */
+                                    }
+
+                                    .checkboxCustom:hover {
+                                        border-color: #1A172B;
+                                    }
+
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .buscadorContainer {
+
+                    background: #D8D8D8;
+                    border: 2px solid #D8D8D8;
+                    height: 56px;
+                    border-radius: 30px;
+                    position: relative;
+                    overflow: hidden;
+
+                    .iconBuscador {
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        left: .5rem;
+                        z-index: 10;
+                    }
+
+                    input[type="text"] {
+                        height: 100%;
+                        width: 100%;
+                        border-radius: 30px;
+                        border: 0;
+                        padding-left: 3rem;
+                        box-sizing: border-box;
+                        position: relative;
+                        z-index: 2;
+                        color: #A1A1A1;
+                        font-size: 1rem;
+                        font-family: var(--font-poppins), sans-serif;
+                        font-weight: 500;
+                    }
+
+                    .fitrosContainer {
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        right: .25rem;
                         display: flex;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
+                        justify-content: flex-start;
+                        align-items: flex-start;
+                        gap: .5rem;
+                        z-index: 10;
+
+                        .opcionFiltrosContainer {
+                            width: 189px;
+                            height: 48px;
+                            border-radius: 30px;
+                            background: #60C1E8;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            gap: .5rem;
+                            cursor: pointer;
+
+                            p {
+                                color: white;
+                                font-size: 0.875rem;
+                                font-family: var(--font-poppins), sans-serif;
+                                font-weight: 500;
+                            }
+                        }
+
+                        .iconBuscarContainer {
+                            width: 48px;
+                            height: 48px;
+                            border-radius: 50%;
+                            background: #60C1E8;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                        }
                     }
                 }
             }
+
+
         }
     }
 }
