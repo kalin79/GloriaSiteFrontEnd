@@ -1763,3 +1763,38 @@ h4 {
         }
     }
 }
+
+.bannerProductosPage {
+    height: 100%;
+
+    .swiper-pagination-bullet {
+        width: 14px;
+        height: 14px;
+        background: #fff;
+        opacity: 1;
+    }
+
+    .swiper-pagination-bullet-active {
+        background: #66D5EC;
+    }
+}
+
+.carruselCategoriasProductos {
+    height: 100%;
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        border: 1px solid #1A172B;
+        border-radius: 50%;
+        background: #1A172B;
+
+        svg {
+            width: 26px;
+            height: 16px;
+
+            path {
+                fill: white;
+            }
+        }
+    }
+}
