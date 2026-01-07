@@ -1,0 +1,26 @@
+// import { getProductoBySlug } from '@/actions/marca/producto/getProductoBySlug';
+
+interface TiendaCategoriaPageProps {
+    params: Promise<{ slug: string }>;
+}
+
+export default async function TiendaCategoriaPage({ params }: TiendaCategoriaPageProps) {
+
+    // export default async function ProductoPage(props: SlugInterface) {
+    // ✅ Desestructurar antes, sin anidamiento
+    const { slug } = await params; // 👈 importante: espera el Promise
+    if (!slug) {
+        throw new Error('Slug no disponible');
+    }
+
+    // const response = await getProductoBySlug(slug);
+    // const { producto, productos_relacionados }: { producto: ProductInterface, productos_relacionados: ProductInterface[] } = response.data;
+    // console.log(productos_relacionados)
+
+
+    return (
+        <>
+            sddfsf
+        </>
+    );
+}

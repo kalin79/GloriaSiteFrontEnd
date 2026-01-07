@@ -48,43 +48,53 @@ const ListadoProductos = () => {
     const multimediaContents = [
         {
             image: '/iconqueso.svg',
-            title: 'Quesos'
+            title: 'Quesos',
+            slug: 'queso',
         },
         {
             image: '/iconyogurt.svg',
-            title: 'Yogures'
+            title: 'Yogures',
+            slug: 'queso',
         },
         {
             image: '/iconqueso.svg',
-            title: 'Quesos'
+            title: 'Quesos',
+            slug: 'queso',
         },
         {
             image: '/iconyogurt.svg',
-            title: 'Yogures'
+            title: 'Yogures',
+            slug: 'queso',
         },
         {
             image: '/iconqueso.svg',
-            title: 'Quesos'
+            title: 'Quesos',
+            slug: 'queso',
         },
         {
             image: '/iconyogurt.svg',
-            title: 'Yogures'
+            title: 'Yogures',
+            slug: 'queso',
         },
         {
             image: '/iconqueso.svg',
-            title: 'Quesos'
+            title: 'Quesos',
+            slug: 'queso',
         },
         {
             image: '/iconyogurt.svg',
-            title: 'Yogures'
+            title: 'Yogures',
+            slug: 'queso',
         },
         {
             image: '/iconqueso.svg',
-            title: 'Quesos'
+            title: 'Quesos',
+            slug: 'queso',
         },
         {
             image: '/iconyogurt.svg',
-            title: 'Yogures'
+            title: 'Yogures',
+            slug: 'queso',
         }
     ]
     const dataProducts = [
@@ -244,6 +254,10 @@ const ListadoProductos = () => {
         console.log(selectedFilters);
         // setViewFiltro(false);
     }
+
+    const handleViewCategoriaProducto = (slug: string) => {
+        router.push(`/tienda/${slug}`)
+    }
     return (
         <>
             <div className={styles.headerFiltrosContainer}>
@@ -354,7 +368,7 @@ const ListadoProductos = () => {
                         >
                             {multimediaContents.map((item, index) => (
                                 <SwiperSlide key={index}>
-                                    <div className={styles.cardIcon} >
+                                    <div className={styles.cardIcon} onClick={() => handleViewCategoriaProducto(item.slug)}>
                                         <Image src={item.image} alt={item.title} width={102} height={102} />
                                         <p>{item.title}</p>
                                     </div>
