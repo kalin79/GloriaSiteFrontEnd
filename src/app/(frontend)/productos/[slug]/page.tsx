@@ -1,5 +1,7 @@
 // import { getProductoBySlug } from '@/actions/marca/producto/getProductoBySlug';
-
+import HeaderProductos from '@/components/banners/HeaderProductos';
+import ListadoProductosCategorias from '@/components/tienda/ListadoProductosCategorias';
+import styles from '@/styles/scss/producto.module.scss';
 interface TiendaCategoriaPageProps {
     params: Promise<{ slug: string }>;
 }
@@ -20,7 +22,10 @@ export default async function TiendaCategoriaPage({ params }: TiendaCategoriaPag
 
     return (
         <>
-            sddfsf
+            <div className={styles.pageProductoContainer}>
+                <HeaderProductos />
+                <ListadoProductosCategorias />
+            </div>
         </>
     );
 }

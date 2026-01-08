@@ -1149,7 +1149,7 @@ $button-radius: 9999px; // Para hacer los botones completamente redondeados
 }
 
 .pageProductoContainer {
-    border: 1px solid red;
+    border: 0px solid red;
 
     .paginadoContainer {
         display: flex;
@@ -1209,12 +1209,30 @@ $button-radius: 9999px; // Para hacer los botones completamente redondeados
     .viewProductosContainer {
         background: #FFF6E8;
         padding: 5rem 0 3rem;
+        position: relative;
+
+        .fondoCategoria {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 450px;
+            z-index: 5;
+
+            img {
+                width: 100%;
+                height: auto;
+                object-fit: contain;
+            }
+        }
 
         .viewProductBody {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 1rem;
             margin-top: 4rem;
+            position: relative;
+            z-index: 20;
 
             .cardProductContainer {
                 cursor: pointer;
@@ -1308,6 +1326,93 @@ $button-radius: 9999px; // Para hacer los botones completamente redondeados
                         @media screen and (min-width: 1400px) {
                             font-size: 1.125rem;
                             line-height: 1.15em;
+                        }
+                    }
+                }
+            }
+        }
+
+        .viewProductCategoriaHeader {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            position: relative;
+            z-index: 20;
+
+            >div {
+                &:nth-of-type(2) {
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: contain;
+                    }
+                }
+
+                &:nth-of-type(1) {
+                    button {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        gap: .25rem;
+                        background: #61C2E8;
+                        border-radius: 30px;
+                        width: 189px;
+                        height: 49px;
+                        border: 0;
+                        color: white;
+                        font-size: .85rem;
+                        font-family: var(--font-poppins), sans-serif;
+                        font-weight: 400;
+
+                    }
+
+                    h1 {
+                        color: #1A172B;
+                        font-size: 4.5rem;
+                        font-family: var(--font-misti), sans-serif;
+                        font-weight: 400;
+                        margin-top: 1rem;
+                    }
+
+                    h3 {
+                        color: #1A172B;
+                        font-size: .9rem;
+                        font-family: var(--font-misti), sans-serif;
+                        font-weight: 400;
+                        margin-top: 1.5rem;
+
+                        @media screen and (min-width: 1400px) {
+                            font-size: 1rem;
+                        }
+                    }
+
+                    p {
+                        color: #1A172B;
+                        font-size: 1rem;
+                        line-height: 1.25em;
+                        font-family: var(--font-misti), sans-serif;
+                        font-weight: 400;
+
+                        @media screen and (min-width: 1400px) {
+                            font-size: 1.20rem;
+                            line-height: 1.25em;
+                        }
+
+                        @media screen and (min-width: 1600px) {
+                            font-size: 1.4rem;
+                            line-height: 1.15em;
+                        }
+
+                        span {
+                            font-weight: 500;
+                        }
+
+                        br {
+                            display: none;
+
+                            @media screen and (min-width: 992px) {
+                                display: block;
+                            }
                         }
                     }
                 }

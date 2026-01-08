@@ -22,7 +22,7 @@ import 'swiper/css/effect-fade';
 
 import styles from '@/styles/scss/producto.module.scss';
 
-const ListadoProductos = () => {
+const ListadoProductosCategorias = () => {
     const [totalPaginas, setTotalPaginas] = useState(1);
     const [pagina, setPagina] = useState(1);
     const [isInit, setIsInit] = useState(false); // Puedes ajustarlo luego desde API
@@ -50,6 +50,7 @@ const ListadoProductos = () => {
     useEffect(() => {
         setTotalPaginas(1);
     }, [])
+
 
     const multimediaContents = [
         {
@@ -273,6 +274,9 @@ const ListadoProductos = () => {
     const handleViewCategoriaProducto = (slug: string) => {
         router.push(`/productos/${slug}`)
     }
+    const handleVolverProductos = () => {
+        router.push(`/productos/`)
+    }
     return (
         <>
             <div className={styles.headerFiltrosContainer}>
@@ -397,19 +401,25 @@ const ListadoProductos = () => {
                 </div>
             </div>
             <div className={styles.viewProductosContainer}>
+                <div className={styles.fondoCategoria}>
+                    <Image src={'/fondo.webp'} width={2460} height={1302} alt='' />
+                </div>
                 <div className='containerFluid'>
-                    <div className={styles.viewProductHeader}>
+                    <div className={styles.viewProductCategoriaHeader}>
                         <div>
-                            <h2>NUESTROS PRODUCTOS</h2>
-                            <h1>
-                                Hechos y pensados para <br />
-                                toda <span>la familia</span>
-                            </h1>
+                            <button onClick={handleVolverProductos}>
+                                <Image src='/fff.svg' width={20} height={11} alt='' />
+                                <span>Volver a productos</span>
+                            </button>
+                            <h1>Quesos</h1>
+                            <p>
+                                Delicioso y nutritivo, es el <span>complemento <br />perfecto </span>
+                                en platos de comida y como piqueo <br />en eventos sociales.
+                            </p>
+                            <h3>7 PRODUCTOS ENCONTRADOS</h3>
                         </div>
                         <div>
-                            <p>
-                                Estamos con quienes lo dan todo por los suyos, a través de productos deliciosos, nutritivos y perfectos para acompañar momentos que unen e inspiran.
-                            </p>
+                            <Image src='/queso.webp' width={715} height={477} alt='' />
                         </div>
                     </div>
                     <div ref={productosRef} className={styles.viewProductBody}>
@@ -474,4 +484,4 @@ const ListadoProductos = () => {
     )
 }
 
-export default ListadoProductos
+export default ListadoProductosCategorias
