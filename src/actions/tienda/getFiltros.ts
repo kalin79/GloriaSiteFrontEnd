@@ -103,7 +103,7 @@ export async function setResultFilters(payload: string) {
     return resultado;
 }
 
-export async function setResultFilterCategory(payload: string, categories: string) {
+export async function setResultFilterCategory(payload: string) {
     const API_TOKEN = process.env.NEXT_PUBLIC_AUTHORIZATION_FORM; // Acceso a variable de entorno
     const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
     const username = process.env.BASIC_AUTH_USER;
@@ -115,10 +115,10 @@ export async function setResultFilterCategory(payload: string, categories: strin
     }
 
     // Ejemplo de envío a una API externa
-    let urlApi = `${apiUrl}productos/filtrar-categorias?categorias_slug=${categories}`;
-    if (payload != '') {
-        urlApi = `${apiUrl}productos/filtrar-categorias?categorias_slug=${categories}&${payload}`;
-    }
+    const urlApi = `${apiUrl}productos/filtrar-categorias?${payload}`;
+    // if (payload != '') {
+    //     urlApi = `${apiUrl}productos/filtrar-categorias?categorias_slug=${categories}&${payload}`;
+    // }
     const response = await fetch(urlApi, {
         method: 'GET',
         cache: 'no-store', // evita cachear si necesitas siempre lo último
@@ -131,7 +131,9 @@ export async function setResultFilterCategory(payload: string, categories: strin
     });
 
     const resultado = await response.json();
-
+    console.log(`payload`, payload)
+    console.log(resultado);
+    console.log(urlApi)
 
     if (resultado.status === 'error') {
         return resultado;

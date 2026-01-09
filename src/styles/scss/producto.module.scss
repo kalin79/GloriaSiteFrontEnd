@@ -1400,6 +1400,7 @@ $button-radius: 9999px; // Para hacer los botones completamente redondeados
                         font-family: var(--font-misti), sans-serif;
                         font-weight: 400;
                         margin-top: 1rem;
+                        line-height: .95em;
                     }
 
                     h3 {
@@ -1420,6 +1421,7 @@ $button-radius: 9999px; // Para hacer los botones completamente redondeados
                         line-height: 1.25em;
                         font-family: var(--font-misti), sans-serif;
                         font-weight: 400;
+                        margin-top: 1rem;
 
                         @media screen and (min-width: 1400px) {
                             font-size: 1.20rem;

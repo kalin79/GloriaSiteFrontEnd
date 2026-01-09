@@ -52,3 +52,15 @@ export interface PaginationInterface {
     from: number;
     to: number;
 }
+
+export interface InfoCategorieInterface {
+    id: number;
+    titulo: string;
+    subtitulo: string | null;
+    slug: string;
+    icon: string;
+    poster: string;
+    poster_mobile: string;
+    description: string;
+    cantidad: string;
+}
