@@ -197,7 +197,7 @@ const ListadoProductos = ({ pagination, listProducts, dataCategories, marcas, ti
     const handleClickViewVideo = (marca: string, slug: string) => {
         router.push(`/${marca}/producto/${slug}`)
     }
-    const toggleOption = (categoryKey: string, value: number) => {
+    const toggleOption = (categoryKey: FilterKey, value: number) => {
         setSelectedFilters(prev => {
             const current = prev[categoryKey] || [];
             if (current.includes(value)) {
