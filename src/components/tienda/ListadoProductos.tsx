@@ -51,6 +51,8 @@ const ListadoProductos = ({ pagination, listProducts, dataCategories, marcas, ti
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>("");
     const scrollOnNextLoad = useRef(false);
+    const skipNextFetch = useRef(false); // ← Nuevo ref
+    const skipSearch = useRef(true); // ← Nuevo ref
 
     const [isInit, setIsInit] = useState(false); // Puedes ajustarlo luego desde API
     const [viewFiltro, setViewFiltro] = useState(false);
@@ -77,23 +79,36 @@ const ListadoProductos = ({ pagination, listProducts, dataCategories, marcas, ti
         if (pagina > 1) {
             setPagina(pagina - 1);
             scrollOnNextLoad.current = true;
+
         }
     };
 
     const handlePagina = (num: number) => {
         scrollOnNextLoad.current = true;
+        skipNextFetch.current = false; // ← Indicamos que el próximo fetch debe saltarse
         if (!isInit) setIsInit((prev) => !prev);
         setPagina(num);
         // onChange(num);
     }
 
     const cargarTodos = useCallback(() => {
+        skipNextFetch.current = true; // ← Indicamos que el próximo fetch debe saltarse
+        setIsLoading(false);
+        setError("");
         setDataProducts(listProducts);
         setTotalPaginas(pagination.last_page);
         setPagina(1);
+        setQueryFiltros("");
     }, [listProducts, pagination]); // ← depende solo de productosIniciales
 
     const resultSearchInput = useCallback(async () => {
+        // alert('input')
+        // alert(skipSearch)
+        if (skipSearch.current) {
+            skipSearch.current = false;
+            return;
+        }
+        skipNextFetch.current = true; // ← Indicamos que el próximo fetch debe saltarse
         if (abortControllerRef.current) {
             abortControllerRef.current.abort();
         }
@@ -129,7 +144,14 @@ const ListadoProductos = ({ pagination, listProducts, dataCategories, marcas, ti
 
     useEffect(() => {
         const fetchProductos = async () => {
+            // alert('paginado')
+            // alert(skipNextFetch.current)
+            if (skipNextFetch.current) {
+                skipNextFetch.current = false;
+                return;
+            }
             if (pagina !== 0) {
+                // alert(1)
                 let _URL_ = `page=${pagina}`;
 
                 // verificamos si ha realizado una busqueda en el input en caso si haya hecho busqueda
@@ -175,15 +197,16 @@ const ListadoProductos = ({ pagination, listProducts, dataCategories, marcas, ti
 
     // Lógica principal
     useEffect(() => {
-
         if (query.trim() === '') {
             // 1. Input vacío → mostrar todos
             setQueryFiltros("");
             cargarTodos();
         } else if (query.length >= 3) {
             // 2. 4+ letras → buscar en API
+            skipSearch.current = false;
             setQueryFiltros("");
             resultSearchInput();
+
         } else {
             // 3. 1-3 letras → no buscar, pero mantener resultados actuales
             // Opcional: mostrar todos o limpiar
@@ -216,8 +239,10 @@ const ListadoProductos = ({ pagination, listProducts, dataCategories, marcas, ti
         setSelectedFilters({})
     }
     const handleAplicarFiltro = async () => {
+        // alert('filtrado')
         console.log(selectedFilters);
         scrollOnNextLoad.current = true;
+        skipNextFetch.current = true; // ← Indicamos que el próximo fetch debe saltarse
         // Mapeo de nombres frontend → backend
         const keyMap: Record<FilterKey, string> = {
             formato: 'presentaciones',
@@ -542,7 +567,7 @@ const ListadoProductos = ({ pagination, listProducts, dataCategories, marcas, ti
                             </p>
                         </div>
                     </div>
-
+                    {/* {JSON.stringify(dataProducts)} */}
                     {
                         isLoading ? (
                             <p>Estamos procesando ...</p>

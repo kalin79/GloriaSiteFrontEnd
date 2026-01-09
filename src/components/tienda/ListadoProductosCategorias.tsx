@@ -52,7 +52,6 @@ const ListadoProductosCategorias = ({ infoCategory, slug, pagination, listProduc
 
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>("");
-    const scrollOnNextLoad = useRef(false);
 
     const [isInit, setIsInit] = useState(false); // Puedes ajustarlo luego desde API
     const [viewFiltro, setViewFiltro] = useState(false);
@@ -63,7 +62,10 @@ const ListadoProductosCategorias = ({ infoCategory, slug, pagination, listProduc
     const posterMobile = categoryDataMain?.poster_mobile?.trim();
     const posterMain = categoryDataMain?.poster?.trim();
 
-
+    const scrollOnNextLoad = useRef(false);
+    const skipNextFetch = useRef(false); // ← Nuevo ref
+    const skipSearch = useRef(true); // ← Nuevo ref
+    // const isInitialData = useRef(true);
     // Ref al contenedor de productos
     const productosRef = useRef<HTMLDivElement>(null);
     const router = useRouter();
@@ -90,18 +92,30 @@ const ListadoProductosCategorias = ({ infoCategory, slug, pagination, listProduc
 
     const handlePagina = (num: number) => {
         scrollOnNextLoad.current = true;
+        skipNextFetch.current = false; // ← Indicamos que el próximo fetch debe saltarse
+
         if (!isInit) setIsInit((prev) => !prev);
         setPagina(num);
         // onChange(num);
     }
 
     const cargarTodos = useCallback(() => {
+        skipNextFetch.current = true; // ← Indicamos que el próximo fetch debe saltarse
+        setIsLoading(false);
+        setError("");
         setDataProducts(listProducts);
         setTotalPaginas(pagination.last_page);
         setPagina(1);
+        setQueryFiltros("");
+        // isInitialData.current = true; // ← marcamos como inicial
     }, [listProducts, pagination]); // ← depende solo de productosIniciales
 
     const resultSearchInput = useCallback(async () => {
+        if (skipSearch.current) {
+            skipSearch.current = false;
+            return;
+        }
+        skipNextFetch.current = true; // ← Indicamos que el próximo fetch debe saltarse
         if (abortControllerRef.current) {
             abortControllerRef.current.abort();
         }
@@ -137,8 +151,11 @@ const ListadoProductosCategorias = ({ infoCategory, slug, pagination, listProduc
 
     useEffect(() => {
         const fetchProductos = async () => {
+            if (skipNextFetch.current) {
+                skipNextFetch.current = false;
+                return;
+            }
             if (pagina !== 0) {
-                // alert(1);
                 let _URL_ = `categorias_slug=${slug}&page=${pagina}`;
 
                 // verificamos si ha realizado una busqueda en el input en caso si haya hecho busqueda
@@ -189,8 +206,10 @@ const ListadoProductosCategorias = ({ infoCategory, slug, pagination, listProduc
             // 1. Input vacío → mostrar todos
             setQueryFiltros("");
             cargarTodos();
+
         } else if (query.length >= 3) {
             // 2. 4+ letras → buscar en API
+            skipSearch.current = false;
             setQueryFiltros("");
             resultSearchInput();
         } else {
@@ -227,6 +246,7 @@ const ListadoProductosCategorias = ({ infoCategory, slug, pagination, listProduc
     const handleAplicarFiltro = async () => {
         console.log(selectedFilters);
         scrollOnNextLoad.current = true;
+        // skipNextFetch.current = true;
         // Mapeo de nombres frontend → backend
         const keyMap: Record<FilterKey, string> = {
             formato: 'presentaciones',
@@ -293,6 +313,7 @@ const ListadoProductosCategorias = ({ infoCategory, slug, pagination, listProduc
     return (
         <>
             <div className={styles.headerFiltrosContainer} >
+                {/* {JSON.stringify(listProducts)} */}
                 <div className='containerFluid' >
                     <div className={styles.headerFiltroTop}>
                         <div className={styles.filtroContainerMain}>
@@ -574,7 +595,6 @@ const ListadoProductosCategorias = ({ infoCategory, slug, pagination, listProduc
                             </div>
                         )
                     }
-
                     {
                         isLoading ? (
                             <p>Estamos procesando ...</p>
