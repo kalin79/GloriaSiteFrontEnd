@@ -1,5 +1,7 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
+import { setResultFilters } from '@/actions/tienda/getFiltros';
+
 import gsap from 'gsap'; // Importa GSAP
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 // import { useState, useEffect, useRef } from 'react';
@@ -10,7 +12,7 @@ import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import { useRouter } from "next/navigation";
-import { FilterCategory, SelectedFilters } from "@/types/filters"
+import { SelectedFilters, FilterKey } from "@/types/filters"
 // import HtmlSafeRender from '@/components/HtmlSafeRender';
 import SanitizedHtml from '@/components/SanitizedHtml';
 // Estilos swiper
@@ -19,226 +21,183 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 
-
+import { ProductoInterfaceInterface, PaginationInterface, CategoryInterface, MarcaInterface, PresentacionInterface, TipoProductoInterface, AtributoInterface } from '@/interfaces/tienda';
 import styles from '@/styles/scss/producto.module.scss';
 
-const ListadoProductos = () => {
+interface Props {
+    dataCategories: CategoryInterface[];
+    marcas: MarcaInterface[];
+    tipo_producto: TipoProductoInterface[];
+    presentaciones: PresentacionInterface[];
+    atributos: AtributoInterface[];
+    listProducts: ProductoInterfaceInterface[];
+    pagination: PaginationInterface;
+}
+
+const ListadoProductos = ({ pagination, listProducts, dataCategories, marcas, tipo_producto, presentaciones, atributos }: Props) => {
     const [totalPaginas, setTotalPaginas] = useState(1);
     const [pagina, setPagina] = useState(1);
+    const PAGES_PER_BLOCK = pagination.per_page;
+    const currentBlock = Math.floor((pagina - 1) / PAGES_PER_BLOCK);
+    // Rango visible
+    const startPage = (currentBlock * PAGES_PER_BLOCK) + 1;
+    const endPage = Math.min(startPage + PAGES_PER_BLOCK - 1, totalPaginas);
+
+
+    const [query, setQuery] = useState("");
+    const [queryFiltros, setQueryFiltros] = useState("");
+    const abortControllerRef = useRef<AbortController | null>(null);
+
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState<string | null>("");
+    const scrollOnNextLoad = useRef(false);
+
     const [isInit, setIsInit] = useState(false); // Puedes ajustarlo luego desde API
     const [viewFiltro, setViewFiltro] = useState(false);
     const [selectedFilters, setSelectedFilters] = useState<SelectedFilters>({});
+    const [dataProducts, setDataProducts] = useState<ProductoInterfaceInterface[]>(listProducts);
     // Ref al contenedor de productos
     const productosRef = useRef<HTMLDivElement>(null);
     const router = useRouter();
     const handleSiguiente = () => {
-        if (!isInit) setIsInit((prev) => !prev);
 
-        if (pagina < totalPaginas) setPagina(pagina + 1);
+        if (!isInit) setIsInit((prev) => !prev);
+        // if (endPage === totalPaginas) return;
+        // const nuevaPagina = Math.min(startPage + PAGES_PER_BLOCK, totalPaginas);
+        // setPagina(nuevaPagina);
+        if (pagina < totalPaginas) {
+            setPagina(pagina + 1);
+            scrollOnNextLoad.current = true;
+        }
+
+
+    };
+    const handleAnterior = () => {
+        if (!isInit) setIsInit((prev) => !prev);
+        if (pagina > 1) {
+            setPagina(pagina - 1);
+            scrollOnNextLoad.current = true;
+        }
     };
 
     const handlePagina = (num: number) => {
+        scrollOnNextLoad.current = true;
         if (!isInit) setIsInit((prev) => !prev);
-        setPagina(num)
+        setPagina(num);
+        // onChange(num);
     }
 
-    const handleAnterior = () => {
-        if (!isInit) setIsInit((prev) => !prev);
-        if (pagina > 1) setPagina(pagina - 1);
-    };
+    const cargarTodos = useCallback(() => {
+        setDataProducts(listProducts);
+        setTotalPaginas(pagination.last_page);
+        setPagina(1);
+    }, [listProducts, pagination]); // ← depende solo de productosIniciales
+
+    const resultSearchInput = useCallback(async () => {
+        if (abortControllerRef.current) {
+            abortControllerRef.current.abort();
+        }
+        const controller = new AbortController();
+        abortControllerRef.current = controller;
+
+        setIsLoading(true);
+        setError("");
+
+        try {
+            const responseProductus = await setResultFilters(`search=${query}`);
+            const { pagination: paginationApi, items: productsApi } = responseProductus.data;
+            setTotalPaginas(paginationApi.last_page);
+            setPagina(1);
+            setDataProducts(productsApi);
+
+            if (productsApi.length === 0) {
+                setError('No se encontraron productos');
+            }
+
+        } catch (err: unknown) {
+            if (err instanceof Error && err.name !== 'AbortError') {
+                setError('Error en la búsqueda');
+            }
+        } finally {
+            setIsLoading(false);
+        }
+    }, [query]);
 
     useEffect(() => {
-        setTotalPaginas(1);
-    }, [])
+        setTotalPaginas(pagination.last_page);
+    }, [pagination])
 
-    const multimediaContents = [
-        {
-            image: '/iconqueso.svg',
-            title: 'Quesos',
-            slug: 'queso',
-        },
-        {
-            image: '/iconyogurt.svg',
-            title: 'Yogures',
-            slug: 'queso',
-        },
-        {
-            image: '/iconqueso.svg',
-            title: 'Quesos',
-            slug: 'queso',
-        },
-        {
-            image: '/iconyogurt.svg',
-            title: 'Yogures',
-            slug: 'queso',
-        },
-        {
-            image: '/iconqueso.svg',
-            title: 'Quesos',
-            slug: 'queso',
-        },
-        {
-            image: '/iconyogurt.svg',
-            title: 'Yogures',
-            slug: 'queso',
-        },
-        {
-            image: '/iconqueso.svg',
-            title: 'Quesos',
-            slug: 'queso',
-        },
-        {
-            image: '/iconyogurt.svg',
-            title: 'Yogures',
-            slug: 'queso',
-        },
-        {
-            image: '/iconqueso.svg',
-            title: 'Quesos',
-            slug: 'queso',
-        },
-        {
-            image: '/iconyogurt.svg',
-            title: 'Yogures',
-            slug: 'queso',
+    useEffect(() => {
+        const fetchProductos = async () => {
+            if (pagina !== 0) {
+                let _URL_ = `page=${pagina}`;
+
+                // verificamos si ha realizado una busqueda en el input en caso si haya hecho busqueda
+                // y tengamos muchos resultados estos deberan ser paginados.
+                if (query.trim() !== '') {
+                    _URL_ = `page=${pagina}&search=${query}`;
+                }
+
+                // En el caso que se use los filtros hara la nueva concatenacion aqui.
+                if (queryFiltros.trim() !== '') {
+                    _URL_ = `page=${pagina}&${queryFiltros}`;
+                }
+
+                const responseProductus = await setResultFilters(_URL_);
+
+                const { pagination: paginationApi, items: productsApi } = responseProductus.data;
+
+                setTotalPaginas(paginationApi.last_page);
+                setDataProducts(productsApi);
+
+                if (scrollOnNextLoad.current) {
+                    scrollOnNextLoad.current = false;
+                    if (isInit) {
+                        setTimeout(() => {
+                            // Scroll suave con GSAP hasta el div de productos
+                            if (productosRef.current) {
+                                gsap.to(window, {
+                                    duration: 1.2,                // Duración del scroll (más suave si es mayor)
+                                    scrollTo: productosRef.current, // Scroll hasta el elemento
+                                    ease: "power2.out",           // Curva de easing muy natural y suave
+                                    offsetY: 80,                  // Deja un pequeño margen arriba (ajusta si tienes navbar fija)
+                                });
+                            }
+                        }, 500);
+                    }
+                }
+
+            }
+        };
+
+        fetchProductos(); // ✅ no olvides ejecutarla
+    }, [pagina, isInit, query, queryFiltros]);
+
+    // Lógica principal
+    useEffect(() => {
+
+        if (query.trim() === '') {
+            // 1. Input vacío → mostrar todos
+            setQueryFiltros("");
+            cargarTodos();
+        } else if (query.length >= 3) {
+            // 2. 4+ letras → buscar en API
+            setQueryFiltros("");
+            resultSearchInput();
+        } else {
+            // 3. 1-3 letras → no buscar, pero mantener resultados actuales
+            // Opcional: mostrar todos o limpiar
+            setQueryFiltros("");
+            cargarTodos();
         }
-    ]
-    const dataProducts = [
-        {
-            marca: 'gloria',
-            slug: 'leche-gloria-azul',
-            image: '/pO1M.png',
-            title: 'Leche UHT Gloria Light',
-            subTitule: 'Presentación caja de 900 g',
-        },
-        {
-            marca: 'gloria',
-            slug: 'leche-gloria-azul',
-            image: '/pO1M.png',
-            title: 'Leche UHT Gloria Light',
-            subTitule: 'Presentación caja de 900 g',
-        },
-        {
-            marca: 'gloria',
-            slug: 'leche-gloria-azul',
-            image: '/pO1M.png',
-            title: 'Leche UHT Gloria Light',
-            subTitule: 'Presentación caja de 900 g',
-        },
-        {
-            marca: 'gloria',
-            slug: 'leche-gloria-azul',
-            image: '/pO1M.png',
-            title: 'Leche UHT Gloria Light',
-            subTitule: 'Presentación caja de 900 g',
-        },
-        {
-            marca: 'gloria',
-            slug: 'leche-gloria-azul',
-            image: '/pO1M.png',
-            title: 'Leche UHT Gloria Light',
-            subTitule: 'Presentación caja de 900 g',
-        },
-        {
-            marca: 'gloria',
-            slug: 'leche-gloria-azul',
-            image: '/pO1M.png',
-            title: 'Leche UHT Gloria Light',
-            subTitule: 'Presentación caja de 900 g',
-        },
-        {
-            marca: 'gloria',
-            slug: 'leche-gloria-azul',
-            image: '/pO1M.png',
-            title: 'Leche UHT Gloria Light',
-            subTitule: 'Presentación caja de 900 g',
-        },
-        {
-            marca: 'gloria',
-            slug: 'leche-gloria-azul',
-            image: '/pO1M.png',
-            title: 'Leche UHT Gloria Light',
-            subTitule: 'Presentación caja de 900 g',
-        },
-        {
-            marca: 'gloria',
-            slug: 'leche-gloria-azul',
-            image: '/pO1M.png',
-            title: 'Leche UHT Gloria Light',
-            subTitule: 'Presentación caja de 900 g',
-        },
-        {
-            marca: 'gloria',
-            slug: 'leche-gloria-azul',
-            image: '/pO1M.png',
-            title: 'Leche UHT Gloria Light',
-            subTitule: 'Presentación caja de 900 g',
-        },
-        {
-            marca: 'gloria',
-            slug: 'leche-gloria-azul',
-            image: '/pO1M.png',
-            title: 'Leche UHT Gloria Light',
-            subTitule: 'Presentación caja de 900 g',
-        },
-        {
-            marca: 'gloria',
-            slug: 'leche-gloria-azul',
-            image: '/pO1M.png',
-            title: 'Leche UHT Gloria Light',
-            subTitule: 'Presentación caja de 900 g',
-        },
-    ]
-    const filterCategories: FilterCategory[] = [
-        {
-            key: 'marcas',
-            title: 'MARCAS',
-            options: [
-                { value: 'bonle', label: 'Bonle' },
-                { value: 'pro', label: 'PRO' },
-                { value: 'battimix', label: 'Battimix' },
-                { value: 'actibio', label: 'Actibio' },
-                // ...
-            ],
-        },
-        {
-            key: 'formato',
-            title: 'FORMATO PRESENTACIÓN',
-            options: [
-                { value: 'individual', label: 'Individual' },
-                { value: 'lata', label: 'Lata' },
-                { value: 'caja-tetra', label: 'Caja (Tetra Pack)' },
-                // ...
-            ],
-        },
-        {
-            key: 'beneficio',
-            title: 'BENEFICIOS NUTRICIONALES',
-            options: [
-                { value: 'Sin lactosa', label: 'Sin lactosa' },
-                { value: 'bajo-en-grasa', label: 'Bajo en grasa' },
-                { value: 'alto-en-proteína', label: 'Alto en proteína' },
-                { value: 'sin-azucar', label: 'Sin azúcar añadida' },
-                // ...
-            ],
-        },
-        {
-            key: 'atributos',
-            title: 'ATRIBUTOS FUNCIONALES',
-            options: [
-                { value: 'para-compartir', label: 'Para compartir en familia' },
-                { value: 'ideal-para-ninos', label: 'Ideal para niños' },
-                { value: 'para-lonchera', label: 'Para lonchera' },
-                { value: 'para-reposteria', label: 'Para respotería' },
-                // ...
-            ],
-        },
-        // ... agrega las otras categorías (beneficios y atributos)
-    ];
+    }, [query, cargarTodos, resultSearchInput]);
+
+
+
     const handleClickViewVideo = (marca: string, slug: string) => {
         router.push(`/${marca}/producto/${slug}`)
     }
-    const toggleOption = (categoryKey: string, value: string) => {
+    const toggleOption = (categoryKey: string, value: number) => {
         setSelectedFilters(prev => {
             const current = prev[categoryKey] || [];
             if (current.includes(value)) {
@@ -256,8 +215,53 @@ const ListadoProductos = () => {
     const handleResetFiltro = () => {
         setSelectedFilters({})
     }
-    const handleAplicarFiltro = () => {
-        // console.log(selectedFilters);
+    const handleAplicarFiltro = async () => {
+        console.log(selectedFilters);
+        scrollOnNextLoad.current = true;
+        // Mapeo de nombres frontend → backend
+        const keyMap: Record<FilterKey, string> = {
+            formato: 'presentaciones',
+            marcas: 'marcas',
+            atributos: 'atributo',
+            tipo: 'nutrientes',
+        };
+        setQuery("");
+        // armamos el query de marcas
+        // const queryMarcas = selectedFilters.marcas.map((value, index) => `marcas[${index}]=${value}`).join('&');
+        const queryString = Object.entries(selectedFilters)
+            .flatMap(([key, values]) => {
+                if (!values || values.length === 0) return [];
+                const apiKey = keyMap[key as FilterKey];
+                return values.map((value, index) => `${apiKey}[${index}]=${value}`)
+            })
+            .join('&');
+
+        console.log(queryString)
+        setQueryFiltros(queryString);
+        setIsLoading(true);
+        setError("");
+
+        try {
+            const responseProductus = await setResultFilters(`${queryString}`);
+            const { pagination: paginationApi, items: productsApi } = responseProductus.data;
+            setTotalPaginas(paginationApi.last_page);
+            setPagina(1);
+            setDataProducts(productsApi);
+
+            if (productsApi.length === 0) {
+                setError('No se encontraron productos');
+            }
+
+        } catch (err: unknown) {
+            if (err instanceof Error && err.name !== 'AbortError') {
+                setError('Error en la búsqueda');
+            }
+        } finally {
+            setIsLoading(false);
+        }
+
+
+
         setViewFiltro(false);
         // Scroll suave con GSAP hasta el div de productos
         if (productosRef.current) {
@@ -281,7 +285,12 @@ const ListadoProductos = () => {
                         <div className={styles.filtroContainerMain}>
                             <div className={styles.buscadorContainer}>
                                 <Image src='/buscar.svg' className={styles.iconBuscador} alt='Buscar Productos' width='25' height='25' />
-                                <input type="text" placeholder='Buscar...' />
+                                <input
+                                    type="text"
+                                    placeholder='Buscar...'
+                                    onChange={(e) => setQuery(e.target.value)}
+                                    value={query}
+                                />
                                 <div className={styles.fitrosContainer}>
                                     <div className={styles.iconBuscarContainer}>
                                         <Image src='/buscadorBlanco.svg' height={26} width={26} alt='filtros buscar' />
@@ -296,46 +305,161 @@ const ListadoProductos = () => {
                                 viewFiltro && (
                                     <div className={styles.popUpFiltro}>
                                         <div className={styles.listFiltroContainer}>
-                                            {filterCategories.map(category => (
-                                                <div key={category.key}>
-                                                    <h2>{category.title}</h2>
-                                                    <div className={styles.listOpcionMultiple}>
-                                                        {category.options.map(option => (
-                                                            <div key={option.value}>
-                                                                <label className={styles.checkboxLabel}>
-                                                                    {/* Input real (oculto pero accesible) */}
-                                                                    <input
-                                                                        type="checkbox"
-                                                                        checked={selectedFilters[category.key]?.includes(option.value) ?? false}
-                                                                        onChange={() => toggleOption(category.key, option.value)}
-                                                                        className={styles.checkboxInput}
-                                                                    />
 
-                                                                    {/* Checkbox visual personalizado */}
-                                                                    <div
-                                                                        className={`${styles.checkboxCustom} ${selectedFilters[category.key]?.includes(option.value)
-                                                                            ? styles.checkboxCustomChecked
+                                            <div>
+                                                <h2>MARCAS</h2>
+                                                <div className={styles.listOpcionMultiple}>
+                                                    {marcas.map(option => (
+                                                        <div key={option.id}>
+                                                            <label className={styles.checkboxLabel}>
+                                                                {/* Input real (oculto pero accesible) */}
+                                                                <input
+                                                                    type="checkbox"
+                                                                    checked={selectedFilters['marcas']?.includes(option.id) ?? false}
+                                                                    onChange={() => toggleOption('marcas', option.id)}
+                                                                    className={styles.checkboxInput}
+                                                                />
+
+                                                                {/* Checkbox visual personalizado */}
+                                                                <div
+                                                                    className={`${styles.checkboxCustom} ${selectedFilters['marcas']?.includes(option.id)
+                                                                        ? styles.checkboxCustomChecked
+                                                                        : ''
+                                                                        }`}
+                                                                >
+                                                                    <span
+                                                                        className={`${styles.checkMark} ${selectedFilters['marcas']?.includes(option.id)
+                                                                            ? styles.checkMarkVisible
                                                                             : ''
                                                                             }`}
                                                                     >
-                                                                        <span
-                                                                            className={`${styles.checkMark} ${selectedFilters[category.key]?.includes(option.value)
-                                                                                ? styles.checkMarkVisible
-                                                                                : ''
-                                                                                }`}
-                                                                        >
-                                                                            ✓
-                                                                        </span>
-                                                                    </div>
+                                                                        ✓
+                                                                    </span>
+                                                                </div>
 
-                                                                    {/* Texto de la opción */}
-                                                                    <span className={styles.checkboxText}>{option.label}</span>
-                                                                </label>
-                                                            </div>
-                                                        ))}
-                                                    </div>
+                                                                {/* Texto de la opción */}
+                                                                <span className={styles.checkboxText}>{option.nombre}</span>
+                                                            </label>
+                                                        </div>
+                                                    ))}
                                                 </div>
-                                            ))}
+                                            </div>
+
+                                            <div>
+                                                <h2>FORMATO PRESENTACIÓN</h2>
+                                                <div className={styles.listOpcionMultiple}>
+                                                    {presentaciones.map(option => (
+                                                        <div key={option.id}>
+                                                            <label className={styles.checkboxLabel}>
+                                                                {/* Input real (oculto pero accesible) */}
+                                                                <input
+                                                                    type="checkbox"
+                                                                    checked={selectedFilters['formato']?.includes(option.id) ?? false}
+                                                                    onChange={() => toggleOption('formato', option.id)}
+                                                                    className={styles.checkboxInput}
+                                                                />
+
+                                                                {/* Checkbox visual personalizado */}
+                                                                <div
+                                                                    className={`${styles.checkboxCustom} ${selectedFilters['formato']?.includes(option.id)
+                                                                        ? styles.checkboxCustomChecked
+                                                                        : ''
+                                                                        }`}
+                                                                >
+                                                                    <span
+                                                                        className={`${styles.checkMark} ${selectedFilters['formato']?.includes(option.id)
+                                                                            ? styles.checkMarkVisible
+                                                                            : ''
+                                                                            }`}
+                                                                    >
+                                                                        ✓
+                                                                    </span>
+                                                                </div>
+
+                                                                {/* Texto de la opción */}
+                                                                <span className={styles.checkboxText}>{option.name}</span>
+                                                            </label>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <h2>TIPO DE PRODUCTO</h2>
+                                                <div className={styles.listOpcionMultiple}>
+                                                    {tipo_producto.map(option => (
+                                                        <div key={option.id}>
+                                                            <label className={styles.checkboxLabel}>
+                                                                {/* Input real (oculto pero accesible) */}
+                                                                <input
+                                                                    type="checkbox"
+                                                                    checked={selectedFilters['tipo']?.includes(option.id) ?? false}
+                                                                    onChange={() => toggleOption('tipo', option.id)}
+                                                                    className={styles.checkboxInput}
+                                                                />
+
+                                                                {/* Checkbox visual personalizado */}
+                                                                <div
+                                                                    className={`${styles.checkboxCustom} ${selectedFilters['tipo']?.includes(option.id)
+                                                                        ? styles.checkboxCustomChecked
+                                                                        : ''
+                                                                        }`}
+                                                                >
+                                                                    <span
+                                                                        className={`${styles.checkMark} ${selectedFilters['tipo']?.includes(option.id)
+                                                                            ? styles.checkMarkVisible
+                                                                            : ''
+                                                                            }`}
+                                                                    >
+                                                                        ✓
+                                                                    </span>
+                                                                </div>
+
+                                                                {/* Texto de la opción */}
+                                                                <span className={styles.checkboxText}>{option.name}</span>
+                                                            </label>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <h2>ATRIBUTOS FUNCIONALES</h2>
+                                                <div className={styles.listOpcionMultiple}>
+                                                    {atributos.map(option => (
+                                                        <div key={option.id}>
+                                                            <label className={styles.checkboxLabel}>
+                                                                {/* Input real (oculto pero accesible) */}
+                                                                <input
+                                                                    type="checkbox"
+                                                                    checked={selectedFilters['atributos']?.includes(option.id) ?? false}
+                                                                    onChange={() => toggleOption('atributos', option.id)}
+                                                                    className={styles.checkboxInput}
+                                                                />
+
+                                                                {/* Checkbox visual personalizado */}
+                                                                <div
+                                                                    className={`${styles.checkboxCustom} ${selectedFilters['atributos']?.includes(option.id)
+                                                                        ? styles.checkboxCustomChecked
+                                                                        : ''
+                                                                        }`}
+                                                                >
+                                                                    <span
+                                                                        className={`${styles.checkMark} ${selectedFilters['atributos']?.includes(option.id)
+                                                                            ? styles.checkMarkVisible
+                                                                            : ''
+                                                                            }`}
+                                                                    >
+                                                                        ✓
+                                                                    </span>
+                                                                </div>
+
+                                                                {/* Texto de la opción */}
+                                                                <span className={styles.checkboxText}>{option.name}</span>
+                                                            </label>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+
                                         </div>
                                         <div className={styles.btnFiltro}>
                                             <div>
@@ -354,6 +478,7 @@ const ListadoProductos = () => {
 
                     </div>
                     <div className={styles.headerFiltroBottom}>
+                        {/* {JSON.stringify(dataCategories)} */}
                         <Swiper
                             spaceBetween={10}
                             centeredSlides={false}
@@ -381,11 +506,16 @@ const ListadoProductos = () => {
                                 }
                             }}
                         >
-                            {multimediaContents.map((item, index) => (
+                            {dataCategories.map((item, index) => (
                                 <SwiperSlide key={index}>
                                     <div className={styles.cardIcon} onClick={() => handleViewCategoriaProducto(item.slug)}>
-                                        <Image src={item.image} alt={item.title} width={102} height={102} />
-                                        <p>{item.title}</p>
+                                        {
+                                            item.icon && item.icon !== '' && (
+                                                <Image src={item.icon || ''} alt={item.name} width={102} height={102} />
+                                            )
+                                        }
+
+                                        <p><SanitizedHtml html={item.name} /></p>
                                     </div>
                                 </SwiperSlide>
 
@@ -412,31 +542,54 @@ const ListadoProductos = () => {
                             </p>
                         </div>
                     </div>
-                    <div ref={productosRef} className={styles.viewProductBody}>
-                        {dataProducts.map((item, index) => (
-                            <div key={index} onClick={() => { handleClickViewVideo(item.marca || '', item.slug || '') }} className={styles.cardProductContainer}>
-                                <div className={styles.cardHeader}>
-                                    <Image src={item.image} width={656} height={858} alt={item.title} />
-                                </div>
-                                <div className={styles.cardBody}>
-                                    <h3>
-                                        <SanitizedHtml html={item.title} />
-                                    </h3>
-                                    <h2>
-                                        <SanitizedHtml html={item.subTitule} />
-                                    </h2>
-                                </div>
-                            </div>
-                        ))}
 
-                    </div>
+                    {
+                        isLoading ? (
+                            <p>Estamos procesando ...</p>
+                        ) : error?.trim() !== '' ? (
+                            <p>{error}</p>
+                        ) : (
+                            <div ref={productosRef} className={styles.viewProductBody}>
+                                {dataProducts.map((item, index) => (
+                                    <div
+                                        key={index}
+                                        onClick={() =>
+                                            handleClickViewVideo(item.marca.slug || '', item.slug || '')
+                                        }
+                                        className={styles.cardProductContainer}
+                                    >
+                                        <div className={styles.cardHeader}>
+                                            <Image
+                                                src={item.poster}
+                                                width={656}
+                                                height={858}
+                                                alt={item.title_large}
+                                            />
+                                        </div>
+
+                                        <div className={styles.cardBody}>
+                                            <h3>
+                                                <SanitizedHtml html={item.title_large} />
+                                            </h3>
+                                            <h2>
+                                                <SanitizedHtml html={item.title_small} />
+                                            </h2>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        )
+                    }
+
+
+
                 </div>
             </div>
             <div className={styles.paginadoContainer}>
                 <div className={styles.containerPaginacion}>
                     <button
                         onClick={handleAnterior}
-                        disabled={pagina === 1}
+                        disabled={startPage === 1}
                         className={styles.arrowButtonPag}
                     >
                         <Image src="/arrowPP2.svg"
@@ -446,7 +599,8 @@ const ListadoProductos = () => {
                             className={styles.arrowLeft}
                         />
                     </button>
-                    {Array.from({ length: totalPaginas }, (_, i) => i + 1).map((num) => (
+
+                    {Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i).map((num) => (
                         <button
                             key={num}
                             onClick={() => handlePagina(num)}
@@ -458,7 +612,7 @@ const ListadoProductos = () => {
 
                     <button
                         onClick={handleSiguiente}
-                        disabled={pagina === totalPaginas}
+                        disabled={endPage === totalPaginas}
                         className={styles.arrowButtonPag}
                     >
                         <Image

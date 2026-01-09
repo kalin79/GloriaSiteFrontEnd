@@ -1241,11 +1241,39 @@ $button-radius: 9999px; // Para hacer los botones completamente redondeados
                     border-radius: 10px;
                     overflow: hidden;
 
+                    height: 240px;
+                    background: $celesteP;
+                    // border-radius: 0 0 10px 10px;
+                    padding: 0rem;
+                    box-sizing: border-box;
+                    overflow: hidden;
+
+                    @media screen and (min-width: 768px) {
+                        height: 360px;
+                    }
+
+                    @media screen and (min-width: 992px) {
+                        height: 360px;
+                    }
+
+                    @media screen and (min-width: 1200px) {
+                        height: 380px;
+                    }
+
+                    @media screen and (min-width: 1400px) {
+                        height: 480px;
+                    }
+
                     img {
                         width: 100%;
-                        height: auto;
+                        /* La imagen ocupa todo el ancho de la caja */
+                        height: 100%;
+                        /* La imagen ocupa todo el alto de la caja */
                         object-fit: contain;
+                        /* Mantiene la proporción sin distorsión */
                     }
+
+
                 }
 
                 .cardBody {
@@ -1443,8 +1471,11 @@ $button-radius: 9999px; // Para hacer los botones completamente redondeados
                 p {
                     color: #1A172B;
                     font-size: 1rem;
+                    line-height: 1.25rem;
                     font-family: var(--font-misti), sans-serif;
                     font-weight: 500;
+                    text-align: center;
+                    margin-top: .65rem;
                 }
             }
         }
