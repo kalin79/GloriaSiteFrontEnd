@@ -21,8 +21,8 @@ const CarruselCampanas = ({ titularCampana, subtitularCampana, videosCampana }: 
         <div className={styles.listadoComponentContainer}>
             <div className='containerFluid'>
                 <div className={`${styles.titularHeader}`}>
-                    <h2 className={styles.titularMini}>{titularCampana}</h2>
-                    <p className={styles.parrafoMini}>{subtitularCampana}</p>
+                    <h2 className={`${styles.titularMini} ${styles.blanco}`}>{titularCampana}</h2>
+                    <p className={`${styles.parrafoMini} ${styles.blanco}`}>{subtitularCampana}</p>
                 </div>
 
                 <div className={`${styles.carruselCampanas}`}>
@@ -35,7 +35,7 @@ const CarruselCampanas = ({ titularCampana, subtitularCampana, videosCampana }: 
                         // autoplay={{ delay: 3000 }}
                         loop={false}
                         modules={[Navigation]}
-                        className={`swiperNetflix vertical`}
+                        className={`swiperNetflix celeste vertical`}
                         breakpoints={{
                             750: {
                                 slidesPerView: 3

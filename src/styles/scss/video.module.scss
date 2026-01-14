@@ -760,12 +760,17 @@
         font-family: var(--font-poppins), sans-serif;
         font-size: 1.225rem;
         line-height: 1.5em;
-        color: rgba($celesteP, 1);
-        font-weight: 400;
+        color: rgba(#1A172B, 1);
+        font-weight: 600;
 
         @media screen and (min-width: 992px) {
             font-size: 1.625rem;
             line-height: 1.75em;
+        }
+
+        &.blanco {
+            color: #66d5ec;
+            font-weight: 400;
         }
     }
 
@@ -773,12 +778,16 @@
         font-family: var(--font-poppins), sans-serif;
         font-size: .85rem;
         line-height: 1.5em;
-        color: rgba(white, 1);
+        color: rgba(#1A172B, 1);
         font-weight: 400;
 
         @media screen and (min-width: 992px) {
             font-size: 1.125rem;
             line-height: 1.75em;
+        }
+
+        &.blanco {
+            color: #fff;
         }
     }
 }

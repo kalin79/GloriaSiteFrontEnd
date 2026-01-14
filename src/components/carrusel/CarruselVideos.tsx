@@ -113,9 +113,9 @@ const CarruselVideos = ({ videos, titularVideo, listFiltro, tipo }: Props) => {
     return (
         <div className={`videoPrevisualizacionContent ${styles.carruselVideos}`}>
             <div className={`containerFluid`}>
-                <div className={`headerContainer`}>
-                    <h2 className={styles.titularMini} >{titularVideo}</h2>
-                    <p className={styles.parrafoMini}> Junto con especialistas, te acompañamos a cuidar lo que más te importa. ¡Lo estás haciendo bien!</p>
+                <div className={`headerContainer `}>
+                    <h2 className={`${styles.titularMini} ${styles.blanco}`} >{titularVideo}</h2>
+                    <p className={`${styles.parrafoMini} ${styles.blanco}`}> Junto con especialistas, te acompañamos a cuidar lo que más te importa. ¡Lo estás haciendo bien!</p>
                 </div>
 
                 {
@@ -153,7 +153,7 @@ const CarruselVideos = ({ videos, titularVideo, listFiltro, tipo }: Props) => {
 
                         loop={false}
                         modules={[Navigation]}
-                        className={`swiperNetflix`}
+                        className={`swiperNetflix celeste`}
                         breakpoints={{
                             750: {
                                 slidesPerView: 3

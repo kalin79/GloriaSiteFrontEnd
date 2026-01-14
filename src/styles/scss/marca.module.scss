@@ -34,8 +34,8 @@
     font-family: var(--font-poppins), sans-serif;
     font-size: 1.225rem;
     line-height: 1.5em;
-    color: rgba($celesteP, 1);
-    font-weight: 400;
+    color: rgba(#1A172B, 1);
+    font-weight: 600;
 
     @media screen and (min-width: 992px) {
         font-size: 1.625rem;
@@ -47,7 +47,7 @@
     font-family: var(--font-poppins), sans-serif;
     font-size: .85rem;
     line-height: 1.5em;
-    color: rgba(white, 1);
+    color: rgba(#1A172B, 1);
     font-weight: 400;
 
     @media screen and (min-width: 992px) {
@@ -67,7 +67,7 @@
     @media screen and (min-width:992px) {
         justify-content: center;
         flex-wrap: nowrap;
-        padding: 1rem 0 4rem;
+        padding: 2.5rem 0 4rem;
     }
 }
 
@@ -75,12 +75,13 @@
     width: 45%;
     height: 150px;
     display: block;
-    border: 1px solid rgba(#608999, .3);
+    border: 1px solid rgba(#AFAFAF, .5);
     border-radius: 30px;
     transition: .5s ease-in-out all;
     padding: 2rem;
     box-sizing: border-box;
     backdrop-filter: blur(10px);
+    background: #FFFFFF;
 
     /* Aplica el desenfoque */
     -webkit-backdrop-filter: blur(10px);

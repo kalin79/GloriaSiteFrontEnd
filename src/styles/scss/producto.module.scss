@@ -27,10 +27,10 @@ $button-radius: 9999px; // Para hacer los botones completamente redondeados
         bottom: auto !important;
         top: 50% !important;
         transform: translateY(-50%) !important;
-        border: 1px solid #a2b5b9;
+        border: 1px solid #1A172B;
         border-radius: 50%;
         padding: .65rem;
-        background: #a2b5b9;
+        background: #1A172B;
         margin: 0 !important;
         position: absolute;
         display: flex;
@@ -46,8 +46,8 @@ $button-radius: 9999px; // Para hacer los botones completamente redondeados
         }
 
         &:hover {
-            background: #66D3EC;
-            border: 1px solid #66D3EC;
+            background: #1A172B;
+            border: 1px solid #1A172B;
 
         }
 
@@ -76,7 +76,7 @@ $button-radius: 9999px; // Para hacer los botones completamente redondeados
     width: 100%;
     overflow: hidden;
     padding: 1rem 0rem; // Añade algo de padding vertical
-    background-color: $dark-background;
+    background-color: #FDF7EF;
 
 
 }
@@ -106,9 +106,9 @@ $button-radius: 9999px; // Para hacer los botones completamente redondeados
         padding: $button-padding-y $button-padding-x;
         margin: 0 0.25rem; // Espacio entre botones
         white-space: nowrap; // Evita que el texto se rompa
-        border: 1px solid #66D3EC;
-        border-radius: #66D3EC;
-        color: #66D3EC;
+        border: 1px solid #1A172B;
+        border-radius: #1A172B;
+        color: #1A172B;
         background-color: transparent;
         transition: all 0.3s ease;
         border-radius: 30px;
@@ -116,14 +116,14 @@ $button-radius: 9999px; // Para hacer los botones completamente redondeados
 
         // Efecto hover para botones inactivos
         &:hover {
-            border-color: #66D3EC;
-            color: #66D3EC;
+            border-color: #1A172B;
+            color: #1A172B;
         }
 
         // Estilo cuando el botón está activo (seleccionado)
         &.active {
-            background-color: #66D3EC;
-            border-color: #66D3EC;
+            background-color: #1A172B;
+            border-color: #1A172B;
             color: white;
             cursor: default; // Cambiamos el cursor para el elemento activo
         }
@@ -421,14 +421,14 @@ $button-radius: 9999px; // Para hacer los botones completamente redondeados
 }
 
 .sectionHomeProductos {
-    background: $azulP;
+    background: #FDF7EF;
     padding: 5rem 0 0;
 
     .subTitularProductoHome {
         font-family: var(--font-misti), sans-serif;
         font-size: 1rem;
         line-height: 1.5em;
-        color: $celesteP;
+        color: #DD1A20;
         font-weight: 500;
 
         @media screen and (min-width: 992px) {
@@ -441,7 +441,7 @@ $button-radius: 9999px; // Para hacer los botones completamente redondeados
         font-family: var(--font-misti), sans-serif;
         font-size: 2.25rem;
         line-height: 1.15em;
-        color: $celesteP;
+        color: #1A172B;
         font-weight: 300;
 
         @media screen and (min-width: 992px) {
@@ -466,7 +466,7 @@ $button-radius: 9999px; // Para hacer los botones completamente redondeados
         font-family: var(--font-misti), sans-serif;
         font-size: 1.15rem;
         line-height: 1.35em;
-        color: white;
+        color: #1A172B;
         font-weight: 300;
 
         @media screen and (min-width: 992px) {
@@ -601,9 +601,9 @@ $button-radius: 9999px; // Para hacer los botones completamente redondeados
                         }
 
                         input[type="text"] {
-                            border: 1px solid $celesteP;
+                            border: 1px solid #EBEBEB;
                             height: 56px;
-                            background: white;
+                            background: #EBEBEB;
                             border-radius: 30px;
                             padding: 1rem 2rem;
                             box-sizing: border-box;
@@ -613,7 +613,7 @@ $button-radius: 9999px; // Para hacer los botones completamente redondeados
 
                             &:focus {
                                 outline: none;
-                                border: 1px solid $celesteP;
+                                border: 1px solid #EBEBEB;
                             }
                         }
                     }
@@ -646,7 +646,7 @@ $button-radius: 9999px; // Para hacer los botones completamente redondeados
 
 
 .cardPrduct {
-    background: $azulP;
+    background: transparent;
     // height: 552px;
     overflow: hidden;
     border-radius: 10px;
@@ -667,9 +667,9 @@ $button-radius: 9999px; // Para hacer los botones completamente redondeados
         h4 {
             font-size: .95rem;
             line-height: 1.5em;
-            font-weight: 400;
+            font-weight: 500;
             font-family: var(--fuente-misti), sans-serif;
-            color: white;
+            color: #1A172B;
             text-align: center;
 
 
@@ -685,7 +685,7 @@ $button-radius: 9999px; // Para hacer los botones completamente redondeados
             line-height: 1.15em;
             font-weight: 400;
             font-family: var(--fuente-misti), sans-serif;
-            color: rgba($celesteP, 1);
+            color: rgba(#1A172B, 1);
 
             @media screen and (min-width: 992px) {
                 font-size: 1rem;

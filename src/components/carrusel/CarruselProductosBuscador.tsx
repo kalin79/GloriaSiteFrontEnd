@@ -419,7 +419,7 @@ const CarruselProductosBuscador = ({ productosData, paginationData }: Props) => 
 
                                 loop={false}
                                 modules={[Navigation]}
-                                className={`swiperNetflix swiperNetflixProductoHome`}
+                                className={`swiperNetflix celeste swiperNetflixProductoHome`}
                                 breakpoints={{
                                     750: {
                                         slidesPerView: 3
