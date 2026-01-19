@@ -8,6 +8,7 @@ import styles from '@/styles/scss/noticias.module.scss';
 import NoticiaCardComponent from "@/components/noticias/Card";
 import { NoticiaInterface, PaginationInterface } from '@/interfaces/noticia';
 import HtmlSafeRender from '@/components/HtmlSafeRender';
+import SanitizedHtml from '@/components/SanitizedHtml';
 interface Props {
     noticiasData: NoticiaInterface[];
     paginacionData: PaginationInterface;
@@ -105,7 +106,7 @@ const Listado = ({ noticiasData, paginacionData }: Props) => {
                                         </div>
                                         <div className={styles.infoContainer}>
                                             <h2>
-                                                {noticiaDestacada.titulo}
+                                                <SanitizedHtml html={noticiaDestacada.titulo} />
                                             </h2>
                                             <HtmlSafeRender html={noticiaDestacada.descripcion_corta} />
                                         </div>

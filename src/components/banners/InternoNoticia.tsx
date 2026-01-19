@@ -39,6 +39,20 @@ const Interno = ({ dataBanner }: Props) => {
     }
     return (
         <div className={styles.bannerInternoContainer}>
+            <div className={styles.imgContainerFullPage}>
+                {
+                    (srcImagen && srcImagen != '') && (
+                        <Image
+                            src={srcImagen}
+                            fill
+                            sizes="100vw"
+                            style={{ objectFit: "cover" }}
+                            priority
+                            alt={dataBanner.titulo}
+                        />
+                    )
+                }
+            </div>
             <div className={`${styles.containerFluid}`}>
                 <div className={styles.gridContainer}>
                     <div>
@@ -59,25 +73,7 @@ const Interno = ({ dataBanner }: Props) => {
 
                         </div>
                     </div>
-                    <div>
-                        <div className={styles.curvaImgM}>
-                            <Image src='/curvaM.svg' width={440} height={120} alt="" />
-                        </div>
-                        <div className={styles.imgContainer}>
-                            {
-                                (srcImagen && srcImagen != '') && (
-                                    <Image
-                                        src={srcImagen}
-                                        fill
-                                        sizes="100vw"
-                                        style={{ objectFit: "cover" }}
-                                        priority
-                                        alt={dataBanner.titulo}
-                                    />
-                                )
-                            }
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>

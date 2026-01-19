@@ -120,6 +120,7 @@ const NavBar = () => {
                                             {/* <Link href='/batti-mix' onClick={handleCloseMenu}>Battimix</Link> */}
                                         </div>
                                     </div>
+                                    <Link href='/productos' onClick={handleCloseMenu}>Productos</Link>
                                     <Link href='/contacto' onClick={handleCloseMenu}>Contacto</Link>
                                 </nav>
                                 <div className={styles.footerContainer}>

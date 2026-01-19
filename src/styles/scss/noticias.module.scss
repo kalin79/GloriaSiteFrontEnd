@@ -234,7 +234,7 @@
 }
 
 .pageNoticiaDetalle {
-    background: #FDF7EF;
+    background: radial-gradient(circle at center, #F7F7F7 0%, #E3E3E3 100%);
 
     .infoContainer {
         padding: 6rem 0 8rem;
@@ -404,7 +404,7 @@
 }
 
 .pageNoticiasContainer {
-    background: #FDF7EF;
+    background: radial-gradient(circle at center, #F7F7F7 0%, #E3E3E3 100%);
 
     .paginadoContainer {
         display: flex;
@@ -442,6 +442,7 @@
 
     .listadoContainer {
         padding: 4rem 0 8rem;
+
 
         .noticiaMainContainer {
             .noticiaGrid {
@@ -531,6 +532,10 @@
                                 @media screen and (min-width: 1400px) {
                                     font-size: 2rem;
                                     line-height: 1.25em;
+                                }
+
+                                br {
+                                    display: none;
                                 }
                             }
                         }
