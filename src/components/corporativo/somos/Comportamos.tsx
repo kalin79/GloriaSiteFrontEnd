@@ -99,7 +99,7 @@ const Comportamos = () => {
                                             <h2>{item.title}</h2>
                                             <p>{item.descripcion}</p>
                                         </div>
-                                        <button><Image src={`/flecha8.svg`} alt='' width={12} height={6} /></button>
+                                        {/* <button><Image src={`/flecha8.svg`} alt='' width={12} height={6} /></button> */}
                                     </div>
                                 </div>
                             </SwiperSlide>
