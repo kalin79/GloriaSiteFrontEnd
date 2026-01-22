@@ -114,7 +114,7 @@ const NavBar = () => {
                                         </div>
                                         <div className={`${styles.menuMultipleListado} ${isMenuMarcas ? `${styles.active}` : ''}`} >
                                             <Link href='/gloria' onClick={handleCloseMenu}>Gloria</Link>
-                                            <Link href='/bonle' onClick={handleCloseMenu}>Bonl&eacute;</Link>
+                                            <Link href='/bonle' onClick={handleCloseMenu}>Bonle</Link>
                                             <Link href='/pro' onClick={handleCloseMenu}>PRO</Link>
                                             {/* <Link href='/actibio' onClick={handleCloseMenu}>ActiBio</Link> */}
                                             {/* <Link href='/batti-mix' onClick={handleCloseMenu}>Battimix</Link> */}
