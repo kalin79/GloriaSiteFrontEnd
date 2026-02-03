@@ -1,5 +1,5 @@
 import { getCategorias, getTiposFiltros, setResultFilterCategory } from '@/actions/tienda/getFiltros';
-import HeaderProductos from '@/components/banners/HeaderProductos';
+// import HeaderProductos from '@/components/banners/HeaderProductos';
 import ListadoProductosCategorias from '@/components/tienda/ListadoProductosCategorias';
 import styles from '@/styles/scss/producto.module.scss';
 interface TiendaCategoriaPageProps {
@@ -30,7 +30,7 @@ export default async function TiendaCategoriaPage({ params }: TiendaCategoriaPag
     return (
         <>
             <div className={styles.pageProductoContainer}>
-                <HeaderProductos />
+                {/* <HeaderProductos /> */}
                 <ListadoProductosCategorias infoCategory={infoCategory} slug={slug} pagination={pagination} listProducts={listProducts} dataCategories={responseCategoria} marcas={marcas} tipo_producto={tipo_producto} presentaciones={presentaciones} atributos={atributos} />
             </div>
         </>

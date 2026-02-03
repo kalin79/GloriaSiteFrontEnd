@@ -58,7 +58,7 @@ const Footer = () => {
                                 </div>
                                 <div>
                                     <h2 className='titularMedianoFooter fontLight'>0800-1-4441</h2>
-                                    <p className='parrafoPequeno'>De lunes a viernes de 8:00 am a 6:00 pm, sábado de 8:00 am a 12:00 pm</p>
+                                    <p className='parrafoPequeno'>De lunes a viernes de 8:00 am a 5:30 pm, sábado de 8:00 am a 12:00 pm</p>
                                 </div>
                             </div>
                             <div className={styles.iconFlexContainer}>

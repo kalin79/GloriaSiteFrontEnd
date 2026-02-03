@@ -1,7 +1,7 @@
 import { getCategorias, getTiposFiltros, setResultFilters } from '@/actions/tienda/getFiltros';
 
 
-import HeaderProductos from '@/components/banners/HeaderProductos';
+// import HeaderProductos from '@/components/banners/HeaderProductos';
 
 import ListadoProductos from '@/components/tienda/ListadoProductos';
 // import { ProductInterface } from '@/interfaces/producto';
@@ -22,7 +22,7 @@ export default async function MarcaPage() {
     return (
         <>
             <div className={styles.pageProductoContainer}>
-                <HeaderProductos />
+                {/* <HeaderProductos /> */}
                 <ListadoProductos pagination={pagination} listProducts={listProducts} dataCategories={responseCategoria} marcas={marcas} tipo_producto={tipo_producto} presentaciones={presentaciones} atributos={atributos} />
             </div>
         </>

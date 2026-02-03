@@ -178,7 +178,7 @@ const NavBar = () => {
                                 <Image src='/curvaPC.svg' width="155" height='880' alt='' />
                             </div>
                             <div className={styles.bgContainer}>
-                                <Image src='/colegiomenu.webp' width="1796" height='2360' alt='¡Comienza un nuevo regreso a clases! :: Detrás de un niño volviendo al cole, hay una mamá y papá dándolo todo. Conoce la nueva campaña de Gloria.' />
+                                <Image src='/menu2.webp' width="1796" height='2360' alt='¡Comienza un nuevo regreso a clases! :: Detrás de un niño volviendo al cole, hay una mamá y papá dándolo todo. Conoce la nueva campaña de Gloria.' />
                             </div>
                         </div>
                     </div>
