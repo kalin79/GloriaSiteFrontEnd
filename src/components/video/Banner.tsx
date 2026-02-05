@@ -1,9 +1,10 @@
 "use client";
-import { useEffect, useRef, useState } from 'react';
-import Player from '@vimeo/player';
+
+import { useEffect, useRef, useState, useCallback } from "react";
+import Player from "@vimeo/player";
 import { VideoInterface } from "@/interfaces/video";
 
-import styles from '@/styles/scss/video.module.scss';
+import styles from "@/styles/scss/video.module.scss";
 
 interface Props {
     videoData: VideoInterface;
@@ -12,17 +13,25 @@ interface Props {
 const Banner = ({ videoData }: Props) => {
     const videoRef = useRef<HTMLDivElement>(null);
     const playerRef = useRef<Player | null>(null);
+
     const [isPlaying, setIsPlaying] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
 
-    // Detectar si es mobile (se ejecuta una sola vez)
+    // ─────────────────────────────────────────────
+    // Detectar mobile
+    // ─────────────────────────────────────────────
     useEffect(() => {
         const mobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
         setIsMobile(mobile);
     }, []);
 
-    useEffect(() => {
-        if (!videoRef.current || !videoData.link_video) return;
+    // ─────────────────────────────────────────────
+    // Inicializar / Rehidratar Player
+    // ─────────────────────────────────────────────
+    const initPlayer = useCallback(() => {
+        if (!videoRef.current) return;
+        if (!videoData.link_video) return;
+        if (playerRef.current) return;
 
         const player = new Player(videoRef.current, {
             id: Number(videoData.link_video),
@@ -31,84 +40,92 @@ const Banner = ({ videoData }: Props) => {
             loop: false,
             controls: true,
             responsive: true,
-
-            // Muy importante para mobile:
-            playsinline: true,      // true = reproduce inline (recomendado)
-            // false = intenta fullscreen nativo al dar play (pero NO es confiable)
+            playsinline: true,
         });
+
+        playerRef.current = player;
 
         player.ready().then(() => {
             player.pause();
 
-            player.on('play', () => setIsPlaying(true));
-            player.on('pause', () => setIsPlaying(false));
-            player.on('ended', () => setIsPlaying(false));
+            player.on("play", () => setIsPlaying(true));
+            player.on("pause", () => setIsPlaying(false));
+            player.on("ended", () => setIsPlaying(false));
         });
-
-        return () => {
-            player.unload().catch(console.error);
-            playerRef.current = null;
-        };
     }, [videoData.link_video]);
 
-    // ── Lógica de rotación → fullscreen solo en mobile ──────────────────
+    // ─────────────────────────────────────────────
+    // Montar / Desmontar player
+    // ─────────────────────────────────────────────
+    useEffect(() => {
+        initPlayer();
+
+        return () => {
+            if (playerRef.current) {
+                playerRef.current.destroy().catch(console.error);
+                playerRef.current = null;
+            }
+        };
+    }, [initPlayer]);
+
+    // ─────────────────────────────────────────────
+    // Fullscreen al rotar (solo mobile)
+    // ─────────────────────────────────────────────
     useEffect(() => {
         if (!isMobile) return;
 
-        const handleOrientationChange = () => {
-            const isLandscape = window.matchMedia("(orientation: landscape)").matches;
+        const handleOrientation = async () => {
 
-            // Solo intentamos fullscreen si:
-            // 1. Está en landscape
-            // 2. El video está reproduciéndose
-            // 3. No estamos ya en fullscreen
-            if (isLandscape && isPlaying && playerRef.current) {
-                const container = videoRef.current;
-                if (!container) return;
+            console.log(playerRef.current)
 
-                // Evitamos múltiples llamadas
-                if (document.fullscreenElement) return;
+            // Rehidratar si murió
+            if (!playerRef.current) {
+                initPlayer();
+                return;
+            }
 
-                if (container.requestFullscreen) {
-                    container.requestFullscreen().catch(e => console.log("No se pudo entrar a fullscreen", e));
-                }
-                // Soporte antiguo WebKit (iOS Safari principalmente)
-                interface FullscreenHTMLElement extends HTMLElement {
-                    webkitRequestFullscreen?: () => Promise<void> | void;
-                }
+            const isLandscape = window.matchMedia(
+                "(orientation: landscape)"
+            ).matches;
 
-                const el = container as FullscreenHTMLElement;
-
-                if (el.webkitRequestFullscreen) {
-                    el.webkitRequestFullscreen();
+            // Entrar fullscreen con API Vimeo
+            if (isLandscape && isPlaying) {
+                try {
+                    await playerRef.current.requestFullscreen();
+                } catch {
+                    // iOS puede bloquearlo
                 }
             }
-            // Opcional: salir de fullscreen al volver a portrait
-            else if (!isLandscape && document.fullscreenElement) {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen().catch(console.error);
+
+            // Salir fullscreen
+            if (!isLandscape) {
+                try {
+                    await playerRef.current.exitFullscreen();
+                } catch {
+                    //
                 }
             }
         };
 
-        // Eventos recomendados (orientationchange + resize por seguridad)
-        window.addEventListener("orientationchange", handleOrientationChange);
-        window.addEventListener("resize", handleOrientationChange);
+        window.addEventListener("orientationchange", handleOrientation);
+        window.addEventListener("resize", handleOrientation);
 
-        // Ejecutamos una vez al montar por si ya está en landscape
-        handleOrientationChange();
+        handleOrientation();
 
         return () => {
-            window.removeEventListener("orientationchange", handleOrientationChange);
-            window.removeEventListener("resize", handleOrientationChange);
+            window.removeEventListener("orientationchange", handleOrientation);
+            window.removeEventListener("resize", handleOrientation);
         };
-    }, [isMobile, isPlaying]);
+    }, [isMobile, isPlaying, initPlayer]);
 
+    // ─────────────────────────────────────────────
+    // Render
+    // ─────────────────────────────────────────────
     return (
         <div className={`${styles.videoFullPage} ${styles.sinDegradado}`}>
             <div ref={videoRef} />
         </div>
     );
-}
+};
 
 export default Banner;
