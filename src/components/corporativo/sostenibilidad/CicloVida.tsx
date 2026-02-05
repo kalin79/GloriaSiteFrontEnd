@@ -15,7 +15,7 @@ const CicloVida = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const plantaData = [
         {
-            img: '/vaca11.svg',
+            img: '/vaca13.png',
             descripcion: `<h2>
             Apoyamos la sostenibilidad agropecuaria de más de 19,000 ganaderos,  capacitándolos en el buen uso de la tierra, el cuidado del agua y la producción responsable de alimentos. 
             </h2>
