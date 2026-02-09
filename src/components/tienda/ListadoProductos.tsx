@@ -507,7 +507,7 @@ const ListadoProductos = ({ pagination, listProducts, dataCategories, marcas, ti
                         <Swiper
                             spaceBetween={10}
                             centeredSlides={false}
-                            slidesPerView={1} // Muestra 5 películas a la vez
+                            slidesPerView={3} // Muestra 5 películas a la vez
                             navigation
                             grabCursor={true}
                             pagination={{ clickable: true }}
