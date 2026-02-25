@@ -31,7 +31,7 @@ export default async function MarcaPage() {
                     <div className={styles.imgBg}></div>
                 </div>
                 <CarruselVideosComponent videos={data} tipo="video" titularVideo="Si te identificas, <br /><span>vamos en buen camino.</span>" listFiltro={null} />
-                <CarruselCampanasComponent videosCampana={dataCamapana} titularCampana="Nos inspiramos <span>en ti</span>" subtitularCampana="Celebramos a mamás y a papás que resuelven el día a día todos los días. <br />Estamos contigo en ese disfraz a última hora." />
+                <CarruselCampanasComponent videosCampana={dataCamapana} titularCampana="Nos inspiramos <span>en ti</span>" subtitularCampana="Celebramos a las reinas del recurseo que resuelven el día a día todos los días. <br />Estamos contigo en ese disfraz a última hora." />
                 <BannerProComponent />
             </div>
             <ListadoProductosComponent slugMarca={slugMarca} />
