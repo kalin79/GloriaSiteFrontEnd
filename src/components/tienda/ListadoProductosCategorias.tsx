@@ -62,6 +62,9 @@ const ListadoProductosCategorias = ({ infoCategory, slug, pagination, listProduc
     const posterMobile = categoryDataMain?.poster_mobile?.trim();
     const posterMain = categoryDataMain?.poster?.trim();
 
+    console.log(posterMobile);
+    console.log(posterMain);
+
     const scrollOnNextLoad = useRef(false);
     const skipNextFetch = useRef(false); // ← Nuevo ref
     const skipSearch = useRef(true); // ← Nuevo ref
