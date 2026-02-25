@@ -561,14 +561,14 @@ const ListadoProductosCategorias = ({ infoCategory, slug, pagination, listProduc
                 </div>
             </div>
             <div className={styles.viewProductosContainer} >
-                <div className={styles.fondoCategoria}>
+                {/* <div className={styles.fondoCategoria}>
                     {
                         posterMobile && (
                             <Image src={posterMobile} width={2460} height={1302} alt='' />
                         )
                     }
 
-                </div>
+                </div> */}
                 <div className='containerFluid' >
                     {
                         infoCategory?.[0] && infoCategory?.length > 0 && infoCategory && (
@@ -578,20 +578,20 @@ const ListadoProductosCategorias = ({ infoCategory, slug, pagination, listProduc
                                         <Image src='/fff.svg' width={20} height={11} alt='' />
                                         <span>Volver a productos </span>
                                     </button>
-                                    <h1><SanitizedHtml html={infoCategory[0].titulo} /></h1>
+                                    {/* <h1><SanitizedHtml html={infoCategory[0].titulo} /></h1>
                                     <p>
                                         <SanitizedHtml html={infoCategory[0].description} />
-                                    </p>
+                                    </p> */}
                                     <h3> {pagination.total} PRODUCTOS ENCONTRADOS </h3>
                                 </div>
-                                <div>
+                                {/* <div>
                                     {
                                         posterMain && (
                                             <Image src={posterMain} width={715} height={477} alt='' />
                                         )
                                     }
 
-                                </div>
+                                </div> */}
                             </div>
                         )
                     }

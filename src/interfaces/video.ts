@@ -38,6 +38,9 @@ export interface VideoInterface {
     gallery?: unknown[];
     cantidad_like?: number;
     description?: string;
+    type?: string;
+    accion?: string;
+    abrir_en_otra_ventana?: boolean
 
 }
 

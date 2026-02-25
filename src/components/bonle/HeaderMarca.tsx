@@ -78,10 +78,20 @@ const HeaderMarca = ({ multimediaContents, viewLogo = true, logo }: multimediaPa
                                                 <div>
                                                     <h1 className={styles.titularBanner}><SantizedHtml html={item.title_large || ''} /></h1>
                                                     <HtmlSafeRender html={item.description || ''} className={styles.descripcionBanner} />
-                                                    <button className={`btnStandart ${styles.btnStandart}`} onClick={() => { setShowVideo(true); setVideoSelect(item) }}>
-                                                        <span>Reproducir </span>
-                                                        <Image src='/play4.svg' width={14} height={16} alt="" />
-                                                    </button>
+                                                    {
+                                                        (item.type === 'imagen') ? (
+                                                            <a href={`/${item.link_video}`} className={`btnStandart`} >
+                                                                <span><SantizedHtml html={item.accion || ''} /></span>
+                                                                {/* <Image src='/play4.svg' width={14} height={16} alt="" /> */}
+                                                            </a>
+                                                        ) : (
+                                                            <button className={`btnStandart ${styles.btnStandart}`} onClick={() => { setShowVideo(true); setVideoSelect(item) }}>
+                                                                <span>Reproducir </span>
+                                                                <Image src='/play4.svg' width={14} height={16} alt="" />
+                                                            </button>
+                                                        )
+                                                    }
+
                                                 </div>
                                             </div>
                                         </div>
