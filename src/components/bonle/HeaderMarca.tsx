@@ -80,7 +80,7 @@ const HeaderMarca = ({ multimediaContents, viewLogo = true, logo }: multimediaPa
                                                     <HtmlSafeRender html={item.description || ''} className={styles.descripcionBanner} />
                                                     {
                                                         (item.type === 'imagen') ? (
-                                                            <a href={`/${item.link_video}`} className={`btnStandart`} >
+                                                            <a target='_blank' href={`${item.link_video}`} className={`btnStandart`} >
                                                                 <span><SantizedHtml html={item.accion || ''} /></span>
                                                                 {/* <Image src='/play4.svg' width={14} height={16} alt="" /> */}
                                                             </a>
