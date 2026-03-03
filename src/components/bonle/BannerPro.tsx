@@ -26,11 +26,11 @@ const BannerPro = () => {
                     <Image src='/bonle1.webp' width={2460} height={1383} alt='Banner Bonle' />
                 </div>
             </SwiperSlide>
-            <SwiperSlide>
+            {/* <SwiperSlide>
                 <div className={styles.bannerFull}>
                     <Image src='/bonle2.webp' width={2460} height={1383} alt='Banner Bonle' />
                 </div>
-            </SwiperSlide>
+            </SwiperSlide> */}
 
         </Swiper>
 
