@@ -130,10 +130,14 @@ const Listado = ({ slugMarca }: Props) => {
                     <div className={styles.gridContiner}>
                         <div>
                             <h2 className={styles.titularMain}>
-                                <span>
+                                {/* <span>
                                     No tenemos a Brad Pitt <br />ni a Chayanne, pero si <br />
                                     tenemos lo que sí necesitas <br />
                                     para tu día a día
+                                </span> */}
+                                <span>
+                                    Productos para resolver con <br />
+                                    inteligencia en tu día a dia
                                 </span>
                             </h2>
                         </div>
