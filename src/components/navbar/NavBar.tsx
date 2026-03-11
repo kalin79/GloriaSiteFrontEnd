@@ -1,6 +1,6 @@
 'use client';
 import { useState, useRef } from "react";
-import { useSession } from "next-auth/react";
+// import { useSession } from "next-auth/react";
 import Image from 'next/image'
 import Link from 'next/link'
 import gsap from "gsap";
@@ -9,7 +9,7 @@ const NavBar = () => {
     const [isMenuCooporativo, setIsMenuCoorporativo] = useState(false);
     const [isMenuMarcas, setIsMenuMarcas] = useState(false);
     const miDivRefMenu = useRef(null);
-    const { data: session } = useSession();
+    // const { data: session } = useSession();
 
     const handleViewMenu = () => {
         const tlMenu = gsap.timeline();
