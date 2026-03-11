@@ -10,7 +10,7 @@ const NavBar = () => {
     const [isMenuMarcas, setIsMenuMarcas] = useState(false);
     const miDivRefMenu = useRef(null);
     // const { data: session } = useSession();
-
+    // ajuste.
     const handleViewMenu = () => {
         const tlMenu = gsap.timeline();
         tlMenu.to(miDivRefMenu.current, {
