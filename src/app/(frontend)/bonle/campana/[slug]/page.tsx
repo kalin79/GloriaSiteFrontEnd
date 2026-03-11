@@ -2,7 +2,7 @@ import { getCampanaBySlug } from '@/actions/marca/campana/getCamapanaBySlug';
 
 import BannerPrincipalComponent from "@/components/bonle/HeaderCampanaMain";
 import DetalleComponent from "@/components/bonle/CampanaDescripcion";
-import CarruselCampanasComponent from "@/components/bonle/CarruselProCampanas";
+// import CarruselCampanasComponent from "@/components/bonle/CarruselProCampanas";
 import RedesSociales from "@/components/redes/Bonle";
 import { CampanaInterface } from '@/interfaces/campana';
 // import { SlugInterface } from '@/interfaces/slug';
@@ -29,7 +29,8 @@ export default async function CampanaPage({ params }: CampanaPageProps) {
 
     const response = await getCampanaBySlug(slug);
 
-    const { campana, related_video }: { campana: CampanaInterface, related_video: CampanaInterface[] } = response.data;
+    // const { campana, related_video }: { campana: CampanaInterface, related_video: CampanaInterface[] } = response.data;
+    const { campana }: { campana: CampanaInterface, related_video: CampanaInterface[] } = response.data;
 
 
     return (
@@ -39,9 +40,9 @@ export default async function CampanaPage({ params }: CampanaPageProps) {
                 <BannerPrincipalComponent multimediaContents={campana} />
                 <div className={`${styles.campanaContainerPage}`}>
                     <DetalleComponent multimediaContents={campana} />
-                    <div className={styles.bgProContainer}>
+                    {/* <div className={styles.bgProContainer}>
                         <CarruselCampanasComponent videosCampana={related_video} titularCampana="Otras campañas" subtitularCampana="Videos hechos por especialistas para guiarte y acompañarte." />
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </>

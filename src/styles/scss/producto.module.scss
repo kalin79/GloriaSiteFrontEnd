@@ -659,6 +659,45 @@ $button-radius: 9999px; // Para hacer los botones completamente redondeados
     width: 100%;
     cursor: pointer;
 
+    .footerInternaCardBox {
+        height: auto;
+        box-sizing: border-box;
+        padding: 1rem 0rem;
+
+        @media screen and (min-width: 992px) {
+            padding: 1rem 2rem;
+        }
+
+        h4 {
+            font-size: .95rem;
+            line-height: 1.5em;
+            font-weight: 500;
+            font-family: var(--fuente-misti), sans-serif;
+            color: #fff;
+            text-align: center;
+
+
+            @media screen and (min-width: 992px) {
+                font-size: 1.125rem;
+                line-height: 1.25em;
+            }
+        }
+
+        h2 {
+            text-align: center;
+            font-size: .85rem;
+            line-height: 1.15em;
+            font-weight: 400;
+            font-family: var(--fuente-misti), sans-serif;
+            color: rgba(#fff, 1);
+
+            @media screen and (min-width: 992px) {
+                font-size: 1rem;
+                line-height: 1.5em;
+            }
+        }
+    }
+
     .footerCardBox {
         height: auto;
         box-sizing: border-box;

@@ -45,7 +45,7 @@ const NavBar = () => {
                                 <span>Portal Ganaderos</span>
                             </a>
 
-                            {
+                            {/* {
                                 (session) ? (
                                     <div className={styles.userContainer}>
                                         <div className={`${styles.letterUserContainer}`}>C</div>
@@ -54,11 +54,10 @@ const NavBar = () => {
                                     <div className={styles.userLoginContainer}>
                                         <Link href="/auth/login" className={`${styles.btnLogin}`}>
                                             <Image src="/btnlogin.svg" width={18} height={18} alt="login" />
-                                            {/* <span className="">Iniciar sesión</span> */}
                                         </Link>
                                     </div>
                                 )
-                            }
+                            } */}
 
                             <div className={`${styles.menuButton}`} onClick={handleViewMenu}>
                                 <div></div>

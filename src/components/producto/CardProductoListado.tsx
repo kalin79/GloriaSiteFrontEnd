@@ -25,7 +25,7 @@ const CardProductoListado = ({ productContents, onClick }: productParameters) =>
             <div className={styles.bodyCardBox}>
                 <Image src={productContents.image || '/pO1M.png'} width={656} height={858} alt={productContents.title || 'producto'} />
             </div>
-            <div className={styles.footerCardBox}>
+            <div className={styles.footerInternaCardBox}>
                 <h4 className=''>{productContents.title ?? ''}</h4>
                 <h2 className=''>{productContents.subtitulo ?? ''}</h2>
             </div>
