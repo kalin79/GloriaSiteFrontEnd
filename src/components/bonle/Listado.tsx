@@ -137,7 +137,7 @@ const Listado = ({ slugMarca }: Props) => {
                                 </span> */}
                                 <span>
                                     Productos para resolver con <br />
-                                    inteligencia en tu día a dia
+                                    inteligencia en tu día a día
                                 </span>
                             </h2>
                         </div>
